@@ -1,21 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<!-- ¸ÞÀÎ ÀÌ¹ÌÁö ½½¶óÀÌ´õ JS -->
+<!-- ë©”ì¸ ì´ë¯¸ì§€ ìŠ¬ë¼ì´ë” JS -->
 <script type="text/javascript" defer="defer" src="resources/js/main_js/slider.js"></script>
-<!-- Æ¯Á¤ÇÑ ¸®½ºÆ®¿¡ ÀÌ¹ÌÁö¸¦ º¸¿©ÁÖ°í È­»ìÇ¥ Å¬¸¯½Ã ´ÙÀ½ ÀÌ¹ÌÁö ºÒ·¯¿À´Â JS  -->
+<!-- íŠ¹ì •í•œ ë¦¬ìŠ¤íŠ¸ì— ì´ë¯¸ì§€ë¥¼ ë³´ì—¬ì£¼ê³  í™”ì‚´í‘œ í´ë¦­ì‹œ ë‹¤ìŒ ì´ë¯¸ì§€ ë¶ˆëŸ¬ì˜¤ëŠ” JS  -->
 <script type="text/javascript" defer="defer" src="resources/js/main_js/movie_order.js"></script>
-<!-- CSS °øÅëÈ­ -->
+<!-- CSS ê³µí†µí™” -->
 <link rel="stylesheet" type="text/css" href="resources/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/footer.css">
 <!-- main CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/main/main.css">
-<!-- ÀÌ¹ÌÁö ½½¶óÀÌ´õ CSS -->
+<!-- ì´ë¯¸ì§€ ìŠ¬ë¼ì´ë” CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/main/slider.css">
 <!-- font awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"rel="stylesheet">
@@ -147,10 +147,10 @@
 				<!-- <a class="netflix_btn_right"><i class="fas fa-chevron-right"></i></a> -->
 			</div>
 		</div>
-		<!-- ³ÝÇÃ¸¯½º ³¡ -->
+		<!-- ë„·í”Œë¦­ìŠ¤ ë -->
 		
 
-		<!-- ¿ÓÃ­  -->
+		<!-- ì™“ì±   -->
 		<div class="comment_area">
 			<h1>Watcha Top10</h1>
 		</div>
@@ -215,7 +215,7 @@
 				<a class="Watcha_btn_right"><i class="fas fa-chevron-right"></i></a>
 			</div>
 		</div>
-		<!-- ¿ÓÃ­  ³¡ -->
+		<!-- ì™“ì±   ë -->
 
 
 
@@ -284,7 +284,7 @@
 				<a class="Wavve_btn_right"><i class="fas fa-chevron-right"></i></a>
 			</div>
 		</div>
-		<!-- Wavve ³¡ -->
+		<!-- Wavve ë -->
 
 	</div>
 	<!-- end of main -->
