@@ -7,15 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 	
 	@RequestMapping("/")
-	public String index() {
-		
+	public String index() {	
 		return "index"; 
 	}
-	
-	@RequestMapping("/sample.do")
-	public String sample() {
-		
-		return "sample";
-	}
-	
 }

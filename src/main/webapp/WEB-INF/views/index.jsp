@@ -34,6 +34,8 @@
 	
 		<div class="comment_area">
 			<h1>Netflix Top10</h1>
+			<h1><a href="/user">user</a></h1> 
+			<h1><a href="/sample.do">Sample</a></h1> 
 			<h1><a href="/sample.do">Sample</a></h1> 
 		</div>
 		
