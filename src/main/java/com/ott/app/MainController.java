@@ -12,4 +12,10 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/sample.do")
+	public String sample() {
+		
+		return "sample";
+	}
+	
 }
