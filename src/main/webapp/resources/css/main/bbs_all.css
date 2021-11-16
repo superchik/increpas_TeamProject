@@ -27,7 +27,7 @@ header {
 
 .common_container {
 	width: 100%;
-	margin-top: 100px;
+	margin-top: 50px;
 	margin-left: auto;
 	margin-right: auto;
 	position: relative;
@@ -87,7 +87,19 @@ input:focus {
 	margin: 0px;
 	padding: 0px;
 	float: left;
-	width: 25%;
+	width: 20%;
+}
+
+@media(max-width: 1680px) {
+	.ott_li{
+		width: 24%;
+	}
+}
+
+@media(max-width: 1280px) {
+	.ott_li{
+		width: 33%;
+	}
 }
 
 @media(max-width: 1024px) {
@@ -102,13 +114,20 @@ input:focus {
 	}
 }
 
+.boxs {
+	border: 1px solid #000;
+	width: 300px;
+	margin: 0 auto;
+	margin-top: 50px;
+	padding: 0px;
+}
+
 .image_box {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 300px;
 	margin: 0 auto;
-	border: 1px solid #fff;
 }
 
 .story_box {
@@ -125,11 +144,10 @@ input:focus {
 	font-size: 14px;
 	overflow: hidden;
 	height: 48px;
-	width: 50%;
-	margin: 0px;
+	width: 300px;
+	margin: 0 auto;
 	text-overflow: ellipsis;
 	text-align: center;
-	border: 1px solid #fff;
 }
 
 .subject {
