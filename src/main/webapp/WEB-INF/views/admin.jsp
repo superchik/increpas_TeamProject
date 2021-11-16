@@ -35,6 +35,7 @@
 		
 		<div class="admin_board">
 				<h1 class="admin_h1">관리자 게시판</h1>
+				<h2>테스트입니다.</h2>
 				<div>
 					<div>
 						<span class="top_board">게시판 검색</span>
