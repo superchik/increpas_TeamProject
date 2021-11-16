@@ -22,6 +22,7 @@
 <!-- 관리자 페이지 css -->
 <link rel="stylesheet" type="text/css" href="resources/css/admin/admin.css">
 
+
 <title>Main</title>
 
 </head>
@@ -46,6 +47,8 @@
 								<option value="회원정보관리">회원정보관리</option>
 								<option value="댓글관리">댓글관리</option>
 								<option value="기타..">기타..</option>
+								
+								
 							</select>
 							<input class="admin_search_ta" type="text" name="admin_search_ta"/>
 							<input class="admin_search_btn" type="button" name="admin_search_btn" value="검색"/>
