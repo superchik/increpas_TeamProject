@@ -15,9 +15,9 @@ url = 'https://www.netflix.com/latest'
 driver.get(url)
 
 login_xpath = "/html/body/div[1]/div/div[3]/div/div/div[1]/form/button"
-driver.find_element(By.NAME,"userLoginId").send_keys("studyhaza5@gmail.com")
+driver.find_element(By.NAME,"userLoginId").send_keys("아이디 입력")
 time.sleep(2)
-driver.find_element(By.NAME,"password").send_keys("qlsdb%ekdltmzl3")
+driver.find_element(By.NAME,"password").send_keys("비밀번호 입력")
 time.sleep(2)
 driver.find_element(By.XPATH,login_xpath).click()
 time.sleep(5)
