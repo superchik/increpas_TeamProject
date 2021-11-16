@@ -33,6 +33,7 @@
 	<div class="common_container">
 	
 		<div class="comment_area">
+			<h2>Test</h2>
 			<h1>Netflix Top10</h1>
 		</div>
 		
