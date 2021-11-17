@@ -53,10 +53,6 @@ a {
 a:hover{
 	color: #f3f4f6;
 }
-a:link{
-	background-color: rgba(11, 15, 25, .9);
-	text-decoration: none;
-}
 form {
 	border:2px solid #6b7280;
 	border-radius: 5px;

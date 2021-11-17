@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/main/bbs_all.css">
 <link rel="stylesheet" type="text/css" href="resources/css/main/main.css">
 
+
 <title>Insert title here</title>
 </head>
 <body>
