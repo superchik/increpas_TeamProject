@@ -51,8 +51,10 @@
 		.admin_board{
 			display: inline-block;
 			position: static;
-			border: solid 4px #8C8C8C;
-			background-color: #EAEAEA;
+			border: 1px solid #6b7280;
+			background-color: #1f2937;
+			box-shadow: 1px 1.5px 8px 3px gray;
+			border-radius: 10px;
 		}
 		table{
 			display: block;
@@ -66,14 +68,15 @@
 			background-color: #4C4C4C;
 		}
 		.admin_thead td{
-			background-color: #8C8C8C;
+			/*background-color: #8C8C8C;*/
 			color: white;
+			font-weight: bold;
 			
 
 
 		}
 		.admin_thead tr{
-			background-color: #8C8C8C;
+			/*background-color: #8C8C8C;*/
 			
 		}
 		.top_board{
@@ -82,7 +85,10 @@
 		}
 		.total_board{
 			float: left;
+			color: white;
+			margin-bottom: 20px;
 		}
+		
 		.add_board_btn{
 			float: right;
 			background-color: gray;
@@ -105,6 +111,9 @@
 		    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
              inset 2px 2px 3px rgba(0, 0, 0, .6);
 		
+		}
+		tbody>tr{
+			color: white;
 		}
 /*----------------- 게시판 끝 -----------------  */
 			

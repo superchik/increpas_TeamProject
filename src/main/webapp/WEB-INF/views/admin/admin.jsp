@@ -28,7 +28,7 @@
 </head>
 <body>
 	<!-- Header -->
-	<jsp:include page="common/header.jsp"></jsp:include>
+	<jsp:include page="../common/header.jsp"></jsp:include>
 
 	<!-- common -->
 	<div class="common_container">
@@ -38,7 +38,8 @@
 				<h2>테스트입니다.</h2>
 				<div>
 					<div>
-						<span class="top_board">게시판 검색</span>
+						<h2>게시판 검색</h2>
+						<!--  <span class="top_board">게시판 검색</span>-->
 						<div>
 							<select name="select_group">
 								<option value="그룹선택" selected="selected">::그룹선택::</option>
@@ -272,7 +273,7 @@
 	<!-- end of main -->
 	
 	<!-- footer -->
-	<jsp:include page="common/footer.jsp"></jsp:include>
+	<jsp:include page="../common/footer.jsp"></jsp:include>
 
 </body>
 </html>
