@@ -74,7 +74,8 @@
 }
 
 .slide_item:nth-of-type(1){
-	background-image:url("../../images/netflix.png");
+	
+	/*background-image:url("../../images/netflix.png");*/
 	background-repeat:no-repeat;
 	background-position: center;
 	background-size:cover;

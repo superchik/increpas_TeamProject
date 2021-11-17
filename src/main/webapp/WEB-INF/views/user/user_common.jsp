@@ -16,7 +16,6 @@
 
 <!-- Header -->
 <jsp:include page="../common/header.jsp"></jsp:include>
-
 <div class="common_container">
 	<!-- 여기다 작업하세요 -->
 	<h2>User</h2>
