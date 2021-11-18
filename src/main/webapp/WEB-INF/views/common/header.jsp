@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<!--      
 <div class="_header">
 	<header>
 		<nav class="h_item_nav">
@@ -12,3 +13,4 @@
 		</nav>
 	</header>
 </div>
+-->
