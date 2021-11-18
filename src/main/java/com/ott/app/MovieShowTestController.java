@@ -70,7 +70,7 @@ public class MovieShowTestController {
 	}
 	*/
 	
-	@RequestMapping(value ="/movie")
+	@RequestMapping("/movie")
 	@ResponseBody
 	public Map<String, Object> show() throws Exception {
 		StringBuffer sb = new StringBuffer();
@@ -122,6 +122,7 @@ public class MovieShowTestController {
 		sb.append("http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.xml");
 		sb.append("?key=88aadd02552e7cb68fb81746ad737386");
 		sb.append("&openStartDt=2021");
+		sb.append("&itemPerPage=20");
 		
 		URL url = new URL(sb.toString());
 		

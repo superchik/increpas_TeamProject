@@ -1,4 +1,4 @@
-package com.ott.app;
+package com.ott.app.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
