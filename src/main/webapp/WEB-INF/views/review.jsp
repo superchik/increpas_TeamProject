@@ -308,6 +308,7 @@
 		</div>
 
 
+
 		<table class="review_table">		
 			<thead>
 				<th><a class="review_num">댓글갯수:?</a></th>
