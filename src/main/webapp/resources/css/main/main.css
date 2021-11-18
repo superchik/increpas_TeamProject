@@ -100,4 +100,40 @@
 	font-size: 10px;
 	text-align: center;
 }
+/* 메뉴 상단바 */
+.nav_menu{
+	width: auto;
+	height:60px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	text-align: center;
+	background-color: rgba(11, 15, 25, .9);
+	
+	
+}
+
+nav {
+	font-size: 12pt;
+	position: relative;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0 auto;
+	width: auto;
+}
+
+.nav_menu>.clearfix>ul>li {
+	display: inline-block;
+	margin: 12px;
+	line-height: 27px;
+}
+
+.search_form>input{
+	width: 200px;
+	text-align: center;
+}
+
+
 
