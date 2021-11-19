@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,126 +21,45 @@
 <div class="common_container">
 	<div>
 		<ul id="ott_ul">
-			<li class="ott_li">
-				<a href="#">
-				<div class="boxs">
-						<div class="image_box">
-							<img class="poster" src="https://www.4flix.co.kr/data/file/netflix/thumb-3232235521_dRVQ4xwl_28860b8b326207ef10a38dd7a257cc7d72f5c085_299x168.jpg">
-						</div>
-						<div class="story_box">
-							<div class="subject">
-								"레드 노티스"
-							</div>
-							<div class="story_line">
-								"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
-							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="ott_li">
-				<a href="#">
-					<div class="boxs">
-						<div class="image_box">
-							<img class="poster" src="https://www.4flix.co.kr/data/file/netflix/thumb-3232235521_dRVQ4xwl_28860b8b326207ef10a38dd7a257cc7d72f5c085_299x168.jpg">
-						</div>
-						<div>
-							<div class="subject">
-								"레드 노티스"
-							</div>
-							<div class="story_line">
-								"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
-							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="ott_li">
-				<a href="#">
-					<div class="boxs">
-						<div class="image_box">
-							<img class="poster" src="https://www.4flix.co.kr/data/file/netflix/thumb-3232235521_dRVQ4xwl_28860b8b326207ef10a38dd7a257cc7d72f5c085_299x168.jpg">
-						</div>
-						<div>
-							<div class="subject">
-								"레드 노티스"
-							</div>
-							<div class="story_line">
-								"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
-							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="ott_li">
-				<a href="#">
-					<div class="boxs">
-						<div class="image_box">
-							<img class="poster" src="https://www.4flix.co.kr/data/file/netflix/thumb-3232235521_dRVQ4xwl_28860b8b326207ef10a38dd7a257cc7d72f5c085_299x168.jpg">
-						</div>
-						<div>
-							<div class="subject">
-								"레드 노티스"
-							</div>
-							<div class="story_line">
-								"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
-							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="ott_li">
-				<a href="#">
-				<div class="boxs">
-						<div class="image_box">
-							<img class="poster" src="https://www.4flix.co.kr/data/file/netflix/thumb-3232235521_dRVQ4xwl_28860b8b326207ef10a38dd7a257cc7d72f5c085_299x168.jpg">
-						</div>
-						<div>
-							<div class="subject">
-								"레드 노티스"
-							</div>
-							<div class="story_line">
-								"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
-							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="ott_li">
-					<a href="#">
+			<c:forEach var="vo" items="${ar }">
+					<li class="ott_li">
+						<a href="#">
 						<div class="boxs">
-						<div class="image_box">
-							<img class="poster" src="https://www.4flix.co.kr/data/file/netflix/thumb-3232235521_dRVQ4xwl_28860b8b326207ef10a38dd7a257cc7d72f5c085_299x168.jpg">
-						</div>
-						<div>
-							<div class="subject">
-								"레드 노티스"
+								<div class="image_box">
+									<img class="poster" src="${vo.NF_POSTER }">
+								</div>
+								<div class="story_box">
+									<div class="subject">
+										${vo.NF_TITLE }
+									</div>
+									<div class="story_line">
+										"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
+									</div>
+								</div>
 							</div>
-							<div class="story_line">
-								"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
+						</a>
+					</li>
+			</c:forEach>
+			<c:forEach var="vo" items="${ar }">
+					<li class="ott_li">
+						<a href="#">
+						<div class="boxs">
+								<div class="image_box">
+									<img class="poster" src="${vo.NF_POSTER }">
+								</div>
+								<div class="story_box">
+									<div class="subject">
+										${vo.NF_TITLE }
+									</div>
+									<div class="story_line">
+										"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
+									</div>
+								</div>
 							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-			<li class="ott_li">
-				<a href="#">
-					<div class="boxs">
-						<div class="image_box">
-							<img class="poster" src="https://www.4flix.co.kr/data/file/netflix/thumb-3232235521_dRVQ4xwl_28860b8b326207ef10a38dd7a257cc7d72f5c085_299x168.jpg">
-						</div>
-						<div>
-							<div class="subject">
-								"레드 노티스"
-							</div>
-							<div class="story_line">
-								"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
-							</div>
-						</div>
-					</div>
-				</a>
-			</li>
-		</div>
+						</a>
+					</li>
+			</c:forEach>
+				</div>
 		<p style="clear:both;"></p>
 	</ul>
 </div>

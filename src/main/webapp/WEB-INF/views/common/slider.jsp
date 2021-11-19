@@ -7,10 +7,8 @@
 
 <c:set var="now" value="<%=new java.util.Date() %>"/>
 <fmt:formatDate value="${now }" pattern="yyyyMMdd" var="today"/>
-<c:set var="oldweek" value="<%=new Date(new Date().getTime() - 60*60*24*1000*7) %>"/>
-<fmt:formatDate value="${oldweek }" pattern="yyyyMMdd" var="oldweek" />
-<c:set var="newweek" value="<%=new Date(new Date().getTime() + 60*60*24*1000*7) %>"/>
-<fmt:formatDate value="${newweek }" pattern="yyyyMMdd" var="newweek" />
+<c:set var="nextmonth" value="<%=new Date(new Date().getTime() + 60*60*24*1000*28L) %>"/>
+<fmt:formatDate value="${nextmonth }" pattern="yyyyMMdd" var="nextmonth" />
 	<!-- 전체를 감싸줄 영역 - container -->
 	<div class="container">
 		<!-- 아이템 영역 --> 
@@ -18,11 +16,11 @@
 		<!-- Test 영역  -->
 		
 			<!-- 아이템 -->
-			<div class="slide_item" style="overflow: auto;">
+			<div class="slide_item" style="overflow: hidden;">
 				<c:forEach var="vo" items="${mvo }" varStatus="num">
-					<c:if test="${vo.openDt > oldweek && vo.openDt < newweek }">
-						<div style="color:white; margin-left: 50px; margin-right: 70px; margin-bottom: 20px; width: 30%; float: left; text-align: center; border: 1px solid black; border-radius: 5px;
-									background-color: black; padding: 10px;">
+					<c:if test="${vo.openDt >= today && vo.openDt < nextmonth }">
+						<div style="color:white; margin-left: 50px; margin-right: 70px; margin-bottom: 20px; width: 30%; float: left; text-align: center; border-radius: 5px;
+									background-color: black; padding: 10px; margin-top: 15px;">
 							<div style="display:inline; float: left; text-overflow: ellipsis;
 										white-space: nowrap; overflow: hidden; width: 40%;">${vo.movieNm}</div>
 							<div style="display:inline; text-align: center; margin: 0 auto; padding: 0;">${vo.repGenreNm}</div>
