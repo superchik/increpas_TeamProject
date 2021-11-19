@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="resources/css/login/style.css"/>
+
 <!-- CSS 공통화 -->
-<link rel="stylesheet" type="text/css" href="resources/css/common/common.css">
-<link rel="stylesheet" type="text/css" href="resources/css/common/footer.css">
+<link rel="stylesheet" type="text/css" href="resources/css/login/style.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/common/common.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/common/footer.css"/>
 <!-- main CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/main/main.css">
+<link rel="stylesheet" type="text/css" href="resources/css/main/main.css"/>
 <title>로그인 화면</title>
 </head>
 <body>
@@ -17,7 +18,7 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div id="main_frame">
 		<form action="#" method="post" class="login_main" style="border:0px;">
-			<p style="margin:200px 0px;"></p>
+			<div id="blank"></div>
 			<fieldset>
 				<br><br>
 				<div id="maincontent">아이디, 비밀번호를 작성하세요.</div><br><br>
@@ -36,7 +37,7 @@
 				<input type="image" class="social" src="resources/images/naver_login.png">
 			</fieldset>
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-		<script>
+		<!-- <script>
 			$(function(){
 				//아이디가 btn인 요소가 클릭할 때
 				$("#login_btn").bind("click",function(){
@@ -73,10 +74,10 @@
 					});
 				});
 			});
-		</script>
+		</script> -->
+		<div id="blank2"></div>
 		</form>
 	</div>
-	
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
