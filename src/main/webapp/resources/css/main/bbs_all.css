@@ -132,8 +132,9 @@ input:focus {
 	text-align: center;
 }
 
-.poster {
+.poster{
 	max-width: 299px;
+	width: 100%;
 	max-height: 170px;
 }
 

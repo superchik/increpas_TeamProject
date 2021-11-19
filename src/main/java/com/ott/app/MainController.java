@@ -10,9 +10,4 @@ public class MainController {
 	public String index() {	
 		return "index"; 
 	}
-	
-	@RequestMapping("/bbs")
-	public String bbs() {
-		return "/bbs/bbs_all";
-	}
 }

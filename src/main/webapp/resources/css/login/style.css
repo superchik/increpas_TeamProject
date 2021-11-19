@@ -30,6 +30,15 @@ a #text {
 div #blank {
 	margin:200px 0px;
 }
+div #blank2 {
+	margin:99px 0px;
+}
+div #blank3 {
+	margin:69px 0px;
+}
+div #blank4 {
+	margin:210px 0px;
+}
 fieldset {
 	line-height:12px;
 	background-color:#374151;

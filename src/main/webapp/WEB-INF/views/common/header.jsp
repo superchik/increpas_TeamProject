@@ -5,7 +5,7 @@
 
 	<nav class="clearfix">
 		<ul class="clearfix">
-			<li><span><a href="/">Logo</a></span></li>
+			<li><span><a href="/app">Logo</a></span></li>
 			<li><span><a href="#">전체</a></span></li>
 			<li>
 				<form class="search_form" action="/search" method="POST">
@@ -13,7 +13,7 @@
 						placeholder="영화검색(테스트용)">
 				</form>
 			</li>
-			<li><span><a href="#">로그인 / 회원가입</a></span></li>
+			<li><span><a href="login">로그인 / 회원가입</a></span></li>
 		</ul>
 	</nav>
 
