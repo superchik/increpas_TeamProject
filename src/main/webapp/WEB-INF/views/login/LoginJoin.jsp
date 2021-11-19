@@ -25,7 +25,7 @@
 				<input type="text" id="name" name="name" size=46 placeholder="이름"><br><br>
 				<input type="text" id="email" name="email" size=46 placeholder="이메일(kim@example.com)"><br><br>
 				<input type="password" id="pw" name="pw" size=46 placeholder="비밀번호"><br><br>
-				<input type="confirm" id="pw2" name="pw2" size=46 placeholder="비밀번호 확인"><br><br>
+				<input type="password" id="pw2" name="pw2" size=46 placeholder="비밀번호 확인"><br><br>
 				<input type="button" value="회원가입" class="submit"
 					style="
 						width:355px;
