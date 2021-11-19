@@ -9,5 +9,10 @@
 	from ott_netflix
 </select>
 
+<select id="netflixTotal" resultType="int">
+	select count(*)
+	from ott_netflix
+</select>
+
 
 </mapper>

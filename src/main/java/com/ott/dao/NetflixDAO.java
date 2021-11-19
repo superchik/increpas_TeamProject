@@ -26,4 +26,10 @@ public class NetflixDAO {
 		}
 		return ar;
 	}
+	
+	public int getTotalCount() {
+		int cnt = ss.selectOne("sample.netflixTotal");
+		
+		return cnt;
+	}
 }
