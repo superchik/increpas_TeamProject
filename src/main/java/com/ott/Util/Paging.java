@@ -61,7 +61,7 @@ public class Paging {
 		sb = new StringBuffer("<ol class='paging'>");
 		
 		if(isPrePage) {
-			sb.append("<li><a href='/bbs?cPage=");
+			sb.append("<li><a href='/app/bbs?cPage=");
 			sb.append(nowPage-blockPage);
 			sb.append("'> &lt </a></li>"); // <a href='list.inc?cPage = 1'> &lt </a></li>
 		}else {
@@ -77,7 +77,7 @@ public class Paging {
 				sb.append(i);
 				sb.append("</li>");
 			}else {
-				sb.append("<li><a href='/bbs?cPage=");
+				sb.append("<li><a href='/app/bbs?cPage=");
 				sb.append(i);
 				sb.append("'>"); // <a href = 'list.inc?cPage=1>
 				sb.append(i); //화면에 표현되는 페이지 값
@@ -87,7 +87,7 @@ public class Paging {
 		
 		// 다음 기능 가능여부를 확인
 		if(isNextPage) {
-			sb.append("<li><a href='/bbs?cPage=");
+			sb.append("<li><a href='/app/bbs?cPage=");
 			sb.append(nowPage+blockPage);
 			sb.append("'> &gt; </a></li>");
 		}else {
