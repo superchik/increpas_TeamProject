@@ -44,7 +44,7 @@
 		<div class="item_box">
 			<div class="movie_box_button btn_arrow">
 				<a class="netflix_btn_left" onclick="netflix_list('pre','netflix_box',5,5)"><i class="fas fa-chevron-left"></i></a>
-			</div>
+			</div> 
 			<c:forEach var="vo" items="${netflix}">
 			<div class="netflix_box">
 				<div class="ott_subject">
