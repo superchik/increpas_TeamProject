@@ -13,7 +13,9 @@
 <!-- 메인 이미지 슬라이더 JS -->
 <script type="text/javascript" defer="defer" src="resources/js/main_js/slider.js"></script>
 <!-- 특정한 리스트에 이미지를 보여주고 화살표 클릭시 다음 이미지 불러오는 JS  -->
-<script type="text/javascript" defer="defer" src="resources/js/main_js/movie_order.js"></script>
+<script type="text/javascript" defer="defer" src="resources/js/main_js/netflix_order.js"></script>
+<script type="text/javascript" defer="defer" src="resources/js/main_js/watcha_order.js"></script>
+<script type="text/javascript" defer="defer" src="resources/js/main_js/wavve_order.js"></script>
 <!-- CSS 공통화 -->
 <link rel="stylesheet" type="text/css" href="resources/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/footer.css">
@@ -35,118 +37,25 @@
 
 	<!-- common -->
 	<div class="common_container">
-	
 		<div class="comment_area">
-			<h2>Test</h2>
 			<h1>Netflix Top10</h1>
 		</div>
 		
 		<div class="item_box">
 			<div class="movie_box_button btn_arrow">
-				<a class="netflix_btn_left" onclick="netflix_list('pre','netflix_box',5,5)" ><i class="fas fa-chevron-left"></i></a>
+				<a class="netflix_btn_left" onclick="netflix_list('pre','netflix_box',5,5)"><i class="fas fa-chevron-left"></i></a>
 			</div>
-
+			<c:forEach var="vo" items="${netflix}">
 			<div class="netflix_box">
 				<div class="ott_subject">
-					<h2>Netflix</h2>
+					<h4>${vo.title} </h4>
 					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a> 
-						<h2>Rank 1</h2>
+						<a href="#"><img src="${vo.poster }"></a> 
+						<h2>Rank ${vo.rank}</h2>
 					</div>
 				</div>
 			</div>
-
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 2</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 3</h2>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 4</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 5</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 6</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 7</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 8</h2>
-					</div>
-				</div>
-			</div>
-			
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 9</h2>
-					</div>
-				</div>
-			</div>
-			
-			<div class="netflix_box">
-				<div class="ott_subject">
-					<h2>Netflix</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/netflix.png"></a>
-						<h2>Rank 10</h2>
-					</div>
-				</div>
-			</div>
-
+			</c:forEach>
 			<div class="movie_box_button btn_arrow">
 				<a class="netflix_btn_right" onclick="netflix_list('next','netflix_box',5,5)"><i class="fas fa-chevron-right"></i></a>
 				<!-- <a class="netflix_btn_right"><i class="fas fa-chevron-right"></i></a> -->
@@ -155,69 +64,29 @@
 		<!-- 넷플릭스 끝 -->
 		
 
-		<!-- 왓챠  -->
+		<!-- 왓차  -->
 		<div class="comment_area">
 			<h1>Watcha Top10</h1>
 		</div>
 		
 		<div class="item_box">
 			<div class="movie_box_button btn_arrow">
-				<a class="Watcha_btn_left"><i class="fas fa-chevron-left"></i></a>
+				<a class="Watcha_btn_left" onclick="watcha_list('pre','watcha_box',5,5)"><i class="fas fa-chevron-left"></i></a>
 			</div>
 
-			<div class="whatcha_box">
+			<c:forEach var="vo" items="${watcha}">
+			<div class="watcha_box">
 				<div class="ott_subject">
-					<h2>Watcha</h2>
+					<h4>${vo.title} </h4>
 					<div class="m_content">
-						<a href="#"><img src="resources/images/watcha.png"></a> 
-						<h2>Rank 1</h2>
+						<a href="#"><img src="${vo.poster }"></a> 
+						<h2>Rank ${vo.rank}</h2>
 					</div>
 				</div>
 			</div>
-
-			<div class="whatcha_box">
-				<div class="ott_subject">
-					<h2>Watcha</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/watcha.png"></a> 
-						<h2>Rank 2</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="whatcha_box">
-				<div class="ott_subject">
-					<h2>Watcha</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/watcha.png"></a> 
-						<h2>Rank 3</h2>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="whatcha_box">
-				<div class="ott_subject">
-					<h2>Watcha</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/watcha.png"></a> 
-						<h2>Rank 4</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="whatcha_box">
-				<div class="ott_subject">
-					<h2>Watcha</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/watcha.png"></a> 
-						<h2>Rank 5</h2>
-					</div>
-				</div>
-			</div>
-
+			</c:forEach>
 			<div class="movie_box_button btn_arrow">
-				<a class="Watcha_btn_right"><i class="fas fa-chevron-right"></i></a>
+				<a class="Watcha_btn_right" onclick="watcha_list('next','watcha_box',5,5)"><i class="fas fa-chevron-right"></i></a>
 			</div>
 		</div>
 		<!-- 왓챠  끝 -->
@@ -231,62 +100,22 @@
 		
 		<div class="item_box">
 			<div class="movie_box_button btn_arrow">
-				<a class="Wavve_btn_left"><i class="fas fa-chevron-left"></i></a>
+				<a class="Wavve_btn_left" onclick="wavve_list('pre','wavve_box',5,5)"><i class="fas fa-chevron-left"></i></a>
 			</div>
 			
+			<c:forEach var="vo" items="${wavve}">
 			<div class="wavve_box">
 				<div class="ott_subject">
-					<h2>Wavve</h2>
+					<h4>${vo.title} </h4>
 					<div class="m_content">
-						<a href="#"><img src="resources/images/wavve.png"></a> 
-						<h2>Rank 1</h2>
+						<a href="#"><img src="${vo.poster }"></a> 
+						<h2>Rank ${vo.rank}</h2>
 					</div>
 				</div>
 			</div>
-
-			<div class="wavve_box">
-				<div class="ott_subject">
-					<h2>Wavve</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/wavve.png"></a> 
-						<h2>Rank 2</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="wavve_box">
-				<div class="ott_subject">
-					<h2>Wavve</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/wavve.png"></a> 
-						<h2>Rank 3</h2>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="wavve_box">
-				<div class="ott_subject">
-					<h2>Wavve</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/wavve.png"></a> 
-						<h2>Rank 4</h2>
-					</div>
-				</div>
-			</div>
-
-			<div class="wavve_box">
-				<div class="ott_subject">
-					<h2>Wavve</h2>
-					<div class="m_content">
-						<a href="#"><img src="resources/images/wavve.png"></a> 
-						<h2>Rank 5</h2>
-					</div>
-				</div>
-			</div>
-
+			</c:forEach>
 			<div class="movie_box_button btn_arrow">
-				<a class="Wavve_btn_right"><i class="fas fa-chevron-right"></i></a>
+				<a class="Wavve_btn_right" onclick="wavve_list('next','wavve_box',5,5)" ><i class="fas fa-chevron-right"></i></a>
 			</div>
 		</div>
 		<!-- Wavve 끝 -->

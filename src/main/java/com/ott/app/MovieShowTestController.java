@@ -52,7 +52,7 @@ public class MovieShowTestController {
 		
 		MovieListVO[] mvo = new MovieListVO[movie.size()];
 		
-		// ¹Ýº¹¹® µ¹·Á¼­ ¹è¿­¿¡ °ª ³Ö±â
+		// ï¿½Ýºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö±ï¿½
 		int i = 0;
 		for(Element vo : movie) {
 			String movieNm = vo.getChildText("movieNm");
@@ -95,7 +95,7 @@ public class MovieShowTestController {
 		
 		MovieListVO[] mvo = new MovieListVO[movie.size()];
 		
-		// ¹Ýº¹¹® µ¹·Á¼­ ¹è¿­¿¡ °ª ³Ö±â
+		// 
 		int i = 0;
 		for(Element vo : movie) {
 			String movieNm = vo.getChildText("movieNm");
@@ -115,7 +115,10 @@ public class MovieShowTestController {
 	
 	
 	
-	// Test¿Ï·á - ¼º¹Î
+	
+	
+	// Test - ì„±ë¯¼
+	/*
 	@RequestMapping(value ="/", method = RequestMethod.GET)
 	public String showMonth(Model model) throws Exception {
 		StringBuffer sb = new StringBuffer();
@@ -141,7 +144,6 @@ public class MovieShowTestController {
 		
 		MovieListVO[] mvo = new MovieListVO[movie.size()];
 		
-		// ¹Ýº¹¹® µ¹·Á¼­ ¹è¿­¿¡ °ª ³Ö±â
 		int i = 0;
 		for(Element vo : movie) {
 			String movieNm = vo.getChildText("movieNm");
@@ -159,5 +161,5 @@ public class MovieShowTestController {
 		
 		return "index";
 	}
-	
+	*/
 }

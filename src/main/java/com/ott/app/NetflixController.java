@@ -4,18 +4,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ott.Util.Paging;
-import com.ott.dao.NetflixDAO;
-import com.ott.netflix.vo.NetflixVO;
+import com.ott.dao.PlatFormDAO;
+import com.ott.platform.vo.PlatFormVO;
 
 @Controller
 public class NetflixController {
 	
 	@Autowired
-	private NetflixDAO n_dao;
+	private PlatFormDAO n_dao;
 	
 	int nowPage;
 	int rowTotal;
@@ -28,7 +30,6 @@ public class NetflixController {
 	@RequestMapping("/bbs")
 	public ModelAndView netflixList(String cPage) {
 		ModelAndView mv = new ModelAndView();
-		
 		if(cPage == null) {
 			nowPage = 1;
 		}else {
@@ -45,7 +46,7 @@ public class NetflixController {
 		int end = page.getEnd();
 		System.out.println(end);
 		
-		NetflixVO[] ar = n_dao.net_All(begin, end);
+		PlatFormVO[] ar = n_dao.ott_All(begin, end);
 		mv.addObject("ar",ar);
 		
 		mv.addObject("nowPage", nowPage);
@@ -56,5 +57,8 @@ public class NetflixController {
 				
 		return mv;
 	}
+	
+	
+	
 	
 }

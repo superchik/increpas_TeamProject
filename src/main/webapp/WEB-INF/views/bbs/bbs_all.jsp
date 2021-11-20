@@ -26,11 +26,11 @@
 						<a href="#">
 						<div class="boxs">
 								<div class="image_box">
-									<img class="poster" src="${vo.NF_POSTER }">
+									<img class="poster" src="${vo.poster }">
 								</div>
 								<div class="story_box">
 									<div class="subject">
-										${vo.NF_TITLE }
+										${vo.title }
 									</div>
 									<div class="story_line">
 										"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
@@ -45,11 +45,11 @@
 						<a href="#">
 						<div class="boxs">
 								<div class="image_box">
-									<img class="poster" src="${vo.NF_POSTER }">
+									<img class="poster" src="${vo.poster }">
 								</div>
 								<div class="story_box">
 									<div class="subject">
-										${vo.NF_TITLE }
+										${vo.title }
 									</div>
 									<div class="story_line">
 										"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."

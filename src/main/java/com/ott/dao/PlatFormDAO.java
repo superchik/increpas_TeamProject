@@ -7,25 +7,24 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.ott.netflix.vo.NetflixVO;
+import com.ott.platform.vo.PlatFormVO;
 
 @Component
-public class NetflixDAO {
+public class PlatFormDAO {
 	
 	@Autowired
 	private SqlSessionTemplate ss;
 	
-	public NetflixVO[] net_All(int begin, int end) {
-		NetflixVO[] ar = null;
+	public PlatFormVO[] ott_All(int begin, int end) {
+		PlatFormVO[] ar = null;
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("begin", String.valueOf(begin));
 		map.put("end", String.valueOf(end));
 		
-		List<NetflixVO> nvo = ss.selectList("sample.netflix", map);
+		List<PlatFormVO> nvo = ss.selectList("ott_service.netflix", map);
 		
 		if(nvo != null && nvo.size() > 0) {
-			ar = new NetflixVO[nvo.size()];
+			ar = new PlatFormVO[nvo.size()];
 			
 			nvo.toArray(ar);
 		}
@@ -33,7 +32,7 @@ public class NetflixDAO {
 	}
 	
 	public int getTotalCount() {
-		int cnt = ss.selectOne("sample.netflixTotal");
+		int cnt = ss.selectOne("ott_service.netflixTotal");
 		
 		return cnt;
 	}

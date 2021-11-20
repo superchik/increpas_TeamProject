@@ -5,7 +5,7 @@
 
 	<nav class="clearfix">
 		<ul class="clearfix">
-			<li><span><a href="/app">Logo</a></span></li>
+			<li><span><a href="/">Logo</a></span></li>
 			<li><span><a href="#">전체</a></span></li>
 			<li>
 				<form class="search_form" action="/search" method="POST">
