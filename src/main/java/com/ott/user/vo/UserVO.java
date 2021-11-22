@@ -12,8 +12,43 @@ public class UserVO {
 	private String is_admin;
 	private String is_stop;
 	private String is_warning;
+	private String exp;
+	private String auth_key;
+	private String auth_status;
+	private String mail_check;
+	private String big_fat; // 암호화 salt 값 저장 컬럼
 	
 	
+	public String getExp() {
+		return exp;
+	}
+	public void setExp(String exp) {
+		this.exp = exp;
+	}
+	public String getAuth_key() {
+		return auth_key;
+	}
+	public void setAuth_key(String auth_key) {
+		this.auth_key = auth_key;
+	}
+	public String getAuth_status() {
+		return auth_status;
+	}
+	public void setAuth_status(String auth_status) {
+		this.auth_status = auth_status;
+	}
+	public String getMail_check() {
+		return mail_check;
+	}
+	public void setMail_check(String mail_check) {
+		this.mail_check = mail_check;
+	}
+	public String getBig_fat() {
+		return big_fat;
+	}
+	public void setBig_fat(String big_fat) {
+		this.big_fat = big_fat;
+	}
 	public String getU_idx() {
 		return u_idx;
 	}
