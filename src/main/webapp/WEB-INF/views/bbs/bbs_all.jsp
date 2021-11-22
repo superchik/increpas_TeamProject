@@ -33,38 +33,21 @@
 										${vo.title }
 									</div>
 									<div class="story_line">
-										"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
+										"${vo.summary }"
 									</div>
 								</div>
 							</div>
 						</a>
 					</li>
 			</c:forEach>
-			<c:forEach var="vo" items="${ar }">
-					<li class="ott_li">
-						<a href="#">
-						<div class="boxs">
-								<div class="image_box">
-									<img class="poster" src="${vo.poster }">
-								</div>
-								<div class="story_box">
-									<div class="subject">
-										${vo.title }
-									</div>
-									<div class="story_line">
-										"전 세계에 지명 수배가 내려진 미술품 도둑과 그를 추적하는 FBI 프로파일러."
-									</div>
-								</div>
-							</div>
-						</a>
-					</li>
-			</c:forEach>
-				</div>
-		<p style="clear:both;"></p>
+	</div>
+	<p style="clear:both;"></p>
 	</ul>
 </div>
 
-${pageCode }
+<div class="page_box">
+	${pageCode }
+</div>
 <!-- footer -->
 <jsp:include page="../common/footer.jsp"></jsp:include>
 

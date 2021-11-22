@@ -21,7 +21,7 @@ public class PlatFormDAO {
 		map.put("begin", String.valueOf(begin));
 		map.put("end", String.valueOf(end));
 		
-		List<PlatFormVO> nvo = ss.selectList("ott_service.netflix", map);
+		List<PlatFormVO> nvo = ss.selectList("ott_service.bbs_all", map);
 		
 		if(nvo != null && nvo.size() > 0) {
 			ar = new PlatFormVO[nvo.size()];
@@ -32,7 +32,7 @@ public class PlatFormDAO {
 	}
 	
 	public int getTotalCount() {
-		int cnt = ss.selectOne("ott_service.netflixTotal");
+		int cnt = ss.selectOne("ott_service.bbsTotal");
 		
 		return cnt;
 	}

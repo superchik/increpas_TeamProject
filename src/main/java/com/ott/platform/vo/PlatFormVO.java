@@ -7,7 +7,14 @@ public class PlatFormVO {
 	private String poster;
 	private String rank;
 	private String platform;
+	private String summary;
 	
+	public String getSummary() {
+		return summary;
+	}
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
 	public String getOtt_idx() {
 		return ott_idx;
 	}
