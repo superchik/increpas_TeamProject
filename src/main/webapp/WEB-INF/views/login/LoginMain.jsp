@@ -17,7 +17,7 @@
 	<!-- Header -->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div id="main_frame">
-		<form action="#" method="post" class="login_main" style="border:0px;">
+		<form action="#" method="post" class="login_main" style="border:2px;">
 			<div id="blank"></div>
 			<fieldset>
 				<br><br>
