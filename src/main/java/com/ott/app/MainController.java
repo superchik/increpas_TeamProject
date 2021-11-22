@@ -74,6 +74,7 @@ public class MainController {
 		mv.setViewName("index");
 		
 		System.out.println("Test.");
+		System.out.println("Test2");
 	
 		return mv;
 	}
