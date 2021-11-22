@@ -72,6 +72,8 @@ public class MainController {
 		mv.addObject("wavve",wavve);
 		mv.addObject("mvo",mvo);
 		mv.setViewName("index");
+		
+		System.out.println("Test.");
 	
 		return mv;
 	}
