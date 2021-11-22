@@ -10,7 +10,7 @@ import com.ott.dao.PlatFormDAO;
 import com.ott.platform.vo.PlatFormVO;
 
 @Controller
-public class NetflixController {
+public class BbsController {
 	
 	@Autowired
 	private PlatFormDAO p_dao;
