@@ -1,7 +1,6 @@
 package com.ott.user.vo;
 
 public class UserVO {
-	
 	private String u_idx; // 회원번호(고유키)
 	private String u_name; // 이름
 	private String u_email; // 이메일
@@ -18,6 +17,12 @@ public class UserVO {
 	private String big_fat; // 암호화 salt 값 저장 컬럼
 	
 	
+	public String getU_name() {
+		return u_name;
+	}
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
+	}
 	public String getExp() {
 		return exp;
 	}
@@ -54,12 +59,7 @@ public class UserVO {
 	public void setU_idx(String u_idx) {
 		this.u_idx = u_idx;
 	}
-	public String getU_name() {
-		return u_name;
-	}
-	public void setU_name(String u_name) {
-		this.u_name = u_name;
-	}
+
 	public String getU_email() {
 		return u_email;
 	}

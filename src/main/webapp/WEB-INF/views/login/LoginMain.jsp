@@ -80,5 +80,13 @@
 	</div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
+	
+	<script>
+		$(function(){
+			$("#naver").bind("click", function(){
+				location.href="/naver_login";
+			});
+		});
+	</script>
 </body>
 </html>
