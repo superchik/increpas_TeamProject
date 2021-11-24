@@ -16,4 +16,8 @@ public class LoginDAO {
 		
 		return ss.insert("user_service.naver_login",uvo);
 	}
+	
+	public UserVO user_info(String id) {
+		return ss.selectOne("user_service.user_info",id);
+	}
 }

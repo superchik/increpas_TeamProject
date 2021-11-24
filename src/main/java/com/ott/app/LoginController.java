@@ -80,16 +80,22 @@ public class LoginController {
 		String email = result.get("email");
 		String name = result.get("name");
 		
-		UserVO uvo = new UserVO();
-		uvo.setU_id(id);
-		uvo.setU_email(email);
-		uvo.setU_name(name);
-		
-		l_dao.naver_user(uvo);
-		
 		HttpSession session = request.getSession();
-		session.setAttribute("uvo", uvo);
 		
+		UserVO vo = l_dao.user_info(id);
+		
+		if(vo != null) {
+			session.setAttribute("uvo", vo);
+		}else {
+			UserVO uvo = new UserVO();
+			uvo.setU_id(id);
+			uvo.setU_email(email);
+			uvo.setU_name(name);
+			
+			l_dao.naver_user(uvo);
+			
+			session.setAttribute("uvo", uvo);
+		}
 		return "redirect:/";
 	}
 	
