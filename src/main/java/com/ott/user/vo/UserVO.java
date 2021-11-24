@@ -1,24 +1,28 @@
 package com.ott.user.vo;
 
 public class UserVO {
-	
-	private String u_idx;
-	private String u_first_name;
-	private String u_last_name;
-	private String u_email;
-	private String u_id;
-	private String u_pwd1;
-	private String u_level;
-	private String is_admin;
-	private String is_stop;
-	private String is_warning;
-	private String exp;
-	private String auth_key;
-	private String auth_status;
-	private String mail_check;
+	private String u_idx; // 회원번호(고유키)
+	private String u_name; // 이름
+	private String u_email; // 이메일
+	private String u_id; // 아이디
+	private String u_pwd1; // 비밀번호
+	private String u_level; // 유저 레벨
+	private String is_admin; // 관리자인지 아닌지
+	private String is_stop; // 정지회원인지 아닌지
+	private String is_warning; // 경고회원인지 아닌지
+	private String exp; // 유저 경험치(레벨 관련)
+	private String auth_key; // 회원가입시 임의값 DB에 저장
+	private String auth_status; // ?
+	private String mail_check; // 이메일인증 사용자인지 확인
 	private String big_fat; // 암호화 salt 값 저장 컬럼
 	
 	
+	public String getU_name() {
+		return u_name;
+	}
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
+	}
 	public String getExp() {
 		return exp;
 	}
@@ -55,18 +59,7 @@ public class UserVO {
 	public void setU_idx(String u_idx) {
 		this.u_idx = u_idx;
 	}
-	public String getU_first_name() {
-		return u_first_name;
-	}
-	public void setU_first_name(String u_first_name) {
-		this.u_first_name = u_first_name;
-	}
-	public String getU_last_name() {
-		return u_last_name;
-	}
-	public void setU_last_name(String u_last_name) {
-		this.u_last_name = u_last_name;
-	}
+
 	public String getU_email() {
 		return u_email;
 	}
