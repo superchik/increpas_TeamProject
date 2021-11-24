@@ -1,7 +1,11 @@
 package com.ott.movie.vo;
 
 public class MovieListVO {
-	private String movieNm, openDt, prdtStatNm, repGenreNm, genreAlt;
+	private String movieNm, openDt, prdtStatNm, repGenreNm, genreAlt, img_url;
+
+	public MovieListVO() {
+
+	}
 
 	public MovieListVO(String movieNm, String openDt, String prdtStatNm, String repGenreNm, String genreAlt) {
 		super();
@@ -10,6 +14,17 @@ public class MovieListVO {
 		this.prdtStatNm = prdtStatNm;
 		this.repGenreNm = repGenreNm;
 		this.genreAlt = genreAlt;
+	}
+
+	public MovieListVO(String movieNm, String openDt, String prdtStatNm, String repGenreNm, String genreAlt,
+			String img_url) {
+		super();
+		this.movieNm = movieNm;
+		this.openDt = openDt;
+		this.prdtStatNm = prdtStatNm;
+		this.repGenreNm = repGenreNm;
+		this.genreAlt = genreAlt;
+		this.img_url = img_url;
 	}
 
 	public String getMovieNm() {
@@ -51,4 +66,20 @@ public class MovieListVO {
 	public void setGenreAlt(String genreAlt) {
 		this.genreAlt = genreAlt;
 	}
+
+	public String getImg_url() {
+		return img_url;
+	}
+
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
+	}
+
+	/*
+	 * public MovieListVO(String movieNm, String openDt, String prdtStatNm, String
+	 * repGenreNm, String genreAlt) { super(); this.movieNm = movieNm; this.openDt =
+	 * openDt; this.prdtStatNm = prdtStatNm; this.repGenreNm = repGenreNm;
+	 * this.genreAlt = genreAlt; }
+	 */
+
 }

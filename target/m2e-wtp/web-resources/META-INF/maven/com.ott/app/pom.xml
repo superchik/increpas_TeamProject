@@ -144,6 +144,13 @@
 			 <version>1.9.13</version>
 		</dependency>
 		
+		<!--  JSoup -->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.11.2</version>
+		</dependency>
+		
 		<!-- File Upload / IO -->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>

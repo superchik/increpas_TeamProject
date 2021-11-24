@@ -34,7 +34,7 @@
 			<fieldset>
 				<div id="content">소셜 로그인</div><br>
 				<input type="image" class="social" src="resources/images/kakao_login.png">
-				<input type="image" class="social" src="resources/images/naver_login.png">
+				<input type="image" class="social" src="resources/images/naver_login.png" >
 			</fieldset>
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<!-- <script>
