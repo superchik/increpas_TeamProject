@@ -18,7 +18,7 @@ C:\Users\user\git\Increpas-OTT_Service\target\m2e-wtp\web-resources\META-INF\mav
 
 # ignore properties file
 config.properties
-pom.properties
+*.pom.properties
 
 # External tool builders
 .externalToolBuilders/
