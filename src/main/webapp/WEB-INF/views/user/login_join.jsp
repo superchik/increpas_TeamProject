@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- CSS 공통화 -->
-<link rel="stylesheet" type="text/css" href="resources/css/login/style.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/user/user_login.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/common/common.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/common/footer.css"/>
 <!-- main CSS -->
@@ -15,8 +15,8 @@
 <body>
 	<!-- Header -->
 	<jsp:include page="../common/header.jsp"></jsp:include>
-	<div style="text-align:center;">
-		<form action="#" method="post" id="join" style="border:0px;">
+	<div id="main_frame">
+		<form action="#" method="post" class="join">
 			<div id="blank"></div>
 			<fieldset>
 				<br><br>
@@ -26,14 +26,7 @@
 				<input type="text" id="email" name="email" size=46 placeholder="이메일(kim@example.com)"><br><br>
 				<input type="password" id="pw" name="pw" size=46 placeholder="비밀번호"><br><br>
 				<input type="password" id="pw2" name="pw2" size=46 placeholder="비밀번호 확인"><br><br>
-				<input type="button" value="회원가입" class="submit"
-					style="
-						width:355px;
-						height:30px;
-						background-color:#2563EB;
-						color:#FFFFFF;
-						border:0;
-						outline:0;">
+				<input type="button" value="회원가입" class="submit">
 			</fieldset>
 			<br>
 			<div>회원가입을 했을 시 약관에 동의한 것으로 간주됩니다.
@@ -46,7 +39,7 @@
 				<input type="image" class="social" src="resources/images/naver_login.png">
 			</fieldset>
 			<br> -->
-			<div>이미 계정이 있나요? <a href="login" style="background-color:#1F2937;">로그인</a>
+			<div>이미 계정이 있나요? <a href="login" class="alink">로그인</a>
 			</div>
 			<div id="blank3"></div>
 		</form>

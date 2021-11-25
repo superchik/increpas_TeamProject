@@ -8,6 +8,6 @@ public class LoginJoinController {
 	
 	@RequestMapping("/join")
 	public String index() {	
-		return "login/LoginJoin";
+		return "user/login_join";
 	}
 }
