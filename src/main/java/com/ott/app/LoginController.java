@@ -25,6 +25,7 @@ public class LoginController {
 	private String access_token;
 	private String refresh_token;
 	private String token_type;
+	
 	private String expires_in;
 	private final String naverClientId = "OGBjI0KG_grwbi49hcxo";
 	private final String naverClientSecret = "eSV3grNp4O";

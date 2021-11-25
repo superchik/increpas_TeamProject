@@ -13,7 +13,8 @@
 		<div class="nav_middle">
 			<form class="search_form" action="/search" method="POST">
 				<input class="search_movie" type="text" id="s_movie" name="s_movie"
-					placeholder="영화검색(테스트용)"> 
+					placeholder="영화검색(테스트용)">
+					 
 				<a> <i class="fas fa-search"></i>
 				</a>
 			</form>

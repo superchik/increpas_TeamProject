@@ -60,6 +60,7 @@ public class Paging {
 		// 이제 현재페이지 값도 알고, 시작페이지와 마지막페이지 값을 알았으니 페이지 기법에 사용할 코드를 작성하여 sb에 넣자.
 		sb = new StringBuffer("<ol class='paging'>");
 		
+		
 		if(isPrePage) {
 			sb.append("<li><a href='/app/bbs?cPage=");
 			sb.append(nowPage-blockPage);
