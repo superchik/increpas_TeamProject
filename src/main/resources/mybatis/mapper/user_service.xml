@@ -5,8 +5,8 @@
 <mapper namespace="user_service">
 
 <insert id="naver_login" parameterType="com.ott.user.vo.UserVO">
-	insert into OTT_USER (u_idx, u_name, u_email, u_id)
-			values(OTT_USER_SEQ.nextval, #{u_name}, #{u_email}, #{u_id})
+	insert into OTT_USER (u_idx, u_name, u_email, u_id, u_pwd1)
+			values(OTT_USER_SEQ.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1})
 </insert>
 
 <select id="user_info" resultType="com.ott.user.vo.UserVO" parameterType="String">

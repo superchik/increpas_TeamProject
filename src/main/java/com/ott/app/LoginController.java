@@ -90,6 +90,7 @@ public class LoginController {
 		}else {
 			UserVO uvo = new UserVO();
 			uvo.setU_id(id);
+			uvo.setU_pwd1(id);
 			uvo.setU_email(email);
 			uvo.setU_name(name);
 			
