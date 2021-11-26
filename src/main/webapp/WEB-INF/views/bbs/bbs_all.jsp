@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- CSS 공통화 -->
+<link rel="stylesheet" type="text/css" href="resources/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/footer.css">
 <!-- main CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/main/bbs_all.css">
