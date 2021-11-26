@@ -42,7 +42,7 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public String index() {	
-		return "login/LoginMain";
+		return "user/login_main";
 	}
 	
 	@RequestMapping("/naver_login")
