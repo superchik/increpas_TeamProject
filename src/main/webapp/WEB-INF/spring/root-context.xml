@@ -52,4 +52,5 @@
    	
    	<!-- DAO -->
     <context:component-scan base-package="com.ott.dao"/>		
+    <context:component-scan base-package="com.ott.review.dao"/>		
 </beans>

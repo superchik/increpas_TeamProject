@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@page import="com.ott.review.vo.ReviewVO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,7 +91,7 @@
 		padding-left: 80px;
 		padding-bottom: 40px;
 	}
-	#review table{
+	table{
 		width: 1200px;
 	    font-size:14px;
 	}
@@ -251,7 +253,7 @@
 	<div id="content">
 		<a class="title">영화제목</a><br/>
 		<a class="about">영화or시리즈/국가/개봉일/장르</a><br/>
-		</br></br>
+		<br/><br/>
 		<div class="story_div">
 		<a class="story">영화내용영화내용영화내용영화내용
 			영화내용영화내용영화내용영화내용영화내용영화내용
@@ -278,9 +280,10 @@
 	</div>
 </div>
 </div>
+<form action="review" method="post">
 <div id="write_div">
 	<a class="write_nickname">nickname</a>
-	<textarea name="write_area" id="write_area" 
+	<textarea name="context" id="write_area" 
 		cols="100" rows="5"></textarea>
 		
 	<div class="write_star">
@@ -301,11 +304,15 @@
 		<br/>
 		<br/>
 		<p class="write_btn">
+			<!--
 			<a href="" class="re_btn">
 				리뷰등록
 			</a>
+			-->
+			<button type="submit">리뷰등록</button>
 		</p>
 		</div>
+</form>
 
 
 
@@ -315,6 +322,9 @@
 			</thead>				
 			<tbody>
 			<!-- 반복문 -->
+			
+			
+			<c:forEach var="cvo" items="${vo}">
 				<tr>
 					<td class="list_nickname"> 
 						<a class="list_nickname">글쓴이</a>
@@ -323,10 +333,7 @@
 					</td>
 					<td class="list_content">
 						<a>★★★★☆</a><br/>
-						<a>리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
-						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용
-						리뷰내용리뷰내용리리뷰내용리뷰내용리뷰내용
-						리뷰내용리뷰내용리뷰내용리뷰내용리뷰내용</a>
+						<a>${cvo.context }</a>
 					</td>
 					<td class="list_recommend">
 						<a>추천수:10</a><br/><br/>
@@ -335,12 +342,10 @@
 						</div>
 					</td>
 				</tr>
+	</c:forEach>
 			</tbody>
 		</table>
 	</div>	
-
-	
-</div>
 
 <footer>
 <!-- footer -->
@@ -348,7 +353,9 @@
 </footer>
 
 <script>
-
+function review_w(){
+	console.log('클릭');
+}
 </script>
 
 </body>
