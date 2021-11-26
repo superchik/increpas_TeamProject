@@ -39,6 +39,8 @@
 	<div class="common_container">
 		<div class="comment_area">
 			<h1>Netflix Top10</h1>
+			<a href="/user_info">유저info</a>
+			
 		</div>
 		
 		<div class="item_box">
