@@ -1,65 +1,34 @@
 package com.ott.user.vo;
 
 public class UserVO {
-	private String u_idx; // È¸¿ø¹øÈ£(°íÀ¯Å°)
-	private String u_name; // ÀÌ¸§
-	private String u_email; // ÀÌ¸ŞÀÏ
-	private String u_id; // ¾ÆÀÌµğ
-	private String u_pwd1; // ºñ¹Ğ¹øÈ£
-	private String u_level; // À¯Àú ·¹º§
-	private String is_admin; // °ü¸®ÀÚÀÎÁö ¾Æ´ÑÁö
-	private String is_stop; // Á¤ÁöÈ¸¿øÀÎÁö ¾Æ´ÑÁö
-	private String is_warning; // °æ°íÈ¸¿øÀÎÁö ¾Æ´ÑÁö
-	private String exp; // À¯Àú °æÇèÄ¡(·¹º§ °ü·Ã)
-	private String auth_key; // È¸¿ø°¡ÀÔ½Ã ÀÓÀÇ°ª DB¿¡ ÀúÀå
+	private String u_idx; // íšŒì›ë²ˆí˜¸(ê³ ìœ í‚¤)
+	private String u_name; // ì´ë¦„
+	private String u_email; // ì´ë©”ì¼
+	private String u_id; // ì•„ì´ë””
+	private String u_pwd1; // ë¹„ë°€ë²ˆí˜¸
+	private String u_level; // ìœ ì € ë ˆë²¨
+	private String is_admin; // ê´€ë¦¬ìì¸ì§€ ì•„ë‹Œì§€
+	private String is_stop; // ì •ì§€íšŒì›ì¸ì§€ ì•„ë‹Œì§€
+	private String is_warning; // ê²½ê³ íšŒì›ì¸ì§€ ì•„ë‹Œì§€
+	private String exp; // ìœ ì € ê²½í—˜ì¹˜(ë ˆë²¨ ê´€ë ¨)
+	private String auth_key; // íšŒì›ê°€ì…ì‹œ ì„ì˜ê°’ DBì— ì €ì¥
 	private String auth_status; // ?
-	private String mail_check; // ÀÌ¸ŞÀÏÀÎÁõ »ç¿ëÀÚÀÎÁö È®ÀÎ
-	private String big_fat; // ¾ÏÈ£È­ salt °ª ÀúÀå ÄÃ·³
+	private String mail_check; // ì´ë©”ì¼ì¸ì¦ ì‚¬ìš©ìì¸ì§€ í™•ì¸
+	private String big_fat; // ì•”í˜¸í™” salt ê°’ ì €ì¥ ì»¬ëŸ¼
 	
 	
-	public String getU_name() {
-		return u_name;
-	}
-	public void setU_name(String u_name) {
-		this.u_name = u_name;
-	}
-	public String getExp() {
-		return exp;
-	}
-	public void setExp(String exp) {
-		this.exp = exp;
-	}
-	public String getAuth_key() {
-		return auth_key;
-	}
-	public void setAuth_key(String auth_key) {
-		this.auth_key = auth_key;
-	}
-	public String getAuth_status() {
-		return auth_status;
-	}
-	public void setAuth_status(String auth_status) {
-		this.auth_status = auth_status;
-	}
-	public String getMail_check() {
-		return mail_check;
-	}
-	public void setMail_check(String mail_check) {
-		this.mail_check = mail_check;
-	}
-	public String getBig_fat() {
-		return big_fat;
-	}
-	public void setBig_fat(String big_fat) {
-		this.big_fat = big_fat;
-	}
 	public String getU_idx() {
 		return u_idx;
 	}
 	public void setU_idx(String u_idx) {
 		this.u_idx = u_idx;
 	}
-
+	public String getU_name() {
+		return u_name;
+	}
+	public void setU_name(String u_name) {
+		this.u_name = u_name;
+	}
 	public String getU_email() {
 		return u_email;
 	}
@@ -102,6 +71,37 @@ public class UserVO {
 	public void setIs_warning(String is_warning) {
 		this.is_warning = is_warning;
 	}
+	public String getExp() {
+		return exp;
+	}
+	public void setExp(String exp) {
+		this.exp = exp;
+	}
+	public String getAuth_key() {
+		return auth_key;
+	}
+	public void setAuth_key(String auth_key) {
+		this.auth_key = auth_key;
+	}
+	public String getAuth_status() {
+		return auth_status;
+	}
+	public void setAuth_status(String auth_status) {
+		this.auth_status = auth_status;
+	}
+	public String getMail_check() {
+		return mail_check;
+	}
+	public void setMail_check(String mail_check) {
+		this.mail_check = mail_check;
+	}
+	public String getBig_fat() {
+		return big_fat;
+	}
+	public void setBig_fat(String big_fat) {
+		this.big_fat = big_fat;
+	}
+	
 	
 
 }

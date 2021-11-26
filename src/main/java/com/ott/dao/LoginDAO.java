@@ -18,6 +18,13 @@ public class LoginDAO {
 	}
 	
 	public UserVO user_info(String id) {
+		
 		return ss.selectOne("user_service.user_info",id);
+	}
+	
+	//	일반 회원가입
+	public int user_join(UserVO uvo) {
+		
+		return ss.insert("user_service.user_join", uvo);
 	}
 }
