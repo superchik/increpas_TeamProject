@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- CSS 공통화 -->
+<link rel="stylesheet" type="text/css" href="resources/css/common/common.css">
 <link rel="stylesheet" type="text/css" href="resources/css/common/footer.css">
 <!-- main CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/main/bbs_all.css">
@@ -23,7 +24,7 @@
 		<ul id="ott_ul">
 			<c:forEach var="vo" items="${ar }">
 					<li class="ott_li">
-						<a href="#">
+						<a href="/review?ott_idx=${vo.ott_idx }">
 						<div class="boxs">
 								<div class="image_box">
 									<img class="poster" src="${vo.poster }">

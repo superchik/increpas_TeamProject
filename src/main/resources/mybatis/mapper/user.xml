@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+	
+	<!-- 회원들의 정보 리스트 -->
+	<select id="user_list" parameterType="Map" resultType="com.ott.user.vo.UserVO">
+			SELECT * FROM (
+			SELECT rownum r_num, a.* FROM (SELECT * FROM ott_user
+			                	       ORDER BY u_idx DESC) a
+							) WHERE r_num BETWEEN  #{begin} AND #{end}
+	</select>
+	
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*) FROM ott_user
+	</select>
+
+</mapper>

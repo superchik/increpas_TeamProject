@@ -34,8 +34,8 @@
 	<div class="common_container">
 		
 		<div class="admin_board">
-				<h1 class="admin_h1">관리자 게시판</h1>
-				<h2>테스트입니다.</h2>
+				<h1>관리자 게시판</h1>
+				
 				<div>
 					<div>
 						<h2>게시판 검색</h2>
@@ -148,7 +148,7 @@
 									<td>전체</td>
 									<td>전체</td>
 									<td>
-										<button class="edit_btn" type="button">
+										<button class="edit_btn" type="button" onclick="javascript:location.href='/admin_userinfo'">
 										    수정
 										</button>
 										<button class="del_btn" type="button">
@@ -175,7 +175,7 @@
 								</tr>
 								<tr>
 									<td>6</td>
-									<td>기타 등등</td>
+									<td>자유 게시판</td>
 									<td>전체</td>
 									<td>전체</td>
 									<td>전체</td>
@@ -192,7 +192,7 @@
 								</tr>
 								<tr>
 									<td>5</td>
-									<td>기타 등등</td>
+									<td>QNA 게시판</td>
 									<td>전체</td>
 									<td>전체</td>
 									<td>전체</td>
@@ -209,7 +209,7 @@
 								</tr>
 								<tr>
 									<td>4</td>
-									<td>기타 등등</td>
+									<td>자유 게시판</td>
 									<td>전체</td>
 									<td>전체</td>
 									<td>전체</td>

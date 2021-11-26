@@ -93,6 +93,7 @@ nav ul {
 }
 
 .search_form {
+	border: none;
 	position: relative;
 }
 

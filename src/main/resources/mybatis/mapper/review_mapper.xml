@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+
+
+
+<select id="get"
+	resultType="com.ott.review.vo.ReviewVO">
+		SELECT * FROM REVIEW_TEST1
+	</select>
+
+
+	<insert id="add" parameterType="com.ott.review.vo.ReviewVO">
+		INSERT INTO REVIEW_TEST1(c_idx, context, status)
+		VALUES(1,#{context},1)
+	</insert>
+
+
+</mapper>
