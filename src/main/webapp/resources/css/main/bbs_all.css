@@ -177,3 +177,7 @@ input:focus {
 	width: 10%;
 	margin: 0 auto;
 }
+
+.paging a {
+	background-color: #1f2937;
+}
