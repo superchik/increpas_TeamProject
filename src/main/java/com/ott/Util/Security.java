@@ -1,6 +1,7 @@
 package com.ott.Util;
 
 import java.security.MessageDigest;
+import java.util.Random;
 
 public class Security {
 	public static String getbig(String pwd1, String big_fat) {
@@ -29,5 +30,21 @@ public class Security {
 		
 		}
 		return save;
+	}
+	
+	public static String generateSalt() {
+		Random random = new Random();
+		
+		byte[] fat = new byte[8]; //보편적인 값
+		random.nextBytes(fat);
+		
+		StringBuffer sb = new StringBuffer();
+		
+		for(Byte n : fat) {
+			// byte값을 hex 값으로 변환
+			String str = String.format("%02x", n);
+			sb.append(str);
+		}
+		return sb.toString();
 	}
 }
