@@ -4,9 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <!-- CSS 공통화 -->
-<link rel="stylesheet" type="text/css" href="resources/css/login/style.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/user/user_login.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/common/common.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/common/footer.css"/>
 <!-- main CSS -->
@@ -17,7 +16,7 @@
 	<!-- Header -->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div id="main_frame">
-		<form action="#" method="post" class="login_main" style="border:2px;">
+		<form action="#" method="post" class="login_main">
 			<div id="blank"></div>
 			<fieldset>
 				<br><br>
@@ -28,13 +27,13 @@
 			</fieldset>
 			<br>
 			<div id="subcontent">처음이신가요?
-			<a id="text" href="join" style="background-color:#1F2937;">회원가입</a> · 
-			<a id="text" href="pwreissue" style="background-color:#1F2937;">비밀번호를 잊으셨나요?</a></div>
+			<a id="text" href="join" class="alink">회원가입</a> · 
+			<a id="text" href="pwreissue" class="alink">비밀번호를 잊으셨나요?</a></div>
 			<br><br>
 			<fieldset>
 				<div id="content">소셜 로그인</div><br>
 				<input type="image" class="social" src="resources/images/kakao_login.png">
-				<input type="image" class="social" src="resources/images/naver_login.png" >
+				<a href="/app/naver_login"><img class="social" src="resources/images/naver_login.png"></a>
 			</fieldset>
 			<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<!-- <script>
