@@ -23,10 +23,6 @@ form {
 	width:380px;
 	border:0px;
 }
-#main_frame {
-	text-align:center;
-	font-size:13px;
-}
 a #text {
 	color:#CED2D8;
 	text-decoration:none;
@@ -80,4 +76,35 @@ div #content {
 }
 .alink {
 	background-color:#1F2937;
+}
+
+@media screen and (max-width:1920px) {
+	#main_frame {
+	width: 1080px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	text-align: center;
+	font-size: 13px;
+	}
+}
+@media screen and (max-width:980px) {
+	#main_frame {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	text-align: center;
+	font-size: 13px;
+	}
+}
+@media screen and (max-width:550px) {
+	#main_frame {
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	text-align: center;
+	font-size: 13px;
+	}
 }

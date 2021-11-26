@@ -45,6 +45,16 @@ public class LoginController {
 		return "user/login_main";
 	}
 	
+	@RequestMapping("/idfind")
+	public String id_find() {	
+		return "user/login_id_find";
+	}
+	
+	@RequestMapping("/pwreissue")
+	public String pwreissue() {	
+		return "user/login_pw_reissue";
+	}
+	
 	@RequestMapping("/naver_login")
 	public String makeRequestStatement() {
 		HashMap<String, String> naverUrl = loginService.makeRequestStatment(naverClientId);
