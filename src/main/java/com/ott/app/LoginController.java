@@ -42,17 +42,17 @@ public class LoginController {
 	
 	@RequestMapping("/login")
 	public String index() {	
-		return "user/login_main";
+		return "user/user_login";
 	}
 	
 	@RequestMapping("/idfind")
 	public String id_find() {	
-		return "user/login_id_find";
+		return "user/user_id_find";
 	}
 	
 	@RequestMapping("/pwreissue")
 	public String pwreissue() {	
-		return "user/login_pw_reissue";
+		return "user/user_pw_reissue";
 	}
 	
 	@RequestMapping("/naver_login")

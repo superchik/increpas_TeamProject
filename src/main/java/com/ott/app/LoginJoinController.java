@@ -16,7 +16,7 @@ public class LoginJoinController {
 	
 	@RequestMapping("/join")
 	public String index() {	
-		return "user/login_join";
+		return "user/user_join";
 	}
 	
 	@Autowired
