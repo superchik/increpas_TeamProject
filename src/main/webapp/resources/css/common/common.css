@@ -62,8 +62,16 @@ nav ul {
 	font-weight: bold;
 }
 
+.small {
+	font-size: 8px;
+}
+
 .nav_left {
 	margin: 0 20px 0 0;
+}
+
+.nav_left>li:first-child {
+	font-size: 25px;
 }
 
 .nav_right {

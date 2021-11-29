@@ -6,7 +6,9 @@
 
 	<nav class="clearfix">
 		<ul class="nav_item nav_left">
-			<li><span><a href="/">Logo</a></span></li>
+			<li><span><a href="/">V<span class="small">enire&nbsp;</span>
+				V<span class="small">ide&nbsp;</span>
+				F<span class="small">rui&nbsp;</span></a></span></li>
 			<li><span><a href="/bbs">전체</a></span></li>
 		</ul>
 		
