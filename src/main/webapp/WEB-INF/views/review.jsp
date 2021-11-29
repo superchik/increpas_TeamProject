@@ -315,7 +315,7 @@
 </form>
 
 
-
+		
 		<table class="review_table">		
 			<thead>
 				<th><a class="review_num">댓글갯수:?</a></th>
@@ -324,7 +324,6 @@
 			<!-- 반복문 -->
 			
 			
-			<c:forEach var="cvo" items="${vo}">
 				<tr>
 					<td class="list_nickname"> 
 						<a class="list_nickname">글쓴이</a>
@@ -333,7 +332,7 @@
 					</td>
 					<td class="list_content">
 						<a>★★★★☆</a><br/>
-						<a>${cvo.context }</a>
+						<a></a>
 					</td>
 					<td class="list_recommend">
 						<a>추천수:10</a><br/><br/>
@@ -342,7 +341,6 @@
 						</div>
 					</td>
 				</tr>
-	</c:forEach>
 			</tbody>
 		</table>
 	</div>	
@@ -353,9 +351,7 @@
 </footer>
 
 <script>
-function review_w(){
-	console.log('클릭');
-}
+
 </script>
 
 </body>

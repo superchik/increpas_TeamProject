@@ -1,29 +1,61 @@
 package com.ott.review.vo;
 
+import java.util.List;
 
 public class ReviewVO {
 	
-	private String c_idx;
-	private String context;
-	private String status;
+	private String OTT_IDX;
+	private String TITLE;
+	private String POSTER;
+	private String RANK;
+	private String PLATFORM;
+	private String SUMMARY;
 	
-	public String getC_idx() {
-		return c_idx;
+	private List<CommVO> c_list;
+	
+	
+	
+	public List<CommVO> getC_list() {
+		return c_list;
 	}
-	public void setC_idx(String c_idx) {
-		this.c_idx = c_idx;
+	public void setC_list(List<CommVO> c_list) {
+		this.c_list = c_list;
 	}
-	public String getContext() {
-		return context;
+	public String getOTT_IDX() {
+		return OTT_IDX;
 	}
-	public void setContext(String context) {
-		this.context = context;
+	public void setOTT_IDX(String oTT_IDX) {
+		OTT_IDX = oTT_IDX;
 	}
-	public String getStatus() {
-		return status;
+	public String getTITLE() {
+		return TITLE;
 	}
-	public void setStatus(String status) {
-		this.status = status;
+	public void setTITLE(String tITLE) {
+		TITLE = tITLE;
+	}
+	public String getPOSTER() {
+		return POSTER;
+	}
+	public void setPOSTER(String pOSTER) {
+		POSTER = pOSTER;
+	}
+	public String getRANK() {
+		return RANK;
+	}
+	public void setRANK(String rANK) {
+		RANK = rANK;
+	}
+	public String getPLATFORM() {
+		return PLATFORM;
+	}
+	public void setPLATFORM(String pLATFORM) {
+		PLATFORM = pLATFORM;
+	}
+	public String getSUMMARY() {
+		return SUMMARY;
+	}
+	public void setSUMMARY(String sUMMARY) {
+		SUMMARY = sUMMARY;
 	}
 	
 	
