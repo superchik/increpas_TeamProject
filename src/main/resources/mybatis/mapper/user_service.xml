@@ -20,4 +20,15 @@
 			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat})
 </insert>
 
+<!-- login -->
+
+<select id="login" resultType="com.ott.user.vo.UserVO"
+		parameterType="Map">
+
+		SELECT u_id, u_pwd1 
+		FROM OTT_USER
+		WHERE u_id = #{u_id} AND u_pwd1 = #{u_pwd1}
+
+	</select>
+
 </mapper>

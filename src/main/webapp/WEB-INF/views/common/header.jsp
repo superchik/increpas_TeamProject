@@ -29,9 +29,8 @@
 				</a></span>
 			</c:if>
 			<c:if test="${!empty uvo }">
-				<span><a href="/logout">
-					로그아웃
-				</a></span>
+				<span><a href="/user_info">${uvo.u_id}</a></span>
+				<span><a href="/logout">로그아웃</a></span>
 			</c:if>
 		</ul>
 	</nav>

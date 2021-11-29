@@ -18,7 +18,7 @@ import com.ott.login.LoginInterface;
 import com.ott.user.vo.UserVO;
 
 @Controller
-public class LoginController {
+public class NaverLoginController {
 	
 	private String state;
 	private String code;
@@ -40,20 +40,7 @@ public class LoginController {
 	@Autowired
 	private HttpServletRequest request;
 	
-	@RequestMapping("/login")
-	public String index() {	
-		return "user/user_login";
-	}
 	
-	@RequestMapping("/idfind")
-	public String id_find() {	
-		return "user/user_id_find";
-	}
-	
-	@RequestMapping("/pwreissue")
-	public String pwreissue() {	
-		return "user/user_pw_reissue";
-	}
 	
 	@RequestMapping("/naver_login")
 	public String makeRequestStatement() {

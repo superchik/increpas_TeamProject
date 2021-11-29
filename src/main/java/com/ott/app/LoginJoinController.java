@@ -1,5 +1,7 @@
 package com.ott.app;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +16,31 @@ import com.ott.user.vo.UserVO;
 @Controller
 public class LoginJoinController {
 	
+	@Autowired
+	private LoginDAO Ldao;
+	@Autowired
+	private HttpSession session;
+	
+	
+	@RequestMapping("/login")
+	public String login_detail_view() {	
+		return "user/user_login";
+	}
+	
 	@RequestMapping("/join")
-	public String index() {	
+	public String join_detail_view() {	
 		return "user/user_join";
 	}
 	
-	@Autowired
-	private LoginDAO Ldao;
+	@RequestMapping("/idfind")
+	public String id_find() {	
+		return "user/user_id_find";
+	}
 	
+	@RequestMapping("/pwreissue")
+	public String pwreissue() {	
+		return "user/user_pw_reissue";
+	}
 	
 	@RequestMapping(value = "login_join", method = RequestMethod.POST)
 	public ModelAndView join(UserVO uvo) {
@@ -36,6 +55,24 @@ public class LoginJoinController {
 
 		Ldao.user_join(uvo);
 		
+		mv.setViewName("redirect:/");
+		return mv;
+	}
+	
+	@RequestMapping( value =  "/login", method = RequestMethod.POST)
+	public ModelAndView login(String u_id , String u_pwd1) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		String big = Security.generateSalt();
+		String fat = Security.getbig(u_pwd1, big);
+
+		UserVO vo = Ldao.login(u_id, fat);
+		
+		if(vo != null) {
+			session.setAttribute("uvo", vo);
+			mv.addObject("user",vo);
+		}
 		mv.setViewName("redirect:/");
 		return mv;
 	}
