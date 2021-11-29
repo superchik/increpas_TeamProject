@@ -25,7 +25,7 @@
 				<h4>로그인</h4>
 				<form action="#" method="post">				
 					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디">
-					<input class="user_common" type="text" id="u_pwd1" name="u_pwd1" placeholder="비밀번호">
+					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="비밀번호">
 					<button class="user_common login_btn">로그인</button>
 				</form>
 			</div>
