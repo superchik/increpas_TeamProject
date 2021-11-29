@@ -26,21 +26,14 @@ public class LoginJoinController {
 	@RequestMapping(value = "login_join", method = RequestMethod.POST)
 	public ModelAndView join(UserVO uvo) {
 		ModelAndView mv = new ModelAndView();
-		
-		// String id = uvo.getU_id();
-		// String name = uvo.getU_name();
-		// String email = uvo.getU_email();
-		
-		
+				
 		String pwd1 = uvo.getU_pwd1();
-		String big_fat = Security.generateSalt();
-		big_fat = Security.getbig(pwd1, big_fat);
+		String big = Security.generateSalt();
+		String fat = Security.getbig(pwd1, big);
 		
-		// System.out.println(big_fat);
-		// System.out.println("/"+id+"/"+name+"/"+email);
-		
-		uvo.setBig_fat(big_fat);
-		
+		uvo.setBig_fat(big);
+		uvo.setU_pwd1(fat);
+
 		Ldao.user_join(uvo);
 		
 		mv.setViewName("redirect:/");
