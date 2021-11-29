@@ -6,15 +6,15 @@
 
 
 
-<select id="get"
-	resultType="com.ott.review.vo.ReviewVO">
+	<select id="get" resultType="com.ott.review.vo.CommVO">
 		SELECT * FROM REVIEW_TEST1
 	</select>
 
-
-	<insert id="add" parameterType="com.ott.review.vo.ReviewVO">
-		INSERT INTO REVIEW_TEST1(c_idx, context, status)
-		VALUES(1,#{context},1)
+	
+	<insert id="add" parameterType="com.ott.review.vo.CommVO">
+		INSERT INTO REVIEW_TEST1(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT)
+		VALUES( SELECT NVL(MAX(C_IDX),0) + 1 FROM REVIEW_TEST1 ,1,
+				1,#{CONTENT},#{RATING},1,1)
 	</insert>
 
 
