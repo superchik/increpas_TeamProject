@@ -52,7 +52,7 @@
 				<div class="ott_subject">
 					<h4>${vo.title} </h4>
 					<div class="m_content">
-						<a href="#"><img src="${vo.poster }"></a> 
+						<a href="/goReview?title=${vo.title }"><img src="${vo.poster }"></a> 
 						<h2>Rank ${vo.rank}</h2>
 					</div>
 				</div>
@@ -81,7 +81,7 @@
 				<div class="ott_subject">
 					<h4>${vo.title} </h4>
 					<div class="m_content">
-						<a href="#"><img src="${vo.poster }"></a> 
+						<a href="/goReview?title=${vo.title }"><img src="${vo.poster }"></a> 
 						<h2>Rank ${vo.rank}</h2>
 					</div>
 				</div>
@@ -110,7 +110,7 @@
 				<div class="ott_subject">
 					<h4>${vo.title} </h4>
 					<div class="m_content">
-						<a href="#"><img src="${vo.poster }"></a> 
+						<a href="/goReview?title=${vo.title }"><img src="${vo.poster }"></a> 
 						<h2>Rank ${vo.rank}</h2>
 					</div>
 				</div>
