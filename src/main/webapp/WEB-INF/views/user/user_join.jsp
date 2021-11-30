@@ -26,11 +26,11 @@
 					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디" required="required" oninput="checkId()">
 					<span class="id_ok">사용 가능한 아이디 입니다.</span>
 					<span class="id_not">사용 불가능한 아이디 입니다.</span>
-					<input class="user_common" type="text" id="u_name" name="u_name" placeholder="이름">
+					<input class="user_common" type="text" id="u_name" name="u_name" placeholder="이름" required="required">
 					<input class="user_common" type="email" id="u_email" name="u_email" placeholder="이메일" required="required" oninput="checkEmail()">
 					<span class="email_ok">사용 가능한 이메일 입니다.</span>
 					<span class="email_not">사용 불가능한 이메일 입니다.</span>
-					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="비밀번호">
+					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="비밀번호" required="required">
 					<input class="user_common" type="password" id="u_pwd2" name="u_pwd2" placeholder="비밀번호확인">					
 					<button id="join_btn" class="user_common join_btn" type="submit">회원가입</button>
 				</form>

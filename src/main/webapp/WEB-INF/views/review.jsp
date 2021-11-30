@@ -235,7 +235,7 @@
 <div class="empty"></div>	
 <div id="left">
 	<div id="poster">
-			<img src=${vo.POSTER }/>
+			<img src=${vo.POSTER }>
 	</div>
 	<div id="starring">
 			<div>
