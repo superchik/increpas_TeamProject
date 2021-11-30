@@ -43,5 +43,64 @@
 	<script>
 		alert('${msg}');
 	</script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>			
+	<script>
+		$(function(){
+			//아이디가 btn인 요소가 클릭할 때
+			$("#join_btn").bind("click",function(){
+				//사용자가 입력한 아이디 및 비밀번호를 가져온다.
+				var id = $("#u_id").val();
+				var name = $("#u_name").val();
+				var email = $("#u_email").val();
+				var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+				var pw = $("#u_pwd1").val();
+				var pw2 = $("#u_pwd2").val();
+				
+				if(id.trim().length <= 0){
+					alert("아이디를 입력하세요");
+					$("#u_id").val(""); //청소
+					$("#u_id").focus();
+					return;
+				}
+				if(name.trim().length <= 0){
+					alert("이름을 입력하세요");
+					$("#u_name").val(""); //청소
+					$("#u_name").focus();
+					return;
+				}
+				if(email.trim().length <= 0){
+					alert("이메일을 입력하세요");
+					$("#u_email").val(""); //청소
+					$("#u_email").focus();
+					return;
+				}
+				if(!reg_email.test(email)){
+					alert("이메일을 다시 입력하세요");
+					$("#u_email").val(""); //청소
+					$("#u_email").focus();
+					return;
+				}
+				if(pw.trim().length <= 0){
+					alert("비밀번호를 입력하세요");
+					$("#u_pwd1").val(""); //청소
+					$("#u_pwd1").focus();
+					return;
+				}
+				if(pw2.trim().length <= 0){
+					alert("확인 비밀번호를 입력하세요");
+					$("#u_pwd2").val(""); //청소
+					$("#u_pwd2").focus();
+					return;
+					}
+				if(pw.trim() != pw2.trim()){
+					alert("비밀번호와 확인 비밀번호가 다릅니다");
+					$("#u_pwd2").val(""); //청소
+					$("#u_pwd2").focus();
+					return;
+				}
+				
+			});
+		});
+	</script>
 </body>
 </html>
