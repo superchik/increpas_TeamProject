@@ -76,7 +76,7 @@ public class NaverLoginController {
 		HashMap<String, String> result = loginService.requestUserInfo(token_type, access_token);
 		String id = result.get("id");
 		String email = result.get("email");
-		String name = result.get("name");
+		String name = result.get("nickname");
 		
 		HttpSession session = request.getSession();
 		
