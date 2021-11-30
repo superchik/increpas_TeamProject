@@ -15,5 +15,10 @@
 	from ott_service
 </select>
 
+<select id="searchName" resultType="com.ott.platform.vo.PlatFormVO" parameterType="String">
+	select *
+	from ott_service
+	where title = #{title}
+</select>
 
 </mapper>
