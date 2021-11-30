@@ -23,12 +23,16 @@
 			<div class="common_area">
 				<h4>Sign Up to Increpas...</h4>
 				<form action="/login_join" method="post">				
-					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디">
+					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디" required="required" oninput="checkId()">
+					<span class="id_ok">사용 가능한 아이디 입니다.</span>
+					<span class="id_not">사용 불가능한 아이디 입니다.</span>
 					<input class="user_common" type="text" id="u_name" name="u_name" placeholder="이름">
-					<input class="user_common" type="email" id="u_email" name="u_email" placeholder="이메일">
+					<input class="user_common" type="email" id="u_email" name="u_email" placeholder="이메일" required="required" oninput="checkEmail()">
+					<span class="email_ok">사용 가능한 이메일 입니다.</span>
+					<span class="email_not">사용 불가능한 이메일 입니다.</span>
 					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="비밀번호">
 					<input class="user_common" type="password" id="u_pwd2" name="u_pwd2" placeholder="비밀번호확인">					
-					<button  class="user_common join_btn" type="submit">회원가입</button>
+					<button id="join_btn" class="user_common join_btn" type="submit">회원가입</button>
 				</form>
 			</div>
 			
@@ -40,9 +44,6 @@
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 	
-	<script>
-		alert('${msg}');
-	</script>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>			
 	<script>
 		$(function(){
@@ -101,6 +102,49 @@
 				
 			});
 		});
+		
+		function checkId(){
+			var u_id = $("#u_id").val();
+			$.ajax({
+				url:"/idCheck",
+				type:"post",
+				data:{id:u_id}
+			}).done(function(cnt){
+				if(cnt != 1){
+					$(".id_ok").css("display","block");
+					$(".id_not").css("display","none");
+					$("#join_btn").attr("disabled", false);
+				}else{
+					$(".id_ok").css("display","none");
+					$(".id_not").css("display","block");
+					$("#join_btn").attr("disabled", true);
+				}
+			}).fail(function(err){
+				alert("에러났음");
+			});
+		};
+		
+		function checkEmail(){
+			var u_email = $("#u_email").val();
+			$.ajax({
+				url:"/emailCheck",
+				type:"post",
+				data:{email:u_email}
+			}).done(function(cnt){
+				if(cnt != 1){
+					$(".email_ok").css("display","block");
+					$(".email_not").css("display","none");
+					$("#join_btn").attr("disabled", false);
+				}else{
+					$(".email_ok").css("display","none");
+					$(".email_not").css("display","block");
+					$("#join_btn").attr("disabled", true);
+				}
+			}).fail(function(err){
+				alert("에러났음");
+			});
+		};
+		
 	</script>
 </body>
 </html>
