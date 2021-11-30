@@ -48,22 +48,7 @@ public class LoginJoinController {
 	public ModelAndView join(UserVO uvo) {
 		ModelAndView mv = new ModelAndView();
 		
-		UserVO vo = Ldao.user_info(uvo.getU_id());
-		if(vo != null) {
-			mv.addObject("msg", "이미 가입된 아이디 입니다.");
-			mv.setViewName("user/user_join");
-		}else {
-			String pwd1 = uvo.getU_pwd1();
-			String big = Security.generateSalt();
-			String fat = Security.getbig(pwd1, big);
-			
-			uvo.setBig_fat(big);
-			uvo.setU_pwd1(fat);
-			
-			Ldao.user_join(uvo);
-			
-			mv.setViewName("redirect:/");
-		}
+		
 
 		
 		String pwd1 = uvo.getU_pwd1();
