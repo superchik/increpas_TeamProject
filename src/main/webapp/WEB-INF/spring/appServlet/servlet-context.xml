@@ -12,6 +12,8 @@
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 	
+	<beans:bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+	
 	<!-- 이메일 관련 Bean 등록 -->
 	<beans:bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<beans:property name="host" value="smtp.gmail.com"/>
@@ -37,6 +39,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
 	
 	<context:component-scan base-package="com.ott.app" />
 	<context:component-scan base-package="com.ott.login" />

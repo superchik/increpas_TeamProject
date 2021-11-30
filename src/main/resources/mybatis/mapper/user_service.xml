@@ -15,6 +15,12 @@
 	where u_id = #{u_id}
 </select>
 
+<select id="email_info" resultType="com.ott.user.vo.UserVO" parameterType="String">
+	select *
+	from ott_user
+	where u_email = #{u_email}
+</select>
+
 <insert id="user_join" parameterType="com.ott.user.vo.UserVO">
 	insert into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt)
 			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat})

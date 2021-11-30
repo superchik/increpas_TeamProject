@@ -24,8 +24,13 @@ public class LoginDAO {
 
 		return ss.selectOne("user_service.user_info", id);
 	}
+	
+	public UserVO email_info(String email) {
+		
+		return ss.selectOne("user_service.email_info", email);
+	}
 
-	// 일반 회원가입
+	// �씪諛� �쉶�썝媛��엯
 	public int user_join(UserVO uvo) {
 
 		return ss.insert("user_service.user_join", uvo);
