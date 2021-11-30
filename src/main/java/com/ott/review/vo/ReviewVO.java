@@ -10,6 +10,9 @@ public class ReviewVO {
 	private String RANK;
 	private String PLATFORM;
 	private String SUMMARY;
+	private String ROTTEN_TOMATO;
+	private String DIRECTOR;
+	private String CAST;
 	
 	private List<CommVO> c_list;
 	
@@ -20,6 +23,27 @@ public class ReviewVO {
 	}
 	public void setC_list(List<CommVO> c_list) {
 		this.c_list = c_list;
+	}
+	
+	
+	
+	public String getROTTEN_TOMATO() {
+		return ROTTEN_TOMATO;
+	}
+	public void setROTTEN_TOMATO(String rOTTEN_TOMATO) {
+		ROTTEN_TOMATO = rOTTEN_TOMATO;
+	}
+	public String getDIRECTOR() {
+		return DIRECTOR;
+	}
+	public void setDIRECTOR(String dIRECTOR) {
+		DIRECTOR = dIRECTOR;
+	}
+	public String getCAST() {
+		return CAST;
+	}
+	public void setCAST(String cAST) {
+		CAST = cAST;
 	}
 	public String getOTT_IDX() {
 		return OTT_IDX;

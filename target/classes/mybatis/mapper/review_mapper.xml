@@ -4,18 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review">
 
+	<select id="viewContent" parameterType="int" resultType="com.ott.review.vo.ReviewVO">
+		SELECT * FROM OTT_SERVICE
+		WHERE OTT_IDX = #{OTT_IDX}
+	</select>
 
-
+<!-- 
 	<select id="get" resultType="com.ott.review.vo.CommVO">
-		SELECT * FROM REVIEW_TEST1
+		SELECT * FROM OTT_REVIEW
 	</select>
 
 	
 	<insert id="add" parameterType="com.ott.review.vo.CommVO">
-		INSERT INTO REVIEW_TEST1(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT)
+		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT)
 		VALUES( SELECT NVL(MAX(C_IDX),0) + 1 FROM REVIEW_TEST1 ,1,
 				1,#{CONTENT},#{RATING},1,1)
 	</insert>
-
+ -->
 
 </mapper>

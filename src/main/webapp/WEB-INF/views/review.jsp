@@ -108,16 +108,16 @@
 	.starring1{font-size: 14px; font-weight: bold;}
 	.starring2{font-size: 14px;}
 	.about{font-size: 16px;}
-	.story{font-size: 18px;}
+	.story{font-size: 16px;}
 	.story_div{ text-align:left;}
-	.flat{
+	.review_platfrom{
 		display:block;
 		width:80px;
 		height:80px;
 		border:1px solid #222;		
 		float: left;
 	}
-	.flat > img{
+	.review_platfrom > img{
 		width:80px;
 		height: 80px;
 	}
@@ -228,39 +228,34 @@
 <!-- Header -->
 <jsp:include page="common/header.jsp"></jsp:include>
 
-
+<c:if test="${vo ne null }">
 <div class="common_container">
 	<!-- 여기다 작업하세요 -->
 <div id="up">
 <div class="empty"></div>	
 <div id="left">
 	<div id="poster">
-			<img src="resources/images/squid_game.png">
+			<img src=${vo.POSTER }/>
 	</div>
 	<div id="starring">
 			<div>
-				<a class="starring1">감독</a><br/>
-				<a class="starring2">감독이름</a>
-				<br/><br/>
+				<a class="starring1">staff</a><br/>
+				<a class="starring2">${vo.DIRECTOR }</a>
+				<br/>
 			</div>
 			<div>
-				<a class="starring1">인물</a><br/>
-				<a class="starring2">인물들이름</a>
+				<a class="starring1">cast</a><br/>
+				<a class="starring2">${vo.CAST }</a>
 			</div>
 	</div>
 	</div>
 <div id="right">
 	<div id="content">
-		<a class="title">영화제목</a><br/>
+		<a class="title">${vo.TITLE }</a><br/>
 		<a class="about">영화or시리즈/국가/개봉일/장르</a><br/>
 		<br/><br/>
 		<div class="story_div">
-		<a class="story">영화내용영화내용영화내용영화내용
-			영화내용영화내용영화내용영화내용영화내용영화내용
-			영화내용영화내용영화내용영화내용영화내용영화내용
-			영화내용영화내용영화내용영화내용
-			영화내용영화내용영화내용영화내용영화내용영화내용
-			영화내용영화내용영화내용영화내용영화내용영화내용</a>
+		<a class="story">${vo.SUMMARY }</a>
 		</div>
 	</div>
 	<div id="rate_div">
@@ -269,14 +264,28 @@
 			<a class="point">?.?</a>
 			</div>
 			<div id="rotten">
-			<a>로튼토마토</a><br/>
-			<a class="point">?.?</a>			
+			<a>Rotten Tomato</a>
+			<br/>
+			<c:if test = "${vo.ROTTEN_TOMATO ne null }">
+			<a class="point">${vo.ROTTEN_TOMATO }</a>			
+			</c:if>
+			<c:if test = "${vo.ROTTEN_TOMATO eq null }">
+			<a class="point">-</a>			
+			</c:if>
+			
 			</div>
 	</div>
 	<div id="go">
-		<a><div class="flat"><img src="resources/images/netflix.png"></div></a>
-		<a><div class="flat"><img src="resources/images/watcha.png"></div></a>
-		<a><div class="flat"><img src="resources/images/wavve.png"></div></a>
+		<c:if test="${vo.PLATFORM == 'WAVVE'}"> 
+		<a><div class="review_platfrom"><img src="resources/images/wavve.png"></div></a>
+		</c:if>
+		<c:if test="${vo.PLATFORM == 'NETFLIX'}"> 
+		<a><div class="review_platfrom"><img src="resources/images/netflix.png"></div></a>		
+		</c:if>
+		<c:if test="${vo.PLATFORM == 'WATCHA'}"> 		
+		<a><div class="review_platfrom"><img src="resources/images/watcha.png"></div></a>		
+		</c:if>
+		
 	</div>
 </div>
 </div>
@@ -353,6 +362,6 @@
 <script>
 
 </script>
-
+</c:if>
 </body>
 </html>
