@@ -48,7 +48,7 @@ public class LoginJoinController {
 		
 		UserVO vo = Ldao.user_info(uvo.getU_id());
 		if(vo != null) {
-			mv.addObject("msg", "ÀÌ¹Ì °¡ÀÔµÈ ¾ÆÀÌµğ ÀÔ´Ï´Ù.");
+			mv.addObject("msg", "ì´ë¯¸ ê°€ì…ëœ ì•„ì´ë”” ì…ë‹ˆë‹¤.");
 			mv.setViewName("user/user_join");
 		}else {
 			String pwd1 = uvo.getU_pwd1();
