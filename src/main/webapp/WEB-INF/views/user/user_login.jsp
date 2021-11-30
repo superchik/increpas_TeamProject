@@ -58,45 +58,29 @@
 			});
 		});
 	</script>
+	
+	<script>
+		$(function(){
+			//아이디가 btn인 요소가 클릭할 때
+			$("#login_btn").bind("click",function(){
+				//사용자가 입력한 아이디 및 비밀번호를 가져온다.
+				var id = $("#u_id").val();
+				var pw = $("#u_pw1").val();
+					
+				if(id.trim().length <= 0){
+					alert("아이디를 입력하세요");
+					$("#u_id").val(""); //청소
+					$("#u_id").focus();
+					return;
+				}
+				if(pw.trim().length <= 0){
+					alert("비밀번호를 입력하세요");
+					$("#u_pw1").val(""); //청소
+					$("#u_pw1").focus();
+					return;
+				}
+			});
+		});
+	</script>
 </body>
 </html>
-
-
-<!-- <script>
-			$(function(){
-				//아이디가 btn인 요소가 클릭할 때
-				$("#login_btn").bind("click",function(){
-					//사용자가 입력한 아이디 및 비밀번호를 가져온다.
-					var id = $("#id").val();
-					var pw = $("#pw").val();
-					
-					if(id.trim().length <= 0){
-						alert("아이디를 입력하세요");
-						$("#id").val(""); //청소
-						$("#id").focus();
-						return;
-					}
-					if(pw.trim().length <= 0){
-						alert("비밀번호를 입력하세요");
-						$("#pw").val(""); //청소
-						$("#pw").focus();
-						return;
-					}
-					//현재 문서에서 가장 첫번째 폼을 서버경로를 변경한다.
-					//document.forms[0].action = "Ex3_Login";
-					//document.forms[0].submit();//서버로 보낸다.
-					var param = "id="+encodeURIComponent(id)+
-							"&pw="+encodeURIComponent(pw);
-					$.ajax({
-						url: "Login", //서버 요청 URL
-						data: param, //전달하고자 하는 파라미터들
-						type: "post" //전송 방식
-					}).done(function(data){
-						if(data == 0)
-							alert("아이디 또는 비밀번호가 다릅니다.");
-						else
-							location.href="Main";
-					});
-				});
-			});
-</script> -->
