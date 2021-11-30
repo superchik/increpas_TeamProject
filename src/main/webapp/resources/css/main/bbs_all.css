@@ -183,7 +183,7 @@ input:focus {
 }
 
 .boxs:hover {
-	transform: scale(1.2);
+	transform: scale(1.05);
 	transition-property:transform;
 	transition-duration: 0.3s;
 	
