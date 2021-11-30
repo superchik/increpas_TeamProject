@@ -48,7 +48,6 @@ public class LoginJoinController {
 	public ModelAndView join(UserVO uvo) {
 		ModelAndView mv = new ModelAndView();
 		
-<<<<<<< HEAD
 		UserVO vo = Ldao.user_info(uvo.getU_id());
 		if(vo != null) {
 			mv.addObject("msg", "이미 가입된 아이디 입니다.");
@@ -65,7 +64,7 @@ public class LoginJoinController {
 			
 			mv.setViewName("redirect:/");
 		}
-=======
+
 		
 		String pwd1 = uvo.getU_pwd1();
 		String big = Security.generateSalt();
@@ -77,7 +76,7 @@ public class LoginJoinController {
 		Ldao.user_join(uvo);
 		
 		mv.setViewName("redirect:/");
->>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
+
 				
 		return mv;
 	}
