@@ -15,11 +15,19 @@
 	</select>
 
 	
-	<insert id="add" parameterType="com.ott.review.vo.CommVO">
-		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT)
-		VALUES( SELECT NVL(MAX(C_IDX),0) + 1 FROM REVIEW_TEST1 ,1,
-				1,#{CONTENT},#{RATING},1,1)
-	</insert>
+
  -->
+
+	<insert id="add_review" parameterType="com.ott.review.vo.CommVO">
+		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT)
+		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL,#{OTT_IDX},#{U_IDX},#{CONTENT},1,1,1)
+	</insert>
+	
+	
+	<select id="get_u_idx" resultType="com.ott.user.vo.UserVO" parameterType="com.ott.user.vo.UserVO">
+		SELECT U_IDX 
+		FROM OTT_USER
+		WHERE U_ID = #{u_id}
+	</select>
 
 </mapper>

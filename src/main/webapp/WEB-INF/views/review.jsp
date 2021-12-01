@@ -22,6 +22,7 @@
 		box-shadow: 1px 1.5px 8px 3px grey;
 		background: #0d121c;
 	    float: left;
+	    
 
 	}
 	
@@ -103,7 +104,7 @@
 	
 	
 	
-	.empty{height: 10px; }
+	.review_empty{height: 10px; }
 	.title{font-size: 30px; font-weight: bold; }
 	.starring1{font-size: 14px; font-weight: bold;}
 	.starring2{font-size: 14px;}
@@ -232,7 +233,7 @@
 <div class="common_container">
 	<!-- 여기다 작업하세요 -->
 <div id="up">
-<div class="empty"></div>	
+<div class="review_empty"></div>	
 <div id="left">
 	<div id="poster">
 			<img src=${vo.POSTER }>
@@ -252,7 +253,6 @@
 <div id="right">
 	<div id="content">
 		<a class="title">${vo.TITLE }</a><br/>
-		<a class="about">영화or시리즈/국가/개봉일/장르</a><br/>
 		<br/><br/>
 		<div class="story_div">
 		<a class="story">${vo.SUMMARY }</a>
@@ -289,39 +289,38 @@
 	</div>
 </div>
 </div>
+<c:if test="${uvo ne null }">
 <form action="review" method="post">
-<div id="write_div">
-	<a class="write_nickname">nickname</a>
-	<textarea name="context" id="write_area" 
-		cols="100" rows="5"></textarea>
-		
-	<div class="write_star">
-	<div class="star-rating space-x-4 mx-auto">
-	<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
-	<label for="5-stars" class="star pr-4">★</label>
-	<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
-	<label for="4-stars" class="star">★</label>
-	<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
-	<label for="3-stars" class="star">★</label>
-	<input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
-	<label for="2-stars" class="star">★</label>
-	<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
-	<label for="1-star" class="star">★</label>
-	</div>
-	</div>
-		
-		<br/>
-		<br/>
-		<p class="write_btn">
-			<!--
-			<a href="" class="re_btn">
-				리뷰등록
-			</a>
-			-->
-			<button type="submit">리뷰등록</button>
-		</p>
+	<div id="write_div">
+		<a class="write_nickname">${uvo.u_id }</a>
+		<textarea name="CONTENT" id="write_area" 
+			cols="100" rows="5"></textarea>
+		<div class="write_star">
+		<div class="star-rating space-x-4 mx-auto">
+		<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
+		<label for="5-stars" class="star pr-4">★</label>
+		<input type="radio" id="4-stars" name="rating" value="4" v-model="ratings"/>
+		<label for="4-stars" class="star">★</label>
+		<input type="radio" id="3-stars" name="rating" value="3" v-model="ratings"/>
+		<label for="3-stars" class="star">★</label>
+		<input type="radio" id="2-stars" name="rating" value="2" v-model="ratings"/>
+		<label for="2-stars" class="star">★</label>
+		<input type="radio" id="1-star" name="rating" value="1" v-model="ratings" />
+		<label for="1-star" class="star">★</label>
 		</div>
+		</div>
+		<br/>
+		<br/>
+		<input type="hidden" name="OTT_IDX" value="${vo.OTT_IDX }">
+		<input type="hidden" name="u_id" value="${uvo.u_id }"> 
+		<input type="hidden" name="now_page" value="${vo.OTT_IDX }">
+			<p class="write_btn">
+				<button type="submit">리뷰등록</button>
+			</p>
+	</div>
 </form>
+</c:if>
+
 
 
 		
