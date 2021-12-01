@@ -130,6 +130,7 @@
 			}
 		};
 		
+		
 		function checkEmail(){
 			var u_email = $("#u_email").val();
 			if(u_email.trim().length > 1){
@@ -155,6 +156,7 @@
 				$(".email_not").css("display","none");
 			}
 		};
+		
 		
 	</script>
 </body>

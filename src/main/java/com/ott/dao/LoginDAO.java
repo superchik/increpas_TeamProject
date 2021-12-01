@@ -49,5 +49,20 @@ public class LoginDAO {
 		return vo;
 
 	}
+	
+	// Mail DAO
+	public int auth_Key(Map<String, String> map) {
 
+		int auth = ss.update("user_service.auth_Key", map);
+
+		return auth;
+	}
+	
+	public int mail_confirm(Map<String, String> map) {
+
+		int confirm_check = ss.update("user_service.mail_confirm", map);
+
+		return confirm_check;
+	}
+	// end of Mail DAO
 }
