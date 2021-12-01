@@ -181,3 +181,10 @@ input:focus {
 .paging a {
 	background-color: #1f2937;
 }
+
+.boxs:hover {
+	transform: scale(1.05);
+	transition-property:transform;
+	transition-duration: 0.3s;
+	
+}

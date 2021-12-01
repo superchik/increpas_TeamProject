@@ -36,4 +36,13 @@ public class PlatFormDAO {
 		
 		return cnt;
 	}
+	
+	public int getIdx(String title) {
+		PlatFormVO pvo = ss.selectOne("ott_service.searchName", title);
+		int cnt = 0;
+		if(pvo != null) {
+			cnt = Integer.parseInt(pvo.getOtt_idx());
+		}
+		return cnt;
+	}
 }

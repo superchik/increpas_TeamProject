@@ -13,12 +13,13 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ott.dao.PlatFormDAO;
 import com.ott.movie.vo.MovieSearchVO;
 
 @Controller
@@ -27,12 +28,18 @@ public class MovieSearchController {
 	private final static String CLIENTID = "pprdCX9qYCGWYhUNLocM";
 	private final static String CLIENTSECRET = "CskFbXpBlr";
 	String text = null;
+	
+	@Autowired
+	PlatFormDAO p_dao;
 
 	@RequestMapping("/search")
 	public ModelAndView naver_searchAPI(String s_movie) throws Exception {
-
-		
 		ModelAndView mv = new ModelAndView();
+		int idx = p_dao.getIdx(s_movie);
+		if(idx > 0) {
+			mv.setViewName("redirect:/review?ott_idx="+idx);
+		}else {
+		
 
 		HttpURLConnection con = null;
 		String text = URLEncoder.encode(s_movie, "UTF-8");
@@ -47,7 +54,7 @@ public class MovieSearchController {
 		URL url = new URL(sb.toString());
 		con = (HttpURLConnection) url.openConnection();
 
-		// REST-API : Header 요청
+		// REST-API : Header �슂泥�
 		con.setRequestMethod("GET");
 		con.setRequestProperty("X-Naver-Client-Id", CLIENTID);
 		con.setRequestProperty("X-Naver-Client-Secret", CLIENTSECRET);
@@ -81,7 +88,7 @@ public class MovieSearchController {
 				String title = (String) json_obj2.get("title");
 				String actor = (String) json_obj2.get("actor");
 				String link = (String) json_obj2.get("link");
-//				String image = (String) json_obj2.get("image"); 이미지
+//				String image = (String) json_obj2.get("image"); �씠誘몄�
 				String image = (String) json_obj2.get("image"); 
 				String director = (String) json_obj2.get("director");
 				String userRating = (String) json_obj2.get("userRating");
@@ -93,12 +100,12 @@ public class MovieSearchController {
 
 			}
 		} else {
-			System.out.print("응답실패");
+			System.out.print("�쓳�떟�떎�뙣");
 		}
 
 		mv.addObject("list", list);
 		mv.setViewName("movie_search");
-
+		}
 		return mv;
 	}
 

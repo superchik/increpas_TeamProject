@@ -113,5 +113,15 @@ public class MainController {
 		return img_url;
 
 	}
+	
+	@RequestMapping("/goReview")
+	public ModelAndView goReview(String title) {
+		ModelAndView mv = new ModelAndView();
+		
+		int idx = n_dao.getIdx(title);
+		mv.setViewName("redirect:/review?ott_idx="+idx);
+		
+		return mv;
+	}
 
 }

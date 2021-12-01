@@ -105,44 +105,55 @@
 		
 		function checkId(){
 			var u_id = $("#u_id").val();
-			$.ajax({
-				url:"/idCheck",
-				type:"post",
-				data:{id:u_id}
-			}).done(function(cnt){
-				if(cnt != 1){
-					$(".id_ok").css("display","block");
-					$(".id_not").css("display","none");
-					$("#join_btn").attr("disabled", false);
-				}else{
-					$(".id_ok").css("display","none");
-					$(".id_not").css("display","block");
-					$("#join_btn").attr("disabled", true);
-				}
-			}).fail(function(err){
-				alert("에러났음");
-			});
+			if(u_id.trim().length > 1){
+				$.ajax({
+					url:"/idCheck",
+					type:"post",
+					data:{id:u_id}
+				}).done(function(cnt){
+					console.log(cnt)
+					if(cnt != 1){
+						$(".id_ok").css("display","block");
+						$(".id_not").css("display","none");
+						$("#join_btn").attr("disabled", false);
+					}else{
+						$(".id_ok").css("display","none");
+						$(".id_not").css("display","block");
+						$("#join_btn").attr("disabled", true);
+					}
+				}).fail(function(err){
+					alert("에러났음");
+				});
+			}else if(u_id.trim().length < 1){
+				$(".id_ok").css("display","none");
+				$(".id_not").css("display","none");
+			}
 		};
 		
 		function checkEmail(){
 			var u_email = $("#u_email").val();
-			$.ajax({
-				url:"/emailCheck",
-				type:"post",
-				data:{email:u_email}
-			}).done(function(cnt){
-				if(cnt != 1){
-					$(".email_ok").css("display","block");
-					$(".email_not").css("display","none");
-					$("#join_btn").attr("disabled", false);
-				}else{
-					$(".email_ok").css("display","none");
-					$(".email_not").css("display","block");
-					$("#join_btn").attr("disabled", true);
-				}
-			}).fail(function(err){
-				alert("에러났음");
-			});
+			if(u_email.trim().length > 1){
+				$.ajax({
+					url:"/emailCheck",
+					type:"post",
+					data:{email:u_email}
+				}).done(function(cnt){
+					if(cnt != 1){
+						$(".email_ok").css("display","block");
+						$(".email_not").css("display","none");
+						$("#join_btn").attr("disabled", false);
+					}else{
+						$(".email_ok").css("display","none");
+						$(".email_not").css("display","block");
+						$("#join_btn").attr("disabled", true);
+					}
+				}).fail(function(err){
+					alert("에러났음");
+				});
+			}else if(u_email.trim().length < 1){
+				$(".email_ok").css("display","none");
+				$(".email_not").css("display","none");
+			}
 		};
 		
 	</script>
