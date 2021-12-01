@@ -33,6 +33,35 @@ public class UserDAO {
 	public int getTotalCount() {
 		return ss.selectOne("user.totalCount");
 	}
-	
 
+
+	public int editBbs(String u_idx,String fname, String oname) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("u_idx", u_idx);
+		
+		
+		if(fname != null) {
+			map.put("fname", fname);
+			map.put("oname", oname);
+		}
+		int cnt = ss.update("user_service.user_img", map);
+		return cnt;
+	}
+	
+	public int getList(String u_idx) {
+		return ss.selectOne("user_service.user_text",u_idx);
+	}
+	
+	public UserVO getUserDex(String u_idx){
+
+		UserVO vo = ss.selectOne("user_service.user_info",u_idx);
+		
+		return vo;
+	}
+	
+	public String imgpath(String u_idx) {
+		UserVO vo = ss.selectOne("user_service.user_info",u_idx);
+		return vo.getFname();
+	}
+	
 }

@@ -15,8 +15,22 @@ public class UserVO {
 	private String auth_status; // ?
 	private String mail_check; // 이메일인증 사용자인지 확인
 	private String big_fat; // 암호화 salt 값 저장 컬럼
+	private String fname; //이미지 중복변경 파일네임
+	private String oname; //이미지 원본 파일네임	
 	
 	
+	public String getFname() {
+		return fname;
+	}
+	public void setFname(String fname) {
+		this.fname = fname;
+	}
+	public String getOname() {
+		return oname;
+	}
+	public void setOname(String oname) {
+		this.oname = oname;
+	}
 	public String getU_idx() {
 		return u_idx;
 	}
