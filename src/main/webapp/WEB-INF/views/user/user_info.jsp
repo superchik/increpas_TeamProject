@@ -27,20 +27,21 @@
 		<h2>User</h2>
 		<div class="com">
 			<div class="TBox img">
+				<img alt="" src="${voimg }">
 				<p>profile_img</p>
 			</div>
 			<div class="MBox profile">
 				<div class="Boxp p1">
-					<p>Level:</p>
+					<p>Level:${vo.u_level }</p>
 				</div>
 				<div class="Boxp p2">
-					<p>ID:</p>
+					<p>ID:${vo.u_id }</p>
 				</div>
 				<div class="Boxp p3">
-					<p>가입한 이메일:</p>
+					<p>가입한 이메일:${vo.u_email }</p>
 				</div>
 				<div class="Boxp p4">
-					<p>내가 쓴 글수</p>
+					<p>내가 쓴 리뷰 수:${voList }</p>
 				</div>
 				<div class="Boxp p5">
 					<p>Adout_me</p>
@@ -50,19 +51,20 @@
 		</div>
 	</div>
 	<div id="dialog" title="다이얼로그 테스트" style=" border: 1px solid red;">
-		<form action="${pageContext.request.contextPath}/updatetNoticePro.do" method="post" enctype="multipart/form-data" name="noticeForm">
-		        <input type='file' id="filename" name="filename"/>
-		        
-		        <!--                           현재프로젝트.경로요청/saveFIle이라는 폴더안에/객체.변수명 ( 지금은 없는관계로.. 에러가 발생하는것 같음 --> 
-		        <!-- <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg"'/> -->
-    			<!--  Error: src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg" -->
-    			<img id="preImage"/>
-    			    	
+		<form action="" method="post" enctype="" name="">
+   			<div><img id="preImage"/></div>
+	        <input type='file' id="filename" name="filename"/>
+	        <input type="hidden" id="u_user" name="u_idx" value="test"/>
+	        
+	        <!--                           현재프로젝트.경로요청/saveFIle이라는 폴더안에/객체.변수명 ( 지금은 없는관계로.. 에러가 발생하는것 같음 --> 
+	        <!-- <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg"'/> -->
+   			<!--  Error: src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg" -->
+	    			    	
+			<div class="logBtn">
+				<button class="logBtn0" type="button">확인</button>
+				<button class="logBtn" type="button">최소</button>
+			</div>
     	</form>
-		<div class="logBtn">
-			<button class="logBtn0" type="button">확인</button>
-			<button class="logBtn" type="button">최소</button>
-		</div>
 	</div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
@@ -72,19 +74,37 @@
 <script type="text/javascript">
 	$(function() {
 		console.log('Ready');
+		
 		$('.BBox').on('click', function() {
 			console.log('BBox Ready');
 			$( "#dialog" ).dialog();
 		});
 
+		$('.logBtn').on('click', function () {
+			$( "#dialog" ).dialog('close');
+		});
+		
         $("#filename").on('change', function(){
             readURL(this);
      
     	});
+        $(".logBtn0").on("click", function () {
+        	
+        	var u_idx = $("#u_user").val();
+        	var file = $("#filename").val();
+        	
+        	if(file != null)
+        		alert(file);//sendImage(file, u_idx);
+        	else
+        		alert("파일을 선텍 하세요!");
+        	
+        	console.log(u_idx);
+        	console.log(typeof(file));
+        	
+		})
 			
 	});
 	function readURL(input) {
-		// 어제 작업한곳맞죠?
         if (input.files && input.files[0]) {
            var reader = new FileReader();
            reader.onload = function (e) {
@@ -94,7 +114,33 @@
         }
        
     }
-
+	function sendImage(file, u_idx){
+		var frm = new FormData();
+		//파일을 보내야할때는 폼에 담아서 보내야한다.
+		
+		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
+		frm.append("s_file", file);
+		frm.append("u_idx", u_idx);
+		
+		//비동기식 통신
+		$.ajax({
+			url: "saveImage.inc",
+			data: frm,
+			type: "post",
+			contentType: false, //파일의형식 - enpType으로 가기 위해서 파일의 형식을 없애버렸다.
+			processData: false,
+			cache: false,
+			dataType: "json", // 서버로부터 받을 데이터 형식
+		}).done(function(data){
+			$( "#dialog" ).dialog('close');
+			var path = data.path; //이미지가 저장된 경로
+			var fname = data.fname; // 파일명
+			$('.profileImg').attr('src', path);
+			
+		}).fail(function(err){
+			//서버에서 오류가 발생 시
+		});
+	}
 
 </script>
 </body>

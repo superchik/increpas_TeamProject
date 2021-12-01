@@ -39,7 +39,8 @@
 	<div class="common_container">
 		<div class="comment_area">
 			<h1>Netflix Top10</h1>
-			<a href="/user_info">유저info</a>
+			
+			<input type="button" style="width: 100px; height: 50px;" onclick="javascript:location.href='/user_info?u_idx=test'" value="user_info 이동"/>
 			
 		</div>
 		
