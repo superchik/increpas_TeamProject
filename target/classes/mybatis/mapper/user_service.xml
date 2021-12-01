@@ -63,5 +63,16 @@
 		WHERE u_id = #{u_id} AND u_pwd1 = #{u_pwd1}
 
 </select>
+<!-- user_정보 -->
+<select id="user_text" resultType="int" parameterType="String">
+	select count(CONTENT)
+	from OTT_REVIEW_BBS
+	where u_idx = #{u_idx}
+</select>
+
+<insert id="user_img" parameterType="Map">
+	insert into OTT_USER (u_idx, oname, fname)
+			values(OTT_USER_SEQ.nextval, #{oname}, #{fname})
+</insert>
 
 </mapper>
