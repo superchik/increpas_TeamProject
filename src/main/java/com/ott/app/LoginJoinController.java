@@ -82,7 +82,7 @@ public class LoginJoinController {
 	@RequestMapping( value =  "/login", method = RequestMethod.POST)
 	public ModelAndView login(String last_uri, String u_id , String u_pwd1) {
 		ModelAndView mv = new ModelAndView();
-
+		
 		String big = Security.generateSalt();
 		String fat = Security.getbig(u_pwd1, big);
 
