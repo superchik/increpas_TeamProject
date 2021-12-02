@@ -21,6 +21,7 @@
 			<c:forEach var="vo" items="${mvo }" varStatus="num">
 				<c:if test="${vo.openDt >= today && vo.openDt < nextmonth }">
 					<div class="movie_items">
+						
 						<div class="img_box">
 							<img src="${vo.img_url}" width="40px" height="60px">
 						</div>
@@ -37,10 +38,11 @@
 								<div class="sub_text_right">개봉</div>
 							</c:if>
 						</div>
-						<div> ${vo.movieNm}
+						<div> <a href="/search?s_movie=${vo.movieNm}&geb=${vo.repGenreNm}">${vo.movieNm}</a>
 						</div>
 					</div>
 				</c:if>
+				
 			</c:forEach>
 		</div>
 		
