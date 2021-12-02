@@ -24,8 +24,8 @@
 			<div class="common_area">
 				<h4>로그인</h4>
 				<form action="#" method="post">				
-					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디">
-					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="비밀번호">
+					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디" required="required">
+					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="비밀번호" required="required">
 					<button class="user_common login_btn">로그인</button>
 				</form>
 			</div>
@@ -38,7 +38,7 @@
 			<div class="social_intro">
 				<h3>소셜로그인</h3>
 				<div class="social_login_area">
-					<a class="user_common_link" href="https://kauth.kakao.com/oauth/authorize?client_id=0e09d7075cdcfb52a838e17f991e64b0&redirect_uri=kakaojs&response_type=code">
+					<a class="user_common_link" href="https://kauth.kakao.com/oauth/authorize?client_id=0e09d7075cdcfb52a838e17f991e64b0&redirect_uri=http://localhost:9090/kakao_login&response_type=code">
 				   	<img class="social_img" src="resources/images/kakao_login.png">
 					</a> 
 					<a class="user_common_link" href="/naver_login"><img class="naver_img" src="resources/images/naver_login.png"></a>
@@ -62,10 +62,10 @@
 	<script>
 		$(function(){
 			//아이디가 btn인 요소가 클릭할 때
-			$("#login_btn").bind("click",function(){
+			$(".login_btn").bind("click",function(){
 				//사용자가 입력한 아이디 및 비밀번호를 가져온다.
 				var id = $("#u_id").val();
-				var pw = $("#u_pw1").val();
+				var pw = $("#u_pwd1").val();
 					
 				if(id.trim().length <= 0){
 					alert("아이디를 입력하세요");
@@ -75,8 +75,8 @@
 				}
 				if(pw.trim().length <= 0){
 					alert("비밀번호를 입력하세요");
-					$("#u_pw1").val(""); //청소
-					$("#u_pw1").focus();
+					$("#u_pwd1").val(""); //청소
+					$("#u_pwd1").focus();
 					return;
 				}
 			});

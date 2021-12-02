@@ -65,4 +65,8 @@ public class LoginDAO {
 		return confirm_check;
 	}
 	// end of Mail DAO
+
+	public int kakao_user(UserVO uvo) {
+		return ss.insert("user_service.kakao_login", uvo);
+	}
 }
