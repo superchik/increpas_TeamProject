@@ -290,7 +290,7 @@
 </div>
 </div>
 <c:if test="${uvo ne null }">
-<form action="review" method="post">
+<form action="/review" method="post">
 	<div id="write_div">
 		<a class="write_nickname">${uvo.u_id }</a>
 		<textarea name="CONTENT" id="write_area" 

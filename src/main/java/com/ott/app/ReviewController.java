@@ -36,7 +36,7 @@ public class ReviewController {
 	
 	@RequestMapping(value="/review", method=RequestMethod.POST)
 	public ModelAndView review_add(UserVO uvo, CommVO cvo, String now_page) {
-		System.out.println(">>>>reviewInsert.do"+"/"+uvo.getU_id()+"/U_ID안들어오냐");
+		System.out.println(">>>>reviewInsert.do"+"/"+uvo.getU_id()+"/U_ID�븞�뱾�뼱�삤�깘");
 		ModelAndView mv = new ModelAndView();
 		
 		UserVO uvo2 = r_dao.get_u_idx(uvo);
