@@ -23,7 +23,8 @@
 		<div class="user_login_box">
 			<div class="common_area">
 				<h4>로그인</h4>
-				<form action="/login" method="post">				
+				<form action="/login" method="post">
+					<input type="hidden" id="last_uri" name="last_uri" value="<%=request.getHeader("referer")%>"/>		
 					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디" required="required">
 					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="비밀번호" required="required">
 					<button class="user_common login_btn">로그인</button>
@@ -53,6 +54,7 @@
 
 	<script>
 		$(function() {
+			console.log("${lastUri}");
 			$("#naver").bind("click", function() {
 				location.href = "/naver_login";
 			});

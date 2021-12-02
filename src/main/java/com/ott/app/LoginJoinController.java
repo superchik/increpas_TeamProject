@@ -32,7 +32,7 @@ public class LoginJoinController {
 	
 	
 	@RequestMapping("/login")
-	public String login_detail_view() {	
+	public String login_detail_view() {
 		return "user/user_login";
 	}
 	
@@ -80,10 +80,9 @@ public class LoginJoinController {
 	}
 	
 	@RequestMapping( value =  "/login", method = RequestMethod.POST)
-	public ModelAndView login(String u_id , String u_pwd1) {
-		
+	public ModelAndView login(String last_uri, String u_id , String u_pwd1) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		String big = Security.generateSalt();
 		String fat = Security.getbig(u_pwd1, big);
 
@@ -93,7 +92,8 @@ public class LoginJoinController {
 			session.setAttribute("uvo", vo);
 			mv.addObject("user",vo);
 		}
-		mv.setViewName("redirect:/");
+		
+		mv.setViewName(last_uri == null ? "redirect:/" : "redirect:" + last_uri);
 		return mv;
 	}
 	

@@ -18,9 +18,8 @@ public class Interceptor extends HandlerInterceptorAdapter {
 		if (obj == null) {
 			response.sendRedirect("/login");
 			return false;
-
 		}
+		
 		return true;
-
 	}
 }
