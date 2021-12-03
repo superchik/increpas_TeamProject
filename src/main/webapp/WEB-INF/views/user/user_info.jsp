@@ -54,7 +54,7 @@
 		<form action="" method="post" enctype="" name="">
    			<div><img id="preImage"/></div>
 	        <input type='file' id="filename" name="filename"/>
-	        <input type="hidden" id="u_user" name="u_idx" value="test"/>
+	        <input type="hidden" id="u_user" name="u_idx" value="${u_idx }"/>
 	        
 	        <!--                           현재프로젝트.경로요청/saveFIle이라는 폴더안에/객체.변수명 ( 지금은 없는관계로.. 에러가 발생하는것 같음 --> 
 	        <!-- <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg"'/> -->
