@@ -27,13 +27,19 @@ public class ReviewController {
 		
 		PlatFormVO vo = r_dao.viewContent(ott_idx);
 		ReviewVO[] rvo = r_dao.getReview(ott_idx);
+		
+		if(rvo != null){
+			int rating = r_dao.rating(ott_idx);
+			mv.addObject("rating",rating);
+		}
+		
 		int cnt = r_dao.review_count(ott_idx);
-		int rating = r_dao.rating(ott_idx);
+		
 		
 		mv.addObject("vo", vo);
 		mv.addObject("rvo",rvo);
 		mv.addObject("r_cnt",cnt);
-		mv.addObject("rating",rating);
+		
 		
 		
 		mv.setViewName("review");
