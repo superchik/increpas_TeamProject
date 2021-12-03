@@ -93,9 +93,10 @@
         	var u_idx = $("#u_user").val();
         	var file = $("#filename").val();
         	
-        	if( file.trim().length > 0 && u_idx.trim().lenght > 0)
-        		alert(file);//sendImage(file, u_idx);
-        	else
+        	if( file != null){
+        		alert(file);
+        		sendImage(file, u_idx);
+        	}else
         		alert("파일을 선텍 하세요!");
         	
         	console.log(u_idx);
@@ -115,8 +116,12 @@
        
     }
 	function sendImage(file, u_idx){
+		
 		var frm = new FormData();
 		//파일을 보내야할때는 폼에 담아서 보내야한다.
+		
+		console.log(u_idx);
+       	console.log(typeof(file));
 		
 		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
 		frm.append("s_file", file);

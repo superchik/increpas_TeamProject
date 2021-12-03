@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,8 +23,7 @@ public class UserController {
 	
 	private String img_path = "/img";
 	
-	@Autowired
-	private SqlSessionTemplate ss;
+
 
 	@Autowired
 	private ServletContext application;
