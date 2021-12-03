@@ -93,7 +93,7 @@
         	var u_idx = $("#u_user").val();
         	var file = $("#filename").val();
         	
-        	if( file.trim().length > 0 && u_idx.trim.lenght > 0)
+        	if( file.trim().length > 0 && u_idx.trim().lenght > 0)
         		alert(file);//sendImage(file, u_idx);
         	else
         		alert("파일을 선텍 하세요!");
