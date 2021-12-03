@@ -1,85 +1,72 @@
 package com.ott.review.vo;
 
-import java.util.List;
+
 
 public class ReviewVO {
+
+	private String rv_idx;
+	private String ott_idx;
+	private String u_idx;
+	private String content;
+	private String rating;
+	private String is_good;
+	private String is_not;
+	private String u_id;
+	private String r_date;
 	
-	private String OTT_IDX;
-	private String TITLE;
-	private String POSTER;
-	private String RANK;
-	private String PLATFORM;
-	private String SUMMARY;
-	private String ROTTEN_TOMATO;
-	private String DIRECTOR;
-	private String CAST;
-	
-	private List<CommVO> c_list;
-	
-	
-	
-	public List<CommVO> getC_list() {
-		return c_list;
+	public String getRv_idx() {
+		return rv_idx;
 	}
-	public void setC_list(List<CommVO> c_list) {
-		this.c_list = c_list;
+	public void setRv_idx(String rv_idx) {
+		this.rv_idx = rv_idx;
 	}
-	
-	
-	
-	public String getROTTEN_TOMATO() {
-		return ROTTEN_TOMATO;
+	public String getOtt_idx() {
+		return ott_idx;
 	}
-	public void setROTTEN_TOMATO(String rOTTEN_TOMATO) {
-		ROTTEN_TOMATO = rOTTEN_TOMATO;
+	public void setOtt_idx(String ott_idx) {
+		this.ott_idx = ott_idx;
 	}
-	public String getDIRECTOR() {
-		return DIRECTOR;
+	public String getU_idx() {
+		return u_idx;
 	}
-	public void setDIRECTOR(String dIRECTOR) {
-		DIRECTOR = dIRECTOR;
+	public void setU_idx(String u_idx) {
+		this.u_idx = u_idx;
 	}
-	public String getCAST() {
-		return CAST;
+	public String getContent() {
+		return content;
 	}
-	public void setCAST(String cAST) {
-		CAST = cAST;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getOTT_IDX() {
-		return OTT_IDX;
+	public String getRating() {
+		return rating;
 	}
-	public void setOTT_IDX(String oTT_IDX) {
-		OTT_IDX = oTT_IDX;
+	public void setRating(String rating) {
+		this.rating = rating;
 	}
-	public String getTITLE() {
-		return TITLE;
+	public String getIs_good() {
+		return is_good;
 	}
-	public void setTITLE(String tITLE) {
-		TITLE = tITLE;
+	public void setIs_good(String is_good) {
+		this.is_good = is_good;
 	}
-	public String getPOSTER() {
-		return POSTER;
+	public String getIs_not() {
+		return is_not;
 	}
-	public void setPOSTER(String pOSTER) {
-		POSTER = pOSTER;
+	public void setIs_not(String is_not) {
+		this.is_not = is_not;
 	}
-	public String getRANK() {
-		return RANK;
+	public String getU_id() {
+		return u_id;
 	}
-	public void setRANK(String rANK) {
-		RANK = rANK;
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
 	}
-	public String getPLATFORM() {
-		return PLATFORM;
+	public String getR_date() {
+		return r_date;
 	}
-	public void setPLATFORM(String pLATFORM) {
-		PLATFORM = pLATFORM;
-	}
-	public String getSUMMARY() {
-		return SUMMARY;
-	}
-	public void setSUMMARY(String sUMMARY) {
-		SUMMARY = sUMMARY;
+	public void setR_date(String r_date) {
+		this.r_date = r_date;
 	}
 	
 	

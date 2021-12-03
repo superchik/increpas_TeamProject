@@ -4,23 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="review">
 
-	<select id="viewContent" parameterType="int" resultType="com.ott.review.vo.ReviewVO">
+	<select id="viewContent" parameterType="int" resultType="com.ott.platform.vo.PlatFormVO">
 		SELECT * FROM OTT_SERVICE
-		WHERE OTT_IDX = #{OTT_IDX}
+		WHERE OTT_IDX = #{ott_idx}
 	</select>
 
-<!-- 
-	<select id="get" resultType="com.ott.review.vo.CommVO">
-		SELECT * FROM OTT_REVIEW
-	</select>
-
-	
-
- -->
-
-	<insert id="add_review" parameterType="com.ott.review.vo.CommVO">
-		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT)
-		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL,#{OTT_IDX},#{U_IDX},#{CONTENT},1,1,1)
+	<insert id="add_review" parameterType="com.ott.review.vo.ReviewVO">
+		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT, U_ID, R_DATE)
+		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL, #{ott_idx}, #{u_idx}, #{content}, #{rating}, 1, 1, #{u_id}, sysdate)
 	</insert>
 	
 	
@@ -29,5 +20,52 @@
 		FROM OTT_USER
 		WHERE U_ID = #{u_id}
 	</select>
+	
+	
+	
+	
+	
+	<resultMap id="review_map" type="com.ott.review.vo.ReviewVO">
+		<id property="rv_idx" column="rv_idx"/>
+		<!-- 원글 하나에 여러 개의 댓글들이 존재할 수 있으므로
+			집합구조를 일대 다관계에 맞는 collection을 선언한다. -->
+	</resultMap>
+	
+	
+	<select id="getReview" resultMap="review_map" parameterType="int">
+		SELECT * FROM OTT_REVIEW
+		WHERE OTT_IDX = #{ott_idx}
+		ORDER BY RV_IDX DESC
+	</select>
+	
+	<select id="review_count" resultType="int" parameterType="int">
+		SELECT COUNT(*) FROM OTT_REVIEW
+		WHERE OTT_IDX = #{ott_idx}
+	</select>
+	
+	<select id="rating" resultType="int" parameterType="int">
+		SELECT AVG(RATING) FROM OTT_REVIEW
+		WHERE OTT_IDX = #{ott_idx}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </mapper>

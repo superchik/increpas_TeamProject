@@ -163,7 +163,7 @@
 	.list_content{
 		text-align:left;
 		width:75%;
-		padding: 15px 30px 30px 30px;
+		padding: 5px 30px 30px 30px;
 		background: #0e131d;
 	}
 	.list_recommend{
@@ -236,53 +236,53 @@
 <div class="review_empty"></div>	
 <div id="left">
 	<div id="poster">
-			<img src=${vo.POSTER }>
+			<img src=${vo.poster }>
 	</div>
 	<div id="starring">
 			<div>
 				<a class="starring1">staff</a><br/>
-				<a class="starring2">${vo.DIRECTOR }</a>
+				<a class="starring2">${vo.director }</a>
 				<br/>
 			</div>
 			<div>
 				<a class="starring1">cast</a><br/>
-				<a class="starring2">${vo.CAST }</a>
+				<a class="starring2">${vo.cast }</a>
 			</div>
 	</div>
 	</div>
 <div id="right">
 	<div id="content">
-		<a class="title">${vo.TITLE }</a><br/>
+		<a class="title">${vo.title }</a><br/>
 		<br/><br/>
 		<div class="story_div">
-		<a class="story">${vo.SUMMARY }</a>
+		<a class="story">${vo.summary }</a>
 		</div>
 	</div>
 	<div id="rate_div">
 			<div id="rate">
 			<a>평점</a><br/>
-			<a class="point">?.?</a>
+			<a class="point">${rating }</a>
 			</div>
 			<div id="rotten">
 			<a>Rotten Tomato</a>
 			<br/>
-			<c:if test = "${vo.ROTTEN_TOMATO ne null }">
+			<c:if test = "${vo.rotten_tomato ne null }">
 			<a class="point">${vo.ROTTEN_TOMATO }</a>			
 			</c:if>
-			<c:if test = "${vo.ROTTEN_TOMATO eq null }">
+			<c:if test = "${vo.rotten_tomato eq null }">
 			<a class="point">-</a>			
 			</c:if>
 			
 			</div>
 	</div>
 	<div id="go">
-		<c:if test="${vo.PLATFORM == 'WAVVE'}"> 
+		<c:if test="${vo.platform == 'WAVVE'}"> 
 		<a><div class="review_platfrom"><img src="resources/images/wavve.png"></div></a>
 		</c:if>
-		<c:if test="${vo.PLATFORM == 'NETFLIX'}"> 
+		<c:if test="${vo.platform == 'NETFLIX'}"> 
 		<a><div class="review_platfrom"><img src="resources/images/netflix.png"></div></a>		
 		</c:if>
-		<c:if test="${vo.PLATFORM == 'WATCHA'}"> 		
+		<c:if test="${vo.platform == 'WATCHA'}"> 		
 		<a><div class="review_platfrom"><img src="resources/images/watcha.png"></div></a>		
 		</c:if>
 		
@@ -293,7 +293,7 @@
 <form action="/review" method="post">
 	<div id="write_div">
 		<a class="write_nickname">${uvo.u_id }</a>
-		<textarea name="CONTENT" id="write_area" 
+		<textarea name="content" id="write_area" 
 			cols="100" rows="5"></textarea>
 		<div class="write_star">
 		<div class="star-rating space-x-4 mx-auto">
@@ -311,9 +311,9 @@
 		</div>
 		<br/>
 		<br/>
-		<input type="hidden" name="OTT_IDX" value="${vo.OTT_IDX }">
+		<input type="hidden" name="ott_idx" value="${vo.ott_idx }">
 		<input type="hidden" name="u_id" value="${uvo.u_id }"> 
-		<input type="hidden" name="now_page" value="${vo.OTT_IDX }">
+		<input type="hidden" name="now_page" value="${vo.ott_idx }">
 			<p class="write_btn">
 				<button type="submit">리뷰등록</button>
 			</p>
@@ -324,31 +324,30 @@
 
 
 		
+				<a class="review_num">리뷰 개수 : ${r_cnt }</a>
 		<table class="review_table">		
-			<thead>
-				<th><a class="review_num">댓글갯수:?</a></th>
-			</thead>				
-			<tbody>
+							
 			<!-- 반복문 -->
-			
-			
-				<tr>
-					<td class="list_nickname"> 
-						<a class="list_nickname">글쓴이</a>
-						<a class="list_level">LV1</a><br/>
-						<a class="list_level">2021-11-16</a>
-					</td>
-					<td class="list_content">
-						<a>★★★★☆</a><br/>
-						<a></a>
-					</td>
-					<td class="list_recommend">
-						<a>추천수:10</a><br/><br/>
-						<div class="recommend_btn">
-							<a>추천</a>  <img src="resources/images/squid_game.png">
-						</div>
-					</td>
-				</tr>
+			<tbody>
+				<c:forEach var="rvo" items="${rvo }">
+					<tr>
+						<td class="list_nickname"> 
+							<a class="list_nickname">${rvo.u_id }</a>
+							<a class="list_level">LV1</a><br/>
+							<a class="list_level">${rvo.r_date }</a>
+						</td>
+						<td class="list_content">
+							<a>${rvo.rating }</a><br/><br/>
+							<a>${rvo.content }</a>
+						</td>
+						<td class="list_recommend">
+							<a>추천수:10</a><br/><br/>
+							<div class="recommend_btn">
+								<a>추천</a>  <img src="resources/images/squid_game.png">
+							</div>
+						</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>	

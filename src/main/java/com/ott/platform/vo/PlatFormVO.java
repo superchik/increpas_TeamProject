@@ -1,5 +1,7 @@
 package com.ott.platform.vo;
 
+
+
 public class PlatFormVO {
 	
 	private String ott_idx;
@@ -8,7 +10,30 @@ public class PlatFormVO {
 	private String rank;
 	private String platform;
 	private String summary;
+	private String rotten_tomato;
+	private String director;
+	private String cast;
 	
+
+	
+	public String getRotten_tomato() {
+		return rotten_tomato;
+	}
+	public void setRotten_tomato(String rotten_tomato) {
+		this.rotten_tomato = rotten_tomato;
+	}
+	public String getDirector() {
+		return director;
+	}
+	public void setDirector(String director) {
+		this.director = director;
+	}
+	public String getCast() {
+		return cast;
+	}
+	public void setCast(String cast) {
+		this.cast = cast;
+	}
 	public String getSummary() {
 		return summary;
 	}
