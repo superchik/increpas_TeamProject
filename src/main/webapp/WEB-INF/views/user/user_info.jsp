@@ -27,7 +27,7 @@
 		<h2>User</h2>
 		<div class="com">
 			<div class="TBox img">
-				<img alt="" src="${voimg }">
+				<img class="profileImg"/>
 				<p>profile_img</p>
 			</div>
 			<div class="MBox profile">
@@ -93,7 +93,7 @@
         	var u_idx = $("#u_user").val();
         	var file = $("#filename").val();
         	
-        	if(file != null)
+        	if( file.trim().length > 0 && u_idx.trim.lenght > 0)
         		alert(file);//sendImage(file, u_idx);
         	else
         		alert("파일을 선텍 하세요!");
@@ -136,9 +136,11 @@
 			var path = data.path; //이미지가 저장된 경로
 			var fname = data.fname; // 파일명
 			$('.profileImg').attr('src', path);
-			
+			console.log(path);
+			console.log(fname);
 		}).fail(function(err){
 			//서버에서 오류가 발생 시
+			console.log(err);
 		});
 	}
 
