@@ -42,6 +42,7 @@ public class AdminUserInfoController {
 		
 		UserVO[] ar = u_dao.getList(begin, end);
 		
+		
 		//JSP에서 표현해야 하므로 ar을 mv에 저장한다.
 		mv.addObject("ar", ar);
 		mv.addObject("nowPage", nowPage);
