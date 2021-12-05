@@ -100,6 +100,11 @@
 		float: left;
 		border: 2px solid #1f2937;
 		border-radius: 10px;
+		background-color: #0d121c;
+		outline:none;
+		color: white;
+		font-weight: bold;
+		font-size: 14px;
 	}
 	
 	
@@ -125,6 +130,9 @@
 	.review_num{
 		font-size: 14px;
 		float: left;
+		height: 35px;
+		font-weight: bold;
+		
 	}
 	.point{
 		font-size: 50px;
@@ -143,7 +151,7 @@
 	.write_btn{
 		float: left;
 		padding-top: 10px;	
-		padding-left: 20px;	
+		padding-left: 50px;	
 		
 	}
 	.re_btn{
@@ -171,6 +179,7 @@
 		padding-top: 30px;
 		padding-bottom: 30px;
 		background-color: #151923;
+		color:white;
 	}
 	.list_nickname{
 		font-size: 16px;
@@ -218,6 +227,26 @@
   -webkit-text-fill-color: #fff58c;
 }
 
+/* 좋아요 / 싫어요 아이콘 컬러 색상 정의*/
+.fa-thumbs-up, .fa-thumbs-down{
+	font-size: 16.5px;
+}
+.like_text_area {
+	margin: 9.5px;
+}
+
+/* 리뷰 버튼 CSS */
+.review_add{
+	width:100%;
+	border: 2px solid #6b7280;
+	border-radius:5px;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	font-weight: bold;
+	background-color:black;
+	color: white;
+	
+}
+
 	
 	
 	
@@ -261,7 +290,13 @@
 	<div id="rate_div">
 			<div id="rate">
 			<a>평점</a><br/>
-			<a class="point">${rating }</a>
+			<c:if test="${r_cnt > 0 }">
+				<a class="point">${rating }</a>
+			</c:if>
+			
+			<c:if test="${r_cnt <= 0 }">
+				<a class="point">-</a>
+			</c:if>
 			</div>
 			<div id="rotten">
 			<a>Rotten Tomato</a>
@@ -315,16 +350,19 @@
 		<input type="hidden" name="u_id" value="${uvo.u_id }"> 
 		<input type="hidden" name="now_page" value="${vo.ott_idx }">
 			<p class="write_btn">
-				<button type="submit">리뷰등록</button>
+				<button class="review_add" type="submit">리뷰등록</button>
 			</p>
 	</div>
 </form>
 </c:if>
 
-
-
-		
-				<a class="review_num">리뷰 개수 : ${r_cnt }</a>
+			<c:if test="${r_cnt > 0 }">
+				<a class="review_num">리뷰 개수 : ${r_cnt }</a>			
+			</c:if>
+			
+			<c:if test="${r_cnt <= 0 }">
+				<a class="review_num">작성된 리뷰가 하나도 없네요!</a>			
+			</c:if>
 		<table class="review_table">		
 							
 			<!-- 반복문 -->
@@ -341,9 +379,18 @@
 							<a>${rvo.content }</a>
 						</td>
 						<td class="list_recommend">
-							<a>추천수:10</a><br/><br/>
+						
+							<span class="like_text_area">
+								<a href="#"><i class="far fa-thumbs-up"></i></a>
+									<span>0</span>
+							</span>
+							
+							<span class="like_text_area">
+								<a href="#"><i class="far fa-thumbs-down"></i></a>
+									<span>0</span>
+							</span>
 							<div class="recommend_btn">
-								<a>추천</a>  <img src="resources/images/squid_game.png">
+								<!-- <a>추천</a>  <img src="resources/images/squid_game.png"> -->
 							</div>
 						</td>
 					</tr>
