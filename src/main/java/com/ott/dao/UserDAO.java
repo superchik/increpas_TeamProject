@@ -33,6 +33,19 @@ public class UserDAO {
 	public int getTotalCount() {
 		return ss.selectOne("user.totalCount");
 	}
+	
+	// ======== 회원 정지상태 수정 ========
+	public String updateUser_stop(Map<String, String> map) {
+		String result = "FAIL";
+		try {
+			ss.update("user.user_editStop", map);
+			result = "SUCC";
+		} catch (Exception e) {
+			result = "FAIL :: DB오류 ";
+			// TODO: handle exception
+		}
+		return result;
+	}
 
 
 	public int editBbs(String u_idx,String fname, String oname) {

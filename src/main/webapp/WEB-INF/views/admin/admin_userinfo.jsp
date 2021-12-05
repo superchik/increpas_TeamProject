@@ -1,151 +1,237 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <!-- CSS 공통화 -->
-<link rel="stylesheet" type="text/css" href="resources/css/common/common.css">
-<link rel="stylesheet" type="text/css" href="resources/css/common/footer.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/common/common.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/common/footer.css">
 <!-- main CSS -->
-<link rel="stylesheet" type="text/css" href="resources/css/main/main.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/main/main.css">
 <!-- paging_admin CSS  -->
-<link rel="stylesheet" type="text/css" href="resources/css/admin/paging_admin.css">
-	<title>Insert title here</title>
-	<style>
-		
-	.user_board{
-		display: inline-block;
-	    position: static;
-	    border: 1px solid #6b7280;
-	    background-color: #1f2937;
-	    box-shadow: 1px 1.5px 8px 3px grey;
-	    border-radius: 10px;
+<link rel="stylesheet" type="text/css"
+	href="resources/css/admin/paging_admin.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/admin/admin_userinfo.css">
 
-	}
-	
-	span {
-   		    float: left;
-    color: white;
-    margin-bottom: 20px;
-	}
-	table{
-			width : auto;
-			border: solid 1px gray;
-		    border-spacing: 0px;
-		    border-style: none;
-		    padding: 0px;
-	}
-	table thead{
-		background-color: #4C4C4C;
-		color: white;
-	    display: table-header-group;
-	    vertical-align: middle;
-	    border-color: inherit;
-	}
-	table tbody{
-	    display: table-row-group;
-	    vertical-align: middle;
-	    border-color: inherit;
-	}
-	tbody>tr {
-    	color: white;
-	}
-	tr {
-	    display: table-row;
-	    vertical-align: inherit;
-	    border-color: inherit;
-	}
-	.user_search_ta{
-	    background-color: white;
-   	    border: 1px solid black;
-	}
-	.user_search_btn{
-	    background-color: gray;
-  	    color: black;
-  	    border-radius: 6px;
-	}
-	.user_search_btn:active {
-    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-           inset 2px 2px 3px rgba(0, 0, 0, .6);
+<title>Insert title here</title>
 
-	}
-	</style>
 </head>
 <body>
 
-<!-- Header -->
-<jsp:include page="../common/header.jsp"></jsp:include>
+	<!-- Header -->
+	<jsp:include page="../common/header.jsp"></jsp:include>
 
-<div class="common_container">
-	<div class="user_board">
-		<h1>회원관리 게시판</h1>
-		<h2>회원 검색</h2>
-		<div>
-			<span>회원 검색</span>
-				<input class="user_search_ta" type="text" name="user_search_ta"/>
-				<input class="user_search_btn" type="button" name="user_search_btn" value="검색"/>
+	<div class="common_container">
+		<div class="user_board">
+			<h1>회원관리 게시판</h1>
+			<h2>회원 검색</h2>
+			<div>
+				<span>회원 검색</span> <select id="search_user" name="search_user">
+
+					<option>:: 선택하세요 ::</option>
+					<option value="0">u_idx</option>
+					<option value="1">아이디</option>
+					<option value="2">이름</option>
+					<option value="3">이메일</option>
+					<option value="4">정지/탈퇴</option>
+
+				</select> <input class="user_search_ta" type="text" name="user_search_ta" />
+				<input class="user_search_btn" type="button" name="user_search_btn"
+					value="검색" />
+
+			</div>
+			<table summary="회원 목록">
+				<caption>
+					<span>총 회원수 : ${rowTotal }명</span>
+					<div>
+						<button id="ok_btn" class="ok_btn" type="submit">확인</button>
+						<button id="edit_btn" class="edit_btn" type="button">수정</button>
+
+					</div>
+				</caption>
+				<colgroup>
+					<col width="80x">
+					<col width="150px">
+					<col width="150px">
+					<col width="100px">
+					<col width="100px">
+					<col width="100px">
+					<col width="100px">
+					<col width="100px">
+
+
+
+				</colgroup>
+				<!-- 게시판 상단영역 -->
+				<thead>
+					<tr>
+						<th>선택</th>
+						<th>번호</th>
+						<th>u_idx</th>
+						<th>아이디</th>
+						<th>이름</th>
+						<th>이메일</th>
+						<th>정지/탈퇴</th>
+
+
+					</tr>
+				</thead>
+
+				<!-- 게시판 바디영역 -->
+				<tbody></tbody>
+				<c:forEach var="vo" items="${ar }" varStatus="st">
+					<tr>
+						<td><input type="checkbox" class="chk" name="chk"
+							style="display: none;" /></td>
+						<td>
+							<%--순차적인 번호를 만들어서 표현하자! --%>
+							${rowTotal-((nowPage-1)*blockList+st.index) }
+						</td>
+						<td>${vo.u_idx }</td>
+						<td>${vo.u_id }</td>
+						<td>${vo.u_name }</td>
+						<td>${vo.u_email }</td>
+						<td><select class="opt_Stop" name="opt_Stop"
+							style="display: none;">
+								<option value=""
+									<c:if test="${vo.is_stop ne '0' || vo.is_stop ne '1'}"  > selected</c:if>>::선택하세요::</option>
+								<option value="1"
+									<c:if test="${vo.is_stop eq '1'}"> selected</c:if>>정지회원</option>
+								<option value="0"
+									<c:if test="${vo.is_stop eq '0' }"  > selected</c:if>>일반회원</option>
+						</select>
+
+							<div class="isStop" style="display: block;">
+
+								<c:choose>
+									<c:when test="${vo.is_stop eq  '1'}">
+					         	정지회원
+					         </c:when>
+									<c:when test="${vo.is_stop eq '0'}">
+					         	일반회원
+					         </c:when>
+									<c:otherwise>
+					    		일반회원
+					         </c:otherwise>
+								</c:choose>
+							</div></td>
+						<td style="display: none">${vo.is_stop}</td>
+
+					</tr>
+				</c:forEach>
+				<!-- 게시판 풋터영역 -->
+				<tfoot>
+					<tr>
+						<td colspan="10">${pageCode }</td>
+					</tr>
+				</tfoot>
+				</tbody>
+			</table>
 		</div>
-		<table summary="회원 목록">
-			<caption>
-				<span>총 회원수 : ${rowTotal }명</span>
-			</caption>
-			<colgroup>
-				<col width="80x">
-				<col width="150px">
-				<col width="150px">
-				<col width="100px">
-				<col width="100px">
-				<col width="100px">
-				
-			
-			</colgroup>
-			<!-- 게시판 상단영역 -->
-			<thead>
-				<tr>
-					<th>번호</th>
-					<th>u_idx</th>
-					<th>아이디</th>
-					<th>이름</th>
-					<th>이메일</th>
-					
-				</tr>
-			</thead> 
-			
-			<!-- 게시판 바디영역 -->
-			<tbody>
-			<c:forEach var="vo" items="${ar }" varStatus="st">
-				<tr>
-					<td> <%--순차적인 번호를 만들어서 표현하자! --%>
-						${rowTotal-((nowPage-1)*blockList+st.index) }
-					</td>
-					<td>${vo.u_idx }</td>
-					<td>${vo.u_id }</td>
-					<td>${vo.u_name }</td>
-					<td>${vo.u_email }</td>
-					
-				</tr>
-			</c:forEach>
-			<!-- 게시판 풋터영역 -->
-			<tfoot>
-                      <tr>
-                          <td colspan="10">
-                              ${pageCode }
-                          </td>
-                      </tr>
-            </tfoot>
-			</tbody>
-		</table>
-		
-	</div>
-	
-</div>
 
-<!-- footer -->
-<jsp:include page="../common/footer.jsp"></jsp:include>
+	</div>
+
+	<form id="is_stopForm" method="post" action="admin_update">
+		<input type="hidden" id="dataList" name="dataList" value="">
+	</form>
+
+
+	<!-- footer -->
+	<jsp:include page="../common/footer.jsp"></jsp:include>
+
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+		crossorigin="anonymous"></script>
 
 
 </body>
 </html>
+
+
+<script>
+	//jQUERY START
+	$(document).ready(function() {
+
+		// =========  수정 버튼 클릭 SATRT ===========
+		$('#edit_btn').click(function() {
+			onClickEdit();
+
+		});
+
+		function onClickEdit() {
+			$(".chk").css("display", "block");
+			$(".opt_Stop").css("display", "block");
+
+			if ($(".opt_Stop").css("display", "block")) {
+				$(".isStop").css("display", "none");
+			} else {
+				$(".isStop").css("display", "block");
+			}
+		}
+		// =========  수정 버튼 클릭 END ===========
+
+		// =========  확인 버튼 클릭 SATRT ===========
+		$('#ok_btn').click(function() {
+			saveUserInfo();
+			//location.reload();
+		});
+
+		function saveUserInfo() {
+
+			var checkbox = $("input[name=chk]:checked");
+
+			var resultTxt = "";
+			var jsonTxt = "";
+			var errCode = "SUCC";
+			checkbox.each(function(i) {
+
+				var tr = checkbox.parent().parent().eq(i);
+				var td = tr.children();
+
+				var u_idx = td.eq(2).text();
+				var is_stop = td.eq(7).text();
+				if (is_stop == null || is_stop == "") {
+					alert("u_idx" + u_idx + "의 값을 선택해 주세요");
+					/* errCode = "FAIL";
+					return false; */
+				}
+
+				if (resultTxt == "") {
+					resultTxt = u_idx + "," + is_stop;
+				} else {
+					resultTxt += "|" + u_idx + "," + is_stop;
+				}
+
+			});
+
+			// SETTER
+			$("#dataList").val(resultTxt);
+			$("#is_stopForm").submit();
+
+		}
+		// =========  확인 버튼 클릭 END ===========
+
+		// 셀렉트박스에서 is_stop이 바뀔때마다 값을 세팅
+		$(".opt_Stop").change(function() {
+			$(this).parent().next().text($(this).val());
+		});
+		//==============================================
+
+	})// jQUERY END
+</script>
+
+
+
+
+
+
+
+

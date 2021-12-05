@@ -1,11 +1,16 @@
 package com.ott.app.admin;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ott.Util.Paging;
 import com.ott.Util.Paging_admin;
 import com.ott.dao.UserDAO;
 import com.ott.user.vo.UserVO;
@@ -54,5 +59,54 @@ public class AdminUserInfoController {
 		
 		return mv;
 		
+	}
+	
+	@RequestMapping("/admin_update")
+	public ModelAndView User_stop(HttpServletRequest request) {
+		
+		ModelAndView mv = new ModelAndView();
+		Map<String, String> map = new HashMap<String, String>();
+		String dataList = request.getParameter("dataList");
+		String result = "";
+		// 5,0|42,1|41,1
+
+		try {
+
+			String[] rowData = dataList.split("\\|");
+
+			if (rowData.length < 0) {
+				result = "수정할 값이 없습니다.";
+			} else {
+				// 선택된 행의 값을 가지고온다.
+				for (int i = 0; i < rowData.length; i++) {
+					// 5,0
+					String[] tdData = rowData[i].split(",");
+
+					String u_idx = tdData[0]; // u_idx
+					String is_stop = tdData[1]; // 정지/탈퇴
+
+					map.put("u_idx", u_idx);
+					map.put("is_stop", is_stop);
+
+					// **** 회원데이터 수정 ****
+					result = u_dao.updateUser_stop(map);
+
+				}
+
+				if (result.equals("SUCC")) {
+					result = "수정되었습니다.";
+				} else {
+					result = "실패했습니다";
+				}
+			}
+
+		} catch (Exception e) {
+			result = "[예외발생!!]";
+		}
+
+		mv.addObject("RESULT", result);
+		mv.setViewName("redirect:/admin_userinfo");    // URL을 호출한다.
+		return mv;
+
 	}
 }
