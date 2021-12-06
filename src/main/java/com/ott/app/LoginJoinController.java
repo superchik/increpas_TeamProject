@@ -41,11 +41,6 @@ public class LoginJoinController {
 		return "user/user_join";
 	}
 	
-	@RequestMapping("/idfind")
-	public String id_find() {	
-		return "user/user_id_find";
-	}
-	
 	@RequestMapping("/pwreissue")
 	public String pwreissue() {	
 		return "user/user_pw_reissue";

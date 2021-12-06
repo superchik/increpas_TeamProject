@@ -170,10 +170,6 @@ public class KakaoLoginController {
 					vo.setU_email(email);
 					
 					session.setAttribute("uvo", vo);
-					
-					//출력 테스트용
-					System.out.println(nickName);					
-					System.out.println(email);
 				}
 			}
 		} catch (Exception e) {
