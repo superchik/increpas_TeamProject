@@ -43,8 +43,8 @@
 		WHERE OTT_IDX = #{ott_idx}
 	</select>
 	
-	<select id="rating" resultType="int" parameterType="int">
-		SELECT AVG(RATING) FROM OTT_REVIEW
+	<select id="rating" resultType="double" parameterType="int">
+		SELECT ROUND(AVG(RATING),2) FROM OTT_REVIEW
 		WHERE OTT_IDX = #{ott_idx}
 	</select>
 	

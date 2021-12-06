@@ -29,7 +29,7 @@ public class ReviewController {
 		ReviewVO[] rvo = r_dao.getReview(ott_idx);
 		
 		if(rvo != null){
-			int rating = r_dao.rating(ott_idx);
+			double rating = r_dao.rating(ott_idx);
 			mv.addObject("rating",rating);
 		}
 		
@@ -39,7 +39,6 @@ public class ReviewController {
 		mv.addObject("vo", vo);
 		mv.addObject("rvo",rvo);
 		mv.addObject("r_cnt",cnt);
-		
 		
 		
 		mv.setViewName("review");

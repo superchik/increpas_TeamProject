@@ -302,7 +302,7 @@
 			<a>Rotten Tomato</a>
 			<br/>
 			<c:if test = "${vo.rotten_tomato ne null }">
-			<a class="point">${vo.ROTTEN_TOMATO }</a>			
+			<a class="point">${vo.rotten_tomato }</a>			
 			</c:if>
 			<c:if test = "${vo.rotten_tomato eq null }">
 			<a class="point">-</a>			
@@ -375,7 +375,21 @@
 							<a class="list_level">${rvo.r_date }</a>
 						</td>
 						<td class="list_content">
-							<a>${rvo.rating }</a><br/><br/>
+							<c:if test="${rvo.rating eq 1}">	
+							<a>★☆☆☆☆</a><br/><br/>
+							</c:if>					
+							<c:if test="${rvo.rating eq 2}">	
+							<a>★★☆☆☆</a><br/><br/>
+							</c:if>					
+							<c:if test="${rvo.rating eq 3}">	
+							<a>★★★☆☆</a><br/><br/>
+							</c:if>					
+							<c:if test="${rvo.rating eq 4}">	
+							<a>★★★★☆</a><br/><br/>
+							</c:if>					
+							<c:if test="${rvo.rating eq 5}">	
+							<a>★★★★★</a><br/><br/>
+							</c:if>					
 							<a>${rvo.content }</a>
 						</td>
 						<td class="list_recommend">

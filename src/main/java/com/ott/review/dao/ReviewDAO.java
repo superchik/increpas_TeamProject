@@ -53,9 +53,9 @@ public class ReviewDAO {
 		
 	}
 	
-	public int rating(String i_ott_idx) {
+	public double rating(String i_ott_idx) {
 		int ott_idx = Integer.valueOf(i_ott_idx);
-		int cnt = ss.selectOne("review.rating", ott_idx);
+		double cnt = ss.selectOne("review.rating", ott_idx);
 		
 		return cnt;
 	}
