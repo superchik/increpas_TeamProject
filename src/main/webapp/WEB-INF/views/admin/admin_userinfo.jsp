@@ -40,7 +40,7 @@
 					<option value="1">아이디</option>
 					<option value="2">이름</option>
 					<option value="3">이메일</option>
-					<option value="4">정지/탈퇴</option>
+					<option value="4">정지</option>
 
 				</select> <input class="user_search_ta" type="text" name="user_search_ta" />
 				<input class="user_search_btn" type="button" name="user_search_btn"
@@ -159,7 +159,7 @@
 <script>
 	//jQUERY START
 	$(document).ready(function() {
-
+//******************회원 정지 수정 기능 START****************************
 		// =========  수정 버튼 클릭 SATRT ===========
 		$('#edit_btn').click(function() {
 			onClickEdit();
@@ -223,7 +223,9 @@
 		$(".opt_Stop").change(function() {
 			$(this).parent().next().text($(this).val());
 		});
-		//==============================================
+//******************회원 정지 수정 기능 END****************************
+		
+//******************회원 정지 수정 기능 START**************************
 
 	})// jQUERY END
 </script>
