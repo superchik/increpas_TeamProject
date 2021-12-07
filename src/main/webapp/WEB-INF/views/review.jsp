@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/functions" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <%@page import="com.ott.review.vo.ReviewVO"%>
 <!DOCTYPE html>
 <html>
@@ -12,10 +11,247 @@
 <link rel="stylesheet" type="text/css" href="resources/css/common/footer.css">
 <!-- main CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/main/main.css">
-<link rel="stylesheet" type="text/css" href="resources/css/main/review.css">
 
-<title>Review</title>
+<title>Insert title here</title>
+<style>
+#up {
+	    width:1200px;
+	    height:auto;
+	    border-radius: 10px;
+		border: 1px solid #6b7280;
+		box-shadow: 1px 1.5px 8px 3px grey;
+		background: #0d121c;
+	    float: left;
+	    
 
+	}
+	
+	#left {
+		display: block;
+		float: left;
+	}
+	#poster {
+		width:220px;
+		height:280px;
+	}
+	#poster > img {
+	width: 220px;
+	height: 280px;
+}
+	#starring {
+		width: 220px;
+		height:auto;
+		text-align: center;		
+	}
+		
+	#right{
+		width: 970px;
+		display: block;
+		position: relative;		
+		float: left;
+	}
+	
+	#content {
+		width: 850px;
+		padding-left: 50px;				
+	}
+	#rate_div {
+		width: auto;
+		height: 92px;
+		text-align: center;	
+		font-weight: bold;
+		display: inline-block;
+		padding-top: 80px;
+	}
+	#rate{
+		width:481px;
+		height: 90px;
+		float: left;
+		border: 1px solid #222;	
+		background: #202a38;	
+	}
+	#rotten{
+		width:481px;
+		height:90px;
+		float: left;
+		border: 1px solid #222;	
+		background: #202a38;	
+	}
+	
+	#go {
+		width:auto;
+		height:auto;
+	}	
+	
+	#write_div{
+		width: 1050px;
+		height:auto;
+		float:left;
+		display:block;
+		padding-top: 80px;
+		padding-left: 80px;
+		padding-bottom: 40px;
+	}
+	table{
+		width: 1200px;
+	    font-size:14px;
+	}
+	#write_area{
+		float: left;
+		border: 2px solid #1f2937;
+		border-radius: 10px;
+		background-color: #0d121c;
+		outline:none;
+		color: white;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	
+	
+	
+	.review_empty{height: 10px; }
+	.title{font-size: 30px; font-weight: bold; }
+	.starring1{font-size: 14px; font-weight: bold;}
+	.starring2{font-size: 14px;}
+	.about{font-size: 16px;}
+	.story{font-size: 16px;}
+	.story_div{ text-align:left;}
+	.review_platfrom{
+		display:block;
+		width:80px;
+		height:80px;
+		border:1px solid #222;		
+		float: left;
+	}
+	.review_platfrom > img{
+		width:80px;
+		height: 80px;
+	}
+	.review_num{
+		font-size: 14px;
+		float: left;
+		height: 35px;
+		font-weight: bold;
+		
+	}
+	.point{
+		font-size: 50px;
+	}
+	.write_nickname{
+		float: left;
+		font-size: 18px;
+		font-weight: bold;
+		padding-top: 30px;
+		padding-right: 5px;
+	}
+	.write_star{
+		float: left;
+		padding-left: 10px;
+	}
+	.write_btn{
+		float: left;
+		padding-top: 10px;	
+		padding-left: 50px;	
+		
+	}
+	.re_btn{
+		margin-left: 11px;
+	    display: inline-block;
+	    width: 80px;
+	    height: 30px;
+	    line-height: 30px;
+	    border-radius: 7px;
+	    border: 1px solid #6b7280;
+		box-shadow: 2.5px 2.5px 2.5px 1px grey;
+	}
+	.list_nickname{
+		width:15%;
+		background-color: #151923;
+	}
+	.list_content{
+		text-align:left;
+		width:75%;
+		padding: 5px 30px 30px 30px;
+		background: #0e131d;
+	}
+	.list_recommend{
+		width:10%;	
+		padding-top: 30px;
+		padding-bottom: 30px;
+		background-color: #151923;
+		color:white;
+	}
+	.list_nickname{
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.list_level{
+		font-size:12px;
+	}
+	.recommend_btn > img{
+		width: 18px;
+		height: 18px;
+		font-size: 12px;
+	}
+	
+	
+	
+	.star-rating {
+  display: flex;
+  flex-direction: row-reverse;
+  font-size: 30px;
+  line-height: 30px;
+  justify-content: space-around;
+  padding: 0 2px;
+  text-align: center;
+  width: 150px;
+}
+ 
+.star-rating input {
+  display: none;
+}
+ 
+.star-rating label {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2.3px;
+  -webkit-text-stroke-color: gray;
+  cursor: pointer;
+}
+ 
+.star-rating :checked ~ label {
+  -webkit-text-fill-color: gold;
+}
+ 
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  -webkit-text-fill-color: #fff58c;
+}
+
+/* 좋아요 / 싫어요 아이콘 컬러 색상 정의*/
+.fa-thumbs-up, .fa-thumbs-down{
+	font-size: 16.5px;
+}
+.like_text_area {
+	margin: 9.5px;
+}
+
+/* 리뷰 버튼 CSS */
+.review_add{
+	width:100%;
+	border: 2px solid #6b7280;
+	border-radius:5px;
+	box-shadow: 1px 1.5px 8px 3px grey;
+	font-weight: bold;
+	background-color:black;
+	color: white;
+	
+}
+
+	
+	
+	
+	
+</style>
 </head>
 <body>
 
@@ -89,11 +325,11 @@
 </div>
 </div>
 <c:if test="${uvo ne null }">
-<form action="/review" method="post" name="frm">
+<form action="/review" method="post">
 	<div id="write_div">
 		<a class="write_nickname">${uvo.u_id }</a>
 		<textarea name="content" id="write_area" 
-			cols="100" rows="5"></textarea>
+			cols="100" rows="5""></textarea>
 		<div class="write_star">
 		<div class="star-rating space-x-4 mx-auto">
 		<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
@@ -114,7 +350,7 @@
 		<input type="hidden" name="u_id" value="${uvo.u_id }"> 
 		<input type="hidden" name="now_page" value="${vo.ott_idx }">
 			<p class="write_btn">
-				<input type="button" class="review_add" value="리뷰등록" onclick="review_add()"/>
+				<button class="review_add" type="submit">리뷰등록</button>
 			</p>
 	</div>
 </form>
@@ -136,11 +372,7 @@
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_id }</a>
 							<a class="list_level">LV1</a><br/>
-							<a class="list_level">
-							<c:set var="review_date_var" value="${rvo.r_date }"/>
-							<c:set var="review_date" value="${f:substring(review_date_var,0,16)}"/>
-							${review_date }
-							</a>
+							<a class="list_level">${rvo.r_date }</a>
 						</td>
 						<td class="list_content">
 							<c:if test="${rvo.rating eq 1}">	
@@ -157,44 +389,46 @@
 							</c:if>					
 							<c:if test="${rvo.rating eq 5}">	
 							<a>★★★★★</a><br/><br/>
-							</c:if>
+							</c:if>					
 							<a>${rvo.content }</a>
 						</td>
 						<td class="list_recommend">
 						
 							<span class="like_text_area">
-								<a href="#"><i class="far fa-thumbs-up"></i></a>
-									<span>0</span>
+							
+							<c:choose>
+								<c:when test="${uvo.u_idx  == rvo.u_idx}">
+									<a><i class="far fa-thumbs-up"></i></a>
+								</c:when>
+								
+								<c:when test="${uvo.u_idx  != rvo.u_idx}">
+									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx})"><i class="far fa-thumbs-up"></i></a>
+								</c:when>
+							
+							</c:choose>	
+									<span>${rvo.is_good }</span>
 							</span>
-							<br/><br/>
+							
 							<span class="like_text_area">
-								<a href="#"><i class="far fa-thumbs-down"></i></a>
-									<span>999999</span>
+							<c:choose>
+								<c:when test="${uvo.u_idx  == rvo.u_idx}">
+									<a><i class="far fa-thumbs-down"></i></a>
+								</c:when>
+								
+								<c:when test="${uvo.u_idx  != rvo.u_idx}">
+									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx})"><i class="far fa-thumbs-down"></i></a>
+								</c:when>
+							
+							</c:choose>	
+									<span>${rvo.is_not }</span>
 							</span>
 							<div class="recommend_btn">
 								<!-- <a>추천</a>  <img src="resources/images/squid_game.png"> -->
 							</div>
 						</td>
-						<td class="review_edit_btn">
-						<c:if test="${uvo.u_id eq rvo.u_id}">
-							<p>
-								<input type="button" class="review_edit" value="수정" onclick=""/>
-								<br/><br/>
-								<input type="button" class="review_edit" value="삭제" onclick=""/>
-							</p>
-						</c:if>
-						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
-			<tfoot>
-				
-				<td colspan="4" >
-                	${pageCode }
-                </td>
-				
-                     
-			</tfoot>
 		</table>
 	</div>	
 
@@ -202,21 +436,34 @@
 <!-- footer -->
 <jsp:include page="common/footer.jsp"></jsp:include>
 </footer>
+</c:if>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
-	function review_add(){	
-		if(document.frm.content.value.trim().length < 1){
-			alert("내용을 입력하세요");
-			return;
-		}		
-		if(document.frm.rating.value < 1){
-			alert("평점을 입력하세요");
-			return;
-		}	
-		document.frm.submit();	
+	function thumbUp(idx){
+		$.ajax({
+			url:"/thumup",
+			type:"post",
+			data:{idx:idx}
+		}).done({
+			
+		}).fail({
+			
+		});
+	}
+	
+	function thumbDown(idx){
+		$.ajax({
+			url:"/thumdown",
+			type:"post",
+			data:{idx:idx}
+		}).done({
+			
+		}).fail({
+			
+		});
 	}
 </script>
-</c:if>
 </body>
 </html>

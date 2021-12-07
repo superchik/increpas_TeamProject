@@ -85,7 +85,8 @@ public class LoginJoinController {
 		
 		if(vo != null) {
 			session.setAttribute("uvo", vo);
-			mv.addObject("user",vo);
+			mv.addObject("uvo",vo);
+			System.out.println(vo.getU_name());
 		}
 		
 		mv.setViewName(last_uri == null ? "redirect:/" : "redirect:" + last_uri);

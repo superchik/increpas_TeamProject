@@ -16,7 +16,7 @@
 	
 	
 	<select id="get_u_idx" resultType="com.ott.user.vo.UserVO" parameterType="com.ott.user.vo.UserVO">
-		SELECT U_IDX 
+		SELECT U_IDX
 		FROM OTT_USER
 		WHERE U_ID = #{u_id}
 	</select>
@@ -32,14 +32,10 @@
 	</resultMap>
 	
 	
-	<select id="getReview" resultMap="review_map" parameterType="Map">
-		SELECT * FROM (
-			SELECT rownum r_num,a.* FROM (
-				SELECT * FROM OTT_REVIEW
-				WHERE ott_idx = #{ott_idx}
-				ORDER BY rv_idx DESC
-			) a 
-		) WHERE r_num BETWEEN #{begin} AND #{end}
+	<select id="getReview" resultMap="review_map" parameterType="int">
+		SELECT * FROM OTT_REVIEW
+		WHERE OTT_IDX = #{ott_idx}
+		ORDER BY RV_IDX DESC
 	</select>
 	
 	<select id="review_count" resultType="int" parameterType="int">
@@ -52,6 +48,28 @@
 		WHERE OTT_IDX = #{ott_idx}
 	</select>
 	
+	<update id="thumpUp" parameterType="Map">
+		update ott_review
+		SET is_good = #{is_good}
+		where u_idx = #{u_idx}
+	</update>
 	
+	<update id="thumpDown" parameterType="Map">
+		update ott_review
+		SET is_not = #{is_not}
+		where u_idx = #{u_idx}
+	</update>
+	
+	<select id="getGood" resultType="int" parameterType="int">
+		select is_good
+		from ott_review
+		where u_idx = #{u_idx}
+	</select>
+	
+	<select id="getNot" resultType="int" parameterType="int">
+		select is_not
+		from ott_review
+		where u_idx = #{u_idx}
+	</select>
 
 </mapper>

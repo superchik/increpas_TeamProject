@@ -1,7 +1,6 @@
 package com.ott.review.dao;
 
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -64,15 +63,11 @@ public class ReviewDAO {
 	
 	
 	
-	public ReviewVO[] getReview(int begin, int end, String ott_idx) {
+	public ReviewVO[] getReview(String i_ott_idx) {
+		int ott_idx = Integer.valueOf(i_ott_idx);
 		ReviewVO[] ar = null;
 		
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("begin", String.valueOf(begin));
-		map.put("end", String.valueOf(end));
-		map.put("ott_idx", ott_idx);
-		
-		List<ReviewVO> list = ss.selectList("review.getReview", map);
+		List<ReviewVO> list = ss.selectList("review.getReview", ott_idx);
 		if(list != null && list.size() > 0 && !list.isEmpty()) {
 			ar = new ReviewVO[list.size()];
 			list.toArray(ar);
@@ -81,4 +76,25 @@ public class ReviewDAO {
 		return ar;
 	}
 	
+	public int thumpUp(Map<String, Integer> map) {
+		int cnt = ss.update("review.thumpUp", map);
+		return cnt;
+	}
+	
+	public int thumpDown(Map<String, Integer> map) {
+		int cnt = ss.update("review.thumpDown", map);
+		return cnt;
+	}
+	
+	public int isGood(int u_idx) {
+		int cnt = ss.selectOne("review.getGood", u_idx);
+		
+		return cnt;
+	}
+	
+	public int isNot(int u_idx) {
+		int cnt = ss.selectOne("review.getNot", u_idx);
+		
+		return cnt;
+	}
 }

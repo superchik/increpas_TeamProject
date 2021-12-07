@@ -1,14 +1,17 @@
 package com.ott.app;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ott.Util.Paging_Review;
 import com.ott.platform.vo.PlatFormVO;
 import com.ott.review.dao.ReviewDAO;
 import com.ott.review.vo.ReviewVO;
@@ -20,45 +23,26 @@ public class ReviewController {
 	@Autowired
 	private ReviewDAO r_dao;
 	
-	public final int block_list = 10;
-	public final int block_page = 5;
-	int nowPage;
-	
 	@RequestMapping("/review")
-	public ModelAndView review(@RequestParam(value="ott_idx")String ott_idx, String cPage) {
+	public ModelAndView review(@RequestParam(value="ott_idx")String ott_idx) {
 		System.out.println(">>>>reviewList.do&"+ott_idx);
 		
 		ModelAndView mv = new ModelAndView();
 		
 		PlatFormVO vo = r_dao.viewContent(ott_idx);
-		int cnt = r_dao.review_count(ott_idx);	//해당 게시물의 총 리뷰 수!!!(=rowTotal)
+		ReviewVO[] rvo = r_dao.getReview(ott_idx);
 		
-		//페이징
-		if(cPage == null)
-			nowPage = 1;
-		else
-			nowPage = Integer.parseInt(cPage);
-		
-		
-		Paging_Review page = new Paging_Review(nowPage, cnt, block_list, block_page, ott_idx);
-		
-		int begin = page.getBegin();
-		int end = page.getEnd();
-		
-		ReviewVO[] rvo = r_dao.getReview(begin, end, ott_idx);
-		
-		
-		if(cnt != 0){
+		if(rvo != null){
 			double rating = r_dao.rating(ott_idx);
 			mv.addObject("rating",rating);
 		}
 		
+		int cnt = r_dao.review_count(ott_idx);
+		
+		
 		mv.addObject("vo", vo);
 		mv.addObject("rvo",rvo);
 		mv.addObject("r_cnt",cnt);
-		mv.addObject("nowPage",nowPage);
-		mv.addObject("blockList",block_list);
-		mv.addObject("pageCode",page.getSb().toString());
 		
 		
 		mv.setViewName("review");
@@ -82,6 +66,42 @@ public class ReviewController {
 		
 		mv.setViewName("redirect:/review?ott_idx="+now_page);
 		return mv;
+	}
+	
+	@RequestMapping(value="/thumup", method=RequestMethod.POST)
+	@ResponseBody
+	public int thumUp(int idx) {
+		int good = r_dao.isGood(idx);
+		int goodup = good+1;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("is_good", goodup);
+		map.put("u_idx", idx);
+		int res = r_dao.thumpUp(map);
+		int up = 0;
+		if(res != 0) {
+			int cnt = r_dao.isGood(idx);
+			up = cnt;
+		}
+		return up;
+	}
+	
+	@RequestMapping(value="/thumdown", method=RequestMethod.POST)
+	@ResponseBody
+	public int thumDown(int idx) {
+		int not = r_dao.isNot(idx);
+		int notup = not+1;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("is_not", notup);
+		map.put("u_idx", idx);
+		int res = r_dao.thumpDown(map);
+		int down = 0;
+		if(res != 0) {
+			int cnt = r_dao.isNot(idx);
+			down = cnt;
+		}
+		return down;
 	}
 	
 	

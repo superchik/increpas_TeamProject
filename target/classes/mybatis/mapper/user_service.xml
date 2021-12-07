@@ -62,7 +62,7 @@
 <select id="login" resultType="com.ott.user.vo.UserVO"
 		parameterType="Map">
 
-		SELECT u_id, u_pwd1 
+		SELECT *
 		FROM OTT_USER
 		WHERE u_id = #{u_id} AND u_pwd1 = #{u_pwd1}
 
