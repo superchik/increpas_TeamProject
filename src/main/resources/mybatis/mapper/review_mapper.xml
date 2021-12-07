@@ -32,10 +32,14 @@
 	</resultMap>
 	
 	
-	<select id="getReview" resultMap="review_map" parameterType="int">
-		SELECT * FROM OTT_REVIEW
-		WHERE OTT_IDX = #{ott_idx}
-		ORDER BY RV_IDX DESC
+	<select id="getReview" resultMap="review_map" parameterType="Map">
+		SELECT * FROM (
+			SELECT rownum r_num,a.* FROM (
+				SELECT * FROM OTT_REVIEW
+				WHERE ott_idx = #{ott_idx}
+				ORDER BY rv_idx DESC
+			) a 
+		) WHERE r_num BETWEEN #{begin} AND #{end}
 	</select>
 	
 	<select id="review_count" resultType="int" parameterType="int">
@@ -47,24 +51,6 @@
 		SELECT ROUND(AVG(RATING),2) FROM OTT_REVIEW
 		WHERE OTT_IDX = #{ott_idx}
 	</select>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 
