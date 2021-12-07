@@ -70,17 +70,22 @@ public class ReviewController {
 	
 	@RequestMapping(value="/thumup", method=RequestMethod.POST)
 	@ResponseBody
-	public int thumUp(int idx) {
-		int good = r_dao.isGood(idx);
+	public int thumUp(int idx, int ott_idx) {
+		Map<String, Integer> s_map = new HashMap<String, Integer>();
+		s_map.put("u_idx", idx);
+		s_map.put("ott_idx", ott_idx);
+		int good = r_dao.isGood(s_map);
 		int goodup = good+1;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("is_good", goodup);
 		map.put("u_idx", idx);
+		map.put("ott_idx", ott_idx);
+		
 		int res = r_dao.thumpUp(map);
 		int up = 0;
 		if(res != 0) {
-			int cnt = r_dao.isGood(idx);
+			int cnt = r_dao.isGood(s_map);
 			up = cnt;
 		}
 		return up;
@@ -88,17 +93,21 @@ public class ReviewController {
 	
 	@RequestMapping(value="/thumdown", method=RequestMethod.POST)
 	@ResponseBody
-	public int thumDown(int idx) {
-		int not = r_dao.isNot(idx);
+	public int thumDown(int idx, int ott_idx) {
+		Map<String, Integer> s_map = new HashMap<String, Integer>();
+		s_map.put("u_idx", idx);
+		s_map.put("ott_idx", ott_idx);
+		int not = r_dao.isNot(s_map);
 		int notup = not+1;
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("is_not", notup);
 		map.put("u_idx", idx);
+		map.put("ott_idx", ott_idx);
 		int res = r_dao.thumpDown(map);
 		int down = 0;
 		if(res != 0) {
-			int cnt = r_dao.isNot(idx);
+			int cnt = r_dao.isNot(s_map);
 			down = cnt;
 		}
 		return down;

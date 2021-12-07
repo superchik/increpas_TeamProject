@@ -402,7 +402,7 @@
 								</c:when>
 								
 								<c:when test="${uvo.u_idx  != rvo.u_idx}">
-									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx})"><i class="far fa-thumbs-up"></i></a>
+									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx}, ${vo.ott_idx })"><i class="far fa-thumbs-up"></i></a>
 								</c:when>
 							
 							</c:choose>	
@@ -416,7 +416,7 @@
 								</c:when>
 								
 								<c:when test="${uvo.u_idx  != rvo.u_idx}">
-									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx})"><i class="far fa-thumbs-down"></i></a>
+									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx},${vo.ott_idx })"><i class="far fa-thumbs-down"></i></a>
 								</c:when>
 							
 							</c:choose>	
@@ -441,11 +441,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
-	function thumbUp(idx){
+	function thumbUp(idx, ott_idx){
 		$.ajax({
 			url:"/thumup",
 			type:"post",
-			data:{idx:idx}
+			data:{idx:idx, ott_idx:ott_idx}
 		}).done({
 			
 		}).fail({
@@ -453,11 +453,11 @@
 		});
 	}
 	
-	function thumbDown(idx){
+	function thumbDown(idx, ott_idx){
 		$.ajax({
 			url:"/thumdown",
 			type:"post",
-			data:{idx:idx}
+			data:{idx:idx, ott_idx:ott_idx}
 		}).done({
 			
 		}).fail({

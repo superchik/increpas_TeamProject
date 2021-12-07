@@ -86,14 +86,14 @@ public class ReviewDAO {
 		return cnt;
 	}
 	
-	public int isGood(int u_idx) {
-		int cnt = ss.selectOne("review.getGood", u_idx);
+	public int isGood(Map<String, Integer> map) {
+		int cnt = ss.selectOne("review.getGood", map);
 		
 		return cnt;
 	}
 	
-	public int isNot(int u_idx) {
-		int cnt = ss.selectOne("review.getNot", u_idx);
+	public int isNot(Map<String, Integer> map) {
+		int cnt = ss.selectOne("review.getNot", map);
 		
 		return cnt;
 	}

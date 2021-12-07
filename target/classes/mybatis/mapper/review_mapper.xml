@@ -51,25 +51,25 @@
 	<update id="thumpUp" parameterType="Map">
 		update ott_review
 		SET is_good = #{is_good}
-		where u_idx = #{u_idx}
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</update>
 	
 	<update id="thumpDown" parameterType="Map">
 		update ott_review
 		SET is_not = #{is_not}
-		where u_idx = #{u_idx}
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</update>
 	
-	<select id="getGood" resultType="int" parameterType="int">
+	<select id="getGood" resultType="int" parameterType="Map">
 		select is_good
 		from ott_review
-		where u_idx = #{u_idx}
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</select>
 	
-	<select id="getNot" resultType="int" parameterType="int">
+	<select id="getNot" resultType="int" parameterType="Map">
 		select is_not
 		from ott_review
-		where u_idx = #{u_idx}
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</select>
 
 </mapper>

@@ -5,7 +5,7 @@ package com.ott.review.vo;
 public class ReviewVO {
 
 	private String rv_idx;
-	private String ott_idx;
+	private int ott_idx;
 	private String u_idx;
 	private String content;
 	private String rating;
@@ -20,10 +20,10 @@ public class ReviewVO {
 	public void setRv_idx(String rv_idx) {
 		this.rv_idx = rv_idx;
 	}
-	public String getOtt_idx() {
+	public int getOtt_idx() {
 		return ott_idx;
 	}
-	public void setOtt_idx(String ott_idx) {
+	public void setOtt_idx(int ott_idx) {
 		this.ott_idx = ott_idx;
 	}
 	public String getU_idx() {
