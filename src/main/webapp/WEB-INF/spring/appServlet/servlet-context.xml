@@ -42,7 +42,7 @@
 		</beans:property>		
 	</beans:bean>
 	
-	<!-- 비동기통신으로 파일 보내때 사용 -->
+	<!-- 비동기통신으로 파일 보낼때 사용 -->
 	<beans:bean id="multipartResolver" 
  	  class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
  		<beans:property name="defaultEncoding" value="utf-8"/>

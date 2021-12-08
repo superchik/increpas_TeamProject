@@ -91,7 +91,7 @@ public class UserController {
 		return map;
 	}
 	
-	@RequestMapping(value =  "/user_info", method = RequestMethod.GET)
+	@RequestMapping(value =  "/user_info.kmj", method = RequestMethod.GET)
 	public ModelAndView userInfo(String u_idx) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -99,7 +99,7 @@ public class UserController {
 		String realPath = application.getRealPath(img_path);
 		System.out.println("Real =======================>>> "+realPath);
 		System.out.println("img 저장 위치 = "+realPath);
-
+		/*
 		UserVO vo = u_dao.getUserDex(u_idx);
 		String u_id = vo.getU_id();
 		String u_id1= u_id.substring(0,1);
@@ -114,6 +114,7 @@ public class UserController {
 		mv.addObject("id", u_id1);	
 		mv.addObject("vo", vo);
 		mv.addObject("voList", listIdx);
+		*/
 
 		
 		

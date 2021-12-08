@@ -40,7 +40,7 @@
 		<div class="comment_area">
 			<h1>Netflix Top10</h1>
 			
-			<input type="button" style="width: 100px; height: 50px;" onclick="javascript:location.href='/user_info?u_idx=test'" value="user_info 이동"/>
+			<input type="button" style="width: 100px; height: 50px;" onclick="javascript:location.href='/user_info.kmj?u_idx=22'" value="user_info 이동"/>
 			
 		</div>
 		
