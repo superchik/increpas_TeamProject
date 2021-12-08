@@ -26,10 +26,6 @@
 			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat})
 </insert>
 
-<select id="id_find" resultType="com.ott.user.vo.UserVO" parameterType="String">
-	SELECT u_id, u_email FROM ott_user WHERE u_email = #{u_email}
-</select>
-
 <!-- 회원가입 시 auth_key 업데이트 -->
 <update id="auth_Key" parameterType="Map">
 	
@@ -62,21 +58,37 @@
 <select id="login" resultType="com.ott.user.vo.UserVO"
 		parameterType="Map">
 
-		SELECT *
+		SELECT * 
 		FROM OTT_USER
 		WHERE u_id = #{u_id} AND u_pwd1 = #{u_pwd1}
 
 </select>
-<!-- user_정보 -->
+<!-- user_리뷰 목록 -->
 <select id="user_text" resultType="int" parameterType="String">
 	select count(CONTENT)
 	from OTT_REVIEW_BBS
 	where u_idx = #{u_idx}
 </select>
+<!-- 유저 프로필 사진 -->
+<update id="user_img" parameterType="Map">
+	UPDATE OTT_USER
+	
+	SET
+	<if test="oname != null">
+		oname=#{oname}
+	</if>
+	<if test="fname != null">
+		,fname=#{fname}
+	</if> 
+	
+	WHERE u_idx=#{u_idx}
+		
+</update>
 
-<insert id="user_img" parameterType="Map">
-	insert into OTT_USER (u_idx, oname, fname)
-			values(OTT_USER_SEQ.nextval, #{oname}, #{fname})
-</insert>
+<select id="user_info1" resultType="com.ott.user.vo.UserVO" parameterType="String">
+	select *
+	from ott_user
+	where u_idx = #{u_idx}
+</select>
 
 </mapper>

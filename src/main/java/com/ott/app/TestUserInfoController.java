@@ -6,9 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class TestUserInfoController {
-	
+	/*
 	@RequestMapping("/user_info")
 	public String showInfo() {
 		return "user/user_info";
 	}
+	*/
 }
