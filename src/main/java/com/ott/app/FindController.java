@@ -33,9 +33,7 @@ public class FindController {
 		return mv;
 	}
 	
-	
-	// 비밀번호 찾기
-
+	// 비밀번호 찾기1
 	@RequestMapping("/pwreissue")
 	public String pwreissue() {	
 		return "user/user_pw_reissue";
