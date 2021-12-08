@@ -47,34 +47,36 @@ public class UserDAO {
 		return result;
 	}
 
-
+	//이미지 파일 원본이름 사본이름 저장 DB저장
 	public int editBbs(String u_idx,String fname, String oname) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("u_idx", u_idx);
 		
+		System.out.println("오라클 보내는 파일 경로=======>"+fname);
+		System.out.println(u_idx);
 		
-		if(fname != null) {
+		if(fname != null || oname != null) {
 			map.put("fname", fname);
 			map.put("oname", oname);
 		}
-		int cnt = ss.update("user_service.user_img", map);
-		return cnt;
+		
+		
+		
+		return ss.update("user_service.user_img", map);
 	}
-	
+	//자신이 쓴 리뷰의 수
 	public int getList(String u_idx) {
 		return ss.selectOne("user_service.user_text",u_idx);
 	}
-	
+	//유저의 종합 정보
 	public UserVO getUserDex(String u_idx){
 
-		UserVO vo = ss.selectOne("user_service.user_info",u_idx);
+		UserVO vo = ss.selectOne("user_service.user_info1",u_idx);
 		
-		return vo;
+		return vo; 
 	}
+
 	
-	public String imgpath(String u_idx) {
-		UserVO vo = ss.selectOne("user_service.user_info",u_idx);
-		return vo.getFname();
-	}
+
 	
 }
