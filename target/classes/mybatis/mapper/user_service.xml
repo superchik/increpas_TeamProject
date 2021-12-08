@@ -26,6 +26,10 @@
 			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat})
 </insert>
 
+<select id="id_find" resultType="com.ott.user.vo.UserVO" parameterType="String">
+    SELECT u_id, u_email FROM ott_user WHERE u_email = #{u_email}
+</select>
+
 <!-- 회원가입 시 auth_key 업데이트 -->
 <update id="auth_Key" parameterType="Map">
 	
