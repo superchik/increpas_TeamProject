@@ -41,11 +41,6 @@ public class LoginJoinController {
 		return "user/user_join";
 	}
 	
-	@RequestMapping("/pwreissue")
-	public String pwreissue() {	
-		return "user/user_pw_reissue";
-	}
-	
 	@RequestMapping(value = "login_join", method = RequestMethod.POST)
 	public ModelAndView join(UserVO uvo) throws Exception {
 		ModelAndView mv = new ModelAndView();
