@@ -28,7 +28,7 @@ public class FindController {
 		String id = vo.getU_id();
 		ModelAndView mv =  new ModelAndView();
 		mv.addObject("id", id);
-		mv.setViewName("/user/user_id_find_result");
+		mv.setViewName("/user/IDFindres");
 		
 		return mv;
 	}
