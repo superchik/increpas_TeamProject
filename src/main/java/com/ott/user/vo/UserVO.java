@@ -1,5 +1,7 @@
 package com.ott.user.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserVO {
 	private String u_idx; // 회원번호(고유키)
 	private String u_name; // 이름
@@ -17,8 +19,22 @@ public class UserVO {
 	private String big_fat; // 암호화 salt 값 저장 컬럼
 	private String fname; //이미지 중복변경 파일네임
 	private String oname; //이미지 원본 파일네임	
+	private MultipartFile s_file;//이미지 파일
+	private String reviewEA;//유저 리뷰수
 	
 	
+	public MultipartFile getS_file() {
+		return s_file;
+	}
+	public void setS_file(MultipartFile s_file) {
+		this.s_file = s_file;
+	}
+	public String getReviewEA() {
+		return reviewEA;
+	}
+	public void setReviewEA(String reviewEA) {
+		this.reviewEA = reviewEA;
+	}
 	public String getFname() {
 		return fname;
 	}

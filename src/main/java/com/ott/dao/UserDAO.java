@@ -1,16 +1,27 @@
 package com.ott.dao;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.ott.Util.FileRenameUtil;
 import com.ott.user.vo.UserVO;
 @Component
 public class UserDAO {
+	
+	private String img_path = "/resources/user_img/";
+	
+	@Autowired
+	private ServletContext application;
 	
 	@Autowired
 	private SqlSessionTemplate ss;
@@ -48,35 +59,80 @@ public class UserDAO {
 	}
 
 	//이미지 파일 원본이름 사본이름 저장 DB저장
-	public int editBbs(String u_idx,String fname, String oname) {
+	public int editBbs(UserVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("u_idx", u_idx);
 		
-		System.out.println("오라클 보내는 파일 경로=======>"+fname);
-		System.out.println(u_idx);
+		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
+		System.out.println(vo.getU_idx());
+
+		map.put("u_idx", vo.getU_idx());
 		
-		if(fname != null || oname != null) {
-			map.put("fname", fname);
-			map.put("oname", oname);
+		if(vo.getFname() != null || vo.getOname() != null) {
+			map.put("fname", vo.getFname());
+			map.put("oname", vo.getOname());
 		}
-		
-		
-		
 		return ss.update("user_service.user_img", map);
 	}
-	//자신이 쓴 리뷰의 수
-	public int getList(String u_idx) {
-		return ss.selectOne("user_service.user_text",u_idx);
-	}
-	//유저의 종합 정보
-	public UserVO getUserDex(String u_idx){
-
-		UserVO vo = ss.selectOne("user_service.user_info1",u_idx);
 		
-		return vo; 
+
+	//유저 종합 정보
+	public ModelAndView userInfo(UserVO vo) {
+		ModelAndView mv = new ModelAndView();
+		System.out.println("u_idx = "+vo.getU_idx());
+		
+		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
+		
+		mv.addObject("vo", u_idDex);
+		mv.setViewName("/user/user_info");
+		return mv;
 	}
 
-	
+	//비동기 통신 유저 프로필 이미지 업로드
+	public Map<String, String> saveImg(UserVO vo) {
+		Map<String, String> map = new HashMap<String, String>();
+		String u_idx= vo.getU_idx();
+		MultipartFile f = vo.getS_file();
+		
+		System.out.println("u_idx====> "+u_idx);
+		System.out.println("MultiFile ===-=> "+f);
+
+		String realPath = null;
+		
+		StringBuffer sb = new StringBuffer();
+		
+		
+		
+		if (f.getSize() > 0) {
+			realPath = application.getRealPath(img_path);
+			
+			//oname = f.getOriginalFilename();
+			vo.setOname(f.getOriginalFilename());
+			
+			//fname = FileRenameUtil.checkSameFileName(oname, realPath);
+			vo.setFname(FileRenameUtil.checkSameFileName(vo.getOname(), realPath));
+			try {
+				f.transferTo(new File(realPath, vo.getFname()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		sb.append(img_path);
+		
+		sb.append(vo.getFname());
+		
+		System.out.println("에이젝스 저장= "+ sb.toString());
+
+		// xml : user_img
+		int status = editBbs(vo);
+		
+		System.out.println(status);
+		
+		map.put("path", vo.getFname());
+		
+		return map;
+		
+	}
 
 	
 }

@@ -67,12 +67,7 @@
 		WHERE u_id = #{u_id} AND u_pwd1 = #{u_pwd1}
 
 </select>
-<!-- user_리뷰 목록 -->
-<select id="user_text" resultType="int" parameterType="String">
-	select count(CONTENT)
-	from OTT_REVIEW_BBS
-	where u_idx = #{u_idx}
-</select>
+
 <!-- 유저 프로필 사진 업로드 -->
 <update id="user_img" parameterType="Map">
 	UPDATE OTT_USER
@@ -88,11 +83,12 @@
 	WHERE u_idx=#{u_idx}
 		
 </update>
+
 <!-- 유저 종합 정보 -->
 <select id="user_info1" resultType="com.ott.user.vo.UserVO" parameterType="String">
-	select *
-	from ott_user
-	where u_idx = #{u_idx}
+	SELECT a.*, reviewEA.b
+	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, 
+		 (SELECT count(content) as b FROM OTT_REVIEW_BBS WHERE u_idx=#{u_idx}) reviewEA
 </select>
 
 </mapper>

@@ -43,7 +43,7 @@
 					<p>가입한 이메일 : ${vo.u_email }</p>
 				</div>
 				<div class="Boxp p4">
-					<p>내가 쓴 리뷰 수 : ${voList }</p>
+					<p>내가 쓴 리뷰 수 : ${vo.reviewEA }</p>
 				</div>
 				<div class="Boxp p5">
 					<p>Adout_me</p>
