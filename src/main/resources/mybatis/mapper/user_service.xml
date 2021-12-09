@@ -96,9 +96,8 @@
 
 <!-- 유저 종합 정보 -->
 <select id="user_info1" resultType="com.ott.user.vo.UserVO" parameterType="String">
-	SELECT a.*, reviewEA.b
-	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, 
-		 (SELECT count(content) as b FROM OTT_REVIEW_BBS WHERE u_idx=#{u_idx}) reviewEA
+	SELECT a.*, b.reviewEA
+	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, (SELECT count(content) as reviewEA FROM OTT_REVIEW_BBS WHERE u_idx=#{u_idx}) b
 </select>
 
 </mapper>
