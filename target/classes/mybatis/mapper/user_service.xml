@@ -30,6 +30,16 @@
     SELECT u_id, u_email FROM ott_user WHERE u_email = #{u_email}
 </select>
 
+<select id="checkUser" resultType="com.ott.user.vo.UserVO" parameterType="Map">
+	SELECT * FROM ott_user WHERE u_email = #{u_email} AND u_id = #{u_id}
+</select>
+
+<update id="imsiPass" parameterType="Map">
+	update ott_user
+	SET u_pwd1 = #{u_pwd1}
+	where u_id = #{u_id}
+</update>
+
 <!-- 회원가입 시 auth_key 업데이트 -->
 <update id="auth_Key" parameterType="Map">
 	

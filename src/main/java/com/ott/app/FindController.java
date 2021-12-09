@@ -39,4 +39,12 @@ public class FindController {
 		return "user/user_pw_reissue";
 	}
 	
+	@RequestMapping(value="/reissueAction", method=RequestMethod.POST)
+	public ModelAndView ReissueAction(String id, String u_email) {
+		
+		ModelAndView mv =  new ModelAndView();
+		mv.setViewName("/user/user_pw_reissue_result");
+		
+		return mv;
+	}
 }
