@@ -146,8 +146,7 @@
 			$( "#dialog" ).dialog('close');
 			var path = data.path; //이미지가 저장된 경로
 			var fname = data.fname; // 파일명
-			if(fname != null)
-				$('.profileImg').attr('src', path);
+			$('.profileImg').attr('src', path);
 			console.log(path);
 			console.log(fname);
 		}).fail(function(err){
