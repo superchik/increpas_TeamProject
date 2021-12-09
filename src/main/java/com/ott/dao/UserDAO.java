@@ -59,7 +59,7 @@ public class UserDAO {
 	}
 
 	//이미지 파일 원본이름 사본이름 저장 DB저장
-	public int editBbs(UserVO vo) {
+	public int editImg(UserVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
@@ -104,7 +104,7 @@ public class UserDAO {
 		
 		if (f.getSize() > 0) {
 			realPath = application.getRealPath(img_path);
-			System.out.println("에이젝스 저장= "+ realPath);
+			System.out.println("실재 파일 저장 = "+ realPath);
 			//oname = f.getOriginalFilename();
 			vo.setOname(f.getOriginalFilename());
 			
@@ -126,7 +126,7 @@ public class UserDAO {
 		System.out.println("에이젝스 저장= "+ vo.getFname());
 
 		// xml : user_img
-		int status = editBbs(vo);
+		int status = editImg(vo);
 		
 		System.out.println(status);
 		
