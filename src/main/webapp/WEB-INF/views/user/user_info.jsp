@@ -29,7 +29,12 @@
 		<div class="com">
 			<div class="TBox img">
 				<div class="img_area">
-					<img class="profileImg" src="${vo.fname }" alt="${id }"/>
+					<c:if test="${vo.fname ne null}">
+						<img class="profileImg" src="${vo.fname }" alt="${id }"/>
+					</c:if>
+					<c:if test="${vo.fname ne null}">
+						<div class="img_area">${vo.idImg }</div>
+					</c:if>
 				</div>
 			</div>
 			<div class="MBox profile">
