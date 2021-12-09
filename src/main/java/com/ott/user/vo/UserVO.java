@@ -21,8 +21,15 @@ public class UserVO {
 	private String oname; //이미지 원본 파일네임	
 	private MultipartFile s_file;//이미지 파일
 	private String reviewEA;//유저 리뷰수
+	private String idImg;//유저 이미지프로필 없을때 표현
 	
 	
+	public String getIdImg() {
+		return idImg;
+	}
+	public void setIdImg(String idImg) {
+		this.idImg = idImg;
+	}
 	public MultipartFile getS_file() {
 		return s_file;
 	}
