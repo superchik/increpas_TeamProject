@@ -29,7 +29,7 @@
 		<div class="com">
 			<div class="TBox img">
 				<div class="img_area">
-					<img class="profileImg" src="" alt="${id }"/>
+					<img class="profileImg" src="${vo.fname }" alt="${id }"/>
 				</div>
 			</div>
 			<div class="MBox profile">
@@ -146,7 +146,8 @@
 			$( "#dialog" ).dialog('close');
 			var path = data.path; //이미지가 저장된 경로
 			var fname = data.fname; // 파일명
-			$('.profileImg').attr('src', path);
+			if(fname != null)
+				$('.profileImg').attr('src', path);
 			console.log(path);
 			console.log(fname);
 		}).fail(function(err){
