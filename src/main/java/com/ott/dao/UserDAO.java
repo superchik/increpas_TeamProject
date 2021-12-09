@@ -81,7 +81,7 @@ public class UserDAO {
 		System.out.println("u_idx = "+vo.getU_idx());
 		
 		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
-		
+		System.out.println(u_idDex.getFname()); 
 		mv.addObject("vo", u_idDex);
 		mv.setViewName("/user/user_info");
 		return mv;
@@ -104,7 +104,7 @@ public class UserDAO {
 		
 		if (f.getSize() > 0) {
 			realPath = application.getRealPath(img_path);
-			
+			System.out.println("에이젝스 저장= "+ realPath);
 			//oname = f.getOriginalFilename();
 			vo.setOname(f.getOriginalFilename());
 			
@@ -121,7 +121,9 @@ public class UserDAO {
 		
 		sb.append(vo.getFname());
 		
-		System.out.println("에이젝스 저장= "+ sb.toString());
+		vo.setFname(sb.toString());
+		
+		System.out.println("에이젝스 저장= "+ vo.getFname());
 
 		// xml : user_img
 		int status = editBbs(vo);
