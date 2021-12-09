@@ -67,7 +67,7 @@ public class UserDAO {
 
 		map.put("u_idx", vo.getU_idx());
 		
-		if(vo.getFname() != null || vo.getOname() != null) {
+		if(vo.getFname().trim().length() > 0) {
 			map.put("fname", vo.getFname());
 			map.put("oname", vo.getOname());
 		}
@@ -78,10 +78,13 @@ public class UserDAO {
 	//유저 종합 정보
 	public ModelAndView userInfo(UserVO vo) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("u_idx = "+vo.getU_idx());
-		
 		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
-		System.out.println(u_idDex.getFname()); 
+		System.out.println("u_idx = "+vo.getU_idx());
+		if(u_idDex.getFname().trim().length() < 0) {
+			u_idDex.setIdImg(u_idDex.getU_id().substring(0,1));
+		}
+		System.out.println("오라클 파일 저장 경로"+u_idDex.getFname());
+		System.out.println("파일이 없을시 표현할 글"+u_idDex.getIdImg());
 		mv.addObject("vo", u_idDex);
 		mv.setViewName("/user/user_info");
 		return mv;
@@ -90,28 +93,21 @@ public class UserDAO {
 	//비동기 통신 유저 프로필 이미지 업로드
 	public Map<String, String> saveImg(UserVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
-		String u_idx= vo.getU_idx();
-		MultipartFile f = vo.getS_file();
 		
-		System.out.println("u_idx====> "+u_idx);
-		System.out.println("MultiFile ===-=> "+f);
+		System.out.println("u_idx====> "+vo.getU_idx());
+		System.out.println("MultiFile =====> "+vo.getS_file().getClass().getName());
 
-		String realPath = null;
-		
 		StringBuffer sb = new StringBuffer();
 		
-		
-		
-		if (f.getSize() > 0) {
-			realPath = application.getRealPath(img_path);
-			System.out.println("실재 파일 저장 = "+ realPath);
+		if (vo.getS_file().getSize() > 0) {
+			System.out.println("실재 파일 저장 = "+ application.getRealPath(img_path));
 			//oname = f.getOriginalFilename();
-			vo.setOname(f.getOriginalFilename());
+			vo.setOname(vo.getS_file().getOriginalFilename());
 			
 			//fname = FileRenameUtil.checkSameFileName(oname, realPath);
-			vo.setFname(FileRenameUtil.checkSameFileName(vo.getOname(), realPath));
+			vo.setFname(FileRenameUtil.checkSameFileName(vo.getOname(), application.getRealPath(img_path)));
 			try {
-				f.transferTo(new File(realPath, vo.getFname()));
+				vo.getS_file().transferTo(new File(application.getRealPath(img_path), vo.getFname()));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -128,7 +124,7 @@ public class UserDAO {
 		// xml : user_img
 		int status = editImg(vo);
 		
-		System.out.println(status);
+		System.out.println("이미지 저장 성공=1 실패=0 : "+status);
 		
 		map.put("path", vo.getFname());
 		
