@@ -75,6 +75,8 @@ public class LoginJoinController {
 		
 		String big = Security.generateSalt();
 		String fat = Security.getbig(u_pwd1, big);
+		
+		System.out.println("U_ID ---------------------------------------->>>>>> "+u_id);
 
 		UserVO vo = Ldao.login(u_id, fat);
 		

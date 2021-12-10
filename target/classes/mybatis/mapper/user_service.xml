@@ -31,13 +31,13 @@
 </select>
 
 <select id="checkUser" resultType="com.ott.user.vo.UserVO" parameterType="Map">
-	SELECT * FROM ott_user WHERE u_email = #{u_email} AND u_id = #{u_id}
+	SELECT * FROM ott_user WHERE u_id = #{u_id} AND u_email = #{u_email} 
 </select>
 
-<update id="imsiPass" parameterType="Map">
+<update id="resetPwd" parameterType="Map">
 	update ott_user
 	SET u_pwd1 = #{u_pwd1}
-	where u_id = #{u_id}
+	where u_email = #{u_email}
 </update>
 
 <!-- 회원가입 시 auth_key 업데이트 -->

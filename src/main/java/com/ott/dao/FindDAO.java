@@ -19,21 +19,16 @@ public class FindDAO {
 		return ss.selectOne("user_service.id_find", email);
 	}
 	
-	public UserVO checkUser(String id, String email) {
+	public UserVO checkUser(String u_id, String u_email) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", id);
-		map.put("email", email);
+		map.put("u_id", u_id);
+		map.put("u_email", u_email);
 		
 		return ss.selectOne("user_service.checkUser", map);
 	}
 	
-	public int imsiPass(String u_id, String u_pwd1) {
-		Map<String, String> map =  new HashMap<String, String>();
-		map.put("u_id", u_id);
-		map.put("u_pwd1", u_pwd1);
-		
-		int cnt  =  ss.update("user_service.imsiPass", map);
-		
-		return cnt;
+	public int resetPwd(Map<String, String> map) {
+		int status = ss.update("user_service.resetPwd", map);
+		return status;
 	}
 }
