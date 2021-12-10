@@ -10,10 +10,10 @@ import javax.servlet.ServletContext;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ott.Util.FileRenameUtil;
+import com.ott.Util.Security;
 import com.ott.user.vo.UserVO;
 @Component
 public class UserDAO {
@@ -64,8 +64,11 @@ public class UserDAO {
 		
 		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
 		System.out.println(vo.getU_idx());
-
+		
 		map.put("u_idx", vo.getU_idx());
+		
+		if(vo.getU_name().trim().length() > 0)
+			map.put("u_name", vo.getU_name());
 		
 		if(vo.getFname().trim().length() > 0) {
 			map.put("fname", vo.getFname());
@@ -87,6 +90,7 @@ public class UserDAO {
 		System.out.println("파일이 없을시 표현할 글"+u_idDex.getIdImg());
 		mv.addObject("vo", u_idDex);
 		mv.setViewName("/user/user_info");
+		
 		return mv;
 	}
 

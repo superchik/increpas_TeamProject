@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,7 +28,7 @@ public class UserController {
 	}
 	
 	//유저 정보
-	@RequestMapping(value =  "/user_info", method = RequestMethod.GET)
+	@RequestMapping(value =  "/user_info", method = RequestMethod.POST)
 	public ModelAndView userInfo(UserVO vo) {
 		return u_dao.userInfo(vo);
 	}

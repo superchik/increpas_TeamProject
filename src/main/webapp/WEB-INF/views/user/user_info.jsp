@@ -32,8 +32,8 @@
 					<c:if test="${vo.fname ne null}">
 						<img class="profileImg" src="${vo.fname }" alt="${id }"/>
 					</c:if>
-					<c:if test="${vo.fname ne null}">
-						<div class="img_area">${vo.idImg }</div>
+					<c:if test="${vo.fname eq null}">
+						<div class="profileImg">${vo.idImg }</div>
 					</c:if>
 				</div>
 			</div>
@@ -60,9 +60,10 @@
 	<div id="dialog" title="다이얼로그 테스트">
 		<form action="" method="post" enctype="multipart/form-data" name="">
    			<div><img id="preImage"/></div>
+   			<span>닉네임 : ${vo.u_name }</span></br>
+   			<span>변경할 이름: <input type="text" id="u_name" name="u_name"></span>
 	        <input type='file' id="filename" name="filename"/>
 	        <input type="hidden" id="u_user" name="u_idx" value="${vo.u_idx}"/>
-	        
 	        <!--                           현재프로젝트.경로요청/saveFIle이라는 폴더안에/객체.변수명 ( 지금은 없는관계로.. 에러가 발생하는것 같음 --> 
 	        <!-- <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg"'/> -->
    			<!--  Error: src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg" -->
@@ -101,12 +102,16 @@
         	console.log("U_idx===================>>"+u_idx);
         	var s_file = $("#filename")[0].files[0];
         	alert(typeof(s_file));
+        	var u_name = $("u_name").val();
+        	console.log("u_name===================>>"+u_name);
         	
-        	if( s_file != null){
-        		alert('쓰기 준비')
-        		sendImage(u_idx, s_file);
-        	}else
-        		alert("파일을 선텍 하세요!");
+        	sendImage(u_idx, s_file, u_pwd, u_name);
+        	
+        	//if( s_file != null){
+        	//	alert('쓰기 준비')
+        	//	sendImage(u_idx, s_file);
+        	//}else
+        	//	alert("파일을 선텍 하세요!");
         	
         	console.log(u_idx);
         	console.log(typeof(s_file));
@@ -124,7 +129,7 @@
         }
        
     }
-	function sendImage(u_idx, s_file){
+	function sendImage(u_idx, s_file, u_pwd, u_name){
 		
 		console.log("SendImgae====================>>" + u_idx);
 		
@@ -137,6 +142,8 @@
 		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
 		frm.append("s_file", s_file);
 		frm.append("u_idx", u_idx); 
+		frm.append("u_pwd", u_pwd); 
+		frm.append("u_name", u_name); 
 		
 		//비동기식 통신
 		$.ajax({
