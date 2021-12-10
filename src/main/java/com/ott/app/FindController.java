@@ -53,7 +53,6 @@ public class FindController {
 		ModelAndView mv =  new ModelAndView();
 		Map<String, String> map = new HashMap<String, String>();
 		UserVO vo = fdao.checkUser(u_id, u_email);
-		String name = vo.getU_name();
 		String rand_key = randomPwd();
 		String big = Security.generateSalt();
 		String fat = Security.getbig(rand_key, big);
@@ -61,6 +60,7 @@ public class FindController {
 		if(vo != null) {
 			map.put("u_pwd1", fat);
 			map.put("u_email", u_email);
+			String name = vo.getU_name();
 			fdao.resetPwd(map);
 			mv.addObject("rand_key", rand_key);
 			mv.addObject("name", name);
