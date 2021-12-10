@@ -32,8 +32,10 @@ public class FindController {
 	public ModelAndView findAction(String u_email) {
 		UserVO vo = fdao.id_find(u_email);
 		String id = vo.getU_id();
+		String name = vo.getU_name();
 		ModelAndView mv =  new ModelAndView();
 		mv.addObject("id", id);
+		mv.addObject("name", name);
 		mv.setViewName("/user/user_id_find_result");
 		
 		return mv;
@@ -51,6 +53,7 @@ public class FindController {
 		ModelAndView mv =  new ModelAndView();
 		Map<String, String> map = new HashMap<String, String>();
 		UserVO vo = fdao.checkUser(u_id, u_email);
+		String name = vo.getU_name();
 		String rand_key = randomPwd();
 		String big = Security.generateSalt();
 		String fat = Security.getbig(rand_key, big);
@@ -60,6 +63,7 @@ public class FindController {
 			map.put("u_email", u_email);
 			fdao.resetPwd(map);
 			mv.addObject("rand_key", rand_key);
+			mv.addObject("name", name);
 			mv.setViewName("/user/user_pw_result");
 		} else {
 			mv.setViewName("redirect:pwreissue");

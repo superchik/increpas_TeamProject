@@ -32,7 +32,7 @@
 </insert>
 
 <select id="id_find" resultType="com.ott.user.vo.UserVO" parameterType="String">
-    SELECT u_id, u_email FROM ott_user WHERE u_email = #{u_email}
+    SELECT u_id, u_name, u_email FROM ott_user WHERE u_email = #{u_email}
 </select>
 
 <select id="checkUser" resultType="com.ott.user.vo.UserVO" parameterType="Map">
