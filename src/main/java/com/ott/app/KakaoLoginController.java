@@ -165,9 +165,21 @@ public class KakaoLoginController {
 					mv.addObject("p_img", p_img);
 					mv.addObject("email", email);
 					
-					UserVO vo = new UserVO();
+					UserVO vo = l_dao.user_info(nickName);
+					if(vo != null) {
+						session.setAttribute("uvo", vo);
+					} else {
+						vo = new UserVO();
+						vo.setU_name(nickName);
+						vo.setU_email(email);
+						vo.setU_id(nickName);
+						vo.setU_pwd1("테스트용");
+						l_dao.kakao_user(vo);
+					}
+					
+					/*UserVO vo = new UserVO();
 					vo.setU_name(nickName);
-					vo.setU_email(email);
+					vo.setU_email(email);*/
 					
 					session.setAttribute("uvo", vo);
 				}

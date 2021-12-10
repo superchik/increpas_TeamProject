@@ -22,8 +22,7 @@
 	<div class="common_container">
 		<div class="user_login_box">
 			<div class="common_area">
-				<h4>회원님의 임시 비밀번호는 다음과 같습니다.</h4>				
-					<span class="result">${rand_key}</span>
+				<h4>회원님의 임시 비밀번호는 <span class="result">${rand_key}</span> 입니다.</h4>
 			</div>
 			<div class="user_common_service">
 				<h4><a class="user_common_link" href="/login">로그인</a></h4>

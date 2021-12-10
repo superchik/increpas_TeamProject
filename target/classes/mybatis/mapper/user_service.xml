@@ -5,8 +5,13 @@
 <mapper namespace="user_service">
 
 <insert id="naver_login" parameterType="com.ott.user.vo.UserVO">
-	insert into OTT_USER (u_idx, u_name, u_email, u_id, u_pwd1)
-			values(OTT_USER_SEQ.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1})
+	insert into OTT_USER (u_idx, u_name, u_email, u_id, u_pwd1, SOCIAL)
+			values(OTT_USER_SEQ.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1}, 'NAVER')
+</insert>
+
+<insert id="kakao_login" parameterType="com.ott.user.vo.UserVO">
+	INSERT INTO ott_user (u_idx, u_name, u_email, u_id, u_pwd1, SOCIAL)
+		VALUES(ott_user_seq.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1}, 'KAKAO')
 </insert>
 
 <select id="user_info" resultType="com.ott.user.vo.UserVO" parameterType="String">
@@ -22,8 +27,8 @@
 </select>
 
 <insert id="user_join" parameterType="com.ott.user.vo.UserVO">
-	insert into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt)
-			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat})
+	insert into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt, SOCIAL)
+			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat}, 'VVF')
 </insert>
 
 <select id="id_find" resultType="com.ott.user.vo.UserVO" parameterType="String">

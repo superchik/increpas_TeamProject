@@ -171,3 +171,8 @@ input {
 input:focus {
 	outline: none;
 }
+.result {
+	color: #f3f4f6;
+	font-weight: bold;
+	line-height: 250px;
+}
