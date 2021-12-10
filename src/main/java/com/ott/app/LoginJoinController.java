@@ -41,11 +41,6 @@ public class LoginJoinController {
 		return "user/user_join";
 	}
 	
-	@RequestMapping("/pwreissue")
-	public String pwreissue() {	
-		return "user/user_pw_reissue";
-	}
-	
 	@RequestMapping(value = "login_join", method = RequestMethod.POST)
 	public ModelAndView join(UserVO uvo) throws Exception {
 		ModelAndView mv = new ModelAndView();
@@ -80,12 +75,15 @@ public class LoginJoinController {
 		
 		String big = Security.generateSalt();
 		String fat = Security.getbig(u_pwd1, big);
+		
+		System.out.println("U_ID ---------------------------------------->>>>>> "+u_id);
 
 		UserVO vo = Ldao.login(u_id, fat);
 		
 		if(vo != null) {
 			session.setAttribute("uvo", vo);
-			mv.addObject("user",vo);
+			mv.addObject("uvo",vo);
+			System.out.println(vo.getU_name());
 		}
 		
 		mv.setViewName(last_uri == null ? "redirect:/" : "redirect:" + last_uri);

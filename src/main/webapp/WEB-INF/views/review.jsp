@@ -329,7 +329,7 @@
 	<div id="write_div">
 		<a class="write_nickname">${uvo.u_id }</a>
 		<textarea name="content" id="write_area" 
-			cols="100" rows="5"></textarea>
+			cols="100" rows="5""></textarea>
 		<div class="write_star">
 		<div class="star-rating space-x-4 mx-auto">
 		<input type="radio" id="5-stars" name="rating" value="5" v-model="ratings"/>
@@ -395,13 +395,32 @@
 						<td class="list_recommend">
 						
 							<span class="like_text_area">
-								<a href="#"><i class="far fa-thumbs-up"></i></a>
-									<span>0</span>
+							
+							<c:choose>
+								<c:when test="${uvo.u_idx  == rvo.u_idx}">
+									<a><i class="far fa-thumbs-up"></i></a>
+								</c:when>
+								
+								<c:when test="${uvo.u_idx  != rvo.u_idx}">
+									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx}, ${vo.ott_idx })"><i class="far fa-thumbs-up"></i></a>
+								</c:when>
+							
+							</c:choose>	
+									<span>${rvo.is_good }</span>
 							</span>
 							
 							<span class="like_text_area">
-								<a href="#"><i class="far fa-thumbs-down"></i></a>
-									<span>0</span>
+							<c:choose>
+								<c:when test="${uvo.u_idx  == rvo.u_idx}">
+									<a><i class="far fa-thumbs-down"></i></a>
+								</c:when>
+								
+								<c:when test="${uvo.u_idx  != rvo.u_idx}">
+									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx},${vo.ott_idx })"><i class="far fa-thumbs-down"></i></a>
+								</c:when>
+							
+							</c:choose>	
+									<span>${rvo.is_not }</span>
 							</span>
 							<div class="recommend_btn">
 								<!-- <a>추천</a>  <img src="resources/images/squid_game.png"> -->
@@ -417,10 +436,34 @@
 <!-- footer -->
 <jsp:include page="common/footer.jsp"></jsp:include>
 </footer>
+</c:if>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 <script>
-
+	function thumbUp(idx, ott_idx){
+		$.ajax({
+			url:"/thumup",
+			type:"post",
+			data:{idx:idx, ott_idx:ott_idx}
+		}).done({
+			
+		}).fail({
+			
+		});
+	}
+	
+	function thumbDown(idx, ott_idx){
+		$.ajax({
+			url:"/thumdown",
+			type:"post",
+			data:{idx:idx, ott_idx:ott_idx}
+		}).done({
+			
+		}).fail({
+			
+		});
+	}
 </script>
-</c:if>
 </body>
 </html>

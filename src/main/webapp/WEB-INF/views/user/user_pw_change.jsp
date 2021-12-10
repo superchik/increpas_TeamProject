@@ -14,7 +14,7 @@
 <!-- user common (id/pw find) css -->
 <link rel="stylesheet" type="text/css" href="resources/css/user/user_common_find.css" />
 
-<title>아이디 찾기 화면</title>
+<title>비밀번호 변경 화면</title>
 </head>
 <body>
 	<!-- Header -->
@@ -22,14 +22,17 @@
 	<div class="common_container">
 		<div class="user_login_box">
 			<div class="common_area">
-				<h4>회원가입 시 등록하신 정보로 회원님의 아이디를 찾을 수 있습니다.</h4>
-				<form action="findAction" method="post">
-					<input class="user_common" type="email" id="u_email" name="u_email" placeholder="이메일" required="required">
-					<button class="user_common get_value">아이디 찾기</button>
+				<h4>회원가입 시 작성하신 비밀번호와 새로운 비밀번호를 작성해주세요</h4>
+				<form action="#" method="post">				
+					<input class="user_common" type="password" id="u_pw1" name="u_pw1" placeholder="기존 비밀번호" required="required">
+					<input class="user_common" type="password" id="u_pw2" name="u_pw2" placeholder="변경할 비밀번호" required="required">
+					<input class="user_common" type="password" id="u_pw3" name="u_pw3" placeholder="변경할 비밀번호 확인">
+					<button class="user_common get_value">비밀번호 변경</button>
 				</form>
 			</div>
+			
 			<div class="user_common_service">
-				<h4><a class="user_common_link" href="/login">로그인</a></h4>
+				<h4><a class="user_common_link" href="/idfind">아이디를 잊으셨나요?</a></h4>
 			</div>
 		</div>	
 	</div>

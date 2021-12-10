@@ -1,11 +1,15 @@
 package com.ott.app;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ott.platform.vo.PlatFormVO;
@@ -62,6 +66,51 @@ public class ReviewController {
 		
 		mv.setViewName("redirect:/review?ott_idx="+now_page);
 		return mv;
+	}
+	
+	@RequestMapping(value="/thumup", method=RequestMethod.POST)
+	@ResponseBody
+	public int thumUp(int idx, int ott_idx) {
+		Map<String, Integer> s_map = new HashMap<String, Integer>();
+		s_map.put("u_idx", idx);
+		s_map.put("ott_idx", ott_idx);
+		int good = r_dao.isGood(s_map);
+		int goodup = good+1;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("is_good", goodup);
+		map.put("u_idx", idx);
+		map.put("ott_idx", ott_idx);
+		
+		int res = r_dao.thumpUp(map);
+		int up = 0;
+		if(res != 0) {
+			int cnt = r_dao.isGood(s_map);
+			up = cnt;
+		}
+		return up;
+	}
+	
+	@RequestMapping(value="/thumdown", method=RequestMethod.POST)
+	@ResponseBody
+	public int thumDown(int idx, int ott_idx) {
+		Map<String, Integer> s_map = new HashMap<String, Integer>();
+		s_map.put("u_idx", idx);
+		s_map.put("ott_idx", ott_idx);
+		int not = r_dao.isNot(s_map);
+		int notup = not+1;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("is_not", notup);
+		map.put("u_idx", idx);
+		map.put("ott_idx", ott_idx);
+		int res = r_dao.thumpDown(map);
+		int down = 0;
+		if(res != 0) {
+			int cnt = r_dao.isNot(s_map);
+			down = cnt;
+		}
+		return down;
 	}
 	
 	

@@ -2,6 +2,7 @@ package com.ott.review.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +74,27 @@ public class ReviewDAO {
 		}
 		
 		return ar;
+	}
+	
+	public int thumpUp(Map<String, Integer> map) {
+		int cnt = ss.update("review.thumpUp", map);
+		return cnt;
+	}
+	
+	public int thumpDown(Map<String, Integer> map) {
+		int cnt = ss.update("review.thumpDown", map);
+		return cnt;
+	}
+	
+	public int isGood(Map<String, Integer> map) {
+		int cnt = ss.selectOne("review.getGood", map);
+		
+		return cnt;
+	}
+	
+	public int isNot(Map<String, Integer> map) {
+		int cnt = ss.selectOne("review.getNot", map);
+		
+		return cnt;
 	}
 }

@@ -23,9 +23,9 @@
 		<div class="user_login_box">
 			<div class="common_area">
 				<h4>회원가입 시 작성하신 아이디와 이메일을 작성해주세요</h4>
-				<form action="#" method="post">				
-					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디">
-					<input class="user_common" type="email" id="u_email" name="u_email" placeholder="이메일">
+				<form action="/reissueAction" method="post">				
+					<input class="user_common" type="text" id="u_id" name="u_id" placeholder="아이디" required="required">
+					<input class="user_common" type="email" id="u_email" name="u_email" placeholder="이메일" required="required">
 					<button class="user_common get_value">비밀번호 재발급</button>
 				</form>
 			</div>

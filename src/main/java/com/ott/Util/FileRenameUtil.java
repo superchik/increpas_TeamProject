@@ -26,8 +26,8 @@ public class FileRenameUtil {
 			sb.append(")");
 			sb.append(suffix);
 			
-			fileName = sb.toString(); //test1231.txt
-			saveFileName = path + System.getProperty("file.separator") + fileName;
+			fileName = sb.toString(); //test123(1).txt
+			saveFileName = path + System.getProperty("file.separator") + fileName;//현 OS 에 적합한 기호를 써라 (\, /)
 			
 			f = new File(saveFileName);
 		}
