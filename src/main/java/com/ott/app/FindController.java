@@ -33,9 +33,12 @@ public class FindController {
 		UserVO vo = fdao.id_find(u_email);
 		String id = vo.getU_id();
 		String name = vo.getU_name();
+<<<<<<< HEAD
 		
 		System.out.println(id);
 		System.out.println(name);
+=======
+>>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
 		ModelAndView mv =  new ModelAndView();
 		mv.addObject("id", id);
 		mv.addObject("name", name);
@@ -63,9 +66,11 @@ public class FindController {
 		if(vo != null) {
 			map.put("u_pwd1", fat);
 			map.put("u_email", u_email);
+			String name = vo.getU_name();
 			fdao.resetPwd(map);
 			mv.addObject("id",u_id);
 			mv.addObject("rand_key", rand_key);
+			mv.addObject("name", name);
 			mv.setViewName("/user/user_pw_result");
 		} else {
 			mv.setViewName("redirect:pwreissue");

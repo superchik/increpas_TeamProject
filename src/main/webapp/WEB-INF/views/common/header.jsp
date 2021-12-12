@@ -29,14 +29,22 @@
 				</a></span>
 			</c:if>
 			<c:if test="${!empty uvo }">
-				<span><a href="/user_info">${uvo.u_name}님, 환영합니다.</a></span>
+				<span><a href="javascript:goinfo('${uvo.u_idx }')" >${uvo.u_name}님, 환영합니다.</a></span>
 				<span><a href="/logout">로그아웃</a></span>
 			</c:if>
 		</ul>
 	</nav>
 
 </div>
-
+<form name="ff" method="post" action="/user_info" >
+	<input type="hidden" name="u_idx" id="u_idx"/>
+</form>
 <!--  
 
 -->
+<script>
+	function goinfo(u_idx) {
+		document.ff.u_idx.value=u_idx;
+		document.ff.submit();
+	}
+</script>

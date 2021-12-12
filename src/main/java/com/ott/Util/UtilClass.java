@@ -1,6 +1,20 @@
 package com.ott.Util;
 
-// UtilÀÌ ÇÊ¿äÇÑ Å¬·¡½º´Â ÇØ´ç ÆÐÅ°Áö¿¡ ¸¸µé¾îÁÖ½Ã¸é µË´Ï´Ù.
-public class UtilClass {
+import com.ott.user.vo.UserVO;
 
+// Utilï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ã¸ï¿½ ï¿½Ë´Ï´ï¿½.
+public class UtilClass {
+	
+	public UserVO info (UserVO vo) {
+		
+		System.out.println("u_idx = "+vo.getU_idx());
+		if(vo.getFname().trim().length() < 0) {
+			vo.setIdImg(vo.getU_id().substring(0,1));
+		}
+		System.out.println("ì˜¤ë¼í´ íŒŒì¼ ì €ìž¥ ê²½ë¡œ"+vo.getFname());
+		System.out.println("íŒŒì¼ì´ ì—†ì„ì‹œ í‘œí˜„í•  ê¸€"+vo.getIdImg());
+		
+		
+		return vo;
+	}
 }

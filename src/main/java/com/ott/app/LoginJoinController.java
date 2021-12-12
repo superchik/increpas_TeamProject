@@ -83,10 +83,12 @@ public class LoginJoinController {
 		if(vo != null) {
 			session.setAttribute("uvo", vo);
 			mv.addObject("uvo",vo);
-			System.out.println(vo.getU_name());
 		}
-		
-		mv.setViewName(last_uri == null ? "redirect:/" : "redirect:" + last_uri);
+		if(last_uri.equals("http://localhost:9090/reissueAction")) {
+			mv.setViewName("redirect:/");
+		}else {
+			mv.setViewName(last_uri == null ? "redirect:/" : "redirect:" + last_uri);			
+		}
 		return mv;
 	}
 	
