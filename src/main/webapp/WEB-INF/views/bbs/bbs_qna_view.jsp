@@ -54,6 +54,7 @@
 								<td colspan="2">
 								<input type="button" value="수정" onclick="edit()"/>
 								<input type="button" value="삭제" onclick="del()"/>
+								<input type="button" value="목록" onclick="goList()"/>
 								
 								</td>
 							</tr>

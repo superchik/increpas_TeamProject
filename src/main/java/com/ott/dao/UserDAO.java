@@ -26,24 +26,61 @@ public class UserDAO {
 	@Autowired
 	private SqlSessionTemplate ss;
 	
-	public UserVO[] getList(int begin, int end ){
+	// ======== 회원관리 게시판 ========
+	public UserVO[] getList(int begin, int end) {
 		UserVO[] ar = null;
-		
+
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("begin", String.valueOf(begin));
 		map.put("end", String.valueOf(end));
-		
+
 		List<UserVO> list = ss.selectList("user.user_list", map);
-		if(list != null && list.size() > 0) {
+		if (list != null && list.size() > 0) {
 			ar = new UserVO[list.size()];
 			list.toArray(ar);
 		}
 		return ar;
 	}
-	
+
+	// ======== 페이징을 위한 전체 회원수 ========
 	public int getTotalCount() {
 		return ss.selectOne("user.totalCount");
 	}
+
+	// ======== 회원 검색 기능 ===========
+	public UserVO[] searchUser(int begin, int end, String searchType, String searchValue) {
+		UserVO[] ar = null;
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("begin", String.valueOf(begin));
+		map.put("end", String.valueOf(end));
+		map.put("searchType"  , searchType);
+		map.put("searchValue" , searchValue);
+
+		List<UserVO> list = ss.selectList("user.user_search", map);
+		if (list != null && list.size() > 0) {
+			ar = new UserVO[list.size()];
+			list.toArray(ar);
+		}
+		return ar;
+	}
+
+	// ======== 페이징을 위한 검색된 회원수==========
+	public int getSearchCount(String searchType, String searchValue) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchType", searchType);
+		map.put("searchValue", searchValue);
+		int test =0;
+		try {
+			test = ss.selectOne("user.search_total", map);	
+		} catch (Exception e) {
+			test = 0;
+		}
+		
+		return test;
+	}
+
+	
 	
 	// ======== 회원 정지상태 수정 ========
 	public String updateUser_stop(Map<String, String> map) {
@@ -57,6 +94,7 @@ public class UserDAO {
 		}
 		return result;
 	}
+
 
 	//이미지 파일 원본이름 사본이름 저장 DB저장
 	public int editImg(UserVO vo) {

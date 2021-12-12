@@ -14,10 +14,7 @@
 		VALUES(ott_user_seq.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1}, 'KAKAO')
 </insert>
 
-<insert id="kakao_login" parameterType="com.ott.user.vo.UserVO">
-	insert into OTT_USER (u_idx, u_name, u_email, u_id, u_pwd1)
-			values(OTT_USER_SEQ.nextval, #{u_name}, #{u_email}, #{u_id} , #{u_pwd1} )
-</insert>
+
 
 <select id="user_info" resultType="com.ott.user.vo.UserVO" parameterType="String">
 	select *
