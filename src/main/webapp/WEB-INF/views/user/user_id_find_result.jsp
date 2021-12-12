@@ -22,7 +22,7 @@
 	<div class="common_container">
 		<div class="user_login_box">
 			<div class="common_area">
-				<h4>회원님의 아이디는 다음과 같습니다.</h4>				
+				<h4>${name}님의 아이디는 다음과 같습니다.</h4>				
 					<span class="result">${id}</span>
 			</div>
 			<div class="user_common_service">

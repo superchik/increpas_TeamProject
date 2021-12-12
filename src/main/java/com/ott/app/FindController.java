@@ -32,8 +32,13 @@ public class FindController {
 	public ModelAndView findAction(String u_email) {
 		UserVO vo = fdao.id_find(u_email);
 		String id = vo.getU_id();
+		String name = vo.getU_name();
+		
+		System.out.println(id);
+		System.out.println(name);
 		ModelAndView mv =  new ModelAndView();
 		mv.addObject("id", id);
+		mv.addObject("name", name);
 		mv.setViewName("/user/user_id_find_result");
 		
 		return mv;
@@ -59,6 +64,7 @@ public class FindController {
 			map.put("u_pwd1", fat);
 			map.put("u_email", u_email);
 			fdao.resetPwd(map);
+			mv.addObject("id",u_id);
 			mv.addObject("rand_key", rand_key);
 			mv.setViewName("/user/user_pw_result");
 		} else {
