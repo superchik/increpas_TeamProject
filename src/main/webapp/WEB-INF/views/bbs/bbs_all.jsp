@@ -24,7 +24,7 @@
 		<ul id="ott_ul">
 			<c:forEach var="vo" items="${ar }">
 					<li class="ott_li">
-						<a href="/review?ott_idx=${vo.ott_idx }">
+						<a href="/showReview?ott_idx=${vo.ott_idx }">
 						<div class="boxs">
 								<div class="image_box">
 									<img class="poster" src="${vo.poster }">
