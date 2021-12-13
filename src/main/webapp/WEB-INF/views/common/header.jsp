@@ -30,7 +30,7 @@
 			</c:if>
 			<c:if test="${!empty uvo }">
 				<span><a href="/QNA.list">고객센터</a></span>
-				<span><a onclick="goinfo('${uvo.u_idx }')">${uvo.u_name}님, 환영합니다.</a></span>
+				<span><a onclick="goinfo()">${uvo.u_name}님, 환영합니다.</a></span>
 				<span><a href="/logout">로그아웃</a></span>
 			</c:if>
 		</ul>
@@ -44,8 +44,9 @@
 
 -->
 <script>
-	function goinfo(u_idx) {
-		document.ff.u_idx.value=u_idx;
+	function goinfo() {
+		document.ff.u_idx.value=${uvo.u_idx};
 		document.ff.submit();
 	}
+	
 </script>
