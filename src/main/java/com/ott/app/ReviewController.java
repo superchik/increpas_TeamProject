@@ -89,28 +89,46 @@ public class ReviewController {
 		return mv;
 	}
 	
-	/*@RequestMapping(value = "/review_del", method=RequestMethod.GET)
-	public String review_del(ReviewVO rvo) {
-		System.out.println("rv_idx = "+rvo.getRv_idx());
-		System.out.println("ott_idx = "+rvo.getOtt_idx());
-		int cnt = r_dao.delReview(rvo);
-		System.out.println("cnt = " + cnt);
-		return "redirect:/review?ott_idx="+rvo.getOtt_idx();
-	}*/
 
 	
 	@RequestMapping("/review_del")
 	public String review_del(ReviewVO rvo) {
 		System.out.println("rv_idx = "+rvo.getRv_idx());
 		System.out.println("ott_idx = "+rvo.getOtt_idx());
-		r_dao.delReview(rvo);
+		System.out.println("delReview Controller 실행중");
+		int cnt = r_dao.delReview(rvo);
+		if(cnt != 0)
+			System.out.println("삭제 성공");
+		else
+			System.out.println("삭제 실패");
 		return "redirect:/review?ott_idx="+rvo.getOtt_idx();
 	}
 	
+	@RequestMapping("/review_edit")
+	@ResponseBody
+	public ModelAndView review_edit(ReviewVO rvo) {
+		System.out.println("rv_idx = "+rvo.getRv_idx());
+		
+		ReviewVO vo = r_dao.selectReview(rvo.getRv_idx());
+		
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("rvo", vo);
+		mv.setViewName("edit_review");
+		return mv;
+	}
+
+	@RequestMapping("/edit_review")
+	public ModelAndView goEditreview(ReviewVO vo) {
+		ModelAndView mv =  new ModelAndView();
+		System.out.println(vo.getRv_idx());
+		mv.addObject("rvo", vo);
+		mv.setViewName("edit_review");
+		return mv;
+	}
 	
-	
-	
-	
+
 	
 	@RequestMapping(value="/thumup", method=RequestMethod.POST)
 	@ResponseBody

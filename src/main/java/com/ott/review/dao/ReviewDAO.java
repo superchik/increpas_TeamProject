@@ -81,7 +81,13 @@ public class ReviewDAO {
 		return ar;
 	}
 	
+	public ReviewVO selectReview(int rv_idx) {
+		ReviewVO vo = ss.selectOne("review.selectReview", rv_idx);
+		return vo;
+	}
+	
 	public int delReview(ReviewVO rvo) {
+		System.out.println("DAO실행중");
 		int cnt = ss.update("review.delReview",rvo);
 		return cnt;
 	}

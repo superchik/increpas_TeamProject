@@ -36,10 +36,15 @@
 		SELECT * FROM (
 			SELECT rownum r_num,a.* FROM (
 				SELECT * FROM OTT_REVIEW
-				WHERE ott_idx = #{ott_idx}
+				WHERE ott_idx = #{ott_idx} and status = 1
 				ORDER BY rv_idx DESC
 			) a 
 		) WHERE r_num BETWEEN #{begin} AND #{end} 
+	</select>
+	
+	<select id="selectReview" parameterType="int" resultType="com.ott.review.vo.ReviewVO">
+		SELECT * FROM OTT_REVIEW
+		WHERE RV_IDX = #{rv_idx}
 	</select>
 	
 	<update id="delReview" parameterType="com.ott.review.vo.ReviewVO">

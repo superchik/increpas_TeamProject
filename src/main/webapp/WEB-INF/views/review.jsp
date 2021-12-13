@@ -131,6 +131,8 @@
 			<!-- 반복문 -->
 			<tbody>
 				<c:forEach var="rvo" items="${rvo }">
+				<form method="post" name="frm2">
+			<div>
 					<tr>
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_id }</a>
@@ -190,20 +192,20 @@
 						</td>
 						<td class="review_edit_btn">
 						<c:if test="${uvo.u_id eq rvo.u_id}">
-							<form name="frm2" method="post" action="del_review">
 							<p>
-								<input type="button" class="review_edit" value="수정" onclick="review_edit()"/>
+								<input type="button" class="review_edit" value="수정" onclick="review_edit(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 								<br/><br/>
-								<input type="button" class="review_edit" value="삭제" onclick="review_del()"/>
-								<input type="hidden" name="rv_idx" value="${rvo.rv_idx }">
-								<input type="hidden" name="ott_idx" value="${rvo.ott_idx }">
+								<input type="button" class="review_edit" value="삭제" onclick="review_del(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 							</p>
-							</form>
 						</c:if>
 						</td>
 					</tr>
-				</c:forEach>
-			</tbody>
+						<input type="hidden" id="del_rv_idx" name="del_rv_idx" value="${rvo.rv_idx }">
+						<input type="hidden" id="del_ott_idx" name="del_ott_idx" value="${rvo.ott_idx }">
+				</div>
+			</form>
+			</c:forEach>
+		</tbody>
 			<tfoot>
 			<td colspan="4" >
             	${pageCode }
@@ -217,8 +219,8 @@
 <jsp:include page="common/footer.jsp"></jsp:include>
 </footer>
 </c:if>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <script>
 function thumbUp(idx, ott_idx){
 	$.ajax({
@@ -233,6 +235,7 @@ function thumbUp(idx, ott_idx){
 }
 
 function thumbDown(idx, ott_idx){
+	
 	$.ajax({
 		url:"/thumdown",
 		type:"post",
@@ -256,28 +259,36 @@ function review_add(){
 	document.frm.submit();	
 }
 
-function review_del(){
-/*	if(!confirm("삭제하시겠습니까?")){
+function review_del(rv_idx, ott_idx){
+	if(!confirm("삭제하시겠습니까?")){
 		return;
 	}
-	let rv_idx = document.getElementById('del_rv_idx').value;
-	let ott_idx = document.getElementById('del_ott_idx').value;
-	
-	console.log(rv_idx+"///"+ott_idx);
-	
-	// ▼ GET 요청
-	location.href='review_del?rv_idx='+rv_idx+'&ott_idx='+ott_idx;
-	*/
-	
-	
-	if(confirm("삭제하시겠습니까?")){
-		document.frm2.action = "/review_del";
-		$("#subForm").submit()
-		document.frm2.submit();
-	}
+	$.ajax({
+		url:"/review_del",
+		type:"post",
+		data:{rv_idx:rv_idx, ott_idx:ott_idx}
+	}).done({
+		
+	}).fail({
+		
+	});
+}
+function review_edit(rv_idx, ott_idx){
+	var w = window.open("about:blank","edit","width=850,height=200");
+	$.ajax({
+		url:"/review_edit",
+		type:"post",
+		data:{rv_idx:rv_idx, ott_idx:ott_idx},
+		success: function review_edit_popup(){
+			console.log("성공");
+			w.location.href="edit_review";
+		}
+	});
 }
 
-	
+
+
+
 
 
 </script>
