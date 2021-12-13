@@ -279,9 +279,9 @@ function review_edit(rv_idx, ott_idx){
 		url:"/review_edit",
 		type:"post",
 		data:{rv_idx:rv_idx, ott_idx:ott_idx},
-		success: function review_edit_popup(){
-			console.log("성공");
-			w.location.href="edit_review";
+		success: function review_edit_popup(data){
+			console.log(data.idx);
+			w.location.href="/edit_review?rv_idx="+data.idx;
 		}
 	});
 }

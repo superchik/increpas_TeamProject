@@ -28,7 +28,7 @@ public class ReviewController {
 	public final int block_page = 5;
 	int nowPage;
 	
-	@RequestMapping("/review")
+	@RequestMapping("/showReview")
 	public ModelAndView review(@RequestParam(value="ott_idx")String ott_idx, String cPage) {
 		System.out.println(">>>>reviewList.do&"+ott_idx);
 		
@@ -85,7 +85,7 @@ public class ReviewController {
 		r_dao.add_review(rvo);
 		
 		
-		mv.setViewName("redirect:/review?ott_idx="+now_page);
+		mv.setViewName("redirect:/showReview?ott_idx="+now_page);
 		return mv;
 	}
 	
@@ -106,25 +106,26 @@ public class ReviewController {
 	
 	@RequestMapping("/review_edit")
 	@ResponseBody
-	public ModelAndView review_edit(ReviewVO rvo) {
+	public Map<String, Integer> review_edit(ReviewVO rvo) {
 		System.out.println("rv_idx = "+rvo.getRv_idx());
 		
 		ReviewVO vo = r_dao.selectReview(rvo.getRv_idx());
 		
+		int idx = vo.getRv_idx();
 		
-		ModelAndView mv = new ModelAndView();
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("idx", idx);
 		
-		mv.addObject("rvo", vo);
-		mv.setViewName("edit_review");
-		return mv;
+		return map;
 	}
 
 	@RequestMapping("/edit_review")
-	public ModelAndView goEditreview(ReviewVO vo) {
+	public ModelAndView goEditreview(int rv_idx) {
 		ModelAndView mv =  new ModelAndView();
-		System.out.println(vo.getRv_idx());
+		ReviewVO vo = r_dao.selectReview(rv_idx);
+		
 		mv.addObject("rvo", vo);
-		mv.setViewName("edit_review");
+		mv.setViewName("/edit_review");
 		return mv;
 	}
 	
