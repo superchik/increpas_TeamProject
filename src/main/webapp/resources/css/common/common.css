@@ -229,6 +229,9 @@ input:focus {
    height: 30%;
    position: relative;
 }
+.user_various>.user_items{
+	cursor: pointer;
+}
 
 .using_info {
    width: 25%;
