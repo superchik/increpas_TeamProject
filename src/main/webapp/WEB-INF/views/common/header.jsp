@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 <div class="nav_menu">
 
@@ -29,9 +31,21 @@
 				</a></span>
 			</c:if>
 			<c:if test="${!empty uvo }">
-				<span><a href="/QNA.list">고객센터</a></span>
-				<span><a onclick="goinfo()">${uvo.u_name}님, 환영합니다.</a></span>
-				<span><a href="/logout">로그아웃</a></span>
+				      <!-- popup start -->
+            	<li class="user_menu_list_box"><span><a
+                  class="user_menu">${uvo.u_id} 님</a></span> 
+               <div id="user_menu_list" class="user_menu_list">
+                  <div class="user_profile_area">
+                     <div class="user_profile_text">${fn:substring(uvo.u_name,1,3)}</div>
+                  </div>
+                  <div class="user_various">
+                     <a class="user_items" onclick="goinfo()">마이페이지</a> <a
+                        class="user_items" href="logout">로그아웃</a>
+                  </div>
+               </div> 
+            </li>
+            <!-- popup end -->
+				<li><span><a href="/QNA.list">고객센터</a></span></li>
 			</c:if>
 		</ul>
 	</nav>
@@ -44,6 +58,20 @@
 
 -->
 <script>
+	$(function(){
+	    $(".user_menu").on('click',function(){
+	       
+	       if($("#user_menu_list").css('display') == 'none'){
+	          $("#user_menu_list").show();
+	          
+	       }else{
+	          $("#user_menu_list").hide();
+	       }
+	       
+	       
+	    })
+	 })
+
 	function goinfo() {
 		document.ff.u_idx.value=${uvo.u_idx};
 		document.ff.submit();

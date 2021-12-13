@@ -14,6 +14,7 @@
 		VALUES(ott_user_seq.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1}, 'KAKAO')
 </insert>
 
+
 <select id="user_info" resultType="com.ott.user.vo.UserVO" parameterType="String">
 	select *
 	from ott_user

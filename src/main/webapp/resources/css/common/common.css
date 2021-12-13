@@ -175,3 +175,67 @@ input:focus {
 	color: #f3f4f6;
 	font-weight: bold;
 }
+/* 유저 정보창 띄우기 */
+.user_menu {
+   cursor: pointer;
+}
+
+.user_menu_list_box {
+   position: relative;
+}
+
+.user_menu_list {
+   display:none;
+   width: 210px;
+   height: 194px;
+   transition: all 0.5s; /*모든 요소 적용*/
+   position: absolute;
+   top: 43px;
+   left: -43px;
+   z-index: 3;
+   background-color: rgba(11, 15, 25);
+   border: 2px solid grey;
+   border-top: 0px;
+}
+
+.user_profile_area {
+   position: relative;
+   width: 100%;
+   height: 55%;
+   padding-top: 20px;
+}
+
+.user_profile_text {
+   position: relative;
+   width: 55px;
+   height: 55px;
+   color: white;
+   font-weight: bold;
+   text-align: center;
+   border-radius: 30px;
+   font-size: 22px;
+   line-height: 51px;
+   border: 3px solid gray;
+   margin: auto;
+   font-size: 20px;
+   /* margin-top: 33.33px; */
+   /* padding-top: 30px; */
+}
+
+.user_various {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   height: 30%;
+   position: relative;
+}
+
+.using_info {
+   width: 25%;
+   border-bottom: 1px solid red;
+   font-weight: bold;
+}
+
+.using_info>a {
+   background: none;
+}
