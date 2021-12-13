@@ -4,7 +4,7 @@ package com.ott.review.vo;
 
 public class ReviewVO {
 
-	private String rv_idx;
+	private int rv_idx;
 	private int ott_idx;
 	private String u_idx;
 	private String content;
@@ -13,11 +13,20 @@ public class ReviewVO {
 	private String is_not;
 	private String u_id;
 	private String r_date;
+	private int status;
 	
-	public String getRv_idx() {
+	
+	
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+	public int getRv_idx() {
 		return rv_idx;
 	}
-	public void setRv_idx(String rv_idx) {
+	public void setRv_idx(int rv_idx) {
 		this.rv_idx = rv_idx;
 	}
 	public int getOtt_idx() {
