@@ -96,7 +96,9 @@
 	<if test="fname != null">
 		,fname=#{fname}
 	</if> 
-	
+	<if test="u_name != null">
+		,u_name=#{u_name}
+	</if>
 	WHERE u_idx=#{u_idx}
 		
 </update>
@@ -104,7 +106,7 @@
 <!-- 유저 종합 정보 -->
 <select id="user_info1" resultType="com.ott.user.vo.UserVO" parameterType="String">
 	SELECT a.*, b.reviewEA
-	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, (SELECT count(content) as reviewEA FROM OTT_REVIEW_BBS WHERE u_idx=#{u_idx}) b
+	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, (SELECT count(content) as reviewEA FROM OTT_BBS WHERE u_idx=#{u_idx}) b
 </select>
 
 </mapper>

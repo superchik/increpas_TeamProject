@@ -101,7 +101,8 @@ public class UserDAO {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
-		System.out.println(vo.getU_idx());
+		System.out.println("회원 고유 번호=========================>"+vo.getU_idx());
+		System.out.println("변경할 닉내임==========================>"+vo.getU_name());
 		
 		map.put("u_idx", vo.getU_idx());
 		
@@ -119,13 +120,17 @@ public class UserDAO {
 	//유저 종합 정보
 	public ModelAndView userInfo(UserVO vo) {
 		ModelAndView mv = new ModelAndView();
-		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
 		System.out.println("u_idx = "+vo.getU_idx());
-		if(u_idDex.getFname().trim().length() < 0) {
+		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
+		System.out.println("u_name = "+u_idDex.getU_id());
+		System.out.println(u_idDex.getU_id().substring(0,1));
+		System.out.println(u_idDex.getFname());
+		if(u_idDex.getFname() == null) {
 			u_idDex.setIdImg(u_idDex.getU_id().substring(0,1));
 		}
+
 		System.out.println("오라클 파일 저장 경로"+u_idDex.getFname());
-		System.out.println("파일이 없을시 표현할 글"+u_idDex.getIdImg());
+		System.out.println("파일이 없을시 표현할 글======>"+u_idDex.getIdImg());
 		mv.addObject("vo", u_idDex);
 		mv.setViewName("/user/user_info");
 		
