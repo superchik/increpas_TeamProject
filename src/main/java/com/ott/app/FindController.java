@@ -33,12 +33,6 @@ public class FindController {
 		UserVO vo = fdao.id_find(u_email);
 		String id = vo.getU_id();
 		String name = vo.getU_name();
-<<<<<<< HEAD
-		
-		System.out.println(id);
-		System.out.println(name);
-=======
->>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
 		ModelAndView mv =  new ModelAndView();
 		mv.addObject("id", id);
 		mv.addObject("name", name);

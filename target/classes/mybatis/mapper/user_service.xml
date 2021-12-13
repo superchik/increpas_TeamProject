@@ -14,11 +14,6 @@
 		VALUES(ott_user_seq.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1}, 'KAKAO')
 </insert>
 
-<insert id="kakao_login" parameterType="com.ott.user.vo.UserVO">
-	insert into OTT_USER (u_idx, u_name, u_email, u_id, u_pwd1)
-			values(OTT_USER_SEQ.nextval, #{u_name}, #{u_email}, #{u_id} , #{u_pwd1} )
-</insert>
-
 <select id="user_info" resultType="com.ott.user.vo.UserVO" parameterType="String">
 	select *
 	from ott_user
@@ -107,7 +102,7 @@
 <!-- 유저 종합 정보 -->
 <select id="user_info1" resultType="com.ott.user.vo.UserVO" parameterType="String">
 	SELECT a.*, b.reviewEA
-	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, (SELECT count(content) as reviewEA FROM OTT_REVIEW_BBS WHERE u_idx=#{u_idx}) b
+	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, (SELECT count(content) as reviewEA FROM OTT_BBS WHERE u_idx=#{u_idx}) b
 </select>
 
 </mapper>
