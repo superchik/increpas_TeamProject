@@ -33,19 +33,22 @@
 			<h1>회원관리 게시판</h1>
 			<h2>회원 검색</h2>
 			<div>
-				<span>회원 검색</span> <select id="search_user" name="search_user">
+				<span>회원 검색</span> 
+				<select id="search_user" name="search_user">
 
-					<option>:: 선택하세요 ::</option>
-					<option value="0">u_idx</option>
-					<option value="1">아이디</option>
-					<option value="2">이름</option>
-					<option value="3">이메일</option>
-					<option value="4">정지</option>
 
-				</select> <input class="user_search_ta" type="text" name="user_search_ta" />
-				<input class="user_search_btn" type="button" name="user_search_btn"
-					value="검색" />
 
+					<option value=""  >:: 선택하세요 ::</option>
+					<option value="0" <c:if test="${searchType eq '0'}"> selected</c:if>>u_idx</option>
+					<option value="1" <c:if test="${searchType eq '1'}"> selected</c:if>>아이디</option>
+					<option value="2" <c:if test="${searchType eq '2'}"> selected</c:if>>이름</option>
+					<option value="3" <c:if test="${searchType eq '3'}"> selected</c:if>>이메일</option>
+					<option value="4" <c:if test="${searchType eq '4'}"> selected</c:if>>정지</option>
+
+				</select> 
+				<input class="user_search_ta" type="text" name="user_search_ta" value="${searchValue}"/>
+				<input class="user_search_btn" type="button" name="user_search_btn" id="user_search_btn" value="검색" />
+				
 			</div>
 			<table summary="회원 목록">
 				<caption>
@@ -80,7 +83,6 @@
 						<th>이메일</th>
 						<th>정지/탈퇴</th>
 
-
 					</tr>
 				</thead>
 
@@ -103,19 +105,19 @@
 								<option value=""
 									<c:if test="${vo.is_stop ne '0' || vo.is_stop ne '1'}"  > selected</c:if>>::선택하세요::</option>
 								<option value="1"
-									<c:if test="${vo.is_stop eq '1'}"> selected</c:if>>정지회원</option>
+									<c:if test="${vo.is_stop eq '1'}"> selected</c:if>>정지회원(1)</option>
 								<option value="0"
-									<c:if test="${vo.is_stop eq '0' }"  > selected</c:if>>일반회원</option>
+									<c:if test="${vo.is_stop eq '0' }"  > selected</c:if>>일반회원(0)</option>
 						</select>
 
 							<div class="isStop" style="display: block;">
 
 								<c:choose>
 									<c:when test="${vo.is_stop eq  '1'}">
-					         	정지회원
+					         	정지회원(1)
 					         </c:when>
 									<c:when test="${vo.is_stop eq '0'}">
-					         	일반회원
+					         	일반회원(0)
 					         </c:when>
 									<c:otherwise>
 					    		일반회원
@@ -141,7 +143,11 @@
 	<form id="is_stopForm" method="post" action="admin_update">
 		<input type="hidden" id="dataList" name="dataList" value="">
 	</form>
-
+	<form id="searchFrom" method="post" action="admin_search">
+		<input type="hidden" id="searchValue" name="searchValue" value="${searchValue}">
+		<input type="hidden" id="searchType" name="searchType" value="${searchType}">
+		
+	</form>
 
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>
@@ -189,7 +195,6 @@
 			var checkbox = $("input[name=chk]:checked");
 
 			var resultTxt = "";
-			var jsonTxt = "";
 			var errCode = "SUCC";
 			checkbox.each(function(i) {
 
@@ -214,6 +219,7 @@
 
 			// SETTER
 			$("#dataList").val(resultTxt);
+			
 			$("#is_stopForm").submit();
 
 		}
@@ -224,9 +230,47 @@
 			$(this).parent().next().text($(this).val());
 		});
 //******************회원 정지 수정 기능 END****************************
-
 		
-//******************회원 정지 수정 기능 START**************************
+//******************회원 검색 기능 START **************************
+	//================ 검색 버튼 클릭 START===============
+	$(".user_search_btn").click(function() {
+		searchUser();
+	});
+	function searchUser() {
+		  
+		
+		var searchType = $("#search_user option:selected").val();
+		
+			// alert("searchType : "+searchType);
+		var searchValue = $(".user_search_ta").val();
+			// alert("searchValue:"+searchValue);
+		var searchWord = "";
+		if(searchType == "" || searchType == null){
+			alert("검색 값을 선택해 주세요.");
+			return;
+		}
+		else if(searchValue == "" || searchValue == null){
+			alert("검색 단어를 입력해주세요.");
+			return;
+		}else{
+			searchWord = searchType +","+ searchValue;
+			// alert("searchWord:"+searchWord);
+			//	3,asd
+			
+			
+			$("#searchType").val(searchType);
+			$("#searchValue").val(searchValue);
+			
+			
+			
+			
+			$("#searchFrom").submit();			
+		}
+
+	}
+	//================ 검색 버튼 클릭 END===============
+
+//****************** 회원 검색 기능 START   **************************
 
 	})// jQUERY END
 </script>

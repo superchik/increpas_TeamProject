@@ -43,12 +43,11 @@
 						<div>
 							<select name="select_group">
 								<option value="그룹선택" selected="selected">::그룹선택::</option>
-								<option value="영화정보">영화정보</option>
 								<option value="리뷰게시판">리뷰게시판</option>
 								<option value="평점관리">평점관리</option>
 								<option value="회원정보관리">회원정보관리</option>
 								<option value="댓글관리">댓글관리</option>
-								<option value="기타..">기타..</option>
+								<option value="#">기타..</option>
 								
 								
 							</select>
@@ -88,24 +87,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>11</td>
-									<td>영화정보</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>
-										<button class="edit_btn" type="button">
-										    수정
-										</button>
-										<button class="del_btn" type="button">
-										    삭제
-										</button>
-									</td>
-								</tr>
-								<tr>
 									<td>10</td>
 									<td>리뷰게시판</td>
 									<td>전체</td>
@@ -241,23 +222,7 @@
 										</button>
 									</td>
 								</tr>
-								<tr>
-									<td>2</td>
-									<td>기타 등등</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>
-										<button class="edit_btn" type="button">
-										    수정
-										</button>
-										<button class="del_btn" type="button">
-										    삭제
-										</button>
-									</td>
-								</tr>
+
 								
 							</tbody>
 						</table>

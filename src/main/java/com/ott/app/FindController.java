@@ -33,6 +33,11 @@ public class FindController {
 		UserVO vo = fdao.id_find(u_email);
 		String id = vo.getU_id();
 		String name = vo.getU_name();
+
+		
+		System.out.println(id);
+		System.out.println(name);
+
 		ModelAndView mv =  new ModelAndView();
 		mv.addObject("id", id);
 		mv.addObject("name", name);

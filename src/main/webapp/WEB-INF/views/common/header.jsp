@@ -29,7 +29,8 @@
 				</a></span>
 			</c:if>
 			<c:if test="${!empty uvo }">
-				<span><a href="javascript:goinfo('${uvo.u_idx }')" >${uvo.u_name}님, 환영합니다.</a></span>
+				<span><a href="/QNA.list">고객센터</a></span>
+				<span><a href="#" onclick="goinfo('${uvo.u_idx }')">${uvo.u_name}님, 환영합니다.</a></span>
 				<span><a href="/logout">로그아웃</a></span>
 			</c:if>
 		</ul>

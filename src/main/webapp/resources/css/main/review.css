@@ -70,12 +70,12 @@
 }	
 
 #write_div{
-	width: 1050px;
+	width: 1105px;
 	height:auto;
 	float:left;
 	display:block;
 	padding-top: 80px;
-	padding-left: 40px;
+	padding-left: 12px;
 	padding-bottom: 40px;
 }
 table{
@@ -83,6 +83,7 @@ table{
     font-size:14px;
 }
 #write_area{
+	width: 70%;
 	float: left;
 	border: 2px solid #1f2937;
 	border-radius: 10px;
@@ -153,31 +154,34 @@ table{
 .list_nickname{
 	width:150px;
 	background-color: #151923;
+	font-size: 16px;
+	font-weight: bold;
 }
 .list_content{
 	text-align:left;
 	width:750px;
-	padding: 5px 30px 30px 30px;
+	padding: 20px 30px 25px 30px;
 	background: #0e131d;
 }
 .list_recommend{
-	float: left;
-	width: 90px;	
-	padding-top: 30px;
-	padding-bottom: 30px;
+	width: 130px;
+	padding: 30px 0px 30px 30px;
 	background-color: #151923;
 	color:white;
 	text-align: left;
 }
-.review_edit_btn{
-	width:15px;
+
+.review_edit:hover{
+	cursor: pointer;
 }
-.list_nickname{
-	font-size: 16px;
-	font-weight: bold;
-}
+
 .list_level{
 	font-size:12px;
+}
+
+.list_date{
+	font-weight: normal;
+	font-size:11px;
 }
 .recommend_btn > img{
 	width: 18px;
@@ -222,6 +226,8 @@ table{
   -webkit-text-fill-color: #fff58c;
 }
 
+
+
 /* 좋아요 / 싫어요 아이콘 컬러 색상 정의*/
 .fa-thumbs-up, .fa-thumbs-down{
 	font-size: 16.5px;
@@ -239,6 +245,10 @@ table{
 	font-weight: bold;
 	background-color:black;
 	color: white;	
+}
+
+.review_add:hover{
+	cursor: pointer;
 }
 
 /*페이징*/

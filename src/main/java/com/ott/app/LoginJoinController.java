@@ -84,7 +84,7 @@ public class LoginJoinController {
 			session.setAttribute("uvo", vo);
 			mv.addObject("uvo",vo);
 		}
-		if(last_uri.equals("http://localhost:9090/reissueAction")) {
+		if(last_uri.equals("http://localhost:9090/reissueAction") || last_uri.equals("http://localhost:9090/findAction")) {
 			mv.setViewName("redirect:/");
 		}else {
 			mv.setViewName(last_uri == null ? "redirect:/" : "redirect:" + last_uri);			

@@ -94,7 +94,9 @@
 	<if test="fname != null">
 		,fname=#{fname}
 	</if> 
-	
+	<if test="u_name != null">
+		,u_name=#{u_name}
+	</if>
 	WHERE u_idx=#{u_idx}
 		
 </update>

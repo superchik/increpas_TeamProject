@@ -66,7 +66,7 @@ public class Paging_admin {
 		if(isPrePage) {
 			sb.append("<li><a href='");
 			sb.append(pageName);
-			sb.append("?cPage=");
+			sb.append("cPage=");
 			sb.append(startPage-1);
 			sb.append("'> &lt; </a></li>"); // <a href='list.inc?cPage=1'> < </a></li>
 		}else
@@ -83,7 +83,7 @@ public class Paging_admin {
 			} else {
 				sb.append("<li><a href='");
 				sb.append(pageName);
-				sb.append("?cPage=");
+				sb.append("cPage=");
 				sb.append(i); //파라미터 값
 				sb.append("'>"); // <a href='list.inc?cPage=1>
 				sb.append(i);// 화면에 표현되는 페이지 값
@@ -95,7 +95,7 @@ public class Paging_admin {
 		if(isNextPage) {
 			sb.append("<li><a href='");
 			sb.append(pageName);
-			sb.append("?cPage=");
+			sb.append("cPage=");
 			sb.append(endPage+1);
 			sb.append("'> &gt; </a></li>");
 		} else 

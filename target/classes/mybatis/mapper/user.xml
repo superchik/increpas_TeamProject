@@ -5,8 +5,7 @@
 <mapper namespace="user">
 
 	<!-- 회원들의 정보 리스트 -->
-	<select id="user_list" parameterType="Map"
-		resultType="com.ott.user.vo.UserVO">
+	<select id="user_list" parameterType="Map" resultType="com.ott.user.vo.UserVO">
 		SELECT * FROM (
 		SELECT rownum r_num, a.* FROM (SELECT * FROM
 		ott_user
@@ -21,31 +20,78 @@
 	</select>
 
 	<!-- 회원 검색 기능 -->
-	<select id="user_search" parameterType="String"
-		resultType="com.ott.user.vo.UserVO">
-		SELECT * FROM ott_user
-		<where>
-			<if test="searchType != null and searchValue != null">
-				<choose>
-					<when test="searchType == 0">
-						u_idx LIKE '%'||#{searchValue}||'%'
-					</when>
-					<when test="searchType == 1">
-						u_id LIKE '%'||#{searchValue}||'%'
-					</when>
-					<when test="searchType == 2">
-						u_name LIKE '%'||#{searchValue}||'%'
-					</when>
-					<when test="searchType == 3">
-						u_email LIKE '%'||#{searchValue}||'%'
-					</when>
-					<when test="searchType == 4">
-						is_stop = #{searchValue}
-					</when>
-				</choose>
-			</if>
-		</where>
+	<select id="user_search" parameterType="Map" resultType="com.ott.user.vo.UserVO">
+		SELECT * 
+			FROM (
+				SELECT ROWNUM AS R_NUM
+					, A.* 
+				FROM (
+				
+				
+					SELECT *
+					FROM OTT_USER
+					<where>
+					<if test="searchType != null and searchValue != null">
+						<choose>
+							<when test="searchType == 0">
+								u_idx LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 1">
+								u_id LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 2">
+								u_name LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 3">
+								u_email LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 4">
+								is_stop = #{searchValue}
+							</when>
+						</choose>
+					</if>
+					</where>
+					
+					
+					ORDER BY U_IDX DESC
+					
+					
+					
+				) A
+			) 
+		WHERE R_NUM BETWEEN #{begin} AND #{end}
 	</select>
+
+
+	<!-- 검색된 회원 수 -->
+	<select id="search_total" parameterType="Map" resultType="int">
+		SELECT COUNT(*)
+		FROM OTT_USER
+					<where>
+					<if test="searchType != null and searchValue != null">
+						<choose>
+							<when test="searchType == 0">
+								u_idx LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 1">
+								u_id LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 2">
+								u_name LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 3">
+								u_email LIKE '%'||#{searchValue}||'%'
+							</when>
+							<when test="searchType == 4">
+								is_stop = #{searchValue}
+							</when>
+						</choose>
+					</if>
+					</where>
+	</select>
+
+
+
 
 
 
@@ -63,9 +109,9 @@
 	<update id="user_editStop">
 		UPDATE OTT_USER
 		SET IS_STOP = #{is_stop}
-		WHERE U_IDX = #{u_idx}
+		WHERE U_IDX =
+		#{u_idx}
 	</update>
 
-	<!-- <select id="user_editStop" parameterType="Map" resultType="com.ott.user.vo.UserVO"> 
-		</select> -->
+
 </mapper>

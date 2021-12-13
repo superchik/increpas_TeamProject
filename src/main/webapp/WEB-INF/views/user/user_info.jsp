@@ -129,7 +129,7 @@
         }
        
     }
-	function sendImage(u_idx, s_file, u_pwd, u_name){
+	function sendImage(u_idx, s_file, u_name){
 		
 		console.log("SendImgae====================>>" + u_idx);
 		
@@ -142,7 +142,6 @@
 		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
 		frm.append("s_file", s_file);
 		frm.append("u_idx", u_idx); 
-		frm.append("u_pwd", u_pwd); 
 		frm.append("u_name", u_name); 
 		
 		//비동기식 통신

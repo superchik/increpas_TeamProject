@@ -10,8 +10,8 @@
 	</select>
 
 	<insert id="add_review" parameterType="com.ott.review.vo.ReviewVO">
-		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT, U_ID, R_DATE)
-		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL, #{ott_idx}, #{u_idx}, #{content}, #{rating}, 1, 1, #{u_id}, sysdate)
+		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT, U_ID, R_DATE, STATUS)
+		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL, #{ott_idx}, #{u_idx}, #{content}, #{rating}, 0, 0, #{u_id}, sysdate, 1)
 	</insert>
 	
 	
@@ -32,20 +32,32 @@
 	</resultMap>
 	
 	
-	<select id="getReview" resultMap="review_map" parameterType="int">
-		SELECT * FROM OTT_REVIEW
-		WHERE OTT_IDX = #{ott_idx}
-		ORDER BY RV_IDX DESC
+	<select id="getReview" resultMap="review_map" parameterType="Map">
+		SELECT * FROM (
+			SELECT rownum r_num,a.* FROM (
+				SELECT * FROM OTT_REVIEW
+				WHERE ott_idx = #{ott_idx}
+				ORDER BY rv_idx DESC
+			) a 
+		) WHERE r_num BETWEEN #{begin} AND #{end} 
 	</select>
+	
+	<update id="delReview" parameterType="com.ott.review.vo.ReviewVO">
+		UPDATE ott_review
+		SET status = 2
+		where rv_idx = #{rv_idx}
+	</update>
 	
 	<select id="review_count" resultType="int" parameterType="int">
 		SELECT COUNT(*) FROM OTT_REVIEW
-		WHERE OTT_IDX = #{ott_idx}
+		WHERE OTT_IDX = #{ott_idx} and status = 1
+		<!-- and status = 1 -->
 	</select>
 	
 	<select id="rating" resultType="double" parameterType="int">
 		SELECT ROUND(AVG(RATING),2) FROM OTT_REVIEW
-		WHERE OTT_IDX = #{ott_idx}
+		WHERE OTT_IDX = #{ott_idx} and status = 1 
+		<!-- and status = 1 -->
 	</select>
 	
 	<update id="thumpUp" parameterType="Map">
