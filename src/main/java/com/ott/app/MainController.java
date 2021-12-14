@@ -133,7 +133,7 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		
 		int idx = n_dao.getIdx(title);
-		mv.setViewName("redirect:/review?ott_idx="+idx);
+		mv.setViewName("redirect:/showReview?ott_idx="+idx);
 		
 		return mv;
 	}
