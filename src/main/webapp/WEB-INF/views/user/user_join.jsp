@@ -37,7 +37,8 @@
 					<span class="pw_length">비밀번호는 최소 8자이상 16자 이하입니다.</span>
 					<span class="pw_check">비밀번호는 숫자/영문자/특수문자를 모두 포함해야 합니다.</span>
 					<span class="pw_blank">비밀번호는 공백 없이 입력해주세요.</span>
-					<input class="user_common" type="password" id="u_pwd2" name="u_pwd2" placeholder="비밀번호확인">					
+					<input class="user_common" type="password" id="u_pwd2" name="u_pwd2" placeholder="비밀번호확인" required="required" oninput="confirmPw()">					
+					<span class="pw_confirm">비밀번호와 같아야 합니다.</span>
 					<button id="join_btn" class="user_common join_btn" type="submit">회원가입</button>
 				</form>
 			</div>
@@ -205,6 +206,18 @@
 				$(".pw_length").css("display", "block");
 				$(".pw_check").css("display", "block");
 				$(".pw_blank").css("display", "none");
+				$("#join_btn").attr("disabled", true);
+			}
+		};
+		
+		function confirmPw() {
+			var u_pw1 = $("#u_pwd1").val();
+			var u_pw2 = $("#u_pwd2").val();
+			if(u_pw1 == u_pw2) {
+				$(".pw_confirm").css("display", "none");
+				$("#join_btn").attr("disabled", false);
+			} else {
+				$(".pw_confirm").css("display", "block");
 				$("#join_btn").attr("disabled", true);
 			}
 		};
