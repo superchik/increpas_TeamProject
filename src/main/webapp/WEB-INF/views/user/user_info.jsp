@@ -102,16 +102,18 @@
         	console.log("U_idx===================>>"+u_idx);
         	var s_file = $("#filename")[0].files[0];
         	alert(typeof(s_file));
-        	var u_name = $("u_name").val();
+        	var u_name = $("#u_name").val;
         	console.log("u_name===================>>"+u_name);
         	
-        	sendImage(u_idx, s_file, u_pwd, u_name);
         	
-        	//if( s_file != null){
-        	//	alert('쓰기 준비')
-        	//	sendImage(u_idx, s_file);
-        	//}else
-        	//	alert("파일을 선텍 하세요!");
+        	//sendImage(u_idx, s_file);
+        	
+        		
+        	if( s_file != null){
+        		alert('쓰기 준비')
+        		sendImage(u_idx, s_file);
+        	}else
+        		alert("파일을 선텍 하세요!");
         	
         	console.log(u_idx);
         	console.log(typeof(s_file));
@@ -129,7 +131,7 @@
         }
        
     }
-	function sendImage(u_idx, s_file, u_name){
+	function sendImage(u_idx, s_file){
 		
 		console.log("SendImgae====================>>" + u_idx);
 		
@@ -140,9 +142,10 @@
        	console.log(typeof(s_file));
 		
 		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
-		frm.append("s_file", s_file);
-		frm.append("u_idx", u_idx); 
-		frm.append("u_name", u_name); 
+		frm.append("u_idx", u_idx);
+		
+		if(s_file != null)
+			frm.append("s_file", s_file);
 		
 		//비동기식 통신
 		$.ajax({
