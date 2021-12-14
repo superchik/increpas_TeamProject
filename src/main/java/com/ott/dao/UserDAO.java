@@ -106,7 +106,7 @@ public class UserDAO {
 		
 		map.put("u_idx", vo.getU_idx());
 		
-		if(vo.getU_name().trim().length() > 0)
+		if(vo.getU_name() != null)
 			map.put("u_name", vo.getU_name());
 		
 		if(vo.getFname().trim().length() > 0) {
