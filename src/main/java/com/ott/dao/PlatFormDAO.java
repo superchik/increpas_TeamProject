@@ -45,4 +45,14 @@ public class PlatFormDAO {
 		}
 		return cnt;
 	}
+	
+	public int getMinidx(String platform) {
+		int cnt = ss.selectOne("ott_service.minIdx", platform);
+		return cnt;
+	}
+	
+	public PlatFormVO getRandom(int idx) {
+		PlatFormVO vo = ss.selectOne("ott_service.random", idx);
+		return vo;
+	}
 }
