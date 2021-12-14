@@ -169,7 +169,7 @@
 								</c:when>
 								
 								<c:when test="${uvo.u_idx  != rvo.u_idx}">
-									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx}, ${vo.ott_idx })"><i class="far fa-thumbs-up"></i></a>
+									<a href="/showReview?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx}, ${vo.ott_idx })"><i class="far fa-thumbs-up"></i></a>
 								</c:when>
 							
 							</c:choose>	
@@ -183,7 +183,7 @@
 								</c:when>
 								
 								<c:when test="${uvo.u_idx  != rvo.u_idx}">
-									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx},${vo.ott_idx })"><i class="far fa-thumbs-down"></i></a>
+									<a href="/showReview?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx},${vo.ott_idx })"><i class="far fa-thumbs-down"></i></a>
 								</c:when>
 							
 							</c:choose>	
