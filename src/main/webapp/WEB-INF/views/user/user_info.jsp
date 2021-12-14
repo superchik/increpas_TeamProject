@@ -51,7 +51,8 @@
 					<p>내가 쓴 리뷰 수 : ${vo.reviewEA }</p>
 				</div>
 				<div class="Boxp p5">
-					<p>Adout_me</p>
+					<p>About_me</p></br>
+					<p class="about_me">${vo.about_me }</p>
 				</div>
 			</div>
 			<button class="BBox butter" type="button">프로필 이미지 변경</button>
@@ -61,7 +62,8 @@
 		<form action="" method="post" enctype="multipart/form-data" name="">
    			<div><img id="preImage"/></div>
    			<span>닉네임 : ${vo.u_name }</span></br>
-   			<span>변경할 이름: <input type="text" id="u_name" name="u_name"></span>
+   			<span>변경할 이름: <input type="text" id="u_name" name="u_name"></span></br></br>
+   			<span>About_me: <input type="text" id="about_me" name="about_me"/></span></br></br>
 	        <input type='file' id="filename" name="filename"/>
 	        <input type="hidden" id="u_user" name="u_idx" value="${vo.u_idx}"/>
 	        <!--                           현재프로젝트.경로요청/saveFIle이라는 폴더안에/객체.변수명 ( 지금은 없는관계로.. 에러가 발생하는것 같음 --> 
@@ -85,7 +87,11 @@
 		
 		$('.BBox').on('click', function() {
 			console.log('BBox Ready');
-			$( "#dialog" ).dialog();
+			$( "#dialog" ).dialog({
+				//resizable: false
+				width: 500,
+				height: 500
+			});
 		});
 
 		$('.logBtn').on('click', function () {
@@ -104,17 +110,17 @@
         	alert(typeof(s_file));
         	var u_name = $("#u_name").val();
         	console.log("u_name===================>>"+u_name);
-        	
+        	var about_me = $("#about_me").val();
         	
         	//sendImage(u_idx, s_file);
         	
         		
         	if( s_file != null){
         		alert('쓰기 준비')
-        		sendImage(u_idx, s_file, u_name);
+        		sendImage(u_idx, s_file, u_name, about_me);
         	}else{
-        		alert("닉네임 만 변경합니다");
-        		sendImage(u_idx, s_file, u_name);
+        		alert("닉네임 변경합니다");
+        		sendImage(u_idx, s_file, u_name, about_me);
         	}
         	console.log(u_idx);
         	console.log(typeof(s_file));
@@ -132,7 +138,7 @@
         }
        
     }
-	function sendImage(u_idx, s_file, u_name){
+	function sendImage(u_idx, s_file, u_name, about_me){
 		
 		console.log("SendImgae====================>>" + u_idx);
 		
@@ -151,6 +157,9 @@
 		}
 		if(s_file != null)
 			frm.append("s_file", s_file);
+		
+		if(about_me != null)
+			frm.append("about_me", about_me);
 		
 		//비동기식 통신
 		$.ajax({

@@ -90,11 +90,17 @@
 	SET
 		<if test="oname != null ">
 			oname=#{oname}
-			,fname=#{fname}
+			, fname=#{fname}
 		</if>
 		<if test="oname != null and u_name != null">,</if>
 		<if test="u_name != null">
 			u_name=#{u_name}
+		</if>
+		<if test="oname != null and u_name != null and about_me != null">,</if>
+		<if test="oname != null and about_me != null">,</if>
+		<if test="u_name != null and about_me != null">,</if>
+		<if test="about_me != null">
+			about_me=#{about_me}
 		</if>
 	WHERE u_idx=#{u_idx}
 		

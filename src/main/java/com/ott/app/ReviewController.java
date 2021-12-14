@@ -104,6 +104,7 @@ public class ReviewController {
 
 	
 	@RequestMapping("/review_del")
+	@ResponseBody
 	public String review_del(ReviewVO rvo) {
 		System.out.println("rv_idx = "+rvo.getRv_idx());
 		System.out.println("ott_idx = "+rvo.getOtt_idx());
@@ -141,7 +142,13 @@ public class ReviewController {
 		return mv;
 	}
 	
-
+	@RequestMapping("/review_edit_submit")
+	public String review_edit_submit(ReviewVO rvo) {
+		System.out.println("rv_idx = "+rvo.getRv_idx()+" // content = "+rvo.getContent());
+		r_dao.editReview(rvo);
+		System.out.println("edit다 하고 컨트롤러로 돌아옴");
+		return "redirect:/edit_review";
+	}
 	
 	@RequestMapping(value="/thumup", method=RequestMethod.POST)
 	@ResponseBody

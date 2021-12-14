@@ -22,8 +22,16 @@ public class UserVO {
 	private MultipartFile s_file;//이미지 파일
 	private String reviewEA;//유저 리뷰수
 	private String idImg;//유저 이미지프로필 없을때 표현
+	private String about_me;//소개글
 	
 	
+	
+	public String getAbout_me() {
+		return about_me;
+	}
+	public void setAbout_me(String about_me) {
+		this.about_me = about_me;
+	}
 	public String getIdImg() {
 		return idImg;
 	}
