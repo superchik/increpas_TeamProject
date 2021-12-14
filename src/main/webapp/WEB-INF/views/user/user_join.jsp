@@ -126,7 +126,7 @@
 					}else{
 						$(".id_ok").css("display","none");
 						$(".id_not").css("display","block");
-						$(".id_length").css("display","block");
+						$(".id_length").css("display","none");
 						$(".id_blank").css("display","none");
 						$("#join_btn").attr("disabled", true);
 					}
