@@ -53,6 +53,12 @@
 		where rv_idx = #{rv_idx}
 	</update>
 	
+	<update id="editReview" parameterType="com.ott.review.vo.ReviewVO">
+		UPDATE OTT_REVIEW
+		SET CONTENT = #{content}
+		WHERE RV_IDX = #{rv_idx}
+	</update>
+	
 	<select id="review_count" resultType="int" parameterType="int">
 		SELECT COUNT(*) FROM OTT_REVIEW
 		WHERE OTT_IDX = #{ott_idx} and status = 1

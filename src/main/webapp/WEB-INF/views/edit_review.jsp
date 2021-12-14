@@ -23,7 +23,7 @@
 </head>
 <body>
 <div>
-<form method="post" name=frm>
+<form>
 <div class="edit_back">
 	<textarea name="content" id="write_area" 
 			cols="100" rows="5">${rvo.content }</textarea>
@@ -31,7 +31,18 @@
 </div>
 </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
+	function review_edit(){
+		var rv_idx = ${rvo.rv_idx};
+		var content = $("#write_area").val();
+		$.ajax({
+			url:"/review_edit_submit",
+			type:"post",
+			data:{rv_idx:rv_idx, content:content},
+			success: window.close()
+		});
+	}
 	
 </script>
 </body>
