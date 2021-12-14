@@ -5,12 +5,12 @@
 	display: flex;
 	flex-direction: column;
 	width: 1080px;
-	height: 570px;
+	height: 700px;
 }
 
 .common_area {
 	width: 50%;
-	height: 570px;
+	height: 600px;
 	margin: 0 auto;
 	border: 2px solid #6b7280;
 	border-radius: 5px;
@@ -52,4 +52,8 @@
 .common_area span {
    display: none;
    color: white;
+}
+.blank {
+	height:0px;
+	width:100%;
 }
