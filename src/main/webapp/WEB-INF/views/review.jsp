@@ -21,7 +21,6 @@
 
 <!-- Header -->
 <jsp:include page="common/header.jsp"></jsp:include>
-
 <c:if test="${vo ne null }">
 <div class="common_container">
 	<!-- 여기다 작업하세요 -->
@@ -255,7 +254,7 @@ function review_add(){
 	if(document.frm.rating.value < 1){
 		alert("평점을 입력하세요");
 		return;
-	}	
+	}
 	document.frm.submit();	
 }
 
@@ -285,11 +284,6 @@ function review_edit(rv_idx, ott_idx){
 		}
 	});
 }
-
-
-
-
-
 
 </script>
 </body>

@@ -21,6 +21,12 @@
 		WHERE U_ID = #{u_id}
 	</select>
 	
+	<select id="nodouble" resultType="com.ott.review.vo.ReviewVO" parameterType="String">
+		select *
+		from ott_review
+		where u_idx = #{u_idx}
+	</select>
+	
 	
 	
 	

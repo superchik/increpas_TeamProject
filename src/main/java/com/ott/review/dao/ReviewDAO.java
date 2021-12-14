@@ -113,4 +113,10 @@ public class ReviewDAO {
 		
 		return cnt;
 	}
+	
+	public ReviewVO noDouble(String u_idx) {
+		ReviewVO rvo = ss.selectOne("review.nodouble", u_idx);
+		
+		return rvo;
+	}
 }

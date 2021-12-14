@@ -78,17 +78,29 @@ public class ReviewController {
 		
 		UserVO uvo2 = r_dao.get_u_idx(uvo);
 		
-		System.out.println("u_idx: "+uvo2.getU_idx());
-		
-		rvo.setU_idx(uvo2.getU_idx());
-		
-		r_dao.add_review(rvo);
-		
-		
-		mv.setViewName("redirect:/showReview?ott_idx="+now_page);
+		ReviewVO rvo2 = r_dao.noDouble(uvo2.getU_idx());
+		if(rvo2 != null) {
+			mv.addObject("page",now_page);
+			mv.setViewName("redirect:/nodouble");
+		}else {
+			rvo.setU_idx(uvo2.getU_idx());
+			
+			r_dao.add_review(rvo);
+			
+			
+			mv.setViewName("redirect:/showReview?ott_idx="+now_page);
+		}
 		return mv;
 	}
 	
+	@RequestMapping("/nodouble")
+	public ModelAndView noDouble(String page) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("page", page);
+		mv.setViewName("/doubleAlert");
+		
+		return mv;
+	}
 
 	
 	@RequestMapping("/review_del")
