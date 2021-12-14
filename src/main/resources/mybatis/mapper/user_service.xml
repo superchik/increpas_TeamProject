@@ -87,17 +87,15 @@
 <!-- 유저 프로필 사진 업로드 -->
 <update id="user_img" parameterType="Map">
 	UPDATE OTT_USER
-	
 	SET
-	<if test="oname != null">
-		oname=#{oname}
-	</if>
-	<if test="fname != null">
-		,fname=#{fname}
-	</if> 
-	<if test="u_name != null">
-		,u_name=#{u_name}
-	</if>
+		<if test="oname != null ">
+			oname=#{oname}
+			,fname=#{fname}
+		</if>
+		<if test="oname != null and u_name != null">,</if>
+		<if test="u_name != null">
+			u_name=#{u_name}
+		</if>
 	WHERE u_idx=#{u_idx}
 		
 </update>

@@ -102,7 +102,7 @@
         	console.log("U_idx===================>>"+u_idx);
         	var s_file = $("#filename")[0].files[0];
         	alert(typeof(s_file));
-        	var u_name = $("#u_name").val;
+        	var u_name = $("#u_name").val();
         	console.log("u_name===================>>"+u_name);
         	
         	
@@ -111,10 +111,11 @@
         		
         	if( s_file != null){
         		alert('쓰기 준비')
-        		sendImage(u_idx, s_file);
-        	}else
-        		alert("파일을 선텍 하세요!");
-        	
+        		sendImage(u_idx, s_file, u_name);
+        	}else{
+        		alert("닉네임 만 변경합니다");
+        		sendImage(u_idx, s_file, u_name);
+        	}
         	console.log(u_idx);
         	console.log(typeof(s_file));
         	
@@ -131,7 +132,7 @@
         }
        
     }
-	function sendImage(u_idx, s_file){
+	function sendImage(u_idx, s_file, u_name){
 		
 		console.log("SendImgae====================>>" + u_idx);
 		
@@ -144,6 +145,10 @@
 		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
 		frm.append("u_idx", u_idx);
 		
+		if(u_name != null){
+			console.log("u_name=====================================================>>>>"+u_name);
+			frm.append("u_name", u_name);
+		}
 		if(s_file != null)
 			frm.append("s_file", s_file);
 		

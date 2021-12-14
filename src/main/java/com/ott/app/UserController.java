@@ -24,6 +24,7 @@ public class UserController {
 	@RequestMapping(value = "/saveImage", method = RequestMethod.POST)
 	@ResponseBody
 	private Map<String, String> saveImg(UserVO vo){
+		System.out.println("유저 별명========================>>"+vo.getU_name());
 		return u_dao.saveImg(vo);
 	}
 	

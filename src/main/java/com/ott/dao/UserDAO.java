@@ -109,7 +109,7 @@ public class UserDAO {
 		if(vo.getU_name() != null)
 			map.put("u_name", vo.getU_name());
 		
-		if(vo.getFname().trim().length() > 0) {
+		if(vo.getFname() != null) {
 			map.put("fname", vo.getFname());
 			map.put("oname", vo.getOname());
 		}
@@ -121,6 +121,9 @@ public class UserDAO {
 	public ModelAndView userInfo(UserVO vo) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("u_idx = "+vo.getU_idx());
+		
+		System.out.println("u_name = "+vo.getU_name());
+		
 		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
 		System.out.println("u_name = "+u_idDex.getU_id());
 		System.out.println(u_idDex.getU_id().substring(0,1));
@@ -142,11 +145,17 @@ public class UserDAO {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		System.out.println("u_idx====> "+vo.getU_idx());
+		
+		System.out.println("u_name = "+vo.getU_name());
+		
+		if(vo.getFname() != null)
 		System.out.println("MultiFile =====> "+vo.getS_file().getClass().getName());
-
+		
+		System.out.println("u_name=====>"+vo.getU_name());
+		
 		StringBuffer sb = new StringBuffer();
 		
-		if (vo.getS_file().getSize() > 0) {
+		if (vo.getS_file() != null) {
 			System.out.println("실재 파일 저장 = "+ application.getRealPath(img_path));
 			//oname = f.getOriginalFilename();
 			vo.setOname(vo.getS_file().getOriginalFilename());
@@ -167,9 +176,10 @@ public class UserDAO {
 		vo.setFname(sb.toString());
 		
 		System.out.println("에이젝스 저장= "+ vo.getFname());
-
+		int status = 0;
 		// xml : user_img
-		int status = editImg(vo);
+		if(vo.getFname() != null)
+			status = editImg(vo);
 		
 		System.out.println("이미지 저장 성공=1 실패=0 : "+status);
 		
