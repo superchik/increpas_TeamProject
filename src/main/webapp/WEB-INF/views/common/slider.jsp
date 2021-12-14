@@ -50,22 +50,24 @@
 		
 		<div class="slide_item">
 			<div class="ott_rposter" id="rposter_l">
-				<span class="today_ott">Netflix 추전작</span>
+				<span class="today_ott">Netflix 추천작</span>
 				<img class="rposter_img" src="${rvo.poster }">
 			</div>
 			<div class="ott_rposter" id="rposter_c">
-				<span class="today_ott">Watcha 추전작</span>
+				<span class="today_ott">Watcha 추천작</span>
 				<img class="rposter_img" src="${wvo.poster }">
 			</div>
 			<div class="ott_rposter" id="rposter_r">
-				<span class="today_ott">Wavve 추전작</span>
+				<span class="today_ott">Wavve 추천작</span>
 				<img class="rposter_img" src="${vvo.poster }">
 			</div>
 		</div>
+		<!--  
 		<div class="slide_item"></div>
 		<div class="slide_item"></div>
 		<div class="slide_item"></div>
 		<div class="slide_item"></div>
+		-->
 	</div>
 	<!-- end of slider_items -->
 
