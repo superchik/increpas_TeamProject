@@ -25,7 +25,7 @@
 			<div class="common_area">
 				<h4><span class="name">${name}</span>님 안녕하세요?<br>
 				<h4>아이디는 다음과 같습니다</h4><br>
-				<h4><span class="result">${id}</span></h4>	
+				<h4><span class="result"><div class="border_box">${id}</div></span></h4>
 			</div>
 			<div class="user_common_service">
 				<form action="/login">

@@ -100,3 +100,15 @@
 	height:137.5px;
 	width:100%;
 }
+
+.border_box {
+	border: 1px solid #6b7280;
+	background-color:#0d121c;
+	width:100%;
+	text-align:center;
+}
+
+.result {
+	text-align:center;
+	display: inline-block;
+}

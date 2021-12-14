@@ -25,7 +25,7 @@
 			<div class="common_area">
 				<h4><span class="name">${name}</span>님 안녕하세요?<br>
 				<h4>임시비밀번호는 다음과 같습니다</h4><br>
-				<h4><span class="result">${rand_key}</span></h4>	
+				<h4><span class="result"><div class="border_box">${rand_key}</div></span></h4>	
 			</div>
 			<div class="user_common_service">
 				<form action="/login">
