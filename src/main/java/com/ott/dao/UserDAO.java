@@ -158,7 +158,7 @@ public class UserDAO {
 	//비동기 통신 유저 프로필 이미지 업로드
 	public Map<String, String> saveImg(UserVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
-		UserVO sss = (UserVO)session.getAttribute("uvo");
+		UserVO ss1 = (UserVO)session.getAttribute("uvo");
 //		ss.setU_name(vo.getU_name());
 		
 		System.out.println("u_idx====> "+vo.getU_idx());
@@ -202,7 +202,7 @@ public class UserDAO {
 		
 //		System.out.println("유저 네임====>"+vo.getU_name());
 		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0) {
-			sss.setU_name(vo.getU_name());
+			ss1.setU_name(vo.getU_name());
 			map.put("u_rename", vo.getU_name());
 			
 			System.out.println("새션 저장");
