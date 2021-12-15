@@ -64,6 +64,7 @@
 				</table>
 			</div>
 			<button class="BBox butter" type="button">프로필 변경</button>
+			<button class="link_btn butter" type="button" onclick="location.href='/pwChange';">비밀번호 변경 페이지 이동</button>
 		</div>
 	</div>
 	<div id="dialog" title="다이얼로그 테스트">
