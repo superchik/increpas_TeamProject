@@ -129,4 +129,14 @@ public class ReviewDAO {
 		
 		return rvo;
 	}
+	
+	public int warning(Map<String, Integer> map) {
+		int cnt = ss.update("review.warning", map);
+		return cnt;
+	}
+	
+	public UserVO getwarning(int u_idx) {
+		UserVO vo = ss.selectOne("review.getwarning", u_idx);
+		return vo;
+	}
 }

@@ -195,5 +195,27 @@ public class ReviewController {
 		return down;
 	}
 	
+	@RequestMapping(value = "/addwarning", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Integer> warning(int rv_idx, int ott_idx, int u_idx) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("rv_idx", rv_idx);
+		map.put("ott_idx", ott_idx);
+		map.put("u_idx", u_idx);
+		
+		UserVO uvo = r_dao.getwarning(u_idx);
+		String getw = uvo.getIs_warning();
+		if(getw == null) {
+			getw = "0";
+		}
+		int addw = Integer.parseInt(getw)+1;
+		uvo.setIs_warning(String.valueOf(addw));
+		map.put("is_warning", addw);
+		
+		r_dao.warning(map);
+		
+		return map;
+	}
+	
 	
 }

@@ -197,6 +197,9 @@
 								<input type="button" class="review_edit" value="삭제" onclick="review_del(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 							</p>
 						</c:if>
+						<c:if test="${uvo.u_id ne rvo.u_id }">
+							<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
+						</c:if>
 						</td>
 					</tr>
 						<input type="hidden" id="del_rv_idx" name="del_rv_idx" value="${rvo.rv_idx }">
@@ -282,6 +285,19 @@ function review_edit(rv_idx, ott_idx){
 		success: function review_edit_popup(data){
 			var w = window.open("/edit_review?rv_idx="+data.idx+"&ott_idx="+data.ott_idx,"edit","width=850,height=200");
 		}
+	});
+}
+
+function warning(rv_idx, ott_idx, u_idx){
+	$.ajax({
+		url:"/addwarning",
+		type:"post",
+		data:{rv_idx:rv_idx, ott_idx:ott_idx, u_idx:u_idx}
+	}).done(function(data){
+		alert("신고 완료되었습니다.");
+		location.href="/showReview?ott_idx="+data.ott_idx;
+	}).fail({
+		
 	});
 }
 

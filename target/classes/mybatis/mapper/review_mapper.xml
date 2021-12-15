@@ -27,7 +27,17 @@
 		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</select>
 	
+	<update id="warning" parameterType="Map">
+		update ott_user
+		set is_warning = #{is_warning}
+		where u_idx = #{u_idx}
+	</update>
 	
+	<select id="getwarning" resultType="com.ott.user.vo.UserVO" parameterType="int">
+		select *
+		from ott_user
+		where u_idx = #{u_idx}
+	</select>
 	
 	
 	
