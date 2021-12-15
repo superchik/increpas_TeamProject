@@ -16,8 +16,8 @@ import com.ott.user.vo.UserVO;
 @Controller
 public class UserController {
 	
-	@Autowired
-	private HttpSession session;
+//	@Autowired
+//	private HttpSession session;
 	
 	@Autowired
 	private UserDAO u_dao;
@@ -28,8 +28,8 @@ public class UserController {
 	private Map<String, String> saveImg(UserVO vo){
 //		UserVO vo = (UserVO)session.getAttribute("uvo");
 //		vo = svo;
-		System.out.println("유저 별명========================>>"+vo.getU_name());
-		System.out.println("설명글===============>"+vo.getAbout_me());
+//		System.out.println("유저 별명========================>>"+vo.getU_name());
+//		System.out.println("설명글===============>"+vo.getAbout_me());
 		return u_dao.saveImg(vo);
 	}
 	
