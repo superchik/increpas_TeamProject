@@ -113,7 +113,7 @@ public class UserDAO {
 		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0)
 			map.put("u_name", vo.getU_name());
 		
-		if(vo.getFname() != null) {
+		if(vo.getFname() != null && vo.getU_name().trim().length() > 0) {
 			map.put("fname", vo.getFname());
 			map.put("oname", vo.getOname());
 		}
@@ -131,9 +131,7 @@ public class UserDAO {
 		UserVO vo = (UserVO)session.getAttribute("uvo");
 		vo=svo;
 //		System.out.println("u_idx = "+vo.getU_idx());
-//		
 //		System.out.println("u_name ==============================>>>>>>>>> "+vo.getU_name());
-		
 		//session.setAttribute("uvo", vo.getU_name());
 		
 		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
@@ -158,17 +156,17 @@ public class UserDAO {
 	//비동기 통신 유저 프로필 이미지 업로드
 	public Map<String, String> saveImg(UserVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
-		UserVO ss1 = (UserVO)session.getAttribute("uvo");
-//		ss.setU_name(vo.getU_name());
 		
-		System.out.println("u_idx====> "+vo.getU_idx());
-//		
+		//콜바이 레퍼런스 리퀘스트도 가능!!
+		UserVO ss1 = (UserVO)session.getAttribute("uvo");
+		
+//		ss1.setU_name(vo.getU_name());
+//		System.out.println("u_idx====> "+vo.getU_idx());
 //		System.out.println("u_name = "+vo.getU_name());
 		
 		if(vo.getFname() != null && vo.getFname().trim().length() > 0 )
 			System.out.println("MultiFile =====> "+vo.getS_file().getClass().getName());
-		
-		System.out.println("u_name=====>"+vo.getU_name());
+//		System.out.println("u_name=====>"+vo.getU_name());
 		
 		StringBuffer sb = new StringBuffer();
 		
@@ -202,6 +200,8 @@ public class UserDAO {
 		
 //		System.out.println("유저 네임====>"+vo.getU_name());
 		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0) {
+			
+			//세션에 저장 로그인 검사 할때 영향 안주는 방법
 			ss1.setU_name(vo.getU_name());
 			map.put("u_rename", vo.getU_name());
 			
