@@ -73,12 +73,14 @@ public class ReviewController {
 	
 	@RequestMapping(value="/review_add", method=RequestMethod.POST)
 	public ModelAndView review_add(UserVO uvo, ReviewVO rvo, String now_page) {
-		System.out.println(">>>>reviewInsert.do"+"/"+uvo.getU_id()+"/ <---- U_ID");
 		ModelAndView mv = new ModelAndView();
-		
+		Map<String, String> map = new HashMap<String, String>();
 		UserVO uvo2 = r_dao.get_u_idx(uvo);
+		map.put("u_idx", uvo2.getU_idx());
+		map.put("ott_idx", String.valueOf(rvo.getOtt_idx()));
 		
-		ReviewVO rvo2 = r_dao.noDouble(uvo2.getU_idx());
+		
+		ReviewVO rvo2 = r_dao.noDouble(map);
 		if(rvo2 != null) {
 			mv.addObject("page",now_page);
 			mv.setViewName("redirect:/nodouble");
@@ -114,20 +116,19 @@ public class ReviewController {
 			System.out.println("삭제 성공");
 		else
 			System.out.println("삭제 실패");
-		return "redirect:/review?ott_idx="+rvo.getOtt_idx();
+		return "redirect:/showReview?ott_idx="+rvo.getOtt_idx();
 	}
 	
 	@RequestMapping("/review_edit")
 	@ResponseBody
 	public Map<String, Integer> review_edit(ReviewVO rvo) {
-		System.out.println("rv_idx = "+rvo.getRv_idx());
 		
 		ReviewVO vo = r_dao.selectReview(rvo.getRv_idx());
-		
 		int idx = vo.getRv_idx();
 		
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("idx", idx);
+		map.put("ott_idx", rvo.getOtt_idx());
 		
 		return map;
 	}
@@ -143,11 +144,10 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("/review_edit_submit")
+	@ResponseBody
 	public String review_edit_submit(ReviewVO rvo) {
-		System.out.println("rv_idx = "+rvo.getRv_idx()+" // content = "+rvo.getContent());
 		r_dao.editReview(rvo);
-		System.out.println("edit다 하고 컨트롤러로 돌아옴");
-		return "redirect:/edit_review";
+		return "redirect:/showReview?ott_idx="+rvo.getOtt_idx();
 	}
 	
 	@RequestMapping(value="/thumup", method=RequestMethod.POST)

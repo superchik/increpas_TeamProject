@@ -21,10 +21,10 @@
 		WHERE U_ID = #{u_id}
 	</select>
 	
-	<select id="nodouble" resultType="com.ott.review.vo.ReviewVO" parameterType="String">
+	<select id="nodouble" resultType="com.ott.review.vo.ReviewVO" parameterType="Map">
 		select *
 		from ott_review
-		where u_idx = #{u_idx}
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</select>
 	
 	

@@ -124,8 +124,8 @@ public class ReviewDAO {
 		return cnt;
 	}
 	
-	public ReviewVO noDouble(String u_idx) {
-		ReviewVO rvo = ss.selectOne("review.nodouble", u_idx);
+	public ReviewVO noDouble(Map<String, String> map) {
+		ReviewVO rvo = ss.selectOne("review.nodouble", map);
 		
 		return rvo;
 	}

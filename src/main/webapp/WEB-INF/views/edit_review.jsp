@@ -36,11 +36,14 @@
 	function review_edit(){
 		var rv_idx = ${rvo.rv_idx};
 		var content = $("#write_area").val();
+		var ott_idx = ${rvo.ott_idx};
 		$.ajax({
 			url:"/review_edit_submit",
 			type:"post",
-			data:{rv_idx:rv_idx, content:content},
-			success: window.close()
+			data:{rv_idx:rv_idx, content:content, ott_idx:ott_idx},
+		}).done(function(data){
+			opener.location.href = "/showReview?ott_idx="+ott_idx;
+			window.close();
 		});
 	}
 	

@@ -280,8 +280,7 @@ function review_edit(rv_idx, ott_idx){
 		type:"post",
 		data:{rv_idx:rv_idx, ott_idx:ott_idx},
 		success: function review_edit_popup(data){
-			console.log(data.idx);
-			var w = window.open("/edit_review?rv_idx="+data.idx,"edit","width=850,height=200");
+			var w = window.open("/edit_review?rv_idx="+data.idx+"&ott_idx="+data.ott_idx,"edit","width=850,height=200");
 		}
 	});
 }
