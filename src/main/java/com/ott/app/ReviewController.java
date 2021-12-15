@@ -30,7 +30,6 @@ public class ReviewController {
 	
 	@RequestMapping("/showReview")
 	public ModelAndView review(@RequestParam(value="ott_idx")String ott_idx, String cPage) {
-		System.out.println(">>>>reviewList.do&"+ott_idx);
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -108,14 +107,7 @@ public class ReviewController {
 	@RequestMapping("/review_del")
 	@ResponseBody
 	public String review_del(ReviewVO rvo) {
-		System.out.println("rv_idx = "+rvo.getRv_idx());
-		System.out.println("ott_idx = "+rvo.getOtt_idx());
-		System.out.println("delReview Controller 실행중");
-		int cnt = r_dao.delReview(rvo);
-		if(cnt != 0)
-			System.out.println("삭제 성공");
-		else
-			System.out.println("삭제 실패");
+		r_dao.delReview(rvo);
 		return "redirect:/showReview?ott_idx="+rvo.getOtt_idx();
 	}
 	
