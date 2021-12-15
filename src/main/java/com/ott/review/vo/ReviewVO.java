@@ -16,7 +16,6 @@ public class ReviewVO {
 	private int status;
 	
 	
-	
 	public int getStatus() {
 		return status;
 	}

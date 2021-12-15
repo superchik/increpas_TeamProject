@@ -92,6 +92,16 @@ public class ReviewDAO {
 		return cnt;
 	}
 	
+	public int editReview(ReviewVO rvo) {
+		System.out.println("DAO실행중");
+		int cnt = ss.update("review.editReview", rvo);
+		if(cnt==1) 
+			System.out.println("DAO성공");
+		else
+			System.out.println("DAO실패");
+		return cnt;
+	}
+	
 	public int thumpUp(Map<String, Integer> map) {
 		int cnt = ss.update("review.thumpUp", map);
 		return cnt;
@@ -112,5 +122,21 @@ public class ReviewDAO {
 		int cnt = ss.selectOne("review.getNot", map);
 		
 		return cnt;
+	}
+	
+	public ReviewVO noDouble(Map<String, String> map) {
+		ReviewVO rvo = ss.selectOne("review.nodouble", map);
+		
+		return rvo;
+	}
+	
+	public int warning(Map<String, Integer> map) {
+		int cnt = ss.update("review.warning", map);
+		return cnt;
+	}
+	
+	public UserVO getwarning(int u_idx) {
+		UserVO vo = ss.selectOne("review.getwarning", u_idx);
+		return vo;
 	}
 }

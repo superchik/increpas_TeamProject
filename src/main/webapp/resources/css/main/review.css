@@ -293,5 +293,17 @@ table tfoot ol.paging li a:hover {
     font-weight:bold;
 }
 
+/*edit_review */
+.edit_back{
+	
+	padding: 50px 0px 0px 50px;
+	text-align: center;
+}
+.review_edit2{
+	float: left;
+	margin-left: 70px;
+	background-color: white;
+	color: black;
+}
 
 

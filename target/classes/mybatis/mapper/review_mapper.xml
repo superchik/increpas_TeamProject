@@ -21,7 +21,23 @@
 		WHERE U_ID = #{u_id}
 	</select>
 	
+	<select id="nodouble" resultType="com.ott.review.vo.ReviewVO" parameterType="Map">
+		select *
+		from ott_review
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
+	</select>
 	
+	<update id="warning" parameterType="Map">
+		update ott_user
+		set is_warning = #{is_warning}
+		where u_idx = #{u_idx}
+	</update>
+	
+	<select id="getwarning" resultType="com.ott.user.vo.UserVO" parameterType="int">
+		select *
+		from ott_user
+		where u_idx = #{u_idx}
+	</select>
 	
 	
 	
@@ -51,6 +67,12 @@
 		UPDATE ott_review
 		SET status = 2
 		where rv_idx = #{rv_idx}
+	</update>
+	
+	<update id="editReview" parameterType="com.ott.review.vo.ReviewVO">
+		UPDATE OTT_REVIEW
+		SET CONTENT = #{content}, rating = #{rating}
+		WHERE RV_IDX = #{rv_idx}
 	</update>
 	
 	<select id="review_count" resultType="int" parameterType="int">
