@@ -71,7 +71,7 @@
 	
 	<update id="editReview" parameterType="com.ott.review.vo.ReviewVO">
 		UPDATE OTT_REVIEW
-		SET CONTENT = #{content}
+		SET CONTENT = #{content}, rating = #{rating}
 		WHERE RV_IDX = #{rv_idx}
 	</update>
 	

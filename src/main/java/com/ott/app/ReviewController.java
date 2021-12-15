@@ -150,6 +150,12 @@ public class ReviewController {
 		return "redirect:/showReview?ott_idx="+rvo.getOtt_idx();
 	}
 	
+	@RequestMapping("/review_edit_refresh")
+	@ResponseBody
+	public String review_edit_refresh(){
+		return "redirect:/edit_review";
+	}
+	
 	@RequestMapping(value="/thumup", method=RequestMethod.POST)
 	@ResponseBody
 	public int thumUp(int idx, int ott_idx) {
