@@ -33,7 +33,7 @@
          <c:if test="${!empty uvo }">
                   <!-- popup start -->
                <li class="user_menu_list_box"><span><a
-                  class="user_menu">${uvo.u_id} 님</a></span> 
+                  class="user_menu">${uvo.u_name} 님</a></span> 
                <div id="user_menu_list" class="user_menu_list">
                   <div class="user_profile_area">
                      <div class="user_profile_text">${fn:substring(uvo.u_name,1,3)}</div>

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ott.Util.FileRenameUtil;
-import com.ott.Util.Security;
 import com.ott.user.vo.UserVO;
 @Component
 public class UserDAO {
 	
 	private String img_path = "/resources/user_img/";
+	
+	@Autowired
+	private HttpSession session;
 	
 	@Autowired
 	private ServletContext application;
@@ -100,10 +103,10 @@ public class UserDAO {
 	public int editImg(UserVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
 		
-		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
-		System.out.println("회원 고유 번호=========================>"+vo.getU_idx());
-		System.out.println("변경할 닉내임==========================>"+vo.getU_name());
-		System.out.println("변경할 내용==========================>"+vo.getAbout_me());
+//		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
+//		System.out.println("회원 고유 번호=========================>"+vo.getU_idx());
+//		System.out.println("변경할 닉내임==========================>"+vo.getU_name());
+//		System.out.println("변경할 내용==========================>"+vo.getAbout_me());
 		
 		map.put("u_idx", vo.getU_idx());
 		
@@ -123,16 +126,20 @@ public class UserDAO {
 		
 
 	//유저 종합 정보
-	public ModelAndView userInfo(UserVO vo) {
+	public ModelAndView userInfo(UserVO svo) {
 		ModelAndView mv = new ModelAndView();
-		System.out.println("u_idx = "+vo.getU_idx());
+		UserVO vo = (UserVO)session.getAttribute("uvo");
+		vo=svo;
+//		System.out.println("u_idx = "+vo.getU_idx());
+//		
+//		System.out.println("u_name ==============================>>>>>>>>> "+vo.getU_name());
 		
-		System.out.println("u_name = "+vo.getU_name());
+		//session.setAttribute("uvo", vo.getU_name());
 		
 		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
-		System.out.println("u_name = "+u_idDex.getU_id());
-		System.out.println(u_idDex.getU_id().substring(0,1));
-		System.out.println(u_idDex.getFname());
+//		System.out.println("u_name = "+u_idDex.getU_id());
+//		System.out.println(u_idDex.getU_id().substring(0,1));
+//		System.out.println(u_idDex.getFname());
 		if(u_idDex.getFname() == null) {
 			u_idDex.setIdImg(u_idDex.getU_id().substring(0,1));
 		}
@@ -140,8 +147,8 @@ public class UserDAO {
 		if(u_idDex.getAbout_me() == null)
 			u_idDex.setAbout_me("내용이 없다");
 
-		System.out.println("오라클 파일 저장 경로"+u_idDex.getFname());
-		System.out.println("파일이 없을시 표현할 글======>"+u_idDex.getIdImg());
+//		System.out.println("오라클 파일 저장 경로"+u_idDex.getFname());
+//		System.out.println("파일이 없을시 표현할 글======>"+u_idDex.getIdImg());
 		mv.addObject("vo", u_idDex);
 		mv.setViewName("/user/user_info");
 		
@@ -151,19 +158,21 @@ public class UserDAO {
 	//비동기 통신 유저 프로필 이미지 업로드
 	public Map<String, String> saveImg(UserVO vo) {
 		Map<String, String> map = new HashMap<String, String>();
+		UserVO ss = (UserVO)session.getAttribute("uvo");
+//		ss.setU_name(vo.getU_name());
 		
 		System.out.println("u_idx====> "+vo.getU_idx());
+//		
+//		System.out.println("u_name = "+vo.getU_name());
 		
-		System.out.println("u_name = "+vo.getU_name());
-		
-		if(vo.getFname() != null)
-		System.out.println("MultiFile =====> "+vo.getS_file().getClass().getName());
+		if(vo.getFname() != null && vo.getFname().trim().length() > 0 )
+			System.out.println("MultiFile =====> "+vo.getS_file().getClass().getName());
 		
 		System.out.println("u_name=====>"+vo.getU_name());
 		
 		StringBuffer sb = new StringBuffer();
 		
-		if (vo.getS_file() != null) {
+		if (vo.getS_file() != null && vo.getS_file().getSize() > 0) {
 			System.out.println("실재 파일 저장 = "+ application.getRealPath(img_path));
 			//oname = f.getOriginalFilename();
 			vo.setOname(vo.getS_file().getOriginalFilename());
@@ -183,16 +192,20 @@ public class UserDAO {
 		
 		vo.setFname(sb.toString());
 		
-		System.out.println("에이젝스 저장= "+ vo.getFname());
+//		System.out.println("에이젝스 저장= "+ vo.getFname());
 		int status = 0;
 		// xml : user_img
-		if(vo.getFname() != null)
+		if(vo.getFname() != null && vo.getFname().trim().length() > 0 )
 			status = editImg(vo);
+//		System.out.println("이미지 저장 성공=1 실패=0 : "+status);
 		
-		System.out.println("이미지 저장 성공=1 실패=0 : "+status);
 		
-		if(vo.getU_name() != null) {
+//		System.out.println("유저 네임====>"+vo.getU_name());
+		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0) {
+			ss.setU_name(vo.getU_name());
 			map.put("u_rename", vo.getU_name());
+			
+			System.out.println("새션 저장");
 		}
 		
 		map.put("path", vo.getFname());
