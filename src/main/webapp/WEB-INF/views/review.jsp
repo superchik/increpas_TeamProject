@@ -136,7 +136,7 @@
 			<div>
 					<tr>
 						<td class="list_nickname"> 
-							<a class="list_nickname">${rvo.u_id }</a>
+							<a class="list_nickname">${rvo.u_name }</a>
 							<a class="list_level">LV1</a><br/><br/>
 							<a class="list_date">
 							${f:substring(rvo.r_date,0,16)}
@@ -192,14 +192,14 @@
 							</span>
 						</td>
 						<td class="review_edit_btn">
-						<c:if test="${uvo.u_id eq rvo.u_id}">
+						<c:if test="${uvo.u_idx eq rvo.u_idx}">
 							<p>
 								<input type="button" class="review_edit" value="수정" onclick="review_edit(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 								<br/><br/>
 								<input type="button" class="review_edit" value="삭제" onclick="review_del(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 							</p>
 						</c:if>
-						<c:if test="${uvo.u_id ne rvo.u_id }">
+						<c:if test="${uvo.u_idx ne rvo.u_idx }">
 							<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
 						</c:if>
 						</td>
