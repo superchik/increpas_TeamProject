@@ -36,6 +36,7 @@ public class ReviewController {
 		PlatFormVO vo = r_dao.viewContent(ott_idx);
 		int cnt = r_dao.review_count(ott_idx);
 		
+		
 		//페이징
 				if(cPage == null)
 					nowPage = 1;
@@ -77,7 +78,7 @@ public class ReviewController {
 		UserVO uvo2 = r_dao.get_u_idx(uvo);
 		map.put("u_idx", uvo2.getU_idx());
 		map.put("ott_idx", String.valueOf(rvo.getOtt_idx()));
-		
+		rvo.setU_id(uvo.getU_name());
 		
 		ReviewVO rvo2 = r_dao.noDouble(map);
 		if(rvo2 != null) {
