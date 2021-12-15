@@ -20,14 +20,22 @@
 	<!-- Header -->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="common_container">
-		<div class="user_login_box">
+		<div class="center_box">
+		<div class="user_find_box">
 			<div class="common_area">
-				<h4><span class="name">${name}</span>님의 아이디는 <span class="result">${id}</span> 입니다.</h4>	
+				<h4><span class="name">${name}</span>님 안녕하세요?<br>
+				<h4>아이디는 다음과 같습니다</h4><br>
+				<h4><span class="result"><div class="border_box">${id}</div></span></h4>
 			</div>
 			<div class="user_common_service">
-				<h4><a class="user_common_link" href="/login">로그인</a></h4>
+				<form action="/login">
+					<button class="user_common login_link_btn">로그인</button>
+				</form>
 			</div>
-		</div>	
+			<div class="blank">
+			</div>
+		</div>
+		</div>
 	</div>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>

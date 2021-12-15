@@ -28,7 +28,7 @@ public class ReviewController {
 	public final int block_page = 5;
 	int nowPage;
 	
-	@RequestMapping("/review")
+	@RequestMapping("/showReview")
 	public ModelAndView review(@RequestParam(value="ott_idx")String ott_idx, String cPage) {
 		System.out.println(">>>>reviewList.do&"+ott_idx);
 		
@@ -73,44 +73,88 @@ public class ReviewController {
 	
 	@RequestMapping(value="/review_add", method=RequestMethod.POST)
 	public ModelAndView review_add(UserVO uvo, ReviewVO rvo, String now_page) {
-		System.out.println(">>>>reviewInsert.do"+"/"+uvo.getU_id()+"/ <---- U_ID");
 		ModelAndView mv = new ModelAndView();
-		
+		Map<String, String> map = new HashMap<String, String>();
 		UserVO uvo2 = r_dao.get_u_idx(uvo);
-		
-		System.out.println("u_idx: "+uvo2.getU_idx());
-		
-		rvo.setU_idx(uvo2.getU_idx());
-		
-		r_dao.add_review(rvo);
+		map.put("u_idx", uvo2.getU_idx());
+		map.put("ott_idx", String.valueOf(rvo.getOtt_idx()));
 		
 		
-		mv.setViewName("redirect:/review?ott_idx="+now_page);
+		ReviewVO rvo2 = r_dao.noDouble(map);
+		if(rvo2 != null) {
+			mv.addObject("page",now_page);
+			mv.setViewName("redirect:/nodouble");
+		}else {
+			rvo.setU_idx(uvo2.getU_idx());
+			
+			r_dao.add_review(rvo);
+			
+			
+			mv.setViewName("redirect:/showReview?ott_idx="+now_page);
+		}
 		return mv;
 	}
 	
-	/*@RequestMapping(value = "/review_del", method=RequestMethod.GET)
-	public String review_del(ReviewVO rvo) {
-		System.out.println("rv_idx = "+rvo.getRv_idx());
-		System.out.println("ott_idx = "+rvo.getOtt_idx());
-		int cnt = r_dao.delReview(rvo);
-		System.out.println("cnt = " + cnt);
-		return "redirect:/review?ott_idx="+rvo.getOtt_idx();
-	}*/
+	@RequestMapping("/nodouble")
+	public ModelAndView noDouble(String page) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("page", page);
+		mv.setViewName("/doubleAlert");
+		
+		return mv;
+	}
 
 	
 	@RequestMapping("/review_del")
+	@ResponseBody
 	public String review_del(ReviewVO rvo) {
 		System.out.println("rv_idx = "+rvo.getRv_idx());
 		System.out.println("ott_idx = "+rvo.getOtt_idx());
-		r_dao.delReview(rvo);
-		return "redirect:/review?ott_idx="+rvo.getOtt_idx();
+		System.out.println("delReview Controller 실행중");
+		int cnt = r_dao.delReview(rvo);
+		if(cnt != 0)
+			System.out.println("삭제 성공");
+		else
+			System.out.println("삭제 실패");
+		return "redirect:/showReview?ott_idx="+rvo.getOtt_idx();
 	}
 	
+	@RequestMapping("/review_edit")
+	@ResponseBody
+	public Map<String, Integer> review_edit(ReviewVO rvo) {
+		
+		ReviewVO vo = r_dao.selectReview(rvo.getRv_idx());
+		int idx = vo.getRv_idx();
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("idx", idx);
+		map.put("ott_idx", rvo.getOtt_idx());
+		
+		return map;
+	}
+
+	@RequestMapping("/edit_review")
+	public ModelAndView goEditreview(int rv_idx) {
+		ModelAndView mv =  new ModelAndView();
+		ReviewVO vo = r_dao.selectReview(rv_idx);
+		
+		mv.addObject("rvo", vo);
+		mv.setViewName("/edit_review");
+		return mv;
+	}
 	
+	@RequestMapping("/review_edit_submit")
+	@ResponseBody
+	public String review_edit_submit(ReviewVO rvo) {
+		r_dao.editReview(rvo);
+		return "redirect:/showReview?ott_idx="+rvo.getOtt_idx();
+	}
 	
-	
-	
+	@RequestMapping("/review_edit_refresh")
+	@ResponseBody
+	public String review_edit_refresh(){
+		return "redirect:/edit_review";
+	}
 	
 	@RequestMapping(value="/thumup", method=RequestMethod.POST)
 	@ResponseBody
@@ -155,6 +199,28 @@ public class ReviewController {
 			down = cnt;
 		}
 		return down;
+	}
+	
+	@RequestMapping(value = "/addwarning", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Integer> warning(int rv_idx, int ott_idx, int u_idx) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("rv_idx", rv_idx);
+		map.put("ott_idx", ott_idx);
+		map.put("u_idx", u_idx);
+		
+		UserVO uvo = r_dao.getwarning(u_idx);
+		String getw = uvo.getIs_warning();
+		if(getw == null) {
+			getw = "0";
+		}
+		int addw = Integer.parseInt(getw)+1;
+		uvo.setIs_warning(String.valueOf(addw));
+		map.put("is_warning", addw);
+		
+		r_dao.warning(map);
+		
+		return map;
 	}
 	
 	

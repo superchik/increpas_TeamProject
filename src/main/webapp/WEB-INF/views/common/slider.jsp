@@ -38,7 +38,9 @@
 								<div class="sub_text_right">개봉</div>
 							</c:if>
 						</div>
-						<div> <a href="/search?s_movie=${vo.movieNm}&geb=${vo.repGenreNm}">${vo.movieNm}</a>
+						<div> <a href="/search?s_movie=${vo.movieNm}&geb=${vo.repGenreNm}" id="mname">
+									${vo.movieNm}
+								</a>
 						</div>
 					</div>
 				</c:if>
@@ -46,21 +48,31 @@
 			</c:forEach>
 		</div>
 		
-		<!-- <div class="slide_item">
-			<div
-				style="float: right; border: 5px solid black; background-color: black; border-radius: 20px; margin-top: 5px; margin-right: 5px;">
-				<span style="color: white;">개봉 예정</span>
+		<div class="slide_item">
+			<div class="ott_rposter" id="rposter_l">
+				<span class="today_ott">Netflix 추천작</span>
+				<img class="rposter_img" src="${rvo.poster }">
+			</div>
+			<div class="ott_rposter" id="rposter_c">
+				<span class="today_ott">Watcha 추천작</span>
+				<img class="rposter_img" src="${wvo.poster }">
+			</div>
+			<div class="ott_rposter" id="rposter_r">
+				<span class="today_ott">Wavve 추천작</span>
+				<img class="rposter_img" src="${vvo.poster }">
 			</div>
 		</div>
+		<!--  
 		<div class="slide_item"></div>
 		<div class="slide_item"></div>
 		<div class="slide_item"></div>
-		<div class="slide_item"></div> -->
+		<div class="slide_item"></div>
+		-->
 	</div>
 	<!-- end of slider_items -->
 
 	<!-- 다음 버튼 -->
-	<!--   <button type="button" class="nextButton">▶</button>-->
+	<!-- <button type="button" class="nextButton">▶</button>-->
 	<!-- 이전 버튼 -->
 	<!-- <button type="button" class="prevButton">◀</button>-->
 

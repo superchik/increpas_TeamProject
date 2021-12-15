@@ -103,16 +103,21 @@ public class UserDAO {
 		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
 		System.out.println("회원 고유 번호=========================>"+vo.getU_idx());
 		System.out.println("변경할 닉내임==========================>"+vo.getU_name());
+		System.out.println("변경할 내용==========================>"+vo.getAbout_me());
 		
 		map.put("u_idx", vo.getU_idx());
 		
-		if(vo.getU_name().trim().length() > 0)
+		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0)
 			map.put("u_name", vo.getU_name());
 		
-		if(vo.getFname().trim().length() > 0) {
+		if(vo.getFname() != null) {
 			map.put("fname", vo.getFname());
 			map.put("oname", vo.getOname());
 		}
+		
+		if(vo.getAbout_me() != null && vo.getAbout_me().trim().length() > 0)
+			map.put("about_me", vo.getAbout_me());
+			
 		return ss.update("user_service.user_img", map);
 	}
 		
@@ -121,6 +126,9 @@ public class UserDAO {
 	public ModelAndView userInfo(UserVO vo) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println("u_idx = "+vo.getU_idx());
+		
+		System.out.println("u_name = "+vo.getU_name());
+		
 		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
 		System.out.println("u_name = "+u_idDex.getU_id());
 		System.out.println(u_idDex.getU_id().substring(0,1));
@@ -128,6 +136,9 @@ public class UserDAO {
 		if(u_idDex.getFname() == null) {
 			u_idDex.setIdImg(u_idDex.getU_id().substring(0,1));
 		}
+		
+		if(u_idDex.getAbout_me() == null)
+			u_idDex.setAbout_me("내용이 없다");
 
 		System.out.println("오라클 파일 저장 경로"+u_idDex.getFname());
 		System.out.println("파일이 없을시 표현할 글======>"+u_idDex.getIdImg());
@@ -142,11 +153,17 @@ public class UserDAO {
 		Map<String, String> map = new HashMap<String, String>();
 		
 		System.out.println("u_idx====> "+vo.getU_idx());
+		
+		System.out.println("u_name = "+vo.getU_name());
+		
+		if(vo.getFname() != null)
 		System.out.println("MultiFile =====> "+vo.getS_file().getClass().getName());
-
+		
+		System.out.println("u_name=====>"+vo.getU_name());
+		
 		StringBuffer sb = new StringBuffer();
 		
-		if (vo.getS_file().getSize() > 0) {
+		if (vo.getS_file() != null) {
 			System.out.println("실재 파일 저장 = "+ application.getRealPath(img_path));
 			//oname = f.getOriginalFilename();
 			vo.setOname(vo.getS_file().getOriginalFilename());
@@ -167,11 +184,16 @@ public class UserDAO {
 		vo.setFname(sb.toString());
 		
 		System.out.println("에이젝스 저장= "+ vo.getFname());
-
+		int status = 0;
 		// xml : user_img
-		int status = editImg(vo);
+		if(vo.getFname() != null)
+			status = editImg(vo);
 		
 		System.out.println("이미지 저장 성공=1 실패=0 : "+status);
+		
+		if(vo.getU_name() != null) {
+			map.put("u_rename", vo.getU_name());
+		}
 		
 		map.put("path", vo.getFname());
 		

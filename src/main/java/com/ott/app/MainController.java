@@ -80,6 +80,20 @@ public class MainController {
 		PlatFormVO[] netflix = n_dao.ott_All(1, 10);
 		PlatFormVO[] watcha = n_dao.ott_All(11, 20);
 		PlatFormVO[] wavve = n_dao.ott_All(21, 30);
+		int n_min = n_dao.getMinidx("NETFLIX");
+		int w_min = n_dao.getMinidx("WATCHA");
+		int v_min = n_dao.getMinidx("WAVVE");
+		int n_ran = (int)((Math.random()*10)+n_min);
+		int w_ran = (int)((Math.random()*10)+w_min);
+		int v_ran = (int)((Math.random()*10)+v_min);
+		
+		PlatFormVO rvo = n_dao.getRandom(n_ran);
+		PlatFormVO wvo = n_dao.getRandom(w_ran);
+		PlatFormVO vvo = n_dao.getRandom(v_ran);
+		
+		mv.addObject("rvo", rvo);
+		mv.addObject("wvo", wvo);
+		mv.addObject("vvo", vvo);
 		mv.addObject("netflix", netflix);
 		mv.addObject("watcha", watcha);
 		mv.addObject("wavve", wavve);
@@ -119,7 +133,7 @@ public class MainController {
 		ModelAndView mv = new ModelAndView();
 		
 		int idx = n_dao.getIdx(title);
-		mv.setViewName("redirect:/review?ott_idx="+idx);
+		mv.setViewName("redirect:/showReview?ott_idx="+idx);
 		
 		return mv;
 	}

@@ -21,7 +21,23 @@
 		WHERE U_ID = #{u_id}
 	</select>
 	
+	<select id="nodouble" resultType="com.ott.review.vo.ReviewVO" parameterType="Map">
+		select *
+		from ott_review
+		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
+	</select>
 	
+	<update id="warning" parameterType="Map">
+		update ott_user
+		set is_warning = #{is_warning}
+		where u_idx = #{u_idx}
+	</update>
+	
+	<select id="getwarning" resultType="com.ott.user.vo.UserVO" parameterType="int">
+		select *
+		from ott_user
+		where u_idx = #{u_idx}
+	</select>
 	
 	
 	
@@ -36,16 +52,27 @@
 		SELECT * FROM (
 			SELECT rownum r_num,a.* FROM (
 				SELECT * FROM OTT_REVIEW
-				WHERE ott_idx = #{ott_idx}
+				WHERE ott_idx = #{ott_idx} and status = 1
 				ORDER BY rv_idx DESC
 			) a 
 		) WHERE r_num BETWEEN #{begin} AND #{end} 
+	</select>
+	
+	<select id="selectReview" parameterType="int" resultType="com.ott.review.vo.ReviewVO">
+		SELECT * FROM OTT_REVIEW
+		WHERE RV_IDX = #{rv_idx}
 	</select>
 	
 	<update id="delReview" parameterType="com.ott.review.vo.ReviewVO">
 		UPDATE ott_review
 		SET status = 2
 		where rv_idx = #{rv_idx}
+	</update>
+	
+	<update id="editReview" parameterType="com.ott.review.vo.ReviewVO">
+		UPDATE OTT_REVIEW
+		SET CONTENT = #{content}, rating = #{rating}
+		WHERE RV_IDX = #{rv_idx}
 	</update>
 	
 	<select id="review_count" resultType="int" parameterType="int">

@@ -21,4 +21,16 @@
 	where title = #{title}
 </select>
 
+<select id="minIdx" resultType="int" parameterType="String">
+	select min(ott_idx)
+	from ott_service
+	where platform = #{platform}
+</select>
+
+<select id="random" resultType="com.ott.platform.vo.PlatFormVO" parameterType="int">
+	select *
+	from ott_service
+	where ott_idx = #{ott_idx}
+</select>
+
 </mapper>

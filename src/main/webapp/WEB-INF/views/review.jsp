@@ -21,7 +21,6 @@
 
 <!-- Header -->
 <jsp:include page="common/header.jsp"></jsp:include>
-
 <c:if test="${vo ne null }">
 <div class="common_container">
 	<!-- 여기다 작업하세요 -->
@@ -131,6 +130,8 @@
 			<!-- 반복문 -->
 			<tbody>
 				<c:forEach var="rvo" items="${rvo }">
+				<form method="post" name="frm2">
+			<div>
 					<tr>
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_id }</a>
@@ -167,7 +168,7 @@
 								</c:when>
 								
 								<c:when test="${uvo.u_idx  != rvo.u_idx}">
-									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx}, ${vo.ott_idx })"><i class="far fa-thumbs-up"></i></a>
+									<a href="/showReview?ott_idx=${vo.ott_idx }" onclick="thumbUp(${rvo.u_idx}, ${vo.ott_idx })"><i class="far fa-thumbs-up"></i></a>
 								</c:when>
 							
 							</c:choose>	
@@ -181,7 +182,7 @@
 								</c:when>
 								
 								<c:when test="${uvo.u_idx  != rvo.u_idx}">
-									<a href="/review?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx},${vo.ott_idx })"><i class="far fa-thumbs-down"></i></a>
+									<a href="/showReview?ott_idx=${vo.ott_idx }" onclick="thumbDown(${rvo.u_idx},${vo.ott_idx })"><i class="far fa-thumbs-down"></i></a>
 								</c:when>
 							
 							</c:choose>	
@@ -190,20 +191,23 @@
 						</td>
 						<td class="review_edit_btn">
 						<c:if test="${uvo.u_id eq rvo.u_id}">
-							<form name="frm2" method="post" action="del_review">
 							<p>
-								<input type="button" class="review_edit" value="수정" onclick="review_edit()"/>
+								<input type="button" class="review_edit" value="수정" onclick="review_edit(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 								<br/><br/>
-								<input type="button" class="review_edit" value="삭제" onclick="review_del()"/>
-								<input type="hidden" name="rv_idx" value="${rvo.rv_idx }">
-								<input type="hidden" name="ott_idx" value="${rvo.ott_idx }">
+								<input type="button" class="review_edit" value="삭제" onclick="review_del(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 							</p>
-							</form>
+						</c:if>
+						<c:if test="${uvo.u_id ne rvo.u_id }">
+							<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
 						</c:if>
 						</td>
 					</tr>
-				</c:forEach>
-			</tbody>
+						<input type="hidden" id="del_rv_idx" name="del_rv_idx" value="${rvo.rv_idx }">
+						<input type="hidden" id="del_ott_idx" name="del_ott_idx" value="${rvo.ott_idx }">
+				</div>
+			</form>
+			</c:forEach>
+		</tbody>
 			<tfoot>
 			<td colspan="4" >
             	${pageCode }
@@ -217,8 +221,8 @@
 <jsp:include page="common/footer.jsp"></jsp:include>
 </footer>
 </c:if>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 <script>
 function thumbUp(idx, ott_idx){
 	$.ajax({
@@ -233,6 +237,7 @@ function thumbUp(idx, ott_idx){
 }
 
 function thumbDown(idx, ott_idx){
+	
 	$.ajax({
 		url:"/thumdown",
 		type:"post",
@@ -244,6 +249,10 @@ function thumbDown(idx, ott_idx){
 	});
 }
 
+function refresh(){
+	location.reload();
+}
+
 function review_add(){	
 	if(document.frm.content.value.trim().length < 1){
 		alert("내용을 입력하세요");
@@ -252,33 +261,45 @@ function review_add(){
 	if(document.frm.rating.value < 1){
 		alert("평점을 입력하세요");
 		return;
-	}	
+	}
 	document.frm.submit();	
 }
 
-function review_del(){
-/*	if(!confirm("삭제하시겠습니까?")){
+function review_del(rv_idx, ott_idx){
+	if(!confirm("삭제하시겠습니까?")){
 		return;
 	}
-	let rv_idx = document.getElementById('del_rv_idx').value;
-	let ott_idx = document.getElementById('del_ott_idx').value;
-	
-	console.log(rv_idx+"///"+ott_idx);
-	
-	// ▼ GET 요청
-	location.href='review_del?rv_idx='+rv_idx+'&ott_idx='+ott_idx;
-	*/
-	
-	
-	if(confirm("삭제하시겠습니까?")){
-		document.frm2.action = "/review_del";
-		$("#subForm").submit()
-		document.frm2.submit();
-	}
+	$.ajax({
+		url:"/review_del",
+		type:"post",
+		data:{rv_idx:rv_idx, ott_idx:ott_idx}
+	}).done(function(){
+		refresh();
+	});
+}
+function review_edit(rv_idx, ott_idx){
+	$.ajax({
+		url:"/review_edit",
+		type:"post",
+		data:{rv_idx:rv_idx, ott_idx:ott_idx},
+		success: function review_edit_popup(data){
+			var w = window.open("/edit_review?rv_idx="+data.idx+"&ott_idx="+data.ott_idx,"edit","width=850,height=200");
+		}
+	});
 }
 
-	
-
+function warning(rv_idx, ott_idx, u_idx){
+	$.ajax({
+		url:"/addwarning",
+		type:"post",
+		data:{rv_idx:rv_idx, ott_idx:ott_idx, u_idx:u_idx}
+	}).done(function(data){
+		alert("신고 완료되었습니다.");
+		location.href="/showReview?ott_idx="+data.ott_idx;
+	}).fail({
+		
+	});
+}
 
 </script>
 </body>

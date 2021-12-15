@@ -14,6 +14,7 @@
 		VALUES(ott_user_seq.nextval, #{u_name}, #{u_email}, #{u_id}, #{u_pwd1}, 'KAKAO')
 </insert>
 
+
 <select id="user_info" resultType="com.ott.user.vo.UserVO" parameterType="String">
 	select *
 	from ott_user
@@ -86,17 +87,21 @@
 <!-- 유저 프로필 사진 업로드 -->
 <update id="user_img" parameterType="Map">
 	UPDATE OTT_USER
-	
 	SET
-	<if test="oname != null">
-		oname=#{oname}
-	</if>
-	<if test="fname != null">
-		,fname=#{fname}
-	</if> 
-	<if test="u_name != null">
-		,u_name=#{u_name}
-	</if>
+		<if test="oname != null ">
+			oname=#{oname}
+			, fname=#{fname}
+		</if>
+		<if test="oname != null and u_name != null">,</if>
+		<if test="u_name != null">
+			u_name=#{u_name}
+		</if>
+		<if test="oname != null and u_name != null and about_me != null">,</if>
+		<if test="oname != null and about_me != null">,</if>
+		<if test="u_name != null and about_me != null">,</if>
+		<if test="about_me != null">
+			about_me=#{about_me}
+		</if>
 	WHERE u_idx=#{u_idx}
 		
 </update>

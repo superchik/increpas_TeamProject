@@ -8,6 +8,16 @@
 	height: 570px;
 }
 
+.user_find_box {
+	width: 350px;
+	display: inline-block;
+}
+
+.center_box {
+	width:100%;
+	text-align:cetner;
+}
+
 .common_area {
 	width: auto;
 	height: 300px;
@@ -35,6 +45,17 @@
 	background-color: #3b82f6;
 	border-radius: 5px;
 	margin-top: 49px;
+}
+
+.login_link_btn {
+	font-weight: bold;
+	margin-top: 49px;
+	border: 0;
+	color: #f3f4f6;
+	background-color: #3b82f6;
+	border-radius: 5px;
+	margin-top: 49px;
+	width:350px;
 }
 
 .user_common_service {
@@ -73,4 +94,21 @@
 .naver_img {
 	width: 183px;
 	height: 45px;
+}
+
+.blank {
+	height:137.5px;
+	width:100%;
+}
+
+.border_box {
+	border: 1px solid #6b7280;
+	background-color:#0d121c;
+	width:100%;
+	text-align:center;
+}
+
+.result {
+	text-align:center;
+	display: inline-block;
 }
