@@ -90,7 +90,7 @@
 <c:if test="${uvo ne null }">
 <form action="/review_add" method="post" name="frm">
 	<div id="write_div">
-		<a class="write_nickname">${uvo.u_id }</a>
+		<a class="write_nickname">${uvo.u_name }</a>
 		<textarea name="content" id="write_area" 
 			cols="100" rows="5"></textarea>
 		<div class="write_star">
@@ -109,7 +109,9 @@
 		</div>
 		<br/>
 		<br/>
+		
 		<input type="hidden" name="ott_idx" value="${vo.ott_idx }">
+		<input type="hidden" name="u_name" value="${uvo.u_name }"> 
 		<input type="hidden" name="u_id" value="${uvo.u_id }"> 
 		<input type="hidden" name="now_page" value="${vo.ott_idx }">
 			<p class="write_btn">
@@ -134,7 +136,7 @@
 			<div>
 					<tr>
 						<td class="list_nickname"> 
-							<a class="list_nickname">${rvo.u_id }</a>
+							<a class="list_nickname">${rvo.u_name }</a>
 							<a class="list_level">LV1</a><br/><br/>
 							<a class="list_date">
 							${f:substring(rvo.r_date,0,16)}
@@ -190,14 +192,14 @@
 							</span>
 						</td>
 						<td class="review_edit_btn">
-						<c:if test="${uvo.u_id eq rvo.u_id}">
+						<c:if test="${uvo.u_idx eq rvo.u_idx}">
 							<p>
 								<input type="button" class="review_edit" value="수정" onclick="review_edit(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 								<br/><br/>
 								<input type="button" class="review_edit" value="삭제" onclick="review_del(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 							</p>
 						</c:if>
-						<c:if test="${uvo.u_id ne rvo.u_id }">
+						<c:if test="${uvo.u_idx ne rvo.u_idx }">
 							<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
 						</c:if>
 						</td>

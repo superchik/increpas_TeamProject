@@ -10,8 +10,8 @@
 	</select>
 
 	<insert id="add_review" parameterType="com.ott.review.vo.ReviewVO">
-		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT, U_ID, R_DATE, STATUS)
-		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL, #{ott_idx}, #{u_idx}, #{content}, #{rating}, 0, 0, #{u_id}, sysdate, 1)
+		INSERT INTO OTT_REVIEW(RV_IDX, OTT_IDX, U_IDX, CONTENT, RATING, IS_GOOD, IS_NOT, U_NAME, R_DATE, STATUS)
+		VALUES(OTT_REVIEW_BBS_SEQ.NEXTVAL, #{ott_idx}, #{u_idx}, #{content}, #{rating}, 0, 0, #{u_name}, sysdate, 1)
 	</insert>
 	
 	
@@ -20,6 +20,12 @@
 		FROM OTT_USER
 		WHERE U_ID = #{u_id}
 	</select>
+	
+	<update id="editU_name" parameterType="com.ott.user.vo.UserVO">
+		update ott_review
+		set u_name = #{u_name}
+		where u_idx = #{u_idx}
+	</update> 
 	
 	<select id="nodouble" resultType="com.ott.review.vo.ReviewVO" parameterType="Map">
 		select *

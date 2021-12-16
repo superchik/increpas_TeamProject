@@ -39,7 +39,7 @@
 					<span class="pw_blank">비밀번호는 공백 없이 입력해주세요.</span>
 					<input class="user_common" type="password" id="u_pwd2" name="u_pwd2" placeholder="비밀번호확인" required="required" oninput="confirmPw()">					
 					<span class="pw_confirm">비밀번호와 같아야 합니다.</span>
-					<button id="join_btn" class="user_common join_btn" type="submit">회원가입</button>
+					<button id="join_btn" class="user_common join_btn" type="submit" disabled="dlsabled">회원가입</button>
 				</form>
 			</div>
 			

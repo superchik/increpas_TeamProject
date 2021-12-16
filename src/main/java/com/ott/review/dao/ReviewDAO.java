@@ -87,18 +87,13 @@ public class ReviewDAO {
 	}
 	
 	public int delReview(ReviewVO rvo) {
-		System.out.println("DAO실행중");
 		int cnt = ss.update("review.delReview",rvo);
 		return cnt;
 	}
 	
 	public int editReview(ReviewVO rvo) {
-		System.out.println("DAO실행중");
 		int cnt = ss.update("review.editReview", rvo);
-		if(cnt==1) 
-			System.out.println("DAO성공");
-		else
-			System.out.println("DAO실패");
+
 		return cnt;
 	}
 	
