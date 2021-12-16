@@ -7,6 +7,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 파비콘 -->
+<link rel="icon" type="image/png" href="resources/images/pngwing.png">
 <meta charset="UTF-8">
 <!-- Jquery -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
