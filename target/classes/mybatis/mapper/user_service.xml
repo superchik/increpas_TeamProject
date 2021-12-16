@@ -112,4 +112,13 @@
 	FROM (SELECT * FROM ott_user WHERE u_idx=#{u_idx}) a, (SELECT count(content) as reviewEA FROM OTT_BBS WHERE u_idx=#{u_idx}) b
 </select>
 
+<!-- 유저 회원가입 시 기본 EXP 10 설정 -->
+<update id="default_exp" parameterType="String">
+	
+		UPDATE OTT_USER
+			SET 
+				exp = 10
+		WHERE u_id = #{u_id}
+		
+	</update>
 </mapper>

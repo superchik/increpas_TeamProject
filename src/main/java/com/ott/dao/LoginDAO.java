@@ -69,4 +69,9 @@ public class LoginDAO {
 	public int kakao_user(UserVO uvo) {
 		return ss.insert("user_service.kakao_login", uvo);
 	}
+	
+//	유저 회원가입 시 기본 EXP 10 설정
+	public int default_exp(String u_id) {
+		return ss.update("user_service.default_exp",u_id);
+	}
 }

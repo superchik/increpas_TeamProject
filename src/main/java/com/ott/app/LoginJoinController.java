@@ -55,6 +55,7 @@ public class LoginJoinController {
 		uvo.setAuth_key(auth_key);
 		
 		Ldao.user_join(uvo);
+		Ldao.default_exp(uvo.getU_id());
 		
 		Map<String, String> map = new HashMap<String, String>();
 
@@ -62,6 +63,7 @@ public class LoginJoinController {
 		map.put("auth_key", uvo.getAuth_key());
 		
 		Ldao.auth_Key(map);
+		
 		
 		mv.setViewName("redirect:/");
 
