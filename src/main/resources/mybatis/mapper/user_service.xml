@@ -97,8 +97,8 @@
 			u_name=#{u_name}
 		</if>
 		<if test="oname != null and u_name != null and about_me != null">,</if>
-		<if test="oname != null and about_me != null">,</if>
-		<if test="u_name != null and about_me != null">,</if>
+		<if test="oname != null and about_me != null and u_name == null">,</if>
+		<if test="u_name != null and about_me != null and oname == null">,</if>
 		<if test="about_me != null">
 			about_me=#{about_me}
 		</if>

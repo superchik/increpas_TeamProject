@@ -71,7 +71,6 @@ public class QnaController {
 		/*
 	    UserVO[] uar = null; List<UserVO> list = new ArrayList<UserVO>();
 		 */
-		
 		//=========== JSP에서 표현해야 하므로 ar을 mv에 저장한다. ===========
 		mv.addObject("ar", ar);
 		mv.addObject("nowPage", nowPage);
