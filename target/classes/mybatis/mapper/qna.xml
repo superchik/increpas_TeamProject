@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="qna">
+<mapper namespace="bbs">
 
 	<resultMap type="com.ott.bbs.vo.QnaVO" id="map1">
 		<id property="rb_idx" column="rb_idx"/>
