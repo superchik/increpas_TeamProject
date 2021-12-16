@@ -53,19 +53,24 @@ public class QnaController {
 		
 		QnaVO[] ar = q_dao.getList(begin, end, bname);
 		
+		 if(ar != null) {
+	         for(int i=0; i<ar.length; i++) {
+	            String idx = ar[i].getU_idx();       //   게시판 테이블에서 u_idx값을 가져온다.
+	            UserVO u_vo = q_dao.getUvo(idx);   //   회원 테이블에서 FK인 u_idx의 값이 
+	                                       //   게시판 테이블의 u_idx 값이 같은 vo를 가져온다
+	            String name = u_vo.getU_name();      
+	            String u_idx = u_vo.getU_idx();
+	            String u_id = u_vo.getU_id();
+	            ar[i].setU_id(u_id);
+	            ar[i].setU_name(name);
+	            ar[i].setU_idx(u_idx);
+	   
+	         }
+	      }
+		
 		/*
 	    UserVO[] uar = null; List<UserVO> list = new ArrayList<UserVO>();
 		 */
-		
-		for(int i=0; i<ar.length; i++) {
-			String idx = ar[i].getU_idx(); 		//	게시판 테이블에서 u_idx값을 가져온다.
-			UserVO u_vo = q_dao.getUvo(idx);	//	회원 테이블에서 FK인 u_idx의 값이 
-												//	게시판 테이블의 u_idx 값이 같은 vo를 가져온다
-			String name = u_vo.getU_name();		
-			ar[i].setU_name(name);
-
-		}
-		
 		
 		//=========== JSP에서 표현해야 하므로 ar을 mv에 저장한다. ===========
 		mv.addObject("ar", ar);
