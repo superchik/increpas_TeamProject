@@ -55,6 +55,7 @@ public class PwChangeController {
 			mv.setViewName("redirect:/pwChange");
 		}
 		return mv;
+		
 	}
 	
 	@RequestMapping("/pwChangeResult")
