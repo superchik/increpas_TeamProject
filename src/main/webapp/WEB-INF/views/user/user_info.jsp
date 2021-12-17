@@ -198,14 +198,14 @@
 		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
 		frm.append("u_idx", u_idx);
 		
-		if(u_name != null){
+		if(u_name != null && u_name.trim().length > 0){
 			console.log("u_name=====================================================>>>>"+u_name);
 			frm.append("u_name", u_name);
 		}
 		if(s_file != null)
 			frm.append("s_file", s_file);
 		
-		if(about_me != null)
+		if(about_me != null && about_me.trim().length > 0)
 			frm.append("about_me", about_me);
 		
 		//비동기식 통신

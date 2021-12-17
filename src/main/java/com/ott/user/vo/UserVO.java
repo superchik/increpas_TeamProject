@@ -23,9 +23,17 @@ public class UserVO {
 	private String reviewEA;//유저 리뷰수
 	private String idImg;//유저 이미지프로필 없을때 표현
 	private String about_me;//소개글
+	private String filePath;// 실재 저장 경로
 	
 	
+
 	
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 	public String getAbout_me() {
 		return about_me;
 	}
