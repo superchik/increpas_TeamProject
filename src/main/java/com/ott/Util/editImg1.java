@@ -27,13 +27,13 @@ public class editImg1 {
 	}
 
 	public UserVO getVo() {
-		System.out.println("MultiFile 에디터에들어오냐? =====> "+vo.getS_file());
-		System.out.println("u_idx=========================> "+vo.getU_idx());
-		System.out.println("아이디 받아지냐?===================>"+vo.getU_id());
-		System.out.println("u_name ========================> "+vo.getU_name());
-		System.out.println("about_me ========================> "+vo.getAbout_me());
-		System.out.println("실재 파일 저장 ===================> "+vo.getFilePath());
-		System.out.println("DB 파일경로 받아지냐================>"+vo.getFname());
+//		System.out.println("MultiFile 에디터에들어오냐? =====> "+vo.getS_file());
+//		System.out.println("u_idx=========================> "+vo.getU_idx());
+//		System.out.println("아이디 받아지냐?===================>"+vo.getU_id());
+//		System.out.println("u_name ========================> "+vo.getU_name());
+//		System.out.println("about_me ========================> "+vo.getAbout_me());
+//		System.out.println("실재 파일 저장 ===================> "+vo.getFilePath());
+//		System.out.println("DB 파일경로 받아지냐================>"+vo.getFname());
 		
 		StringBuffer sb = new StringBuffer();
 		
