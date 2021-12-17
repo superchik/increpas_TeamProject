@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="bbs">
+<mapper namespace="qna">
 
 	<resultMap type="com.ott.bbs.vo.QnaVO" id="map1">
 		<id property="rb_idx" column="rb_idx"/>
@@ -15,7 +15,7 @@
 	<select id="commList" parameterType="String" 
 	resultType="com.ott.bbs.vo.QnaCommVO">
 		SELECT * FROM OTT_COMMENT
-		WHERE rb_idx = #{rb_idx}
+		WHERE rb_idx = #{rb_idx} AND C_STATUS = 0
 	</select>
 	
 	
@@ -28,18 +28,18 @@
 			) a 
 		) WHERE r_num BETWEEN #{begin} AND #{end}
 	</select>  
-<!-- u_idx로 user정보 가져온다. -->
-<select id="getUvo" resultType="com.ott.user.vo.UserVO" parameterType="String">
-	select *
-	from ott_user
-	where u_idx = #{u_idx} 
-</select>
-<!-- u_id로 user정보 가져온다. -->
-<select id="getUvo2" resultType="com.ott.user.vo.UserVO" parameterType="String">
-	select *
-	from ott_user
-	where u_id = #{u_id}
-</select>
+	<!-- u_idx로 user정보 가져온다. -->
+	<select id="getUvo" resultType="com.ott.user.vo.UserVO" parameterType="String">
+		select *
+		from ott_user
+		where u_idx = #{u_idx} 
+	</select>
+	<!-- u_id로 user정보 가져온다. -->
+	<select id="getUvo2" resultType="com.ott.user.vo.UserVO" parameterType="String">
+		select *
+		from ott_user
+		where u_id = #{u_id}
+	</select>
 
 	<select id="totalCount" resultType="int" parameterType="String">
 		SELECT COUNT(*) FROM OTT_BBS
@@ -60,7 +60,8 @@
 			content,
 			write_date, 
 			hit, 
-			status, 
+			status,
+			secret, 
 			bname
 			)
 		VALUES(
@@ -71,6 +72,7 @@
 			sysdate, 
 			0, 
 			0, 
+			#{secret},
 			#{bname}
 			)
 	</insert>
@@ -79,7 +81,8 @@
 	<update id="edit" parameterType="com.ott.bbs.vo.QnaVO">
 		UPDATE OTT_BBS
 		SET subject = #{subject},
-			content = #{content}
+			content = #{content},
+			secret = #{secret}
 		WHERE rb_idx = #{rb_idx} 
 	</update>
 	<!-- end of QNA query -->
@@ -89,4 +92,37 @@
 		SET status = 1
 		WHERE rb_idx = #{rb_idx}
 	</update>
+	
+	
+ 	<!-- QNA 게시판 댓글 -->
+	
+	<insert id="comment" parameterType="com.ott.bbs.vo.QnaCommVO">
+		INSERT INTO OTT_COMMENT(C_IDX, A_CONTENT, ANSWER_DATE, RB_IDX, OM_IDX, C_STATUS)
+		VALUES(OTT_COMMENT_SEQ.NEXTVAL, #{a_content}, SYSDATE, #{rb_idx}, #{om_idx}, 0)
+	</insert> 
+	
+	<!-- 댓글 수정하기 -->
+	<update id="editComment" parameterType="com.ott.bbs.vo.QnaCommVO">
+		UPDATE OTT_COMMENT
+		SET A_CONTENT = #{a_content},
+		    ANSWER_DATE = SYSDATE
+		WHERE C_IDX = #{c_idx} AND 	OM_IDX = #{om_idx}
+	</update>
+	
+	<!-- 댓글 삭제하기 -->
+	<update id="delComment" parameterType="com.ott.bbs.vo.QnaCommVO">
+		UPDATE OTT_COMMENT
+		SET C_STATUS = 1
+		WHERE C_IDX = #{c_idx} AND OM_IDX = #{om_idx}
+	</update>
+	
+	<!-- 게시판 조회수 올리기 -->
+	<update id="updateHit">
+		UPDATE OTT_BBS 
+		SET HIT = HIT + 1 
+		WHERE RB_IDX = #{rb_idx}
+	</update>
+	
+
+	
 </mapper>

@@ -27,7 +27,18 @@
 	padding: 4px 10px;
 }
 
-#c_content_ta{
+#ans{
+	color: white;
+	font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+	
+}
+#horizon{
+	width: 500px;
+	
+}
+#a_content_ta{
 		background-color:  rgba(11, 15, 25, .9);
 		color:#6b7280;				
 		
@@ -39,4 +50,15 @@ textarea.content_ta {
 }
 tbody tr th{
 	width: 500px;
+}
+#qna_comment tbody tr th{
+	width: 80px;
+	text-align: center;
+    border: 1px solid black;
+    padding: 4px 10px;
+}
+.comment_ta{
+    background-color: rgba(11, 15, 25, .9);
+    color: #6b7280;
+    width: 500px;
 }
