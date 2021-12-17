@@ -164,6 +164,16 @@ public class UserDAO {
 		
 	}
 	
-
-	
+	// 회원 비밀번호 확인
+	public UserVO user_pw_check(String u_id, String u_idx) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("u_id", u_id);
+		map.put("u_idx", u_idx);
+		return ss.selectOne("user_service.user_pw_check",map);
+	}
+		
+	// 회원 비밀번호 바꾸기
+	public int change_pwd(Map<String, String> map) {
+		return ss.update("user_service.change_pwd",map) ;
+	}
 }
