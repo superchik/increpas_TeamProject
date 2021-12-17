@@ -116,7 +116,9 @@ public class UserDAO {
 	//유저 종합 정보
 	public ModelAndView userInfo(UserVO vo) {
 		ModelAndView mv = new ModelAndView();
-		vo = (UserVO)session.getAttribute("uvo");
+		vo = ss.selectOne("user_service.user_info1", vo.getU_idx());
+//		vo = (UserVO)session.getAttribute("uvo");
+//		vo.setReviewEA(svo.getReviewEA());
 		
 		ei = new editImg1(vo);
 
@@ -139,12 +141,12 @@ public class UserDAO {
 		ei = new editImg1();
 		ei.setVo(vo);
 		
-		UserVO vos = ei.getVo();
-		System.out.println("BD 로 보낼 u_idx=====>>"+ ei.getVo().getU_idx());
-		System.out.println("BD 로 보낼 O네임======>>"+ ei.getVo().getOname());
-		System.out.println("BD 로 보낼 F네임======>>"+ ei.getVo().getFname());
-		System.out.println("BD 로 보낼 U_네임=====>>"+ ei.getVo().getU_name());
-		System.out.println("BD 로 보낼 어버웃미====>>"+ ei.getVo().getAbout_me());
+//		UserVO vos = ei.getVo();
+//		System.out.println("BD 로 보낼 u_idx=====>>"+ ei.getVo().getU_idx());
+//		System.out.println("BD 로 보낼 O네임======>>"+ ei.getVo().getOname());
+//		System.out.println("BD 로 보낼 F네임======>>"+ ei.getVo().getFname());
+//		System.out.println("BD 로 보낼 U_네임=====>>"+ ei.getVo().getU_name());
+//		System.out.println("BD 로 보낼 어버웃미====>>"+ ei.getVo().getAbout_me());
 //		System.out.println("사진이 없을때 "+ vo1.getIdImg());
 		int status = 0;
 		if(ei.getVo().getFname() != null && ei.getVo().getFname().trim().length() > 0 ) {
