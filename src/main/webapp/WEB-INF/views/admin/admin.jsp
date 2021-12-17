@@ -25,6 +25,11 @@
 
 <title>Main</title>
 
+<style>
+	.admin_board{
+	padding:30px;
+	}
+</style>
 </head>
 <body>
 	<!-- Header -->
@@ -42,12 +47,12 @@
 						<!--  <span class="top_board">게시판 검색</span>-->
 						<div>
 							<select name="select_group">
-								<option value="그룹선택" selected="selected">::그룹선택::</option>
+													<option value="그룹선택" selected="selected">::그룹선택::</option>
 								<option value="리뷰게시판">리뷰게시판</option>
-								<option value="평점관리">평점관리</option>
+								<option value="QNA게시판">QNA게시판</option>
 								<option value="회원정보관리">회원정보관리</option>
 								<option value="댓글관리">댓글관리</option>
-								<option value="#">기타..</option>
+								
 								
 								
 							</select>
@@ -60,12 +65,10 @@
 					</div>
 						<table>
 							<caption>
-							<span class="total_board">총 게시판수 : #개</span> 
-							<input class="add_board_btn" type="button" value="게시판 추가"/>
+							<span class="total_board">총 게시판수 : 4개</span> 
 							</caption>
 						
 							<clogroup>
-								<col style="width: 50px;"/>
 								<col style="width: 150px;"/>
 								<col style="width: 100px;"/>
 								<col style="width: 100px;"/>
@@ -76,7 +79,6 @@
 							</clogroup>
 							<thead class="admin_thead">
 								<tr>
-									<td>번호</td>
 									<td>게시판명</td>
 									<td>목록보기</td>
 									<td>내용보기</td>
@@ -87,7 +89,6 @@
 								</tr>
 							</thead>
 							<tbody>
-									<td>10</td>
 									<td>리뷰게시판</td>
 									<td>전체</td>
 									<td>전체</td>
@@ -103,25 +104,8 @@
 										</button>
 									</td>
 								</tr>
+
 								<tr>
-									<td>9</td>
-									<td>평점관리</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>
-										<button class="edit_btn" type="button">
-										    수정
-										</button>
-										<button class="del_btn" type="button">
-										    삭제
-										</button>
-									</td>
-								</tr>
-								<tr>
-									<td>8</td>
 									<td>회원정보관리</td>
 									<td>전체</td>
 									<td>전체</td>
@@ -138,7 +122,6 @@
 									</td>
 								</tr>
 								<tr>
-									<td>7</td>
 									<td>댓글 관리</td>
 									<td>전체</td>
 									<td>전체</td>
@@ -155,24 +138,6 @@
 									</td>
 								</tr>
 								<tr>
-									<td>6</td>
-									<td>자유 게시판</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>
-										<button class="edit_btn" type="button">
-										    수정
-										</button>
-										<button class="del_btn" type="button">
-										    삭제
-										</button>
-									</td>
-								</tr>
-								<tr>
-									<td>5</td>
 									<td>QNA 게시판</td>
 									<td>전체</td>
 									<td>전체</td>
@@ -188,40 +153,7 @@
 										</button>
 									</td>
 								</tr>
-								<tr>
-									<td>4</td>
-									<td>자유 게시판</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>
-										<button class="edit_btn" type="button">
-										    수정
-										</button>
-										<button class="del_btn" type="button">
-										    삭제
-										</button>
-									</td>
-								</tr>
-								<tr>
-									<td>3</td>
-									<td>기타 등등</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>전체</td>
-									<td>
-										<button class="edit_btn" type="button">
-										    수정
-										</button>
-										<button class="del_btn" type="button">
-										    삭제
-										</button>
-									</td>
-								</tr>
+
 
 								
 							</tbody>

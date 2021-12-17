@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,7 +51,13 @@
 					<td><textarea class="content_ta" name="content" cols="50" 
 							rows="8">${q_vo.content }</textarea></td>
 				</tr>
-
+				<tr>
+					<th>공개범위:</th>
+						<td>
+							<input type="radio" value="public" name="secret" <c:if test="${q_vo.secret eq 'public' }"> checked="checked"</c:if>>공개글</input>
+							<input type="radio" value="private" name="secret" <c:if test="${q_vo.secret eq 'private' }"> checked="checked"</c:if>>비밀글</input>
+						</td>
+					<tr>
 				<tr>
 					<td colspan="2">
 						<input id="edit_btn" type="button" value="확인"
@@ -79,20 +87,7 @@
 		document.frm.action = "/QNA.list";
 		document.frm.submit();
 	} 
-/* 		function sendData() {
-			if (document.forms[0].subject.value.trim().length < 0) {
-				alert("제목을 입력하세요");
-				document.forms[0].title.focus();
-				return;//수행 중단
-			}
-			if (document.forms[0].pwd.value.trim().length < 0) {
-				alert("비밀번호를 입력하세요");
-				document.forms[0].pwd.focus();
-				return;//수행 중단
-			}
 
-			document.forms[0].submit();
-		} */
 		
 		$(document).ready(function() {
 			$("#edit_btn").click(function() {

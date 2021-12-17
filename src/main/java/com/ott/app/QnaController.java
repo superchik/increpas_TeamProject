@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import com.ott.Util.Paging_admin;
+import com.ott.bbs.vo.QnaCommVO;
 import com.ott.bbs.vo.QnaVO;
 import com.ott.dao.QnaDAO;
 import com.ott.user.vo.UserVO;
@@ -53,11 +54,6 @@ public class QnaController {
 		
 		QnaVO[] ar = q_dao.getList(begin, end, bname);
 		
-		/*
-	    UserVO[] uar = null; List<UserVO> list = new ArrayList<UserVO>();
-		 */
-		
-		
 		if(ar != null) {
 			for(int i=0; i<ar.length; i++) {
 				String idx = ar[i].getU_idx(); 		//	게시판 테이블에서 u_idx값을 가져온다.
@@ -73,8 +69,8 @@ public class QnaController {
 			}
 		}
 		
-		
 		//=========== JSP에서 표현해야 하므로 ar을 mv에 저장한다. ===========
+	
 		mv.addObject("ar", ar);
 		mv.addObject("nowPage", nowPage);
 		mv.addObject("blockList", blockList);
@@ -92,7 +88,8 @@ public class QnaController {
 
 		QnaVO q_vo = q_dao.getBbs(rb_idx);
 		UserVO u_vo = q_dao.getUvo(q_vo.getU_idx());
-		
+	    q_vo.setHit(q_dao.updateHit(rb_idx));
+	   // String hit = q_vo.getHit();
 		mv.addObject("q_vo", q_vo);
 		mv.addObject("u_vo", u_vo);
 		
@@ -103,29 +100,28 @@ public class QnaController {
 
 	//=========== 글 쓰기 ===========
 	
-	/*
-	  @RequestMapping("/QNA.write") 
-	  public String write() {
-	  
-	  return "bbs/bbs_qna_write"; }
-	 */
+
 	@RequestMapping("/QNA.write")
 	public ModelAndView writeView() {
+		
 		ModelAndView mv = new ModelAndView();
 		
 		HttpSession session = request.getSession();
 		UserVO uvo =  (UserVO)session.getAttribute("uvo");
+		
 		String u_id = uvo.getU_id();
+		
 		//System.out.println("u_id:"+u_id);
 		UserVO u_vo2 = q_dao.getUvo2(u_id);
 		String u_idx = u_vo2.getU_idx();
 		UserVO u_vo1 = q_dao.getUvo(u_idx);
 		
 		String name = u_vo1.getU_name();
-		//String u_name = u_vo2.getU_name();
+		String u_name = u_vo2.getU_name();
 		// System.out.println("u_idx:"+u_idx);
 		// System.out.println("u_name:"+u_name);
 		mv.addObject("u_name",name);
+		
 		mv.setViewName("bbs/bbs_qna_write");
 		return mv;
 	}
@@ -150,13 +146,10 @@ public class QnaController {
 		q_vo.setSecret(secret);
 		q_vo.setSubject(subject);
 		
+		
 		q_dao.add(q_vo); // DB에 저장!!!!!!!!!!!
 		
-		
 
-		
-		
-	
 		mv.setViewName("redirect:/QNA.list");
 		
 
@@ -187,15 +180,7 @@ public class QnaController {
 		mv.addObject("u_vo", u_vo);// VIEW의 수정화면에서 표현해야 하므로 여기서 저장함!
 		mv.setViewName("/bbs/bbs_qna_edit");
 		return mv;
-		
-	
-		
-//		QnaVO q_vo = q_dao.getBbs(rb_idx);
-//		
-//		m.addAttribute("q_vo", q_vo); // Model은 request에 저장됨!
-//									//forward시 사용가능함!		
-//		return "bbs/bbs_qna_edit";
-		
+
 	}
 	
 	@RequestMapping(value="/QNA.edit1", method=RequestMethod.POST)
@@ -204,13 +189,14 @@ public class QnaController {
 		
 			String subject = request.getParameter("subject");
 			String content = request.getParameter("content");
+			String secret = request.getParameter("secret");
 			String rb_idx = q_vo.getRb_idx();
 			
 			
-
+			q_vo.setSecret(secret);
 			q_vo.setSubject(subject);
 			q_vo.setContent(content);
-			
+		
 			
 			q_dao.edit(q_vo); // DB에 저장!!!!!!!!!!!
 
@@ -223,6 +209,65 @@ public class QnaController {
 			
 			//mv.setViewName("/QNA.view");
 		
+		return mv;
+	}
+	
+	
+	
+	//=================== 댓글 등록하기 =======================
+	@RequestMapping(value = "/QNA.answer", method = RequestMethod.POST)
+	public ModelAndView writeComment(HttpServletRequest request, QnaCommVO qc_vo, String cPage) {
+		ModelAndView mv = new ModelAndView();
+		
+	
+		//QnaCommVO qcvo =
+		String om_idx = request.getParameter("om_idx");
+		String a_content = request.getParameter("a_content");
+		String rb_idx = request.getParameter("rb_idx");
+	
+		qc_vo.setA_content(a_content);
+		qc_vo.setOm_idx(om_idx);
+		qc_vo.setRb_idx(rb_idx);
+	
+		q_dao.commentQna(qc_vo);
+		
+		// qc_vo = q_dao.getcommList(rb_idx);
+		mv.addObject("qc_vo",qc_vo);
+		mv.setViewName("redirect:/QNA.view?rb_idx="+rb_idx+"&cPage="+cPage);
+		
+	
+		return mv;
+	}
+	//=================== 댓글 수정하기 =======================
+	@RequestMapping(value = "/QNA.editComm", method = RequestMethod.POST)
+	public ModelAndView editComment(HttpServletRequest request, QnaCommVO qc_vo, String cPage) {
+		ModelAndView mv = new ModelAndView();
+		String a_content = request.getParameter("a_content");
+		String om_idx = request.getParameter("om_idx");
+		String c_idx = request.getParameter("c_idx");
+		String rb_idx = request.getParameter("rb_idx");
+		qc_vo.setA_content(a_content);
+		
+		q_dao.editComment(qc_vo);
+				
+		mv.addObject(qc_vo);
+		mv.setViewName("redirect:/QNA.view?rb_idx="+rb_idx+"&cPage="+cPage);
+		return mv;
+	}
+	//=================== 댓글 삭제하기 =======================
+	@RequestMapping(value="/QNA.delComm", method = RequestMethod.POST)
+	public ModelAndView delComment(HttpServletRequest request, QnaCommVO qc_vo, String cPage) {
+		ModelAndView mv = new ModelAndView();
+		String rb_idx = request.getParameter("rb_idx");
+		String om_idx = request.getParameter("om_idx");
+		String c_idx  = request.getParameter("c_idx");
+		qc_vo.setC_idx(c_idx);
+		qc_vo.setOm_idx(om_idx);
+		
+		
+		q_dao.delComment(qc_vo);
+		
+		mv.setViewName("redirect:/QNA.view?rb_idx="+rb_idx+"&cPage="+cPage);
 		return mv;
 	}
 	
