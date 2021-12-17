@@ -54,7 +54,7 @@ public class editImg1 {
 			}
 		}
 		
-		if(vo.getFname() == null) {
+		if(vo.getFname() != null) {
 			sb.append(img_path);
 			sb.append(vo.getFname());
 			vo.setFname(sb.toString());
