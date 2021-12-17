@@ -54,11 +54,11 @@ public class editImg1 {
 			}
 		}
 		
-		if(vo.getFname() != null) {
+		if(vo.getFname() == null && vo.getS_file() != null) {
 			sb.append(img_path);
 			sb.append(vo.getFname());
 			vo.setFname(sb.toString());
-		}else if (vo.getS_file() != null) {
+		}else if (vo.getFname() != null && vo.getS_file() != null) {
 			sb.append(img_path);
 			sb.append(vo.getFname());
 			vo.setFname(sb.toString());
