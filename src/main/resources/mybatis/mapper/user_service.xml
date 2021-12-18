@@ -28,7 +28,7 @@
 </select>
 
 <insert id="user_join" parameterType="com.ott.user.vo.UserVO">
-	insert into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt, SOCIAL)
+	INSERT into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt, SOCIAL)
 			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat}, 'VVF')
 </insert>
 
@@ -135,5 +135,12 @@
 		SET u_pwd1 = #{u_pwd1}
 	WHERE u_idx = #{u_idx} AND u_id = #{u_id}
 </update>
+
+<select id="get_user_level" resultType="com.ott.user.vo.UserVO" parameterType="String">
+		SELECT
+		exp, u_level FROM OTT_USER
+		WHERE u_idx = #{u_idx} 
+	
+</select>
 	
 </mapper>

@@ -176,4 +176,10 @@ public class UserDAO {
 	public int change_pwd(Map<String, String> map) {
 		return ss.update("user_service.change_pwd",map) ;
 	}
+	
+	public UserVO get_user_level(String u_idx) {
+		
+		return ss.selectOne("user_service.get_user_level", u_idx);
+		
+	}
 }
