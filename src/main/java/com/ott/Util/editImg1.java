@@ -68,10 +68,12 @@ public class editImg1 {
 			vo.setIdImg(vo.getU_id().substring(0,1));
 		}
 		
-		if(vo.getAbout_me() == null && vo.getAbout_me().trim().length() < 0)
-			vo.setAbout_me("내용이 없다");
+		if(vo.getAbout_me() == null) {
+			
+			vo.setAbout_me("안녕하세요? 저는" + vo.getU_name() + " 입니다 .");
+		}
 		
-//		System.out.println("뭔가 여러번 실행 한다=======>>>"+vo.getFname());
+
 
 
 		map.put("path", vo.getFname());
