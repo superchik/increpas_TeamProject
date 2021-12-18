@@ -29,7 +29,7 @@ public class UserController {
 	@ResponseBody
 	private Map<String, String> saveImg(UserVO vo){
 		UserVO svo = (UserVO)session.getAttribute("uvo");
-		if(vo.getS_file() != null && vo.getS_file().getSize() > 0)
+		if(vo.getS_file() != null)
 			svo.setS_file(vo.getS_file());
 		
 		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0)

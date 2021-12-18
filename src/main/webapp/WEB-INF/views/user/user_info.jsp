@@ -25,7 +25,7 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="common_container">
 		<!-- 여기다 작업하세요 -->
-		<h2>${vo.u_name} 님의 마이페이지 입니다.</h2>
+		<a>${vo.u_name} 님의 마이페이지 입니다.</a>
 		<div class="com">
 			<div class="TBox img">
 				<div class="img_area">
@@ -51,11 +51,11 @@
 							<td class="MTtd1">${vo.u_email }</td>
 						</tr>
 						<tr>
-							<td class="MTtd">리뷰 수 :&nbsp;</td>
+							<td class="MTtd">작성 리뷰 수 :&nbsp;</td>
 							<td class="MTtd1">${vo.reviewEA }</td>
 						</tr>
 						<tr>
-							<td colspan="2" class="MTtd2">About_me</td>
+							<td colspan="2" class="MTtd2">About Me</td>
 						</tr>
 						<tr>
 							<td colspan="2" class="MTtd2">${vo.about_me }</td>
@@ -67,7 +67,7 @@
 			<button class="link_btn butter" type="button" onclick="location.href='/pwChange';">비밀번호 변경 페이지 이동</button>
 		</div>
 	</div>
-	<div id="dialog" title="다이얼로그 테스트">
+	<div id="dialog" title="프로필변경">
 		<form action="" method="post" enctype="multipart/form-data" name="">
 		
 			<table id="table" style="width: 100%; height: 100%">
@@ -109,11 +109,6 @@
 			</table>
  
 	        <input type="hidden" id="u_user" name="u_idx" value="${vo.u_idx}"/>
-	        <!--                           현재프로젝트.경로요청/saveFIle이라는 폴더안에/객체.변수명 ( 지금은 없는관계로.. 에러가 발생하는것 같음 --> 
-	        <!-- <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg"'/> -->
-   			<!--  Error: src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg" -->
-	    			    	
-
     	</form>
 	</div>
 	<!-- footer -->
@@ -156,10 +151,8 @@
         	
         		
         	if( s_file != null){
-        		alert('쓰기 준비')
         		sendImage(u_idx, s_file, u_name, about_me);
         	}else{
-        		alert("닉네임 변경합니다");
         		sendImage(u_idx, s_file, u_name, about_me);
         	}
         	console.log(u_idx);
