@@ -25,7 +25,7 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="common_container">
 		<!-- 여기다 작업하세요 -->
-		<a>${vo.u_name} 님의 마이페이지 입니다.</a>
+		<span class="user_mypage_text">${vo.u_name} 님의 마이페이지 입니다.</span>
 		<div class="com">
 			<div class="TBox img">
 				<div class="img_area">
@@ -48,11 +48,11 @@
 						</tr>
 						<tr>
 							<td class="MTtd">이메일 :&nbsp;</td>
-							<td class="MTtd1">${vo.u_email }</td>
+							<td class="MTtd">${vo.u_email }</td>
 						</tr>
 						<tr>
 							<td class="MTtd">작성 리뷰 수 :&nbsp;</td>
-							<td class="MTtd1">${vo.reviewEA }</td>
+							<td class="MTtd">${vo.reviewEA }</td>
 						</tr>
 						<tr>
 							<td colspan="2" class="MTtd2">About Me</td>
@@ -63,10 +63,20 @@
 					</tbody>
 				</table>
 			</div>
-			<button class="BBox butter" type="button">프로필 변경</button>
-			<button class="link_btn butter" type="button" onclick="location.href='/pwChange';">비밀번호 변경 페이지 이동</button>
+			
+		
 		</div>
 	</div>
+	<div class="user_mypage_service">
+		<div class="user_profile_area">
+			<button class="user_profile_btn" type="button">프로필변경</button>	
+			<button class="user_pwd_change" onclick="location.href='/pwChange';"  type="button">비밀번호변경</button>	
+		</div>
+	</div>
+	<!--  
+		<button class="BBox butter" type="button">프로필 변경</button>
+		<button class="link_btn butter" type="button" onclick="location.href='/pwChange';">비밀번호 변경 페이지 이동</button>	
+	-->	
 	<div id="dialog" title="프로필변경">
 		<form action="" method="post" enctype="multipart/form-data" name="">
 		
@@ -120,7 +130,7 @@
 	$(function() {
 		console.log('Ready');
 		
-		$('.BBox').on('click', function() {
+		$('.user_profile_btn').on('click', function() {
 			console.log('BBox Ready');
 			$( "#dialog" ).dialog({
 				resizable: false,
