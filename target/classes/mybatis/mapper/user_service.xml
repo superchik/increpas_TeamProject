@@ -121,8 +121,6 @@
 		WHERE u_id = #{u_id}
 		
 	</update>
-<<<<<<< HEAD
-
 
 <!-- 유저 기존 비밀번호 확인 | 유저 검색 -->
 <select id="user_pw_check" parameterType="Map" resultType="com.ott.user.vo.UserVO">
@@ -143,6 +141,5 @@
 		WHERE u_idx = #{u_idx} 
 </select>
 	
-=======
->>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
+
 </mapper>
