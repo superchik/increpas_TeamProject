@@ -1,9 +1,23 @@
 @charset "UTF-8";
 
-.MBox {
-	border-radius: 20px;
+
+.user_mypage_text{
 	
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	
+}
+
+.MTtd {
+	color: white;
+}
+
+.MBox {
 	width: 60%;
+	height:350px;
+	border:4px solid #6b7280;
+	border-radius: 15px;
 	margin: 0px 15px 15px 0px;
 	font-size: 30px;
 	color: #6b7280;
@@ -13,6 +27,7 @@
 	height: 100%;
 }
 .MTtd2{
+	color: white;
 	text-align: center;
 }
 .img_area {
@@ -62,11 +77,17 @@ p {
 	margin-top: 4%;
 }
 
-.butter:hover {
+.user_profile_btn:hover {
 	color: #3b82f6;
 	background-color: #f3f4f6;
 	cursor: pointer;
 }
+.user_pwd_change:hover{
+	color: #3b82f6;
+	background-color: #f3f4f6;
+	cursor: pointer;
+}
+
 
 #dialog {
 	display: none;
@@ -90,4 +111,42 @@ p {
 	background-color: #3b82f6;
 	font-size: 30px;
 	color: white;
+}
+
+.user_mypage_service{
+	display:flex;
+	flex-direction:column;
+	width:70%;
+	height:350px;
+	margin : 0 auto;
+}
+.user_profile_area{
+	width:50%;
+	height:350px;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+
+.user_profile_btn{
+	width: 45%;
+	height: 100px;
+	margin: 10px;
+	border-radius: 15px;
+	border:none;
+	background-color: #3b82f6;
+	font-size: 30px;
+	color: white;
+	margin-top: 20px;
+}
+.user_pwd_change{
+	width: 45%;
+	height: 100px;
+	margin: 10px;
+	border-radius: 15px;
+	border:none;
+	background-color: #3b82f6;
+	font-size: 30px;
+	color: white;
+	margin-top: 20px;
 }

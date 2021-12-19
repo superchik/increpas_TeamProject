@@ -118,5 +118,15 @@
 		from ott_review
 		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</select>
+	
+	<update id="get_exp" parameterType="Map">
+
+		UPDATE OTT_USER
+
+		SET EXP = #{u_exp} , U_LEVEL = #{u_level}
+
+		WHERE u_idx = #{u_idx}
+
+	</update>
 
 </mapper>
