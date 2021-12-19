@@ -230,8 +230,18 @@
 							</p>
 						</c:if>
 						
-						<c:if test="${not empty uvo }">
-							<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
+						<c:choose>
+							<c:when test="${empty uvo }">
+								<input type="button" class="review_edit" value="신고하기" onclick="empty_session()"/>
+							</c:when>
+							<c:when test="${uvo.u_idx ne rvo.u_idx}">
+								<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
+							</c:when>
+							
+						</c:choose>
+						
+						<c:if test="${uvo.u_idx ne rvo.u_idx }">
+						
 						</c:if>
 						</td>
 					</tr>
@@ -332,6 +342,10 @@ function warning(rv_idx, ott_idx, u_idx){
 	}).fail({
 		
 	});
+}
+
+function empty_session(){
+	alert('로그인 후 이용하세요.');
 }
 
 </script>
