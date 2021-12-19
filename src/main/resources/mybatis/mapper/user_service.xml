@@ -28,8 +28,8 @@
 </select>
 
 <insert id="user_join" parameterType="com.ott.user.vo.UserVO">
-	INSERT into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt, SOCIAL)
-			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat}, 'VVF')
+	INSERT into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt, u_level, SOCIAL)
+			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat}, 1,'VVF')
 </insert>
 
 <select id="id_find" resultType="com.ott.user.vo.UserVO" parameterType="String">
@@ -140,7 +140,6 @@
 		SELECT
 		exp, u_level FROM OTT_USER
 		WHERE u_idx = #{u_idx} 
-	
 </select>
 	
 </mapper>

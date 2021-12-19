@@ -15,6 +15,16 @@ public class ReviewVO {
 	private String r_date;
 	private int status;
 	
+	private int u_level;
+	
+	public int getU_level() {
+		return u_level;
+	}
+	
+	public void setU_level(int u_level) {
+		this.u_level = u_level;
+	}
+	
 	public int getStatus() {
 		return status;
 	}

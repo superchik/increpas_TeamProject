@@ -137,7 +137,7 @@
 					<tr>
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_name }</a>
-							<a class="list_level">Lv1</a><br>																					
+							<a class="list_level">Lv ${rvo.u_level}</a><br>																					
 							<a class="list_date">
 							${f:substring(rvo.r_date,0,16)}
 							</a>
