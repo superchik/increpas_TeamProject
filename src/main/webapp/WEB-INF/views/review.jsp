@@ -137,7 +137,37 @@
 					<tr>
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_name }</a>
-							<a class="list_level">Lv ${rvo.u_level}</a><br>																					
+							<c:choose>
+								<c:when test="${ rvo.u_level > 0 && rvo.u_level <= 5  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: darkgray;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 5 && rvo.u_level <= 10  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: white;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 10 && rvo.u_level <= 15  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: yellow;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 15 && rvo.u_level <= 20  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: gold;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 20 && rvo.u_level <= 25  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: pink;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 25 && rvo.u_level <= 30  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: red;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+							</c:choose>																				
 							<a class="list_date">
 							${f:substring(rvo.r_date,0,16)}
 							</a>
@@ -199,7 +229,8 @@
 								<input type="button" class="review_edit" value="삭제" onclick="review_del(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 							</p>
 						</c:if>
-						<c:if test="${uvo.u_idx ne rvo.u_idx }">
+						
+						<c:if test="${not empty uvo }">
 							<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
 						</c:if>
 						</td>
