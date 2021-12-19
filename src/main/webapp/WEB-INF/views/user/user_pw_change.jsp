@@ -23,30 +23,26 @@
 		<div class="user_change_box">
 			<div class="common_area2">
 				<h4>회원가입 시 작성하신 비밀번호와 새로운 비밀번호를 작성해주세요</h4>
-				<form action="/changeAction" method="post">			
-					<input type="hidden" value="${uvo.u_id}" name="u_id">				
-					<input type="hidden" value="${uvo.u_idx}" name="idx">				
-					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="기존 비밀번호" required="required">
-					<input class="user_common" type="password" id="u_pwd2" name="new_pwd" placeholder="변경할 비밀번호" required="required" oninput="checkPw()">
+				<form action="#" method="post">				
+					<input class="user_common" type="password" id="u_pwd1" name="u_pwd1" placeholder="기존 비밀번호" required="required" oninput="isEqualPw()">
+					<input class="user_common" type="password" id="u_pwd2" name="u_pwd2" placeholder="변경할 비밀번호" required="required" oninput="checkPw()">
 					<span class="pw_ok">사용 가능한 비밀번호 입니다.</span>
 					<span class="pw_length">비밀번호는 최소 8자이상 16자 이하입니다.</span>
 					<span class="pw_check">비밀번호는 숫자/영문자/특수문자를 모두 포함해야 합니다.</span>
 					<span class="pw_blank">비밀번호는 공백 없이 입력해주세요.</span>
 					<input class="user_common" type="password" id="u_pwd3" name="u_pwd3" placeholder="변경할 비밀번호 확인" required="required" oninput="confirmPw()">
 					<span class="pw_confirm">비밀번호와 같아야 합니다.</span>
-					<button  type="submit" id="change_btn" class="user_common get_value" disabled="disabled">비밀번호 변경</button>
+					<button id="change_btn" class="user_common get_value" disabled="disabled">비밀번호 변경</button>
 				</form>
 			</div>
 		</div>	
 	</div>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script>
-	
-	/*
 	function isEqualPw() {
 		var u_pw = $("#u_pwd1").val();
 	}
-	*/
+	
 	function checkPw() {
 		var u_pw = $("#u_pwd2").val();
 		var reg = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$/;
@@ -82,7 +78,6 @@
 			$("#change_btn").attr("disabled", true);
 		}
 	};
-	
 	</script>
 	<!-- footer -->
 	<jsp:include page="../common/footer.jsp"></jsp:include>

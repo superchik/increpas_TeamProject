@@ -13,12 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ott.Util.editImg1;
+import com.ott.Util.FileRenameUtil;
 import com.ott.user.vo.UserVO;
 @Component
 public class UserDAO {
-	
-	private editImg1 ei;
 	
 	private String img_path = "/resources/user_img/";
 	
@@ -102,27 +100,57 @@ public class UserDAO {
 
 
 	//이미지 파일 원본이름 사본이름 저장 DB저장
-//	public int editImg(UserVO vo) {
-//		vo = (UserVO)session.getAttribute("uvo");
-//		//ei = new editImg1(vo);
-//		
-//		ei= new editImg1();
-//		ei.setVo(vo);
-//		
-//		return ss.update("user_service.user_img", ei.getVo());
-//	}
+	public int editImg(UserVO vo) {
+		Map<String, String> map = new HashMap<String, String>();
 		
-	
-	//유저 종합 정보
-	public ModelAndView userInfo(UserVO vo) {
-		ModelAndView mv = new ModelAndView();
-		vo = ss.selectOne("user_service.user_info1", vo.getU_idx());
-//		vo = (UserVO)session.getAttribute("uvo");
-//		vo.setReviewEA(svo.getReviewEA());
+//		System.out.println("오라클 보내는 원본 이름=======>"+vo.getOname());
+//		System.out.println("오라클 보내는 파일 경로=======>"+vo.getFname());
+//		System.out.println("회원 고유 번호=========================>"+vo.getU_idx());
+//		System.out.println("변경할 닉내임==========================>"+vo.getU_name());
+//		System.out.println("변경할 내용==========================>"+vo.getAbout_me());
 		
-		ei = new editImg1(vo);
+		map.put("u_idx", vo.getU_idx());
+		
+		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0) {
+			map.put("u_name", vo.getU_name());
+//			System.out.println("네임 저장");
+		}
+		if(vo.getOname() != null && vo.getOname().trim().length() > 0) {
+			map.put("fname", vo.getFname());
+			map.put("oname", vo.getOname());
+//			System.out.println("오라클 파일 경로 및 원본이름 저장!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		}
+		
+		if(vo.getAbout_me() != null && vo.getAbout_me().trim().length() > 0)
+			map.put("about_me", vo.getAbout_me());
+			
+		return ss.update("user_service.user_img", map);
+	}
+		
 
-		mv.addObject("vo", ei.getVo());
+	//유저 종합 정보
+	public ModelAndView userInfo(UserVO svo) {
+		ModelAndView mv = new ModelAndView();
+		UserVO vo = (UserVO)session.getAttribute("uvo");
+		vo=svo;
+//		System.out.println("u_idx = "+vo.getU_idx());
+//		System.out.println("u_name ==============================>>>>>>>>> "+vo.getU_name());
+		
+		
+		UserVO u_idDex = ss.selectOne("user_service.user_info1",vo.getU_idx());
+//		System.out.println("u_name = "+u_idDex.getU_id());
+//		System.out.println(u_idDex.getU_id().substring(0,1));
+//		System.out.println(u_idDex.getFname());
+		if(u_idDex.getFname() == null) {
+			u_idDex.setIdImg(u_idDex.getU_id().substring(0,1));
+		}
+		
+		if(u_idDex.getAbout_me() == null)
+			u_idDex.setAbout_me("내용이 없다");
+
+//		System.out.println("오라클 파일 저장 경로"+u_idDex.getFname());
+//		System.out.println("파일이 없을시 표현할 글======>"+u_idDex.getIdImg());
+		mv.addObject("vo", u_idDex);
 		mv.setViewName("/user/user_info");
 		
 		return mv;
@@ -130,56 +158,66 @@ public class UserDAO {
 
 	//비동기 통신 유저 프로필 이미지 업로드
 	public Map<String, String> saveImg(UserVO vo) {
+		Map<String, String> map = new HashMap<String, String>();
+		
 		//콜바이 레퍼런스 리퀘스트도 가능!!
 		UserVO ss1 = (UserVO)session.getAttribute("uvo");
-//		ss1.setS_file(vo.getS_file());
-//		ss1.setFilePath(application.getRealPath(img_path));
-//		vo=ss.selectOne("user_service.user_info1", ss1);
-		vo.setFilePath(application.getRealPath(img_path));
 		
+//		ss1.setU_name(vo.getU_name());
+//		System.out.println("u_idx====> "+vo.getU_idx());
+//		System.out.println("u_name = "+vo.getU_name());
 		
-		ei = new editImg1();
-		ei.setVo(vo);
+//		if(vo.getFname() != null && vo.getFname().trim().length() > 0 )
+//			System.out.println("MultiFile =====> "+vo.getS_file().getClass().getName());
+//		System.out.println("u_name=====>"+vo.getU_name());
 		
-//		UserVO vos = ei.getVo();
-//		System.out.println("BD 로 보낼 u_idx=====>>"+ ei.getVo().getU_idx());
-//		System.out.println("BD 로 보낼 O네임======>>"+ ei.getVo().getOname());
-//		System.out.println("BD 로 보낼 F네임======>>"+ ei.getVo().getFname());
-//		System.out.println("BD 로 보낼 U_네임=====>>"+ ei.getVo().getU_name());
-//		System.out.println("BD 로 보낼 어버웃미====>>"+ ei.getVo().getAbout_me());
-//		System.out.println("사진이 없을때 "+ vo1.getIdImg());
-		int status = 0;
-		if(ei.getVo().getFname() != null && ei.getVo().getFname().trim().length() > 0 ) {
-			status=ss.update("user_service.user_img", ei.getVo());
-			System.out.println("저장되었으면 1 아니면 0 =======>"+status);
+		StringBuffer sb = new StringBuffer();
+		
+		if (vo.getS_file() != null && vo.getS_file().getSize() > 0) {
+			System.out.println("실재 파일 저장 = "+ application.getRealPath(img_path));
+//			oname = f.getOriginalFilename();
+			vo.setOname(vo.getS_file().getOriginalFilename());
+			System.out.println("실재 파일 이름 = "+ vo.getOname());
+			
+//			fname = FileRenameUtil.checkSameFileName(oname, realPath);
+			vo.setFname(FileRenameUtil.checkSameFileName(vo.getOname(), application.getRealPath(img_path)));
+			try {
+				vo.getS_file().transferTo(new File(application.getRealPath(img_path), vo.getFname()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
+//		System.out.println("vo에 저장 된 원본 이름=======================>>>>"+vo.getOname()); 
+		sb.append(img_path);
 		
+		sb.append(vo.getFname());
+		
+		vo.setFname(sb.toString());
+		
+//		System.out.println("에이젝스 저장= "+ vo.getFname());
+		int status = 0;
+		//xml : user_img
+		if(vo.getFname() != null && vo.getFname().trim().length() > 0 )
+			status = editImg(vo);
+//		System.out.println("이미지 저장 성공=1 실패=0 : "+status);
+		
+		
+//		System.out.println("유저 네임====>"+vo.getU_name());
 		if(vo.getU_name() != null && vo.getU_name().trim().length() > 0) {
 			
 			//세션에 저장 로그인 검사 할때 영향 안주는 방법
 			ss1.setU_name(vo.getU_name());
+			map.put("u_rename", vo.getU_name());
+			
+//			System.out.println("새션 저장");
 		}
-		int cnt = ss.update("review.editU_name",ss1);
-		return ei.getMap();
+		
+		map.put("path", vo.getFname());
+		int cnt = ss.update("review.editU_name",vo);
+		return map;
 		
 	}
 	
-	// 회원 비밀번호 확인
-	public UserVO user_pw_check(String u_id, String u_idx) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("u_id", u_id);
-		map.put("u_idx", u_idx);
-		return ss.selectOne("user_service.user_pw_check",map);
-	}
-		
-	// 회원 비밀번호 바꾸기
-	public int change_pwd(Map<String, String> map) {
-		return ss.update("user_service.change_pwd",map) ;
-	}
+
 	
-	public UserVO get_user_level(String u_idx) {
-		
-		return ss.selectOne("user_service.get_user_level", u_idx);
-		
-	}
 }

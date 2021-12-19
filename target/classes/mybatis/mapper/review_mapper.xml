@@ -45,6 +45,8 @@
 		where u_idx = #{u_idx}
 	</select>
 	
+	
+	
 	<resultMap id="review_map" type="com.ott.review.vo.ReviewVO">
 		<id property="rv_idx" column="rv_idx"/>
 		<!-- 원글 하나에 여러 개의 댓글들이 존재할 수 있으므로
@@ -116,17 +118,5 @@
 		from ott_review
 		where u_idx = #{u_idx} and ott_idx = #{ott_idx}
 	</select>
-	
-	<update id="get_exp" parameterType="Map">
-
-		UPDATE OTT_USER
-
-		SET EXP = #{u_exp} , U_LEVEL = #{u_level}
-
-		WHERE u_idx = #{u_idx}
-
-	</update>
-	
-	
 
 </mapper>

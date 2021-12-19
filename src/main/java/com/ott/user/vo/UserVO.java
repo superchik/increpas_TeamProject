@@ -8,11 +8,11 @@ public class UserVO {
 	private String u_email; // 이메일
 	private String u_id; // 아이디
 	private String u_pwd1; // 비밀번호
-	private int u_level; // 유저 레벨
+	private String u_level; // 유저 레벨
 	private String is_admin; // 관리자인지 아닌지
 	private String is_stop; // 정지회원인지 아닌지
 	private String is_warning; // 경고회원인지 아닌지
-	private int exp; // 유저 경험치(레벨 관련)
+	private String exp; // 유저 경험치(레벨 관련)
 	private String auth_key; // 회원가입시 임의값 DB에 저장
 	private String auth_status; // ?
 	private String mail_check; // 이메일인증 사용자인지 확인
@@ -23,17 +23,9 @@ public class UserVO {
 	private String reviewEA;//유저 리뷰수
 	private String idImg;//유저 이미지프로필 없을때 표현
 	private String about_me;//소개글
-	private String filePath;// 실재 저장 경로
 	
 	
-
 	
-	public String getFilePath() {
-		return filePath;
-	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
 	public String getAbout_me() {
 		return about_me;
 	}
@@ -100,10 +92,10 @@ public class UserVO {
 	public void setU_pwd1(String u_pwd1) {
 		this.u_pwd1 = u_pwd1;
 	}
-	public int getU_level() {
+	public String getU_level() {
 		return u_level;
 	}
-	public void setU_level(int u_level) {
+	public void setU_level(String u_level) {
 		this.u_level = u_level;
 	}
 	public String getIs_admin() {
@@ -124,10 +116,10 @@ public class UserVO {
 	public void setIs_warning(String is_warning) {
 		this.is_warning = is_warning;
 	}
-	public int getExp() {
+	public String getExp() {
 		return exp;
 	}
-	public void setExp(int exp) {
+	public void setExp(String exp) {
 		this.exp = exp;
 	}
 	public String getAuth_key() {

@@ -85,7 +85,7 @@
 </select>
 
 <!-- 유저 프로필 사진 업로드 -->
-<update id="user_img" parameterType="com.ott.user.vo.UserVO">
+<update id="user_img" parameterType="Map">
 	UPDATE OTT_USER
 	SET
 		<if test="oname != null ">
@@ -121,6 +121,7 @@
 		WHERE u_id = #{u_id}
 		
 	</update>
+<<<<<<< HEAD
 
 
 <!-- 유저 기존 비밀번호 확인 | 유저 검색 -->
@@ -142,4 +143,6 @@
 		WHERE u_idx = #{u_idx} 
 </select>
 	
+=======
+>>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
 </mapper>

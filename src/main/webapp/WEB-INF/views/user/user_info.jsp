@@ -25,7 +25,7 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="common_container">
 		<!-- 여기다 작업하세요 -->
-		<span class="user_mypage_text">${vo.u_name} 님의 마이페이지 입니다.</span>
+		<h2>${vo.u_name} 님의 마이페이지 입니다.</h2>
 		<div class="com">
 			<div class="TBox img">
 				<div class="img_area">
@@ -48,14 +48,14 @@
 						</tr>
 						<tr>
 							<td class="MTtd">이메일 :&nbsp;</td>
-							<td class="MTtd">${vo.u_email }</td>
+							<td class="MTtd1">${vo.u_email }</td>
 						</tr>
 						<tr>
-							<td class="MTtd">작성 리뷰 수 :&nbsp;</td>
-							<td class="MTtd">${vo.reviewEA }</td>
+							<td class="MTtd">리뷰 수 :&nbsp;</td>
+							<td class="MTtd1">${vo.reviewEA }</td>
 						</tr>
 						<tr>
-							<td colspan="2" class="MTtd2">About Me</td>
+							<td colspan="2" class="MTtd2">About_me</td>
 						</tr>
 						<tr>
 							<td colspan="2" class="MTtd2">${vo.about_me }</td>
@@ -63,21 +63,11 @@
 					</tbody>
 				</table>
 			</div>
-			
-		
+			<button class="BBox butter" type="button">프로필 변경</button>
+			<button class="link_btn butter" type="button" onclick="location.href='/pwChange';">비밀번호 변경 페이지 이동</button>
 		</div>
 	</div>
-	<div class="user_mypage_service">
-		<div class="user_profile_area">
-			<button class="user_profile_btn" type="button">프로필변경</button>	
-			<button class="user_pwd_change" onclick="location.href='/pwChange';"  type="button">비밀번호변경</button>	
-		</div>
-	</div>
-	<!--  
-		<button class="BBox butter" type="button">프로필 변경</button>
-		<button class="link_btn butter" type="button" onclick="location.href='/pwChange';">비밀번호 변경 페이지 이동</button>	
-	-->	
-	<div id="dialog" title="프로필변경">
+	<div id="dialog" title="다이얼로그 테스트">
 		<form action="" method="post" enctype="multipart/form-data" name="">
 		
 			<table id="table" style="width: 100%; height: 100%">
@@ -119,6 +109,11 @@
 			</table>
  
 	        <input type="hidden" id="u_user" name="u_idx" value="${vo.u_idx}"/>
+	        <!--                           현재프로젝트.경로요청/saveFIle이라는 폴더안에/객체.변수명 ( 지금은 없는관계로.. 에러가 발생하는것 같음 --> 
+	        <!-- <img id="preImage" src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg"'/> -->
+   			<!--  Error: src="${pageContext.request.contextPath}/saveFile/${noticeVO.filename}" alt="image_title" onerror='this.src="${pageContext.request.contextPath}/images/no_img.jpg" -->
+	    			    	
+
     	</form>
 	</div>
 	<!-- footer -->
@@ -130,7 +125,7 @@
 	$(function() {
 		console.log('Ready');
 		
-		$('.user_profile_btn').on('click', function() {
+		$('.BBox').on('click', function() {
 			console.log('BBox Ready');
 			$( "#dialog" ).dialog({
 				resizable: false,
@@ -161,8 +156,10 @@
         	
         		
         	if( s_file != null){
+        		alert('쓰기 준비')
         		sendImage(u_idx, s_file, u_name, about_me);
         	}else{
+        		alert("닉네임 변경합니다");
         		sendImage(u_idx, s_file, u_name, about_me);
         	}
         	console.log(u_idx);
@@ -201,14 +198,14 @@
 		//보내고자 하는 자원을 위해서 만든 폼객체에 파라미터로 넣어준다.
 		frm.append("u_idx", u_idx);
 		
-		if(u_name != null && u_name.trim().length > 0){
+		if(u_name != null){
 			console.log("u_name=====================================================>>>>"+u_name);
 			frm.append("u_name", u_name);
 		}
 		if(s_file != null)
 			frm.append("s_file", s_file);
 		
-		if(about_me != null && about_me.trim().length > 0)
+		if(about_me != null)
 			frm.append("about_me", about_me);
 		
 		//비동기식 통신

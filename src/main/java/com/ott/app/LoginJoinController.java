@@ -88,10 +88,7 @@ public class LoginJoinController {
 		}
 		if(last_uri.equals("http://localhost:9090/reissueAction") || last_uri.equals("http://localhost:9090/findAction")) {
 			mv.setViewName("redirect:/");
-		} else if(last_uri.equals("http://localhost:9090/pwChangeResult")) {
-			mv.setViewName("redirect:/");
-		}
-		else {
+		}else {
 			mv.setViewName(last_uri == null ? "redirect:/" : "redirect:" + last_uri);			
 		}
 		return mv;

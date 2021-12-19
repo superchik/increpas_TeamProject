@@ -109,7 +109,7 @@
 		</div>
 		<br/>
 		<br/>
-		<input type="hidden" name="u_idx" value="${uvo.u_idx}">
+		
 		<input type="hidden" name="ott_idx" value="${vo.ott_idx }">
 		<input type="hidden" name="u_name" value="${uvo.u_name }"> 
 		<input type="hidden" name="u_id" value="${uvo.u_id }"> 
