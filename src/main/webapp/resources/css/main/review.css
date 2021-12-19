@@ -306,4 +306,11 @@ table tfoot ol.paging li a:hover {
 	color: black;
 }
 
+.star_color{
+	color: gold;
+}
+.review_content_text{
+	color: white;
+	font-weight: bold;
+}
 

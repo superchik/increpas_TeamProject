@@ -174,21 +174,21 @@
 						</td>
 						<td class="list_content">
 							<c:if test="${rvo.rating eq 1}">	
-							<a>★☆☆☆☆</a><br/><br/>
+							<a class="star_color">★☆☆☆☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 2}">	
-							<a>★★☆☆☆</a><br/><br/>
+							<a class="star_color">★★☆☆☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 3}">	
-							<a>★★★☆☆</a><br/><br/>
+							<a class="star_color">★★★☆☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 4}">	
-							<a>★★★★☆</a><br/><br/>
+							<a class="star_color">★★★★☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 5}">	
-							<a>★★★★★</a><br/><br/>
+							<a class="star_color">★★★★★</a><br/><br/>
 							</c:if>					
-							<a>${rvo.content }</a>
+							<a class="review_content_text">${rvo.content }</a>
 						</td>
 						<td class="list_recommend">
 						
