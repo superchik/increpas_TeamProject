@@ -109,7 +109,7 @@
 		</div>
 		<br/>
 		<br/>
-		
+		<input type="hidden" name="u_idx" value="${uvo.u_idx}">
 		<input type="hidden" name="ott_idx" value="${vo.ott_idx }">
 		<input type="hidden" name="u_name" value="${uvo.u_name }"> 
 		<input type="hidden" name="u_id" value="${uvo.u_id }"> 
@@ -137,7 +137,7 @@
 					<tr>
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_name }</a>
-							<a class="list_level">LV1</a><br/><br/>
+							<a class="list_level">Lv1</a><br>																					
 							<a class="list_date">
 							${f:substring(rvo.r_date,0,16)}
 							</a>

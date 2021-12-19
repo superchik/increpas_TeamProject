@@ -28,7 +28,7 @@
 </select>
 
 <insert id="user_join" parameterType="com.ott.user.vo.UserVO">
-	insert into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt, SOCIAL)
+	INSERT into OTT_USER (u_idx, u_id, u_name, u_email, u_pwd1, salt, SOCIAL)
 			values(OTT_USER_SEQ.nextval, #{u_id}, #{u_name}, #{u_email}, #{u_pwd1}, #{big_fat}, 'VVF')
 </insert>
 
@@ -85,7 +85,7 @@
 </select>
 
 <!-- 유저 프로필 사진 업로드 -->
-<update id="user_img" parameterType="Map">
+<update id="user_img" parameterType="com.ott.user.vo.UserVO">
 	UPDATE OTT_USER
 	SET
 		<if test="oname != null ">
@@ -121,4 +121,26 @@
 		WHERE u_id = #{u_id}
 		
 	</update>
+
+
+<!-- 유저 기존 비밀번호 확인 | 유저 검색 -->
+<select id="user_pw_check" parameterType="Map" resultType="com.ott.user.vo.UserVO">
+	SELECT * FROM OTT_USER
+	WHERE u_idx = #{u_idx} AND u_id = #{u_id}
+</select>
+	
+<!-- 유저 비밀번호 변경 -->
+<update id="change_pwd" parameterType="Map">
+	UPDATE OTT_USER
+		SET u_pwd1 = #{u_pwd1}
+	WHERE u_idx = #{u_idx} AND u_id = #{u_id}
+</update>
+
+<select id="get_user_level" resultType="com.ott.user.vo.UserVO" parameterType="String">
+		SELECT
+		exp, u_level FROM OTT_USER
+		WHERE u_idx = #{u_idx} 
+	
+</select>
+	
 </mapper>

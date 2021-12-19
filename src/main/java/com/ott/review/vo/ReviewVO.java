@@ -15,7 +15,6 @@ public class ReviewVO {
 	private String r_date;
 	private int status;
 	
-	
 	public int getStatus() {
 		return status;
 	}
