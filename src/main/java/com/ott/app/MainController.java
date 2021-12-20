@@ -26,7 +26,7 @@ import com.ott.platform.vo.PlatFormVO;
 
 @Controller
 public class MainController {
-
+  
 	@Autowired
 	private PlatFormDAO n_dao;
 
