@@ -137,28 +137,62 @@
 					<tr>
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_name }</a>
+<<<<<<< HEAD
 							<a class="list_level">Lv1</a><br>																					
+=======
+							<c:choose>
+								<c:when test="${ rvo.u_level > 0 && rvo.u_level <= 5  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: darkgray;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 5 && rvo.u_level <= 10  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: white;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 10 && rvo.u_level <= 15  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: yellow;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 15 && rvo.u_level <= 20  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: gold;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 20 && rvo.u_level <= 25  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: pink;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+								
+								<c:when test="${ rvo.u_level > 25 && rvo.u_level <= 30  }">
+								<a class="list_level">Lv ${rvo.u_level} <i style="color: red;" class="fas fa-medal"></i></a>
+									<br />
+								</c:when>
+							</c:choose>																				
+>>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
 							<a class="list_date">
 							${f:substring(rvo.r_date,0,16)}
 							</a>
 						</td>
 						<td class="list_content">
 							<c:if test="${rvo.rating eq 1}">	
-							<a>★☆☆☆☆</a><br/><br/>
+							<a class="star_color">★☆☆☆☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 2}">	
-							<a>★★☆☆☆</a><br/><br/>
+							<a class="star_color">★★☆☆☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 3}">	
-							<a>★★★☆☆</a><br/><br/>
+							<a class="star_color">★★★☆☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 4}">	
-							<a>★★★★☆</a><br/><br/>
+							<a class="star_color">★★★★☆</a><br/><br/>
 							</c:if>					
 							<c:if test="${rvo.rating eq 5}">	
-							<a>★★★★★</a><br/><br/>
+							<a class="star_color">★★★★★</a><br/><br/>
 							</c:if>					
-							<a>${rvo.content }</a>
+							<a class="review_content_text">${rvo.content }</a>
 						</td>
 						<td class="list_recommend">
 						
@@ -199,8 +233,19 @@
 								<input type="button" class="review_edit" value="삭제" onclick="review_del(${rvo.rv_idx}, ${rvo.ott_idx })"/>
 							</p>
 						</c:if>
+						
+						<c:choose>
+							<c:when test="${empty uvo }">
+								<input type="button" class="review_edit" value="신고하기" onclick="empty_session()"/>
+							</c:when>
+							<c:when test="${uvo.u_idx ne rvo.u_idx}">
+								<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
+							</c:when>
+							
+						</c:choose>
+						
 						<c:if test="${uvo.u_idx ne rvo.u_idx }">
-							<input type="button" class="review_edit" value="신고하기" onclick="warning(${rvo.rv_idx}, ${rvo.ott_idx }, ${rvo.u_idx })"/>
+						
 						</c:if>
 						</td>
 					</tr>
@@ -301,6 +346,10 @@ function warning(rv_idx, ott_idx, u_idx){
 	}).fail({
 		
 	});
+}
+
+function empty_session(){
+	alert('로그인 후 이용하세요.');
 }
 
 </script>

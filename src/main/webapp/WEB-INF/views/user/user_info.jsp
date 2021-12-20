@@ -53,6 +53,14 @@
 						<tr>
 							<td class="MTtd">작성 리뷰 수 :&nbsp;</td>
 							<td class="MTtd">${vo.reviewEA }</td>
+<<<<<<< HEAD
+=======
+						</tr>
+						
+						<tr>
+							<td class="MTtd">Level :&nbsp;</td>
+							<td class="MTtd">${vo.u_level }</td>
+>>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
 						</tr>
 						<tr>
 							<td colspan="2" class="MTtd2">About Me</td>
@@ -88,7 +96,7 @@
 				<tbody>
 					<tr>
 						<td colspan="2" style="width: 100%; height: 250px;background:url('resources/user_img/default_image.png');background-size : contain; background-repeat: no-repeat;">
-							<img id="preImage" style="width:100%; height: 100%;">
+							<img id="preImage" src="${vo.fname }" style="width:100%; height: 100%;">
 						</td>
 					</tr>
 					<tr>

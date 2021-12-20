@@ -54,11 +54,13 @@
 	
 	<select id="getReview" resultMap="review_map" parameterType="Map">
 		SELECT * FROM (
-			SELECT rownum r_num,a.* FROM (
+			SELECT rownum r_num,a.* , u.u_level FROM (
 				SELECT * FROM OTT_REVIEW
 				WHERE ott_idx = #{ott_idx} and status = 1
 				ORDER BY rv_idx DESC
-			) a 
+			) a,
+			(SELECT u_idx, u_level FROM OTT_USER)u
+			WHERE u.u_idx = a.u_idx 
 		) WHERE r_num BETWEEN #{begin} AND #{end} 
 	</select>
 	
@@ -124,7 +126,4 @@
 		WHERE u_idx = #{u_idx}
 
 	</update>
-	
-	
-
 </mapper>
