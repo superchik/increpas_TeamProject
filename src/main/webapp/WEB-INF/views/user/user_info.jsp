@@ -73,7 +73,7 @@
 		</div>
 	</div>
 	<div class="user_mypage_service">
-		<div class="user_profile_area">
+		<div class="user_profile_btn_area">
 			<button class="user_profile_btn" type="button">프로필변경</button>	
 			<button class="user_pwd_change" onclick="location.href='/pwChange';"  type="button">비밀번호변경</button>	
 		</div>
