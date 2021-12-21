@@ -142,23 +142,4 @@
 	
 </select>
 	
-<!-- 유저 기존 비밀번호 확인 | 유저 검색 -->
-<select id="user_pw_check" parameterType="Map" resultType="com.ott.user.vo.UserVO">
-	SELECT * FROM OTT_USER
-	WHERE u_idx = #{u_idx} AND u_id = #{u_id}
-</select>
-	
-<!-- 유저 비밀번호 변경 -->
-<update id="change_pwd" parameterType="Map">
-	UPDATE OTT_USER
-		SET u_pwd1 = #{u_pwd1}
-	WHERE u_idx = #{u_idx} AND u_id = #{u_id}
-</update>
-
-<select id="get_user_level" resultType="com.ott.user.vo.UserVO" parameterType="String">
-		SELECT
-		exp, u_level FROM OTT_USER
-		WHERE u_idx = #{u_idx} 
-</select>
-	
 </mapper>
