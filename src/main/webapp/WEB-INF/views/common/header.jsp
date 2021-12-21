@@ -25,7 +25,7 @@
       </div>
 
       <ul class="nav_item nav_right">
-         <c:if test="${empty uvo }">
+	         <c:if test="${empty uvo && empty ManVO}">
             <span><a href="/login">
                로그인 / 회원가입
             </a></span>
@@ -47,6 +47,15 @@
             <!-- popup end -->
             <li><span><a href="/QNA.list">고객센터</a></span></li>
          </c:if>
+         
+             <c:if test="${!empty ManVO }">
+			   	<li>
+					<h3>${ManVO.manager_id }님</h3>
+			    </li>
+		        <li> 
+		        	<a href="/manager_logout">로그아웃</a>
+		        </li>
+	         </c:if>
       </ul>
    </nav>
 
