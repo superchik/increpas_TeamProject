@@ -137,9 +137,7 @@
 					<tr>
 						<td class="list_nickname"> 
 							<a class="list_nickname">${rvo.u_name }</a>
-<<<<<<< HEAD
-							<a class="list_level">Lv1</a><br>																					
-=======
+
 							<c:choose>
 								<c:when test="${ rvo.u_level > 0 && rvo.u_level <= 5  }">
 								<a class="list_level">Lv ${rvo.u_level} <i style="color: darkgray;" class="fas fa-medal"></i></a>
@@ -171,7 +169,7 @@
 									<br />
 								</c:when>
 							</c:choose>																				
->>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git
+<!--  >>>>>>> branch 'master' of https://github.com/ksm0207/Increpas-OTT_Service.git-->
 							<a class="list_date">
 							${f:substring(rvo.r_date,0,16)}
 							</a>
